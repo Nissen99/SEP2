@@ -8,10 +8,13 @@ public class Showing
   private Date date;
   private Time time;
   private Movie movie;
+  private ShowingList showingList;
 
-  public Showing(Date date, Time time)
+  public Showing(Date date, Movie movie, ShowingList showingList)
   {
     this.date = date;
-    this.time = time;
+    this.movie = movie;
+    this.showingList = showingList;
+    showingList.addShowing(this);
   }
 }

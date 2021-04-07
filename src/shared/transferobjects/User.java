@@ -1,6 +1,7 @@
 package shared.transferobjects;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class User
@@ -18,5 +19,9 @@ public class User
 
   public void makeBooking(String movieTitle, Date date, Time time) {
     Booking booking = new Booking();
+  }
+
+  public ArrayList<Movie> getMovieList() {
+    return movieList.getMovieList();
   }
 }
