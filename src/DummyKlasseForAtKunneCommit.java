@@ -6,5 +6,6 @@ public class DummyKlasseForAtKunneCommit
   {
 
     System.out.println("lort");
+    //Ad - Mathias
   }
 }
