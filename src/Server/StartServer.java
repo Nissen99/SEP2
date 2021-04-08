@@ -1,3 +1,5 @@
+package Server;
+
 import shared.transferobjects.Movie;
 import shared.transferobjects.MovieList;
 import shared.transferobjects.Showing;
