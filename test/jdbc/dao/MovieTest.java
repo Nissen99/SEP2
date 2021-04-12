@@ -12,7 +12,7 @@ class MovieTest
   @Test
   public void testCreate() throws SQLException {
     MovieDAO movieDAO = new MovieDAOImpl();
-    movieDAO.create(1, "Spiderman");
+    movieDAO.create(10, "Spiderman");
 
   }
 
