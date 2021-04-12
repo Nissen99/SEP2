@@ -8,10 +8,14 @@ public class BaseDAO
 {
   private static Connection connection;
 
-  protected static Connection getConnection() throws SQLException {
+  protected static Connection getConnection() throws SQLException
+  {
     DriverManager.registerDriver(new org.postgresql.Driver());
-    if (connection == null) {
-      connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=bioDatabase", "postgres", "190292");
+    if (connection == null)
+    {
+      connection = DriverManager.getConnection(
+          "jdbc:postgresql://localhost:5432/postgres?currentSchema=bioDatabase",
+          "postgres", "Solaiman123");
     }
     return connection;
   }

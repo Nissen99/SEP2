@@ -14,4 +14,6 @@ public class ViewModelBooking
   {
     model.addBooking(new Booking(model.getSelectedShowing(), new User(username), 1));
   }
+
+
 }

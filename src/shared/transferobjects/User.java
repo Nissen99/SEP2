@@ -7,12 +7,12 @@ import java.util.Date;
 public class User
 {
   private String name;
-  //private int userID;
+  private int userID;
 
-  public User(String name)
+  public User(String name, int userID)
   {
     this.name = name;
-    //this.userID = userID;
+    this.userID = userID;
   }
 
   public String getName()
