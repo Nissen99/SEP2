@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
 import java.io.IOException;
@@ -23,7 +22,7 @@ public class ShowingListController
   @FXML public TableView<Showing> tableViewForFilmFremvisninger;
 
   private ViewModelShowingList viewModel = ViewModelFactory.getInstance()
-      .getViewModelShowingList();
+      .getShowingList();
 
 
   public void init(){
@@ -49,4 +48,10 @@ public void confirmChoice() throws IOException
   ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
 }
 
+
+public void backButton() throws IOException
+{
+  ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+
+}
 }

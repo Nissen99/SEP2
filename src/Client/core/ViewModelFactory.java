@@ -1,5 +1,6 @@
 package Client.core;
 
+import Client.view.viewModel.ViewModelBooking;
 import Client.view.viewModel.ViewModelMovieList;
 import Client.view.viewModel.ViewModelShowingList;
 
@@ -7,8 +8,9 @@ public class ViewModelFactory
 {
 
   private static ViewModelFactory viewModelFactory;
-  private ViewModelMovieList viewModelMovieList;
-  private ViewModelShowingList viewModelShowingList;
+  private ViewModelMovieList movieList;
+  private ViewModelShowingList ShowingList;
+  private ViewModelBooking booking;
 
   private ViewModelFactory(){}
 
@@ -20,17 +22,24 @@ public class ViewModelFactory
   }
 
   public ViewModelMovieList getMovieListViewModel(){
-    if (viewModelMovieList == null){
-      viewModelMovieList = new ViewModelMovieList(ModelFactory.getInstance().getModel());
+    if (movieList == null){
+      movieList = new ViewModelMovieList(ModelFactory.getInstance().getModel());
     }
-    return viewModelMovieList;
+    return movieList;
   }
 
-  public ViewModelShowingList getViewModelShowingList(){
-    if (viewModelShowingList == null){
-      viewModelShowingList = new ViewModelShowingList(ModelFactory.getInstance().getModel());
+  public ViewModelShowingList getShowingList(){
+    if (ShowingList == null){
+      ShowingList = new ViewModelShowingList(ModelFactory.getInstance().getModel());
     }
-    return viewModelShowingList;
+    return ShowingList;
+  }
+
+  public ViewModelBooking getBooking(){
+    if (booking == null){
+      booking = new ViewModelBooking();
+    }
+    return booking;
   }
 
 }

@@ -17,4 +17,8 @@ public class Booking
   {
     return showing;
   }
+
+  public String toString(){
+    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName();
+  }
 }

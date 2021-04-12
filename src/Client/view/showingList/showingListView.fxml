@@ -22,5 +22,6 @@
          </font>
       </Label>
       <Button layoutX="527.0" layoutY="374.0" mnemonicParsing="false" onAction="#confirmChoice" text="Confirm" />
+      <Button layoutY="374.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
    </children>
 </AnchorPane>

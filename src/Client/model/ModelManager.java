@@ -24,6 +24,7 @@ public class ModelManager implements Model
   @Override public void addBooking(Booking booking)
   {
     bookingList.addBooking(booking);
+    System.out.println(booking.toString());
   }
 
   @Override public void addMovie(Movie movie)
@@ -38,16 +39,12 @@ public class ModelManager implements Model
 
   @Override public ArrayList<Movie> getMovieList()
   {
-    //TODO Fjern den her, det er til test
-    movieList.addMovie(new Movie("Yikes"));
-    return movieList.getMovieList();
+      return movieList.getMovieList();
   }
 
   @Override public ArrayList<Showing> getShowingList()
   {
-    //TODO Fjern den her, det er til test
-    Date date = new Date();
-    showingList.addShowing(new Showing(movieList.getMovieList().get(0),new Timestamp(date.getTime())));
+
     return showingList.getShowingList();
   }
 

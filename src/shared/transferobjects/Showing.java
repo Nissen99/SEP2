@@ -1,14 +1,14 @@
 package shared.transferobjects;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Showing
 {
   private Timestamp timestamp;
   private Movie movie;
+
+
 
   public Showing(Movie movie, Timestamp timestamp)
   {
@@ -17,6 +17,14 @@ public class Showing
 
   }
 
+
+  public Movie getMovie()
+  {
+    return movie;
+  }
+
+
+  //Bliver brugt ikke slet
   public String getTime(){
     String time = (new SimpleDateFormat("HH:mm")).format(timestamp.getTime());
     return time;
