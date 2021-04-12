@@ -1,4 +1,4 @@
-package Server.model;
+package Client.model;
 
 import shared.transferobjects.*;
 
