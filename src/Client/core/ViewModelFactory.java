@@ -19,7 +19,7 @@ public class ViewModelFactory
 
   public MovieListViewModel getMovieListViewModel(){
     if (movieListViewModel == null){
-      movieListViewModel = new MovieListViewModel();
+      movieListViewModel = new MovieListViewModel(ModelFactory.getInstance().getModel());
     }
     return movieListViewModel;
   }

@@ -16,4 +16,13 @@ public class MovieList
   {
     return movieList;
   }
+
+  public String toString(){
+    String s = null;
+    for (Movie movie : movieList)
+    {
+      s += movie.toString();
+    }
+    return s;
+  }
 }

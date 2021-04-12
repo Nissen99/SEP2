@@ -12,6 +12,6 @@
           <TableColumn fx:id="movieTitleColumn" prefWidth="590.0" text="Title" />
         </columns>
       </TableView>
-      <Button fx:id="confirmMovieChoice" layoutX="509.0" layoutY="365.0" mnemonicParsing="false" text="Vælg film" />
+      <Button fx:id="confirmMovieChoice" layoutX="509.0" layoutY="365.0" mnemonicParsing="false" onAction="#confirmButtonPressed" text="Vælg film" />
    </children>
 </AnchorPane>

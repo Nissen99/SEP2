@@ -10,12 +10,11 @@ public class ModelManager implements Model
   private MovieList movieList;
   private BookingList bookingList;
 
-  public ModelManager(ShowingList showingList, MovieList movieList,
-      BookingList bookingList)
+  public ModelManager()
   {
-    this.showingList = showingList;
-    this.movieList = movieList;
-    this.bookingList = bookingList;
+    this.showingList = new ShowingList();
+    this.movieList = new MovieList();
+    this.bookingList = new BookingList();
   }
 
   @Override public void addBooking(Booking booking)
@@ -35,6 +34,7 @@ public class ModelManager implements Model
 
   @Override public ArrayList<Movie> getMovieList()
   {
+    movieList.addMovie(new Movie("Yikes"));
     return movieList.getMovieList();
   }
 

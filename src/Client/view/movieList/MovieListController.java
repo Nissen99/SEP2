@@ -1,5 +1,6 @@
 package Client.view.movieList;
 
+import Client.core.ViewHandler;
 import Client.core.ViewModelFactory;
 import Client.view.viewModel.MovieListViewModel;
 import javafx.fxml.FXML;
@@ -13,7 +14,7 @@ public class MovieListController
 {
 
   @FXML public TableView<Movie> tableViewForMovie;
-  @FXML public TableColumn<String, String> movieTitleColumn;
+  @FXML public TableColumn<Movie, String> movieTitleColumn;
   @FXML public Button confirmMovieChoice;
 
   private MovieListViewModel viewModel = ViewModelFactory.getInstance().getMovieListViewModel();
@@ -22,19 +23,23 @@ public class MovieListController
 
 
   public void init(){
-    tableViewForMovie = new TableView<>();
-    movieTitleColumn = new TableColumn<>();
-    confirmMovieChoice = new Button();
 
-    movieTitleColumn.setCellValueFactory(new PropertyValueFactory("title"));
 
-    tableViewForMovie.getItems().addAll(viewModel.getAllMovies());
+    tableViewForMovie.setItems(viewModel.getAllMovies());
+
+
+    movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
+
+
 
   }
 
   public void confirmButtonPressed(){
 
-    Movie movie = (Movie) tableViewForMovie.getSelectionModel().getSelectedItem();
+    Movie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
+    System.out.println(movie);
+
+
 
   }
 
