@@ -1,6 +1,8 @@
 package Client.core;
 
+import Client.view.bookingView.BookingViewController;
 import Client.view.movieList.MovieListController;
+import Client.view.showingList.ShowingListController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -45,14 +47,27 @@ public class ViewHandler
     FXMLLoader loader = new FXMLLoader();
     Parent root = null;
 
-    loader.setLocation(getClass().getResource(viewToOpen));
-    root = loader.load();
-
-
+    if ("../view/movieList/movieListView.fxml".equals(viewToOpen))
+    {
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
       MovieListController controller = loader.getController();
       controller.init();
       stage.setTitle("Movie List");
+    }
+    else if ("../view/showingList/showingListView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+      ShowingListController controller = loader.getController();
+      controller.init();
+      stage.setTitle("Showing List");
+    }else if ("../view/bookingView/bookingView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+      BookingViewController controller = loader.getController();
 
+      stage.setTitle("Booking");
+    }
 
 
     scene = new Scene(root);

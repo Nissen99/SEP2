@@ -1,12 +1,14 @@
 package Client.core;
 
-import Client.view.viewModel.MovieListViewModel;
+import Client.view.viewModel.ViewModelMovieList;
+import Client.view.viewModel.ViewModelShowingList;
 
 public class ViewModelFactory
 {
 
   private static ViewModelFactory viewModelFactory;
-  private MovieListViewModel movieListViewModel;
+  private ViewModelMovieList viewModelMovieList;
+  private ViewModelShowingList viewModelShowingList;
 
   private ViewModelFactory(){}
 
@@ -17,10 +19,18 @@ public class ViewModelFactory
     return viewModelFactory;
   }
 
-  public MovieListViewModel getMovieListViewModel(){
-    if (movieListViewModel == null){
-      movieListViewModel = new MovieListViewModel(ModelFactory.getInstance().getModel());
+  public ViewModelMovieList getMovieListViewModel(){
+    if (viewModelMovieList == null){
+      viewModelMovieList = new ViewModelMovieList(ModelFactory.getInstance().getModel());
     }
-    return movieListViewModel;
+    return viewModelMovieList;
   }
+
+  public ViewModelShowingList getViewModelShowingList(){
+    if (viewModelShowingList == null){
+      viewModelShowingList = new ViewModelShowingList(ModelFactory.getInstance().getModel());
+    }
+    return viewModelShowingList;
+  }
+
 }

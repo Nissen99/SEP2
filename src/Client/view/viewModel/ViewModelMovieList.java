@@ -7,14 +7,14 @@ import shared.transferobjects.Movie;
 
 import java.util.ArrayList;
 
-public class MovieListViewModel
+public class ViewModelMovieList
 {
 
   private Model modelManger;
   private ObservableList<Movie> movies = FXCollections.observableArrayList();
 
 
-  public MovieListViewModel(Model model)
+  public ViewModelMovieList(Model model)
   {
     this.modelManger = model;
   }
@@ -26,6 +26,10 @@ public class MovieListViewModel
    movies.addAll(modelManger.getMovieList());
 
     return movies;
+  }
+
+  public void setSelectedMovie(Movie movie){
+    modelManger.setSelectedMovie(movie);
   }
 
 }

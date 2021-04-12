@@ -14,4 +14,9 @@ public interface Model
   ArrayList<Movie> getMovieList();
   ArrayList<Showing> getShowingList();
   ArrayList<Booking> getBookingList();
+  void setSelectedMovie(Movie movie);
+  Movie getSelectedMovie();
+  Showing getSelectedShowing();
+  void setSelectedShowing(Showing showing);
+
 }
