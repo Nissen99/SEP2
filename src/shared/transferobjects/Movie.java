@@ -3,10 +3,12 @@ package shared.transferobjects;
 public class Movie
 {
   private String movieTitle;
+  private int movieId;
 
-  public Movie(String movieTitle)
+  public Movie(int movieId, String movieTitle)
   {
-   this.movieTitle = movieTitle;
+    this.movieTitle = movieTitle;
+    this.movieId = movieId;
   }
 
   public String getMovieTitle()

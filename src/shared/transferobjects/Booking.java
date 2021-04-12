@@ -2,15 +2,15 @@ package shared.transferobjects;
 
 public class Booking
 {
-  //private String bookingID;
+  private int bookingId;
   private Showing showing;
   private User user;
 
-  public Booking(Showing showing, User user)
+  public Booking(Showing showing, User user, int bookingId)
   {
     this.showing = showing;
     this.user = user;
-    //Booking id? Skal det genereres her?
+    this.bookingId = bookingId;
   }
 
   public Showing getShowing()

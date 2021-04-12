@@ -12,6 +12,6 @@ public class ViewModelBooking
 
   public void makeBooking(String username)
   {
-    model.addBooking(new Booking(model.getSelectedShowing(), new User(username)));
+    model.addBooking(new Booking(model.getSelectedShowing(), new User(username), 1));
   }
 }

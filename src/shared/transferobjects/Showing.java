@@ -1,19 +1,26 @@
 package shared.transferobjects;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Showing
 {
   private Timestamp timestamp;
   private Movie movie;
+  private int showingId;
 
-
-
-  public Showing(Movie movie, Timestamp timestamp)
+  public Showing(Movie movie, Timestamp timestamp, int showingId)
   {
     this.movie = movie;
     this.timestamp = timestamp;
+    this.showingId = showingId;
+  }
+
+  public int getId()
+  {
+    return showingId;
 
   }
 
