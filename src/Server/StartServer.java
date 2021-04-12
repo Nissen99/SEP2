@@ -16,14 +16,7 @@ public class StartServer
   {
 
     //startserver TODO
-    MovieList movieList = new MovieList();
-    Movie movie = new Movie("SpiderMan", movieList);
-    Movie movie1 = new Movie("Batman", movieList);
-    Date date = new Date();
-    ShowingList showingList = new ShowingList();
-    Showing showing = new Showing(date, movie, showingList);
-    System.out.println(movieList.getMovieListSize());
-    System.out.println(showingList.getShowingListSize());
+
 
   }
 }

@@ -1,15 +1,20 @@
 package shared.transferobjects;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class Booking
 {
-  private String bookingID;
+  //private String bookingID;
   private Showing showing;
+  private User user;
 
-  public Booking()
+  public Booking(Showing showing, User user)
   {
+    this.showing = showing;
+    this.user = user;
+    //Booking id? Skal det genereres her?
+  }
 
+  public Showing getShowing()
+  {
+    return showing;
   }
 }

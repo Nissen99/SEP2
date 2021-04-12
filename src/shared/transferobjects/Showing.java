@@ -1,20 +1,17 @@
 package shared.transferobjects;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Showing
 {
-  private Date date;
-  private Time time;
+  private Timestamp timestamp;
   private Movie movie;
-  private ShowingList showingList;
 
-  public Showing(Date date, Movie movie, ShowingList showingList)
+  public Showing(Movie movie, Timestamp timestamp)
   {
-    this.date = date;
     this.movie = movie;
-    this.showingList = showingList;
-    showingList.addShowing(this);
+    this.timestamp = timestamp;
   }
 }
