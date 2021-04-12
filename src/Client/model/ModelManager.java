@@ -10,6 +10,14 @@ public class ModelManager implements Model
   private MovieList movieList;
   private BookingList bookingList;
 
+  public ModelManager(ShowingList showingList, MovieList movieList,
+      BookingList bookingList)
+  {
+    this.showingList = showingList;
+    this.movieList = movieList;
+    this.bookingList = bookingList;
+  }
+
   @Override public void addBooking(Booking booking)
   {
     bookingList.addBooking(booking);
