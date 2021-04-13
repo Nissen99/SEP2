@@ -13,7 +13,7 @@ class UserTest
   public void testCreate() throws SQLException
   {
     UserDAO user = new UserDAOImpl();
-    user.create("Solaiman",29);
+    user.create("Solaiman");
   }
 
 

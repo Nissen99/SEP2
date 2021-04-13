@@ -23,7 +23,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
         statement.executeUpdate();
         ResultSet keys = statement.getGeneratedKeys();
         if (keys.next()) {
-          return new User(keys.getInt(1), name);
+          return new User(keys.getInt("userId"), name);
         } else {
           throw new SQLException("No keys generated");
         }
