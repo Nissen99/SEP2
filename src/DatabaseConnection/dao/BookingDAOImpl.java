@@ -11,7 +11,6 @@ import java.sql.SQLException;
 
 public class BookingDAOImpl extends BaseDAO implements BookingDAO
 {
-  private UserDAO userDAO = new UserDAOImpl();
 
   @Override
   public Booking create(Showing showing, User user) throws
