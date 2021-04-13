@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.transferobjects.Movie;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ViewModelMovieList
@@ -19,7 +20,8 @@ public class ViewModelMovieList
     this.modelManger = model;
   }
 
-  public ObservableList<Movie> getAllMovies(){
+  public ObservableList<Movie> getAllMovies() throws SQLException
+  {
 
     movies.removeAll(movies);
 

@@ -32,11 +32,11 @@ public class ModelManager implements Model
     this.showingDAO = new ShowingDAOImpl();
   }
 
-  @Override public void addBooking(Showing showing, String username)
+  @Override public Booking addBooking(Showing showing, String username)
       throws SQLException
   {
     User user = userDAO.create(username);
-    bookingDAO.create(showing, user);
+   return bookingDAO.create(showing, user);
 
   }
 
@@ -45,22 +45,23 @@ public class ModelManager implements Model
   return movieDAO.create(movie.getMovieTitle());
   }
 
-  @Override public void addShowing(Showing showing) throws SQLException
+  @Override public Showing addShowing(Showing showing) throws SQLException
   {
 
-    showingDAO.create(showing.getMovie(), showing.getTimestamp());
-    showingList.addShowing(showing);
+    return showingDAO.create(showing.getMovie(), showing.getTimestamp());
+
   }
 
-  @Override public ArrayList<Movie> getMovieList()
+  @Override public ArrayList<Movie> getMovieList() throws SQLException
   {
-      return movieList.getMovieList();
+      return movieDAO.getAllMovies();
+
   }
 
-  @Override public ArrayList<Showing> getShowingList()
+  @Override public ArrayList<Showing> getShowingList() throws SQLException
   {
 
-    return showingList.getShowingList();
+    return showingDAO.getAllShowings(selectedMovie);
   }
 
   @Override public ArrayList<Booking> getBookingList()

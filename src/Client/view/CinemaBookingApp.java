@@ -22,8 +22,8 @@ public class CinemaBookingApp extends Application
 
     //TODO Fjern den her, det er til test
     Date date = new Date();
-    ModelFactory.getInstance().getModel().addShowing(new Showing(
-        movie,new Timestamp(date.getTime()), 1));
+    ModelFactory.getInstance().getModel().addShowing(new Showing(1,
+        movie,new Timestamp(date.getTime())));
 
 
     ViewHandler.getInstance().start(stage);

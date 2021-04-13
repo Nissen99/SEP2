@@ -21,7 +21,7 @@ class ShowingDAOImplTest
   MovieDAO movieDAO = new MovieDAOImpl();
 
   Movie movie = new Movie(1, "Yikes");
-  Showing showing = new Showing(movie, new Timestamp(23232), 55);
+  Showing showing = new Showing(55, movie, new Timestamp(23232) );
   showingDAO.create(movie, showing.getTimestamp());
 }
 }

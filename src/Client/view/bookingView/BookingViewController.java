@@ -24,7 +24,7 @@ public class BookingViewController
     ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
   }
 
-  public void backButtonHit() throws IOException
+  public void backButtonHit() throws IOException, SQLException
   {
 
     ViewHandler.getInstance().openView("../view/showingList/showingListView.fxml");

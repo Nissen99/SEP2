@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.transferobjects.Showing;
 
+import java.sql.SQLException;
+
 public class ViewModelShowingList
   {
 
@@ -21,7 +23,8 @@ public class ViewModelShowingList
 
 
 
-    public ObservableList<Showing> getAllShowings(){
+    public ObservableList<Showing> getAllShowings() throws SQLException
+    {
 
       showings.removeAll(showings);
 

@@ -11,7 +11,7 @@ public class Showing
   private Movie movie;
   private int showingId;
 
-  public Showing(Movie movie, Timestamp timestamp, int showingId)
+  public Showing( int showingId, Movie movie, Timestamp timestamp)
   {
     this.movie = movie;
     this.timestamp = timestamp;

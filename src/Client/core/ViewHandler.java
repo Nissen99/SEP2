@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ViewHandler
 {
@@ -41,7 +42,7 @@ public class ViewHandler
     openView("../view/movieList/movieListView.fxml");
   }
 
-  public void openView(String viewToOpen) throws IOException
+  public void openView(String viewToOpen) throws IOException, SQLException
   {
     Scene scene = null;
     FXMLLoader loader = new FXMLLoader();

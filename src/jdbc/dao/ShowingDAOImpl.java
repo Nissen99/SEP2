@@ -5,6 +5,7 @@ import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
 {
@@ -20,10 +21,25 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next()) {
-        return new Showing(movie, timestamp, keys.getInt(1));
+        return new Showing( keys.getInt("showingId"),movie, timestamp);
       } else {
         throw new SQLException("No keys generated");
       }
+    }
+  }
+
+  @Override public ArrayList<Showing> getAllShowings(Movie movie) throws SQLException
+  {
+    ArrayList<Showing> showingArrayList = new ArrayList<>();
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Showing WHERE movieId = ?");
+      statement.setInt(1, movie.getMovieId());
+      ResultSet showings = statement.executeQuery();
+      while (showings.next()){
+        showingArrayList.add(new Showing(showings.getInt("showingId"), movie, showings.getTimestamp("time")));
+      }
+  return showingArrayList;
     }
   }
 }

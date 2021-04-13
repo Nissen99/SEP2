@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import shared.transferobjects.Showing;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class ShowingListController
@@ -25,7 +26,8 @@ public class ShowingListController
       .getShowingList();
 
 
-  public void init(){
+  public void init() throws SQLException
+  {
 
     tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 
@@ -38,7 +40,7 @@ public class ShowingListController
     filmShowingsErFor.setText(viewModel.getMovie());
   }
 
-public void confirmChoice() throws IOException
+public void confirmChoice() throws IOException, SQLException
 {
 
   Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
@@ -49,7 +51,7 @@ public void confirmChoice() throws IOException
 }
 
 
-public void backButton() throws IOException
+public void backButton() throws IOException, SQLException
 {
   ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
 

@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import shared.transferobjects.Movie;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MovieListController
 {
@@ -24,14 +25,15 @@ public class MovieListController
 
 
 
-  public void init(){
+  public void init() throws SQLException
+  {
 
     tableViewForMovie.setItems(viewModel.getAllMovies());
     movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
 
   }
 
-  public void confirmButtonPressed() throws IOException
+  public void confirmButtonPressed() throws IOException, SQLException
   {
     Movie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
 
