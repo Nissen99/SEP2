@@ -1,4 +1,4 @@
-package jdbc;
+package DatabaseConnection;
 
 import java.util.Date;
 

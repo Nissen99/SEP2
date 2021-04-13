@@ -1,6 +1,6 @@
 package Client.model;
 
-import jdbc.dao.*;
+import DatabaseConnection.dao.*;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;

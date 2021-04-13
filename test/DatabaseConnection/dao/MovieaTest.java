@@ -1,13 +1,8 @@
-package jdbc.dao;
+package DatabaseConnection.dao;
 
 import org.junit.jupiter.api.Test;
-import shared.transferobjects.Movie;
 
 import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MovieaTest
 {

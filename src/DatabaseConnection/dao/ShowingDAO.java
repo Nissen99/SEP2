@@ -1,4 +1,4 @@
-package jdbc.dao;
+package DatabaseConnection.dao;
 
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;

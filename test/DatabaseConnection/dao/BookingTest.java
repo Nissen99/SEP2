@@ -1,15 +1,12 @@
-package jdbc.dao;
+package DatabaseConnection.dao;
 
 import org.junit.jupiter.api.Test;
-import shared.transferobjects.Booking;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 import shared.transferobjects.User;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BookingTest
 {

@@ -1,6 +1,5 @@
-package jdbc.dao;
+package DatabaseConnection.dao;
 
-import shared.transferobjects.Booking;
 import shared.transferobjects.User;
 
 import java.sql.Connection;
