@@ -19,4 +19,9 @@ public class User
   {
     return name;
   }
+
+  public int getUserID()
+  {
+    return userID;
+  }
 }

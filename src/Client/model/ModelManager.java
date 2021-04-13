@@ -1,7 +1,10 @@
 package Client.model;
 
+import jdbc.dao.BookingDAO;
+import jdbc.dao.BookingDAOImpl;
 import shared.transferobjects.*;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,6 +12,7 @@ import java.util.Date;
 public class ModelManager implements Model
 {
   private ShowingList showingList;
+  BookingDAO bookingDAO;
   private MovieList movieList;
   private BookingList bookingList;
   private Movie selectedMovie = null;
@@ -19,12 +23,14 @@ public class ModelManager implements Model
     this.showingList = new ShowingList();
     this.movieList = new MovieList();
     this.bookingList = new BookingList();
+    bookingDAO = new BookingDAOImpl();
   }
 
-  @Override public void addBooking(Booking booking)
+  @Override public void addBooking(Showing showing, String username)
+      throws SQLException
   {
-    bookingList.addBooking(booking);
-    System.out.println(booking.toString());
+    bookingDAO.create(showing, username);
+
   }
 
   @Override public void addMovie(Movie movie)

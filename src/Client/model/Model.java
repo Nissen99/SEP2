@@ -4,11 +4,12 @@ import shared.transferobjects.Booking;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface Model
 {
-  void addBooking(Booking booking);
+  void addBooking(Showing showing, String username) throws SQLException;
   void addMovie(Movie movie);
   void addShowing(Showing showing);
   ArrayList<Movie> getMovieList();

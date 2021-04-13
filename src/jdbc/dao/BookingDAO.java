@@ -8,5 +8,5 @@ import java.sql.SQLException;
 
 public interface BookingDAO
 {
-  Booking create(int bookingId, Showing showing, User user) throws SQLException;
+  Booking create(Showing showing, String user) throws SQLException;
 }

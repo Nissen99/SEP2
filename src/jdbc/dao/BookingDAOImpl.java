@@ -12,16 +12,21 @@ import java.sql.SQLException;
 
 public class BookingDAOImpl extends BaseDAO implements BookingDAO
 {
+  private UserDAO userDAO = new UserDAOImpl();
+
   @Override
-  public Booking create(int bookingId, Showing showing, User user) throws
+  public Booking create(Showing showing, String username) throws
       SQLException
   {
     try(Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO Booking (bookingId, showingId, userId) VALUES (?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
-      statement.setInt(1, bookingId);
-      statement.setInt(2, showing.getId());
-      statement.setString(3, user.getName());
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO Booking (showingId, userId) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+
+      statement.setInt(1, showing.getId());
+
+      User user = userDAO.create(username);
+
+      statement.setInt(2, user.getUserID());
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next()) {
