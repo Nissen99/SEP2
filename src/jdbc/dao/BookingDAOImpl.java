@@ -28,7 +28,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next()) {
-        return new Booking(showing, user, keys.getInt(1));
+        return new Booking(showing, user, keys.getInt("bookingId"));
       } else {
         throw new SQLException("No keys generated");
       }
