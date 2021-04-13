@@ -18,7 +18,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       try (Connection connection = getConnection())
       {
         PreparedStatement statement = connection
-            .prepareStatement("INSERT INTO User_ (name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            .prepareStatement("INSERT INTO User_ (fName) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
         statement.setString(1, name);
         statement.executeUpdate();
         ResultSet keys = statement.getGeneratedKeys();
@@ -36,7 +36,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
     try (Connection connection = getConnection())
     {
       PreparedStatement stm = connection
-          .prepareStatement("select * from user_ where firstname = ?");
+          .prepareStatement("select * from User_ where fName = ?");
       stm.setString(1, name);
 
       ResultSet result = stm.executeQuery();
@@ -44,7 +44,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       while (result.next())
       {
       }
-      retur.add(new User(result.getInt("id"), result.getString("name")));
+      retur.add(new User(result.getInt("userId"), result.getString("fName")));
       return retur;
 
     }

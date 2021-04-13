@@ -15,7 +15,7 @@ public class BaseDAO
     {
       connection = DriverManager.getConnection(
           "jdbc:postgresql://localhost:5432/postgres?currentSchema=bioDatabase",
-          "postgres", "190292");
+          "postgres", "123456789");
     }
     return connection;
   }

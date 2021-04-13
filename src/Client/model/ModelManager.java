@@ -2,6 +2,8 @@ package Client.model;
 
 import jdbc.dao.BookingDAO;
 import jdbc.dao.BookingDAOImpl;
+import jdbc.dao.UserDAO;
+import jdbc.dao.UserDAOImpl;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;
@@ -17,6 +19,7 @@ public class ModelManager implements Model
   private BookingList bookingList;
   private Movie selectedMovie = null;
   private Showing selectedShowing = null;
+  private UserDAO userDAO;
 
   public ModelManager()
   {
@@ -24,12 +27,17 @@ public class ModelManager implements Model
     this.movieList = new MovieList();
     this.bookingList = new BookingList();
     bookingDAO = new BookingDAOImpl();
+    this.userDAO = new UserDAOImpl();
   }
 
   @Override public void addBooking(Showing showing, String username)
       throws SQLException
   {
-    bookingDAO.create(showing, username);
+
+
+    User user = userDAO.create(username);
+
+    bookingDAO.create(showing, user);
 
   }
 
