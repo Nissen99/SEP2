@@ -10,15 +10,18 @@ import java.sql.SQLException;
 
 public class MovieDAOImpl extends BaseDAO implements MovieDAO
 {
-  @Override public Movie create(int movieId, String movieTitle) throws SQLException
+  @Override public Movie create(String movieTitle) throws SQLException
   {
       try(Connection connection = getConnection())
       {
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO Movie (movieId, title) VALUES (?, ?)");
-        statement.setInt(1, movieId);
-        statement.setString(2, movieTitle);
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Movie (title) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
+        statement.setString(1, movieTitle);
         statement.executeUpdate();
-        return new Movie(movieId, movieTitle);
-      }
+        ResultSet keys = statement.getGeneratedKeys();
+        if (keys.next()){
+        return new Movie(keys.getInt(1), movieTitle);
+      }else {
+      throw new SQLException("No keys generated");
+      }}
   }
 }

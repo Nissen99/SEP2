@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 
 public interface ShowingDAO
 {
-  Showing create( Movie movie, Timestamp timestamp, int showingId) throws
+  Showing create( Movie movie, Timestamp timestamp) throws
       SQLException;
 
 }

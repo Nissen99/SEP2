@@ -44,6 +44,11 @@ public class Showing
     return day;
   }
 
+  public Timestamp getTimestamp()
+  {
+    return timestamp;
+  }
+
   public String getDate(){
     String date = (new SimpleDateFormat("dd-MM-yyyy")).format(timestamp.getTime());
     return date;

@@ -1,9 +1,6 @@
 package Client.model;
 
-import jdbc.dao.BookingDAO;
-import jdbc.dao.BookingDAOImpl;
-import jdbc.dao.UserDAO;
-import jdbc.dao.UserDAOImpl;
+import jdbc.dao.*;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;
@@ -20,34 +17,38 @@ public class ModelManager implements Model
   private Movie selectedMovie = null;
   private Showing selectedShowing = null;
   private UserDAO userDAO;
+  private MovieDAO movieDAO;
+  private ShowingDAO showingDAO;
 
   public ModelManager()
   {
     this.showingList = new ShowingList();
     this.movieList = new MovieList();
     this.bookingList = new BookingList();
-    bookingDAO = new BookingDAOImpl();
+
+    this.bookingDAO = new BookingDAOImpl();
     this.userDAO = new UserDAOImpl();
+    this.movieDAO = new MovieDAOImpl();
+    this.showingDAO = new ShowingDAOImpl();
   }
 
   @Override public void addBooking(Showing showing, String username)
       throws SQLException
   {
-
-
     User user = userDAO.create(username);
-
     bookingDAO.create(showing, user);
 
   }
 
-  @Override public void addMovie(Movie movie)
+  @Override public Movie addMovie(Movie movie) throws SQLException
   {
-    movieList.addMovie(movie);
+  return movieDAO.create(movie.getMovieTitle());
   }
 
-  @Override public void addShowing(Showing showing)
+  @Override public void addShowing(Showing showing) throws SQLException
   {
+
+    showingDAO.create(showing.getMovie(), showing.getTimestamp());
     showingList.addShowing(showing);
   }
 

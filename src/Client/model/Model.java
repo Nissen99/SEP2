@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public interface Model
 {
   void addBooking(Showing showing, String username) throws SQLException;
-  void addMovie(Movie movie);
-  void addShowing(Showing showing);
+  Movie addMovie(Movie movie) throws SQLException;
+  void addShowing(Showing showing) throws SQLException;
   ArrayList<Movie> getMovieList();
   ArrayList<Showing> getShowingList();
   ArrayList<Booking> getBookingList();
