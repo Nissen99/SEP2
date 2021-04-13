@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BookingDAOImpl extends BaseDAO implements BookingDAO
 {
@@ -34,4 +35,17 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       }
     }
   }
+
+//  @Override public ArrayList<Booking> getAllBookings() throws SQLException
+//  {
+//    ArrayList<Booking> bookingArrayList = new ArrayList<>();
+//    try(Connection connection = getConnection()){
+//      PreparedStatement statement = connection.prepareStatement("SELECT * From Booking");
+//      ResultSet bookings = statement.executeQuery();
+//      while (bookings.next()){
+//      //TODO OPret booking og tilføj til listen
+//      }
+//    }
+//    return null;
+//  }
 }

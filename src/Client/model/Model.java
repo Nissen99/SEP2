@@ -14,10 +14,10 @@ public interface Model
   Showing addShowing(Showing showing) throws SQLException;
   ArrayList<Movie> getMovieList() throws SQLException;
   ArrayList<Showing> getShowingList() throws SQLException;
-  ArrayList<Booking> getBookingList();
-  void setSelectedMovie(Movie movie);
+  // ArrayList<Booking> getBookingList();
   Movie getSelectedMovie();
   Showing getSelectedShowing();
   void setSelectedShowing(Showing showing);
+  void setSelectedMovie(Movie movie);
 
 }

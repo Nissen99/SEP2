@@ -14,7 +14,6 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
   {
     try(Connection connection = getConnection())
     {
-      System.out.println("KOMMER VI HER");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO Showing (movieId, time) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
       statement.setInt(1, movie.getMovieId());
       statement.setTimestamp(2,timestamp);

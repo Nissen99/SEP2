@@ -4,16 +4,12 @@ import jdbc.dao.*;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ModelManager implements Model
 {
-  private ShowingList showingList;
   BookingDAO bookingDAO;
-  private MovieList movieList;
-  private BookingList bookingList;
+
   private Movie selectedMovie = null;
   private Showing selectedShowing = null;
   private UserDAO userDAO;
@@ -22,11 +18,7 @@ public class ModelManager implements Model
 
   public ModelManager()
   {
-    this.showingList = new ShowingList();
-    this.movieList = new MovieList();
-    this.bookingList = new BookingList();
-
-    this.bookingDAO = new BookingDAOImpl();
+     this.bookingDAO = new BookingDAOImpl();
     this.userDAO = new UserDAOImpl();
     this.movieDAO = new MovieDAOImpl();
     this.showingDAO = new ShowingDAOImpl();
@@ -64,10 +56,10 @@ public class ModelManager implements Model
     return showingDAO.getAllShowings(selectedMovie);
   }
 
-  @Override public ArrayList<Booking> getBookingList()
-  {
-    return bookingList.getBookingList();
-  }
+//  @Override public ArrayList<Booking> getBookingList()
+//  {
+//    return bookingDAO.getAllBookings();
+//  }
 
 
   //Nok ikke godt, men det kør vi med nu
