@@ -1,5 +1,6 @@
 package jdbc.dao;
 
+import shared.transferobjects.Booking;
 import shared.transferobjects.User;
 
 import java.sql.Connection;
@@ -11,17 +12,21 @@ import java.util.List;
 
 public class UserDAOImpl extends BaseDAO implements UserDAO
 {
-  @Override public User create(String name, int userId) throws SQLException
+  @Override public User create(String name) throws SQLException
   {
     {
       try (Connection connection = getConnection())
       {
         PreparedStatement statement = connection
-            .prepareStatement("INSERT INTO User (name, userId) VALUES (?, ?)");
+            .prepareStatement("INSERT INTO User_ (name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
         statement.setString(1, name);
-        statement.setInt(2, userId);
         statement.executeUpdate();
-        return new User(name, userId);
+        ResultSet keys = statement.getGeneratedKeys();
+        if (keys.next()) {
+          return new User(keys.getInt(1), name);
+        } else {
+          throw new SQLException("No keys generated");
+        }
       }
     }
   }
@@ -31,7 +36,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
     try (Connection connection = getConnection())
     {
       PreparedStatement stm = connection
-          .prepareStatement("select * from user where firstname = ?");
+          .prepareStatement("select * from user_ where firstname = ?");
       stm.setString(1, name);
 
       ResultSet result = stm.executeQuery();
@@ -39,7 +44,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       while (result.next())
       {
       }
-      retur.add(new User(result.getString("name"), result.getInt("id")));
+      retur.add(new User(result.getInt("id"), result.getString("name")));
       return retur;
 
     }
