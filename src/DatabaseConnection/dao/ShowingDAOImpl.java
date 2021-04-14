@@ -34,7 +34,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
     try(Connection connection = getConnection())
     {
       //TODO
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Showing WHERE movieId = ?");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Showing right Join Hall ON Showing.hallNo = Hall.hallNo  WHERE movieId = ?");
       statement.setInt(1, movie.getMovieId());
       ResultSet showings = statement.executeQuery();
       while (showings.next()){
@@ -43,7 +43,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
             movie,
             showings.getTimestamp("time"),
             new Hall(showings.getInt("hallNo"),
-                showings.getInt("maxSeatsRow"),
+                showings.getInt("maxSeatInRow"),
                 showings.getInt("maxRows"))));
       }
   return showingArrayList;

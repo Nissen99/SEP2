@@ -11,6 +11,11 @@ public class Movie
     this.movieId = movieId;
   }
 
+  public Movie(String movieTitle)
+{
+  this.movieTitle = movieTitle;
+}
+
   public String getMovieTitle()
   {
     return movieTitle;

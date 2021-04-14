@@ -17,6 +17,13 @@ public class Showing
     this.showingId = showingId;
     this.hall = hall;
   }
+  //TODO Ved ikke om det er bedste løsning
+  public Showing(Movie movie, Timestamp timestamp, Hall hall)
+{
+  this.movie = movie;
+  this.timestamp = timestamp;
+  this.hall = hall;
+}
 
   public int getId()
   {
