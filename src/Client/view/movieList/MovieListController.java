@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import shared.transferobjects.Movie;
+import shared.Movie;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -1,8 +1,9 @@
 package DatabaseConnection.dao;
 
 import org.junit.jupiter.api.Test;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.Hall;
+import shared.Movie;
+import shared.Showing;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -18,7 +19,7 @@ class ShowingDAOImplTest
   MovieDAO movieDAO = new MovieDAOImpl();
 
   Movie movie = new Movie(1, "Yikes");
-  Showing showing = new Showing(55, movie, new Timestamp(23232) );
-  showingDAO.create(movie, showing.getTimestamp());
+  Showing showing = new Showing(55, movie, new Timestamp(23232), new Hall(10, 10, 10));
+  showingDAO.create(showing);
 }
 }

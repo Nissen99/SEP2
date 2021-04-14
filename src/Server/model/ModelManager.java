@@ -1,6 +1,6 @@
 //package Server.model;
 //
-//import shared.transferobjects.*;
+//import shared.shared.transferobjects.*;
 //
 //import java.util.ArrayList;
 //

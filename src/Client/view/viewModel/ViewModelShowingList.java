@@ -1,10 +1,9 @@
 package Client.view.viewModel;
 
 import Client.model.Model;
-import Client.model.ModelManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import shared.transferobjects.Showing;
+import shared.Showing;
 
 import java.sql.SQLException;
 

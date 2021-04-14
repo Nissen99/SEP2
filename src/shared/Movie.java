@@ -1,4 +1,4 @@
-package shared.transferobjects;
+package shared;
 
 public class Movie
 {
@@ -10,6 +10,11 @@ public class Movie
     this.movieTitle = movieTitle;
     this.movieId = movieId;
   }
+
+  public Movie(String movieTitle)
+{
+  this.movieTitle = movieTitle;
+}
 
   public String getMovieTitle()
   {

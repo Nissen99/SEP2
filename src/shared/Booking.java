@@ -1,4 +1,4 @@
-package shared.transferobjects;
+package shared;
 
 public class Booking
 {

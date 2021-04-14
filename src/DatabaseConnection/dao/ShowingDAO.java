@@ -1,7 +1,7 @@
 package DatabaseConnection.dao;
 
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.Movie;
+import shared.Showing;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public interface ShowingDAO
 {
-  Showing create( Movie movie, Timestamp timestamp) throws
-      SQLException;
+
 
   ArrayList<Showing> getAllShowings(Movie movie) throws SQLException;
+  Showing create(Showing showing) throws SQLException;
 }

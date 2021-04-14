@@ -1,7 +1,7 @@
 package Client.model;
 
 import DatabaseConnection.dao.*;
-import shared.transferobjects.*;
+import shared.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ public class ModelManager implements Model
   private UserDAO userDAO;
   private MovieDAO movieDAO;
   private ShowingDAO showingDAO;
+  private HallDAO hallDAO;
 
   public ModelManager()
   {
@@ -22,6 +23,7 @@ public class ModelManager implements Model
     this.userDAO = new UserDAOImpl();
     this.movieDAO = new MovieDAOImpl();
     this.showingDAO = new ShowingDAOImpl();
+    this.hallDAO = new HallDAOImpl();
   }
 
   @Override public Booking addBooking(Showing showing, String username)
@@ -40,8 +42,13 @@ public class ModelManager implements Model
   @Override public Showing addShowing(Showing showing) throws SQLException
   {
 
-    return showingDAO.create(showing.getMovie(), showing.getTimestamp());
+    return showingDAO.create(showing);
 
+  }
+
+  @Override public Hall addHall(Hall hall) throws SQLException
+  {
+    return hallDAO.create(hall);
   }
 
   @Override public ArrayList<Movie> getMovieList() throws SQLException

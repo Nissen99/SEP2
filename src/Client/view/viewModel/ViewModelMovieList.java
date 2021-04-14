@@ -3,10 +3,9 @@ package Client.view.viewModel;
 import Client.model.Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import shared.transferobjects.Movie;
+import shared.Movie;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ViewModelMovieList
 {

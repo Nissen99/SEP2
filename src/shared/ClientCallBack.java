@@ -1,4 +1,4 @@
-package shared.network;
+package shared;
 
 public interface ClientCallBack
 {
