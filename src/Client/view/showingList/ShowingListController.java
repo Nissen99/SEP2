@@ -47,7 +47,7 @@ public void confirmChoice() throws IOException, SQLException
 
   viewModel.setSelectedShowing(showing);
 
-  ViewHandler.getInstance().openView("../view/bookingView/seatView.fxml");
+  ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
 }
 
 

@@ -2,6 +2,7 @@ package Client.core;
 
 import Client.view.bookingView.BookingViewController;
 import Client.view.movieList.MovieListController;
+import Client.view.seatView.SeatViewController;
 import Client.view.showingList.ShowingListController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -68,14 +69,13 @@ public class ViewHandler
       BookingViewController controller = loader.getController();
 
       stage.setTitle("Booking");
-    } else if ("../view/bookingView/seatView.fxml".equals(viewToOpen)){
+    } else if ("../view/seatView/seatView.fxml".equals(viewToOpen)){
       loader.setLocation(getClass().getResource(viewToOpen));
       root = loader.load();
-      BookingViewController controller = loader.getController();
+      SeatViewController controller = loader.getController();
 
       stage.setTitle("SeatView");
     }
-
 
     scene = new Scene(root);
     stage.setScene(scene);

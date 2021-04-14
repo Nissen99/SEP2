@@ -3,16 +3,94 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.view.seatView.seatViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.view.seatView.SeatViewController">
    <children>
       <Label alignment="CENTER" layoutX="263.0" layoutY="6.0" prefHeight="31.0" prefWidth="74.0" text="Hall">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Pane fx:id="seatTest" layoutX="132.0" layoutY="123.0" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S101" layoutX="69.0" layoutY="123.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102" layoutX="205.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S103" layoutX="242.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1011" layoutX="28.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1012" layoutX="108.0" layoutY="200.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1013" layoutX="69.0" layoutY="200.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1014" layoutX="28.0" layoutY="200.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1015" layoutX="108.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1016" layoutX="69.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1017" layoutX="28.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1018" layoutX="108.0" layoutY="123.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1019" layoutX="28.0" layoutY="123.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1021" layoutX="28.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1022" layoutX="317.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1023" layoutX="350.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1024" layoutX="350.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1025" layoutX="350.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1026" layoutX="280.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1027" layoutX="317.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1028" layoutX="317.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1029" layoutX="317.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10210" layoutX="242.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10211" layoutX="280.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212" layoutX="280.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10213" layoutX="280.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10214" layoutX="205.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10215" layoutX="242.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10216" layoutX="242.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10217" layoutX="166.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10218" layoutX="205.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10219" layoutX="205.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10220" layoutX="108.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10221" layoutX="69.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102110" layoutX="69.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102111" layoutX="107.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102113" layoutX="166.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102114" layoutX="205.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102115" layoutX="242.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102116" layoutX="280.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102117" layoutX="317.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102118" layoutX="350.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102119" layoutX="386.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102121" layoutX="445.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102122" layoutX="482.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102123" layoutX="482.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102124" layoutX="445.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102126" layoutX="386.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102127" layoutX="350.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102128" layoutX="317.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102129" layoutX="280.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102130" layoutX="242.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102131" layoutX="205.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102132" layoutX="166.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102134" layoutX="107.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102135" layoutX="69.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102136" layoutX="28.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1021221" layoutX="445.0" layoutY="200.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1021222" layoutX="445.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1021223" layoutX="445.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1021226" layoutX="521.0" layoutY="331.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1021227" layoutX="521.0" layoutY="294.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1021228" layoutX="350.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S1021229" layoutX="386.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212210" layoutX="386.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212211" layoutX="386.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212212" layoutX="521.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212213" layoutX="521.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212214" layoutX="481.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212215" layoutX="481.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212216" layoutX="445.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212217" layoutX="482.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S10212218" layoutX="482.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102122121" layoutX="521.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102122122" layoutX="521.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102171" layoutX="166.0" layoutY="197.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102172" layoutX="166.0" layoutY="159.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102173" layoutX="166.0" layoutY="120.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Pane fx:id="S102174" layoutX="386.0" layoutY="237.0" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+      <Ellipse fill="#fbff1f" layoutX="300.0" layoutY="51.0" radiusX="289.0" radiusY="13.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
