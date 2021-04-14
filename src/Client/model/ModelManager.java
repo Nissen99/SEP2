@@ -43,7 +43,7 @@ public class ModelManager implements Model
   @Override public Showing addShowing(Showing showing) throws SQLException
   {
 
-    return showingDAO.create(showing.getMovie(), showing.getTimestamp());
+    return showingDAO.create(showing);
 
   }
 

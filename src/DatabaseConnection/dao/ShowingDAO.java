@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public interface ShowingDAO
 {
-  Showing create( Movie movie, Timestamp timestamp) throws
-      SQLException;
+
 
   ArrayList<Showing> getAllShowings(Movie movie) throws SQLException;
+  Showing create(Showing showing) throws SQLException;
 }

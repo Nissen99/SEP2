@@ -4,6 +4,7 @@ import Client.core.ModelFactory;
 import Client.core.ViewHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import shared.Hall;
 import shared.Movie;
 import shared.Showing;
 
@@ -23,7 +24,7 @@ public class CinemaBookingApp extends Application
     //TODO Fjern den her, det er til test
     Date date = new Date();
     ModelFactory.getInstance().getModel().addShowing(new Showing(1,
-        movie,new Timestamp(date.getTime())));
+        movie,new Timestamp(date.getTime()), new Hall(1, 10, 10)));
 
 
     ViewHandler.getInstance().start(stage);
