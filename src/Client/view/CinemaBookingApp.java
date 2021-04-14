@@ -4,8 +4,8 @@ import Client.core.ModelFactory;
 import Client.core.ViewHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.Movie;
+import shared.Showing;
 
 import java.sql.Timestamp;
 import java.util.Date;

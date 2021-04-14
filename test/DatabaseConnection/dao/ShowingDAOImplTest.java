@@ -1,8 +1,8 @@
 package DatabaseConnection.dao;
 
 import org.junit.jupiter.api.Test;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.Movie;
+import shared.Showing;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;

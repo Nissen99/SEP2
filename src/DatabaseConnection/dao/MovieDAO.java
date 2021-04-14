@@ -1,6 +1,6 @@
 package DatabaseConnection.dao;
 
-import shared.transferobjects.Movie;
+import shared.Movie;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

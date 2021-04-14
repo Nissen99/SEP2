@@ -1,8 +1,8 @@
 package Server.model;
 
-import shared.transferobjects.Booking;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.Booking;
+import shared.Movie;
+import shared.Showing;
 
 import java.util.ArrayList;
 

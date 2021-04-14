@@ -1,4 +1,4 @@
-package shared.transferobjects;
+package shared;
 
 import java.sql.Time;
 import java.util.ArrayList;

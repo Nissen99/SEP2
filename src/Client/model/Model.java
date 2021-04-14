@@ -1,8 +1,8 @@
 package Client.model;
 
-import shared.transferobjects.Booking;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.Booking;
+import shared.Movie;
+import shared.Showing;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

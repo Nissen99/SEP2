@@ -1,7 +1,10 @@
 package Client.model;
 
 import DatabaseConnection.dao.*;
-import shared.transferobjects.*;
+import shared.Booking;
+import shared.Movie;
+import shared.Showing;
+import shared.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
