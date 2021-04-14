@@ -1,10 +1,13 @@
 package Client.view.seatView;
 
+import Client.core.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,6 +18,9 @@ public class SeatViewController
  // private Pane[] seats = new Pane[3];
   private Pane[] seats={S101,S102,S103};
   Pane lastClicked = null;
+
+  @FXML private Button backButton;
+  @FXML private Button confirmButton;
 
 
 
@@ -38,6 +44,18 @@ public class SeatViewController
     lastClicked = pane;
 
 
+  }
+
+  @FXML
+  void OnConfirmButtom(ActionEvent event) {
+
+  }
+
+  @FXML
+  void onBackButton(ActionEvent event) throws IOException, SQLException
+  {
+
+    ViewHandler.getInstance().openView("../view/showingList/showingListView.fxml");
 
   }
 
