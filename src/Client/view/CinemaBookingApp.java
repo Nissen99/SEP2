@@ -2,6 +2,7 @@ package Client.view;
 
 import Client.core.ModelFactory;
 import Client.core.ViewHandler;
+import DatabaseConnection.dao.ResetDAO;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import shared.Hall;
@@ -17,6 +18,8 @@ public class CinemaBookingApp extends Application
   @Override public void start(Stage stage) throws Exception
   {
 
+    ResetDAO resetDAO = new ResetDAO();
+    resetDAO.resetDB();
 
     //TODO Fjern den her, det er til test
     Date date = new Date();
