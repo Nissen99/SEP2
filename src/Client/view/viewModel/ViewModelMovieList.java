@@ -11,6 +11,7 @@ public class ViewModelMovieList
 {
 
   private Model modelManger;
+  private Movie selectedMovie;
   private ObservableList<Movie> movies = FXCollections.observableArrayList();
 
 
@@ -30,7 +31,11 @@ public class ViewModelMovieList
   }
 
   public void setSelectedMovie(Movie movie){
-    modelManger.setSelectedMovie(movie);
+    this.selectedMovie = movie;
   }
 
+  public Movie getSelectedMovie()
+  {
+    return selectedMovie;
+  }
 }

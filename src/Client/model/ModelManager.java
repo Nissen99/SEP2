@@ -57,32 +57,12 @@ public class ModelManager implements Model
 
   }
 
-  @Override public ArrayList<Showing> getShowingList() throws SQLException
+  @Override public ArrayList<Showing> getShowingList(Movie movie) throws SQLException
   {
 
-    return showingDAO.getAllShowings(selectedMovie);
+    return showingDAO.getAllShowings(movie);
   }
 
-//  @Override public ArrayList<Booking> getBookingList()
-//  {
-//    return bookingDAO.getAllBookings();
-//  }
 
 
-  //Nok ikke godt, men det kør vi med nu
-  public void setSelectedMovie(Movie movie){
-    this.selectedMovie = movie;
-  }
-
-  public Movie getSelectedMovie(){
-    return selectedMovie;
-  }
-
-  public void setSelectedShowing(Showing showing){
-    this.selectedShowing = showing;
-  }
-
-  public Showing getSelectedShowing(){
-    return selectedShowing;
-  }
 }

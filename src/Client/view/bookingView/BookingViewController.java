@@ -19,7 +19,7 @@ public class BookingViewController
 
   public void makeBooking() throws IOException, SQLException
   {
-    //viewModel.makeBooking(usernameField.getText());
+    viewModel.makeBooking(usernameField.getText());
     System.out.println("You made a booking");
     ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
   }

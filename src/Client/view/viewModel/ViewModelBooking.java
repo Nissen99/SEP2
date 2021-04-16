@@ -2,17 +2,23 @@ package Client.view.viewModel;
 
 import Client.core.ModelFactory;
 import Client.model.Model;
+import shared.Showing;
 
 import java.sql.SQLException;
 
 public class ViewModelBooking
 {
 
+  private  Showing showing;
   Model modelManager = ModelFactory.getInstance().getModel();
+
+  public ViewModelBooking(Showing showing){
+    this.showing = showing;
+  }
 
   public void makeBooking(String username) throws SQLException
   {
-    modelManager.addBooking(modelManager.getSelectedShowing(),username);
+    modelManager.addBooking(showing,username);
   }
 
 

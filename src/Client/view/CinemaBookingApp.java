@@ -24,6 +24,7 @@ public class CinemaBookingApp extends Application
     //TODO Fjern den her, det er til test
     Date date = new Date();
 
+
     Movie starWarsX = ModelFactory.getInstance().getModel().addMovie(new Movie("Star Wars X"));
     Movie spiderMan = ModelFactory.getInstance().getModel().addMovie(new Movie("SpiderMan 3"));
 

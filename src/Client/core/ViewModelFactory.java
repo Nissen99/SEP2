@@ -9,7 +9,7 @@ public class ViewModelFactory
 
   private static ViewModelFactory viewModelFactory;
   private ViewModelMovieList movieList;
-  private ViewModelShowingList ShowingList;
+  private ViewModelShowingList showingList;
   private ViewModelBooking booking;
 
   private ViewModelFactory(){}
@@ -29,15 +29,21 @@ public class ViewModelFactory
   }
 
   public ViewModelShowingList getShowingList(){
-    if (ShowingList == null){
-      ShowingList = new ViewModelShowingList(ModelFactory.getInstance().getModel());
-    }
-    return ShowingList;
+
+      //Vores showinList skal vide hvilke film der er valgt, den information
+      // skal den have hver gang, så vi har ikke gjort den lazy
+
+
+      showingList = new ViewModelShowingList(
+          ModelFactory.getInstance().getModel(),
+          movieList.getSelectedMovie());
+
+    return showingList;
   }
 
   public ViewModelBooking getBooking(){
     if (booking == null){
-      booking = new ViewModelBooking();
+      booking = new ViewModelBooking(showingList.getSelectedShowing());
     }
     return booking;
   }
