@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Hall
 {
-  private int hallNo;
+  private String hallNo;
   private SeatNoCalculator seatNoCalculator;
   private ArrayList<Seat> seatArrayList = new ArrayList<>();
 
-  public Hall(int hallNo, int maxSeatsInRow, int maxRows)
+  public Hall(String hallNo, int maxSeatsInRow, int maxRows)
   {
     if (maxRows == 0 || maxSeatsInRow == 0){
       throw new IllegalArgumentException("row eller maxSeatInRow er 0");
     }
-    seatNoCalculator = new SeatNoCalculator(maxRows, maxSeatsInRow);
+    seatNoCalculator = new SeatNoCalculator(maxRows, maxSeatsInRow, hallNo);
     this.hallNo = hallNo;
   }
 
@@ -27,7 +27,7 @@ public class Hall
     return seatNoCalculator.getMaxRows();
   }
 
-  public int getHallNo()
+  public String getHallNo()
   {
     return hallNo;
   }
@@ -37,10 +37,11 @@ public class Hall
     return seatArrayList;
   }
 
-  public void addSeat(Seat seat)
+  public Seat addSeat(Seat seat)
   {
     seat.setSeatNo(seatNoCalculator.calculateSeatNo());
     seatArrayList.add(seat);
+    return seat;
   }
 
 }

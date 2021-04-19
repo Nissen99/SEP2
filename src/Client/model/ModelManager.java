@@ -8,10 +8,8 @@ import java.util.ArrayList;
 
 public class ModelManager implements Model
 {
-  BookingDAO bookingDAO;
 
-  private Movie selectedMovie = null;
-  private Showing selectedShowing = null;
+  private BookingDAO bookingDAO;
   private UserDAO userDAO;
   private MovieDAO movieDAO;
   private ShowingDAO showingDAO;
@@ -26,12 +24,23 @@ public class ModelManager implements Model
     this.hallDAO = new HallDAOImpl();
   }
 
-  @Override public Booking addBooking(Showing showing, String username)
-      throws SQLException
+  @Override public Booking addBooking(Showing showing, String username,
+      String seatNo) throws SQLException
   {
-    User user = userDAO.create(username);
-   return bookingDAO.create(showing, user);
 
+    User user = null;
+    try
+    {
+      user = userDAO.create(username);
+      return bookingDAO.create(showing, user, seatNo);
+    }
+    catch (SQLException e)
+    {
+      System.out.println("Catch In addBooking");
+      userDAO.deleteUser(user);
+    }
+
+    return null;
   }
 
   @Override public Movie addMovie(Movie movie) throws SQLException
@@ -63,6 +72,10 @@ public class ModelManager implements Model
     return showingDAO.getAllShowings(movie);
   }
 
-
+  @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
+      throws SQLException
+  {
+    return bookingDAO.getOccupiedSeats(showing);
+  }
 
 }

@@ -3,24 +3,19 @@ package shared;
 public class Seat
 {
   private boolean isOccupied;
-  private int seatNo;
+  private String seatNo;
 
   public Seat(){
     this.isOccupied = false;
   }
-  public boolean getIsOccupied()
+  public boolean IsOccupied()
   {
     return isOccupied;
   }
 
-  public int getCol()
+  public String getSeatNo()
   {
-    return seatNo % 100;
-  }
-
-  public int getRow()
-  {
-    return seatNo/100;
+    return seatNo;
   }
 
   public void setIsOccupiedState(boolean isOccupied)
@@ -28,7 +23,7 @@ public class Seat
     this.isOccupied = isOccupied;
   }
 
-  public void setSeatNo(int seatNo)
+  public void setSeatNo(String seatNo)
   {
     this.seatNo = seatNo;
   }

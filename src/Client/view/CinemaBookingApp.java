@@ -3,10 +3,12 @@ package Client.view;
 import Client.core.ModelFactory;
 import Client.core.ViewHandler;
 import DatabaseConnection.dao.ResetDAO;
+import DatabaseConnection.dao.SeatDAOImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import shared.Hall;
 import shared.Movie;
+import shared.Seat;
 import shared.Showing;
 
 import java.sql.Timestamp;
@@ -20,6 +22,7 @@ public class CinemaBookingApp extends Application
 
     ResetDAO resetDAO = new ResetDAO();
     resetDAO.resetDB();
+    SeatDAOImpl seatDAO = new SeatDAOImpl();
 
     //TODO Fjern den her, det er til test
     Date date = new Date();
@@ -29,8 +32,14 @@ public class CinemaBookingApp extends Application
     Movie spiderMan = ModelFactory.getInstance().getModel().addMovie(new Movie("SpiderMan 3"));
 
 
-    Hall hall1 = ModelFactory.getInstance().getModel().addHall(new Hall(1, 10, 10));
-    Hall hall2 = ModelFactory.getInstance().getModel().addHall(new Hall(2, 10, 5));
+    Hall hall1 = ModelFactory.getInstance().getModel().addHall(new Hall("S", 10, 10));
+    for (int i = 0; i < hall1.getMaxRows() * hall1.getMaxSeatsInRow(); i++)
+    {
+      Seat seat = new Seat();
+      seatDAO.create(hall1.addSeat(seat), hall1);
+          }
+
+    Hall hall2 = ModelFactory.getInstance().getModel().addHall(new Hall("A", 10, 5));
 
 
     Timestamp rightNow = new Timestamp(date.getTime());

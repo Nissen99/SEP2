@@ -13,7 +13,7 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
   {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("INSERT INTO Hall(hallNo, maxSeatInRow, maxRows) VALUES (?, ?, ?)");
-      statement.setInt(1, hall.getHallNo());
+      statement.setString(1, hall.getHallNo());
       statement.setInt(2, hall.getMaxSeatsInRow());
       statement.setInt(3, hall.getMaxRows());
       statement.executeUpdate();

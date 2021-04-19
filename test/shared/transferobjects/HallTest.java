@@ -15,7 +15,7 @@ class HallTest
 
   @BeforeEach
   public void setUp(){
-   hall = new Hall(1,10, 6);
+   hall = new Hall("S",10, 6);
 
   }
   @Test
@@ -34,23 +34,22 @@ class HallTest
   @Test
   public void constrotorSkalSætteHallNo(){
 
-    assertEquals(1, hall.getHallNo());
+    assertEquals("S", hall.getHallNo());
   }
 
   @Test
   public void constrotorSkalThrowNårManSætter0Ind(){
 
-    assertThrows(IllegalArgumentException.class, () -> new Hall(1,0,0));
+    assertThrows(IllegalArgumentException.class, () -> new Hall("S",0,0));
   }
   @Test
   public void addSeatskalAddeSeatMedSeatNoOgRowNo(){
 
-    Hall hall = new Hall(1, 1,1);
+    Hall hall = new Hall("S", 1,1);
 
     hall.addSeat(new Seat());
 
-    assertEquals(1,hall.getSeats().get(0).getRow());
-    assertEquals(1,hall.getSeats().get(0).getCol());
+    assertEquals("S101",hall.getSeats().get(0).getSeatNo());
 
   }
 
@@ -60,8 +59,7 @@ class HallTest
     for (int i = 0; 12 > i;i++){
       hall.addSeat(new Seat());
     }
-    assertEquals(2,hall.getSeats().get(10).getRow());
-    assertEquals(1, hall.getSeats().get(10).getCol());
+    assertEquals("S201",hall.getSeats().get(10).getSeatNo());
   }
 
 
@@ -75,7 +73,7 @@ class HallTest
 
   @Test
   public void derIkkeKanAddesForMangeSeats(){
-    Hall hall = new Hall(1, 10, 10);
+    Hall hall = new Hall("S", 10, 10);
     for (int i = 0; i < 100; i++)
     {
       hall.addSeat(new Seat());

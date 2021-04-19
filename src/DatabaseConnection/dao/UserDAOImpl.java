@@ -53,4 +53,17 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
   {
     return null;
   }
+
+  @Override public void deleteUser(User user)
+  {
+    try(Connection connection = getConnection()){
+      PreparedStatement statement = connection.prepareStatement("DELETE FROM User_ WHERE userid = ?");
+      statement.setInt(1, user.getUserID());
+      statement.executeUpdate();
+    }catch (NullPointerException ignored){}
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+  }
 }

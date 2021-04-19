@@ -17,7 +17,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
       PreparedStatement statement = connection.prepareStatement("INSERT INTO Showing (movieId, time, hallNo) VALUES (?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
       statement.setInt(1, showing.getMovie().getMovieId());
       statement.setTimestamp(2,showing.getTimestamp());
-      statement.setInt(3, showing.getHall().getHallNo());
+      statement.setString(3, showing.getHall().getHallNo());
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next()) {
@@ -42,7 +42,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
             new Showing(showings.getInt("showingId"),
             movie,
             showings.getTimestamp("time"),
-            new Hall(showings.getInt("hallNo"),
+            new Hall(showings.getString("hallNo"),
                 showings.getInt("maxSeatInRow"),
                 showings.getInt("maxRows"))));
       }

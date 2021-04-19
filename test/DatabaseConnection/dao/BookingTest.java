@@ -15,6 +15,8 @@ class BookingTest
   public void testCreate() throws SQLException {
     BookingDAO bookingDAO = new BookingDAOImpl();
     User user = new User(1, "Hej");
-    bookingDAO.create(new Showing(1, new Movie(1, "Yikes"), new Timestamp(323232), new Hall(10, 10, 10)), user);
+    Hall hall = new Hall("S", 10, 10);
+    Showing showing = new Showing(1, new Movie(1, "Yikes"), new Timestamp(323232), hall);
+    bookingDAO.create(showing, user, "S"+109);
   }
 }

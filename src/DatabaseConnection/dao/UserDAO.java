@@ -11,4 +11,5 @@ public interface UserDAO
       SQLException;
   List<User> getByName(String name) throws SQLException;
   User getById(int userId) throws SQLException;
+  void deleteUser(User user);
 }

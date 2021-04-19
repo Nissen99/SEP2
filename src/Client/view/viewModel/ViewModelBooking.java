@@ -10,6 +10,7 @@ public class ViewModelBooking
 {
 
   private  Showing showing;
+  private String seatNo;
   Model modelManager = ModelFactory.getInstance().getModel();
 
   public ViewModelBooking(Showing showing){
@@ -18,7 +19,7 @@ public class ViewModelBooking
 
   public void makeBooking(String username) throws SQLException
   {
-    modelManager.addBooking(showing,username);
+    modelManager.addBooking(showing, username, seatNo);
   }
 
 

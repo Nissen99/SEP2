@@ -23,7 +23,7 @@ class SeatTest
   public void contstruotorSkalSætteIsOccupiedIkkeSeatNo(){
     Seat seat = new Seat();
 
-    assertEquals(false, seat.getIsOccupied());
+    assertEquals(false, seat.IsOccupied());
     checkSeatNoZero(seat);
   }
 
@@ -33,13 +33,13 @@ class SeatTest
 
     seat.setIsOccupiedState(true);
 
-    assertEquals(true, seat.getIsOccupied());
+    assertEquals(true, seat.IsOccupied());
   }
 
 
   @Test
   public void setSeatNoSkalSætteSeatNoZero(){
-    seat.setSeatNo(0);
+    seat.setSeatNo("S0");
 
     checkSeatNoZero(seat);
   }
@@ -48,26 +48,25 @@ class SeatTest
   @Test
   public void setSeatNoSkalSætteSeatNoOne(){
 
-    seat.setSeatNo(101);
+    seat.setSeatNo("S"+101);
 
-    assertEquals(1, seat.getRow());
-    assertEquals(1, seat.getCol());
+    assertEquals("S"+101, seat.getSeatNo());
+
   }
 
   @Test
   public void setSeatNoSkalSætteSeatNoMany(){
-    seat.setSeatNo(225);
+    seat.setSeatNo("S"+225);
 
-    assertEquals(2, seat.getRow());
-    assertEquals(25, seat.getCol());
+    assertEquals("S"+225, seat.getSeatNo());
+
   }
 
 
 
   private void checkSeatNoZero(Seat seat)
   {
-    assertEquals(0, seat.getCol());
-    assertEquals(0, seat.getRow());
+    assertEquals(null, seat.getSeatNo());
   }
 
 

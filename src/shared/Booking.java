@@ -5,12 +5,15 @@ public class Booking
   private int bookingId;
   private Showing showing;
   private User user;
+  private Seat seat;
 
-  public Booking(Showing showing, User user, int bookingId)
+  public Booking( int bookingId, Showing showing, User user, String seatNo)
   {
     this.showing = showing;
     this.user = user;
     this.bookingId = bookingId;
+    this.seat = new Seat();
+    seat.setSeatNo(seatNo);
   }
 
   public Showing getShowing()
@@ -19,6 +22,6 @@ public class Booking
   }
 
   public String toString(){
-    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName();
+    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName() + " " + seat;
   }
 }

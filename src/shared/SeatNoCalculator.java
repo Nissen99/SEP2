@@ -2,29 +2,31 @@ package shared;
 
 public class SeatNoCalculator
 {
+  private String hallNo;
   private int currentSeatNo;
   private int maxSeatsInRow;
   private int maxRows;
 
-  SeatNoCalculator(int maxRows, int maxSeatsInRow) {
+  SeatNoCalculator(int maxRows, int maxSeatsInRow, String hallNo) {
     this.maxRows = maxRows;
     this.maxSeatsInRow = maxSeatsInRow;
+    this.hallNo = hallNo;
     currentSeatNo = 100;
   }
 
-  public int calculateSeatNo(){
+  public String calculateSeatNo(){
     currentSeatNo++;
 
     if (availableSpaceInRow()){
-      return currentSeatNo;
+      return hallNo + currentSeatNo;
     }
     else if (lastSpaceAndNotLastRow()){
       int returnNumber = currentSeatNo;
       currentSeatNo = rowSwitch();
-      return returnNumber;
+      return hallNo + returnNumber;
     }
     else if (lastSpaceInLastRow()){
-      return currentSeatNo;
+      return hallNo + currentSeatNo;
       //next will throw exception
     } else {
       throw new IllegalStateException("Hall full, cant add more seats");
