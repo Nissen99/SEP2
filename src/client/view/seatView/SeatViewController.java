@@ -1,8 +1,8 @@
-package Client.view.seatView;
+package client.view.seatView;
 
-import Client.core.ViewHandler;
-import Client.core.ViewModelFactory;
-import Client.view.viewModel.ViewModelSeat;
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
+import client.view.viewModel.ViewModelSeat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
