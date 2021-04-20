@@ -31,9 +31,8 @@ public class SeatNoCalculator
     } else {
       throw new IllegalStateException("Hall full, cant add more seats");
     }
-
-
   }
+
   public int getMaxSeatsInRow()
   {
     return maxSeatsInRow;
@@ -43,6 +42,7 @@ public class SeatNoCalculator
   {
     return maxRows;
   }
+
   private int rowSwitch()
   {
     return currentSeatNo + 100 - maxSeatsInRow;

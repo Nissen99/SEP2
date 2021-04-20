@@ -21,10 +21,6 @@ public class Movie
     return movieTitle;
   }
 
-  public String toString(){
-    return movieTitle;
-  }
-
   public int getMovieId()
   {
     return movieId;

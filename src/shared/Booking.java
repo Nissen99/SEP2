@@ -16,12 +16,17 @@ public class Booking
     seat.setSeatNo(seatNo);
   }
 
+  public int getBookingId()
+  {
+    return bookingId;
+  }
+
   public Showing getShowing()
   {
     return showing;
   }
 
   public String toString(){
-    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName() + " " + seat;
+    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName() + " " + seat.getSeatNo();
   }
 }
