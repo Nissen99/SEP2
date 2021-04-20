@@ -9,8 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="681.0" style="-fx-background-image: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/curtains.png');" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.view.seatView.SeatViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.view.seatView.SeatViewController">
    <children>
       <Label alignment="CENTER" layoutX="298.0" layoutY="14.0" prefHeight="31.0" prefWidth="74.0" text="Hall">
          <font>
@@ -20,78 +21,78 @@
       <Ellipse fill="#fbff1f" layoutX="335.0" layoutY="70.0" radiusX="289.0" radiusY="13.0" stroke="BLACK" strokeType="INSIDE" />
       <HBox layoutX="92.0" layoutY="142.0" prefHeight="232.0" prefWidth="486.0">
          <children>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1019" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A101" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1017" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A201" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1014" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A301" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S101111" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A401" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S101" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A501" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1016" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A601" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1013" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A701" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1018" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A102" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1015" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A202" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1012" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A302" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10220" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A402" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1022112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A502" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102134" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A602" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10211112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A702" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -101,162 +102,162 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
                <children>
-                  <Pane fx:id="S102173" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A103" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102172" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A203" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10217112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A303" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10217" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A403" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102132" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A503" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102113" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A603" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102135" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A703" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
                <children>
-                  <Pane fx:id="S102136" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A104" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A204" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102110" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A304" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A404" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10219" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A504" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10218" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A604" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10214" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A704" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
                <children>
-                  <Pane fx:id="S10213112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A105" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102114" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A205" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S103" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A305" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10216" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A405" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10215" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A505" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10210" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A605" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102130" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A705" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');" />
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0" />
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10213" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A106" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A206" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A306" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1026" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A406" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102129" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A506" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102116" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A606" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102115" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A706" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -266,39 +267,39 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1029" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A107" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1028" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A207" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1027" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A307" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1022" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A407" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102128" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A507" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102117" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A607" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1025" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A707" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -308,39 +309,39 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1024" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A108" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102127" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A208" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102118" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A308" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021228" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A408" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1023" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A508" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021422" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A608" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102126" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A708" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -350,77 +351,77 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S102119" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A109" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102174" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A209" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021229" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A309" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212210" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A409" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021223" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A509" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102124" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A609" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A709" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1021222" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A110" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102123" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A210" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A310" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212216" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A410" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10231221" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A510" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021226" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A610" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021227" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A710" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -430,230 +431,230 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10212218" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A111" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212217" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A211" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212215" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A311" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212214" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A411" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212321" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A511" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122122" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A611" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212212" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A711" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');" />
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0" />
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1021192" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021742" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A212" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212292" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A312" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122102" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A412" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212232" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A512" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021242" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A612" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021212" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A712" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1021193" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A113" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021743" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A213" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212293" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A313" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122103" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A413" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212233" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A513" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021243" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A613" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021213" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A713" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1021194" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A114" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021744" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A214" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212294" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A314" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122104" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A414" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212234" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A514" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021244" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A614" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021214" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A714" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1021195" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A115" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021745" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A215" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212295" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A315" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122105" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A415" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212235" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A515" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021245" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A615" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021215" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A715" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1021196" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A116" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021746" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A216" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212296" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A316" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122106" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A416" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212236" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A516" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021246" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A616" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021216" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A716" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
@@ -663,78 +664,78 @@
       </HBox>
       <HBox layoutX="92.0" layoutY="383.0" prefHeight="232.0" prefWidth="486.0">
          <children>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10191" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A801" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10171" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A901" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10141" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1001" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10111" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1101" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1011" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1201" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10161" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1301" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10131" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1401" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10181" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A802" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10151" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A902" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10121" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1002" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102201" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1102" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102211" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1202" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021341" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1302" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021111" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1402" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -744,162 +745,162 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
                <children>
-                  <Pane fx:id="S1021731" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A803" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021721" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A903" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021711" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1003" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102171" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1103" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021321" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1203" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021131" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1303" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021351" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1403" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
                <children>
-                  <Pane fx:id="S1021361" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A804" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10211" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A904" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021101" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1004" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1104" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102191" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1204" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102181" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1304" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102141" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1404" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
                <children>
-                  <Pane fx:id="S1021311" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A805" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021141" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A905" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1031" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1005" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102161" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1105" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102151" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1205" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102101" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1305" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021301" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A1405" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');" />
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0" />
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S102131" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A806" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102121" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A906" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102111" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1006" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10261" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1106" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021291" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1206" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021161" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1306" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021151" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1406" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -909,39 +910,39 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10291" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A807" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10281" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A907" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10271" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1007" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10221" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1107" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021281" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1207" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021171" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1307" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10251" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1407" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -951,39 +952,39 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10241" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A808" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021271" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A908" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021181" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1008" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212281" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1108" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10231" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1208" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122111" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1308" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021261" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1408" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -993,77 +994,77 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S1021191" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A809" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021741" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A909" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212291" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1009" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122101" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1109" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212231" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1209" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021241" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1309" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021211" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A1409" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10212221" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A810" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021231" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A910" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021221" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1010" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122161" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1110" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212211" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1210" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212261" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1310" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212271" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1410" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
@@ -1073,230 +1074,230 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S102122181" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A811" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122171" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A911" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122151" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1011" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122141" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1111" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021221211" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1211" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021221221" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1311" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122121" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A1411" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');" />
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0" />
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10211921" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A812" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10217421" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A912" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122921" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1012" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021221021" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1112" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122321" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1212" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212421" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1312" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212121" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A1412" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10211931" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A813" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10217431" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A913" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122931" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1013" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021221031" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1113" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122331" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1213" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212431" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1313" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212131" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A1413" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10211941" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A814" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10217441" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A914" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122941" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1014" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021221041" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1114" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122341" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1214" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212441" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1314" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212141" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A1414" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10211951" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A815" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10217451" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A915" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122951" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1015" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021221051" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1115" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122351" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1215" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212451" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1315" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212151" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A1415" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="266.0" prefWidth="26.0" style="-fx-background-color: url('C:/Users/satar/Desktop/SoftwareIngenginør2020/SEP2/src/images/1.gif');">
+            <VBox prefHeight="266.0" prefWidth="26.0">
                <children>
-                  <Pane fx:id="S10211961" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A816" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10217461" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A916" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122961" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1016" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S1021221061" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1116" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S102122361" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1216" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212461" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
+                  <Pane fx:id="A1316" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;">
                      <VBox.margin>
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Pane>
-                  <Pane fx:id="S10212161" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="A1416" onMouseClicked="#onClick" prefHeight="25.0" prefWidth="26.0" style="-fx-border-color: black;" />
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
@@ -1304,7 +1305,14 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="confirmButtom" layoutX="305.0" layoutY="615.0" mnemonicParsing="false" onAction="#OnConfirmButtom" text="Confirm" />
-      <Button fx:id="backButton" layoutX="604.0" layoutY="615.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
+      <Button fx:id="confirmButtom" layoutX="607.0" layoutY="615.0" mnemonicParsing="false" onAction="#OnConfirmButtom" text="Confirm" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="615.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
+      <Text layoutX="54.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" />
+      <Text layoutX="23.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="31.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="23.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="54.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" />
+      <Text layoutX="54.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
+      <VBox layoutX="52.0" layoutY="318.0" prefHeight="266.0" prefWidth="26.0" />
    </children>
 </AnchorPane>

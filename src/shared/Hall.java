@@ -39,6 +39,7 @@ public class Hall
 
   public Seat addSeat(Seat seat)
   {
+
     seat.setSeatNo(seatNoCalculator.calculateSeatNo());
     seatArrayList.add(seat);
     return seat;

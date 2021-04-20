@@ -22,11 +22,12 @@ public class BookingViewController
     viewModel.makeBooking(usernameField.getText());
     System.out.println("You made a booking");
     ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+
   }
 
   public void backButtonHit() throws IOException, SQLException
   {
 
-    ViewHandler.getInstance().openView("../view/showingList/showingListView.fxml");
+    ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
   }
 }

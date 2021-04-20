@@ -32,20 +32,20 @@ public class CinemaBookingApp extends Application
     Movie spiderMan = ModelFactory.getInstance().getModel().addMovie(new Movie("SpiderMan 3"));
 
 
-    Hall hall1 = ModelFactory.getInstance().getModel().addHall(new Hall("S", 10, 10));
+    Hall hall1 = ModelFactory.getInstance().getModel().addHall(new Hall("A", 16, 14));
     for (int i = 0; i < hall1.getMaxRows() * hall1.getMaxSeatsInRow(); i++)
     {
       Seat seat = new Seat();
       seatDAO.create(hall1.addSeat(seat), hall1);
           }
 
-    Hall hall2 = ModelFactory.getInstance().getModel().addHall(new Hall("A", 10, 5));
+    Hall hall2 = ModelFactory.getInstance().getModel().addHall(new Hall("B", 16, 14));
 
 
     Timestamp rightNow = new Timestamp(date.getTime());
 
     Showing showingOfStarWarsX = new Showing(starWarsX, rightNow, hall1);
-    Showing showingOfSpiderMan = new Showing(spiderMan, rightNow, hall2);
+    Showing showingOfSpiderMan = new Showing(spiderMan, rightNow, hall1);
 
 
     ModelFactory.getInstance().getModel().addShowing(showingOfStarWarsX);

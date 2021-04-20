@@ -54,7 +54,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
   }
 
-  //  @Override public ArrayList<Booking> getAllBookings() throws SQLException
+//  @Override public ArrayList<Booking> getAllBookings() throws SQLException
 //  {
 //    ArrayList<Booking> bookingArrayList = new ArrayList<>();
 //    try(Connection connection = getConnection()){

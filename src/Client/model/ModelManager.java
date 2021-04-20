@@ -36,8 +36,9 @@ public class ModelManager implements Model
     }
     catch (SQLException e)
     {
+      e.printStackTrace();
       System.out.println("Catch In addBooking");
-      userDAO.deleteUser(user);
+        userDAO.deleteUser(user);
     }
 
     return null;

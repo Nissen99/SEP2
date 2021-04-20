@@ -1,15 +1,18 @@
 package Client.view.seatView;
 
 import Client.core.ViewHandler;
+import Client.core.ViewModelFactory;
+import Client.view.viewModel.ViewModelMovieList;
+import Client.view.viewModel.ViewModelSeat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import shared.Seat;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class SeatViewController
 {
@@ -17,10 +20,14 @@ public class SeatViewController
   @FXML private Pane S101, S102, S103;
  // private Pane[] seats = new Pane[3];
   private Pane[] seats={S101,S102,S103};
-  Pane lastClicked = null;
+  Pane selectedSeat = null;
+  private Seat seat = new Seat();
 
   @FXML private Button backButton;
   @FXML private Button confirmButton;
+
+  private ViewModelSeat viewModel = ViewModelFactory.getInstance().getSeatVM();
+
 
 
 
@@ -36,18 +43,29 @@ public class SeatViewController
   {
     Pane pane = (Pane) e.getSource();
 
-    if (!(lastClicked == null))
+    if (!(selectedSeat == null))
     {
-      lastClicked.setStyle("-fx-border-color:black;");
+      selectedSeat.setStyle("-fx-border-color:black;");
     }
     pane.setStyle("-fx-background-color:red;");
-    lastClicked = pane;
+    selectedSeat = pane;
 
 
   }
 
   @FXML
-  void OnConfirmButtom(ActionEvent event) {
+  void OnConfirmButtom(ActionEvent event) throws IOException, SQLException
+
+  {
+    System.out.println("Køre den her??");
+    seat.setSeatNo(selectedSeat.idProperty().get());
+    viewModel.setSelectedSeat(seat);
+    System.out.println(" Hvilket id ??" + selectedSeat.idProperty().get());
+
+    ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
+
+
+
 
   }
 

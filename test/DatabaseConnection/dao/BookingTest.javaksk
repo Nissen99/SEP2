@@ -9,7 +9,6 @@ import shared.User;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-class BookingTest
 {
   @Test
   public void testCreate() throws SQLException {
