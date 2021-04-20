@@ -5,6 +5,8 @@ import Client.view.viewModel.ViewModelMovieList;
 import Client.view.viewModel.ViewModelSeat;
 import Client.view.viewModel.ViewModelShowingList;
 
+import java.sql.SQLException;
+
 public class ViewModelFactory
 {
 
@@ -56,7 +58,7 @@ public class ViewModelFactory
     return booking;
   }
 
-  public ViewModelSeat getSeatVM()
+  public ViewModelSeat getSeatVM() throws SQLException
   {
     seatVM = new ViewModelSeat(ModelFactory.getInstance().getModel(),
         showingList.getSelectedShowing());

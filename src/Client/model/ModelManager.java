@@ -73,10 +73,14 @@ public class ModelManager implements Model
     return showingDAO.getAllShowings(movie);
   }
 
+
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException
   {
     return bookingDAO.getOccupiedSeats(showing);
   }
+
+
+
 
 }

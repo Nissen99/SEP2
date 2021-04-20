@@ -2,78 +2,126 @@ package Client.view.seatView;
 
 import Client.core.ViewHandler;
 import Client.core.ViewModelFactory;
-import Client.view.viewModel.ViewModelMovieList;
 import Client.view.viewModel.ViewModelSeat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import shared.Seat;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SeatViewController
 {
 
-  @FXML private Pane S101, S102, S103;
- // private Pane[] seats = new Pane[3];
-  private Pane[] seats={S101,S102,S103};
-  Pane selectedSeat = null;
-  private Seat seat = new Seat();
+  private ArrayList<Pane> paneArrayList = new ArrayList<>();
+  private ArrayList<Seat> seatArrayList;
 
-  @FXML private Button backButton;
-  @FXML private Button confirmButton;
+  private Seat selectedSeat = new Seat();
+  private Pane selectedPane = null;
+
+  @FXML private AnchorPane anchorPane;
 
   private ViewModelSeat viewModel = ViewModelFactory.getInstance().getSeatVM();
 
-
-
-
-
-  private int id;
+  public SeatViewController() throws SQLException
+  {
+  }
 
   public void init() throws SQLException
   {
 
+    seatArrayList = viewModel.getOccupiedSeats();
+    for (Node node : getAllNodes(anchorPane))
+    {
+
+      if (node instanceof Pane && (!(node instanceof VBox
+          || node instanceof HBox)))
+      {
+        paneArrayList.add((Pane) node);
+      }
+    }
+    setOccupiedColor();
+
+  }
+
+  public Pane getPane(String id)
+  {
+    for (Pane pane : paneArrayList)
+    {
+      if (pane.idProperty().get().equals(id))
+      {
+        return pane;
+      }
+    }
+    return null;
+
+  }
+
+  public void setOccupiedColor()
+  {
+    for (Seat seat : seatArrayList)
+    {
+      Pane d = getPane(seat.getSeatNo());
+      d.setStyle("-fx-background-color:red;");
+      d.setDisable(true);
+    }
+  }
+
+  public static ArrayList<Node> getAllNodes(Parent root)
+  {
+    ArrayList<Node> nodes = new ArrayList<>();
+    addAllDescendents(root, nodes);
+    return nodes;
+  }
+
+  private static void addAllDescendents(Parent parent, ArrayList<Node> nodes)
+  {
+    for (Node node : parent.getChildrenUnmodifiable())
+    {
+      nodes.add(node);
+      if (node instanceof Parent)
+        addAllDescendents((Parent) node, nodes);
+    }
   }
 
   public void onClick(MouseEvent e)
   {
     Pane pane = (Pane) e.getSource();
 
-    if (!(selectedSeat == null))
+    if (!(selectedPane == null))
     {
-      selectedSeat.setStyle("-fx-border-color:black;");
+      selectedPane.setStyle("-fx-border-color:black;");
     }
-    pane.setStyle("-fx-background-color:red;");
-    selectedSeat = pane;
-
+    pane.setStyle("-fx-background-color:blue;");
+    selectedPane = pane;
 
   }
 
-  @FXML
-  void OnConfirmButtom(ActionEvent event) throws IOException, SQLException
+  @FXML void OnConfirmButtom(ActionEvent event) throws IOException, SQLException
 
   {
     System.out.println("Køre den her??");
-    seat.setSeatNo(selectedSeat.idProperty().get());
-    viewModel.setSelectedSeat(seat);
-    System.out.println(" Hvilket id ??" + selectedSeat.idProperty().get());
+    selectedSeat.setSeatNo(selectedPane.idProperty().get());
+    viewModel.setSelectedSeat(selectedSeat);
+    System.out.println(" Hvilket id ??" + selectedPane.idProperty().get());
 
     ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
 
-
-
-
   }
 
-  @FXML
-  void onBackButton(ActionEvent event) throws IOException, SQLException
+  @FXML void onBackButton(ActionEvent event) throws IOException, SQLException
   {
 
-    ViewHandler.getInstance().openView("../view/showingList/showingListView.fxml");
+    ViewHandler.getInstance()
+        .openView("../view/showingList/showingListView.fxml");
 
   }
 

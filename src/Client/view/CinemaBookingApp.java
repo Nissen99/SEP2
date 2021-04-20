@@ -6,10 +6,7 @@ import DatabaseConnection.dao.ResetDAO;
 import DatabaseConnection.dao.SeatDAOImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import shared.Hall;
-import shared.Movie;
-import shared.Seat;
-import shared.Showing;
+import shared.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -32,6 +29,8 @@ public class CinemaBookingApp extends Application
     Movie spiderMan = ModelFactory.getInstance().getModel().addMovie(new Movie("SpiderMan 3"));
 
 
+
+
     Hall hall1 = ModelFactory.getInstance().getModel().addHall(new Hall("A", 16, 14));
     for (int i = 0; i < hall1.getMaxRows() * hall1.getMaxSeatsInRow(); i++)
     {
@@ -51,6 +50,8 @@ public class CinemaBookingApp extends Application
     ModelFactory.getInstance().getModel().addShowing(showingOfStarWarsX);
     ModelFactory.getInstance().getModel().addShowing(showingOfSpiderMan);
 
+
+    ModelFactory.getInstance().getModel().addBooking(ModelFactory.getInstance().getModel().getShowingList(spiderMan).get(0),"anders","A101");
 
 
     ViewHandler.getInstance().start(stage);

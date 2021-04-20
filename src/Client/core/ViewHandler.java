@@ -73,6 +73,7 @@ public class ViewHandler
       loader.setLocation(getClass().getResource(viewToOpen));
       root = loader.load();
       SeatViewController controller = loader.getController();
+      controller.init();
 
       stage.setTitle("SeatView");
     }
