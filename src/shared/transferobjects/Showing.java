@@ -42,6 +42,11 @@ public class Showing implements Serializable
     return movie;
   }
 
+  public String toString(){
+
+    return "Movie title: " + movie.getMovieTitle() + ", hallNo: " + hall.getHallNo()
+        + " time: " + getTime();
+  }
 
   //Bliver brugt ikke slet
   public String getTime(){

@@ -51,7 +51,21 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
 
   @Override public User getById(int userId) throws SQLException
   {
-    return null;
+    try(Connection connection = getConnection()){
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM User_ WHERE userId = ?");
+      statement.setInt(1, userId);
+      ResultSet resultSet = statement.executeQuery();
+      User user = null;
+      if (resultSet.next()){
+        user = new User(
+            resultSet.getInt("userId"),
+            resultSet.getString("fName")
+            );
+      }
+      return user;
+    }
+
+
   }
 
   @Override public void deleteUser(User user)
