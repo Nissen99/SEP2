@@ -3,10 +3,13 @@ package client.view.seatView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.viewModel.ViewModelSeat;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -21,11 +24,11 @@ import java.util.ArrayList;
 public class SeatViewController
 {
 
+  @FXML public ChoiceBox antalSeats;
   private ArrayList<Pane> paneArrayList = new ArrayList<>();
   private ArrayList<Seat> seatArrayList;
 
-  private Seat selectedSeat = new Seat();
-  private Pane selectedPane = null;
+  private ArrayList<Pane> selectedPane = new ArrayList<>();
 
   @FXML private AnchorPane anchorPane;
 
@@ -37,7 +40,7 @@ public class SeatViewController
 
   public void init() throws SQLException
   {
-
+    setChoiceBox();
     seatArrayList = viewModel.getOccupiedSeats();
     for (Node node : getAllNodes(anchorPane))
     {
@@ -50,6 +53,18 @@ public class SeatViewController
     }
     setOccupiedColor();
 
+  }
+
+  private void setChoiceBox()
+  {
+    ArrayList<Integer> integerArrayList = new ArrayList<>();
+    for (int i = 1; i <= 14; i++)
+    {
+      integerArrayList.add(i);
+    }
+    ObservableList<Integer> integerObservableList = FXCollections.observableList(integerArrayList);
+    antalSeats.setItems(integerObservableList);
+    antalSeats.setValue(1);
   }
 
   public Pane getPane(String id)
@@ -94,24 +109,64 @@ public class SeatViewController
 
   public void onClick(MouseEvent e)
   {
+    for (Pane pane : paneArrayList)
+    {
+      if (!pane.isDisabled()){
+      pane.setStyle("-fx-background-color:transparent;");
+      pane.setStyle("-fx-border-color:black;");
+    }}
+
     Pane pane = (Pane) e.getSource();
 
-    if (!(selectedPane == null))
-    {
-      selectedPane.setStyle("-fx-border-color:black;");
-    }
-    pane.setStyle("-fx-background-color:blue;");
-    selectedPane = pane;
+    selectedPane = new ArrayList<>();
+      String id = pane.idProperty().get();
+      String[] idSplit = id.split("");
+      System.out.println(idSplit);
+    int currentNumber = 0;
 
+      for (int i = 0; i < (int) antalSeats.getValue(); i++)
+      {
+
+          pane = getPane(id);
+          selectedPane.add(pane);
+          System.out.println(id);
+
+          pane.setStyle("-fx-background-color:blue;");
+
+        currentNumber = getCurrentNumber(idSplit, currentNumber);
+        currentNumber++;
+          id = idSplit[0] + currentNumber;
+          idSplit = id.split("");
+      }
+
+      }
+
+  private int getCurrentNumber(String[] idSplit, int currentNumber)
+  {
+    if (idSplit.length > 4)
+    {
+     currentNumber = Integer.parseInt(
+         idSplit[1] + idSplit[2] + idSplit[3] + idSplit[4]);
+    } else if (idSplit.length < 5)
+    {
+       currentNumber = Integer.parseInt(idSplit[1] + idSplit[2] + idSplit[3]);
+    }
+    return currentNumber;
   }
 
-  @FXML void OnConfirmButtom(ActionEvent event) throws IOException, SQLException
 
+  @FXML void OnConfirmButtom(ActionEvent event) throws IOException, SQLException
   {
-    System.out.println("Køre den her??");
-    selectedSeat.setSeatNo(selectedPane.idProperty().get());
-    viewModel.setSelectedSeat(selectedSeat);
-    System.out.println(" Hvilket id ??" + selectedPane.idProperty().get());
+    ArrayList<Seat> seats = new ArrayList<>();
+    for (Pane pane : selectedPane)
+    {
+      Seat seat = new Seat();
+      seat.setSeatNo(pane.idProperty().get());
+      seats.add(seat);
+    }
+
+      viewModel.setSelectedSeat(seats);
+
 
     ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
 

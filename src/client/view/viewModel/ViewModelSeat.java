@@ -15,6 +15,7 @@ public class ViewModelSeat
   private ArrayList<Seat> seatArrayList;
 
 
+
   public ViewModelSeat(Model modelManger,Showing selectedShowing)
       throws SQLException
 
@@ -31,18 +32,19 @@ public class ViewModelSeat
   }
 
 
-  public Seat getSelectedSeat()
+  public ArrayList<Seat> getSelectedSeat()
   {
-    return selectedSeat;
+    return seatArrayList;
   }
 
-  public void setSelectedSeat(Seat seat)
+  public void setSelectedSeat(ArrayList<Seat> seatArray)
   {
-    this.selectedSeat = seat;
+    this.seatArrayList = seatArray;
   }
 
   public ArrayList<Seat> getOccupiedSeats() throws SQLException
   {
     return modelManger.getOccupiedSeats(selectedShowing);
   }
+
 }

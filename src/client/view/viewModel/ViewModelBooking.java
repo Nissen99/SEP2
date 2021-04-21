@@ -6,28 +6,39 @@ import shared.Seat;
 import shared.Showing;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ViewModelBooking
 {
 
   private  Showing showing;
-  private Seat seat;
+  private ArrayList<Seat> seatArrayList;
   Model modelManager = ModelFactory.getInstance().getModel();
 
-  public ViewModelBooking(Showing showing,Seat seat){
+  public ViewModelBooking(Showing showing, ArrayList<Seat> seatArray){
     this.showing = showing;
-    this.seat = seat;
+    this.seatArrayList = seatArray;
   }
 
   public void makeBooking(String username) throws SQLException
   {
-    modelManager.addBooking(showing,username,seat.getSeatNo());
-    System.out.println(" seat is " + seat.getSeatNo());
+    for (Seat seat : seatArrayList)
+    {
+      modelManager.addBooking(showing, username, seat.getSeatNo());
+      System.out.println(" seat is " + seat.getSeatNo());
+    }
+
   }
 
-  public Seat getSeat()
+  public Seat getSeat(String seatNo)
   {
-    return seat;
+    for (Seat seat : seatArrayList)
+    {
+      if (seat.getSeatNo().equals(seatNo)){
+        return seat;
+      }
+    }
+  return null;
   }
 
 

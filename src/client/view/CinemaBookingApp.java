@@ -51,7 +51,7 @@ public class CinemaBookingApp extends Application
     ModelFactory.getInstance().getModel().addShowing(showingOfSpiderMan);
 
 
-    ModelFactory.getInstance().getModel().addBooking(ModelFactory.getInstance().getModel().getShowingList(spiderMan).get(0),"anders","A101");
+   // ModelFactory.getInstance().getModel().addBooking(ModelFactory.getInstance().getModel().getShowingList(spiderMan).get(0),"anders","A101");
 
 
     ViewHandler.getInstance().start(stage);
