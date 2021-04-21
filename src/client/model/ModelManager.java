@@ -3,6 +3,9 @@ package client.model;
 import databaseConnection.dao.*;
 import shared.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -77,6 +80,8 @@ public class ModelManager implements Model
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException
   {
+
+
     return bookingDAO.getOccupiedSeats(showing);
   }
 

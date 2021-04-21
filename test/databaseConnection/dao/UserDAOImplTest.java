@@ -2,7 +2,9 @@ package databaseConnection.dao;
 
 
 import org.junit.jupiter.api.Test;
+import shared.User;
 
+import static org.junit.jupiter.api.Assertions.*;
 import java.sql.SQLException;
 
 class UserDAOImplTest
@@ -10,8 +12,11 @@ class UserDAOImplTest
   @Test
   public void testCreate() throws SQLException
   {
-    UserDAO user = new UserDAOImpl();
-    user.create("Solaiman");
+    UserDAO userDAO = new UserDAOImpl();
+    User user = userDAO.create("Solaiman");
+
+
+    assertEquals("Solaiman", userDAO.getById(user.getUserID()).getName());
   }
 
 
