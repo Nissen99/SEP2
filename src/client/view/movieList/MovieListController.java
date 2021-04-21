@@ -8,9 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import shared.Movie;
+import shared.transferobjects.Movie;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class MovieListController
@@ -25,7 +26,7 @@ public class MovieListController
 
 
 
-  public void init() throws SQLException
+  public void init() throws SQLException, RemoteException
   {
 
     tableViewForMovie.setItems(viewModel.getAllMovies());

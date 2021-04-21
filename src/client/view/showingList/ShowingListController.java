@@ -8,9 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import shared.Showing;
+import shared.transferobjects.Showing;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
@@ -26,7 +27,7 @@ public class ShowingListController
       .getShowingList();
 
 
-  public void init() throws SQLException
+  public void init() throws SQLException, RemoteException
   {
 
     tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());

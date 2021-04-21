@@ -1,8 +1,8 @@
 package databaseConnection.dao;
 
-import shared.Hall;
-import shared.Movie;
-import shared.Showing;
+import shared.transferobjects.Hall;
+import shared.transferobjects.Movie;
+import shared.transferobjects.Showing;
 
 import java.sql.*;
 import java.util.ArrayList;

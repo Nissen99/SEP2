@@ -1,7 +1,7 @@
 package databaseConnection.dao;
 
-import shared.Hall;
-import shared.Seat;
+import shared.transferobjects.Hall;
+import shared.transferobjects.Seat;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,6 +1,8 @@
-package shared;
+package shared.transferobjects;
 
-public class Seat
+import java.io.Serializable;
+
+public class Seat implements Serializable
 {
   private boolean isOccupied;
   private String seatNo;

@@ -1,6 +1,8 @@
-package shared;
+package shared.transferobjects;
 
-public class Booking
+import java.io.Serializable;
+
+public class Booking implements Serializable
 {
   private int bookingId;
   private Showing showing;

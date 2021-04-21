@@ -1,6 +1,6 @@
 package databaseConnection.dao;
 
-import shared.Movie;
+import shared.transferobjects.Movie;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

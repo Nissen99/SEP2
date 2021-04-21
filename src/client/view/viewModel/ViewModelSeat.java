@@ -1,27 +1,28 @@
 package client.view.viewModel;
 
-import client.model.Model;
-import shared.Seat;
-import shared.Showing;
+import client.model.ClientModel;
+import shared.transferobjects.Seat;
+import shared.transferobjects.Showing;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ViewModelSeat
 {
   private Showing selectedShowing;
-  private Model modelManger;
+  private ClientModel clientModelManger;
   private Seat selectedSeat ;
   private ArrayList<Seat> seatArrayList;
 
 
-  public ViewModelSeat(Model modelManger,Showing selectedShowing)
-      throws SQLException
+  public ViewModelSeat(ClientModel clientModelManger,Showing selectedShowing)
+      throws SQLException, RemoteException
 
   {
     this.selectedShowing = selectedShowing;
-    this.modelManger = modelManger;
-    seatArrayList = modelManger.getOccupiedSeats(selectedShowing);
+    this.clientModelManger = clientModelManger;
+    seatArrayList = clientModelManger.getOccupiedSeats(selectedShowing);
     for (Seat occupiedSeat : seatArrayList )
     {
      String id = occupiedSeat.getSeatNo();
@@ -41,8 +42,8 @@ public class ViewModelSeat
     this.selectedSeat = seat;
   }
 
-  public ArrayList<Seat> getOccupiedSeats() throws SQLException
+  public ArrayList<Seat> getOccupiedSeats() throws SQLException, RemoteException
   {
-    return modelManger.getOccupiedSeats(selectedShowing);
+    return clientModelManger.getOccupiedSeats(selectedShowing);
   }
 }

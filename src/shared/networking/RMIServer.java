@@ -1,14 +1,14 @@
-package client.network;
+package shared.networking;
 
 import shared.transferobjects.*;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface Client
+public interface RMIServer extends Remote
 {
-  void startClient();
   Booking addBooking(Showing showing, String username, String seatNo)
       throws RemoteException, SQLException;
   Movie addMovie(Movie movie) throws RemoteException, SQLException;
@@ -19,4 +19,5 @@ public interface Client
       throws RemoteException, SQLException;
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws RemoteException, SQLException;
+
 }

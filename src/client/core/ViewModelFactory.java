@@ -5,6 +5,7 @@ import client.view.viewModel.ViewModelMovieList;
 import client.view.viewModel.ViewModelSeat;
 import client.view.viewModel.ViewModelShowingList;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class ViewModelFactory
@@ -58,7 +59,7 @@ public class ViewModelFactory
     return booking;
   }
 
-  public ViewModelSeat getSeatVM() throws SQLException
+  public ViewModelSeat getSeatVM() throws SQLException, RemoteException
   {
     seatVM = new ViewModelSeat(ModelFactory.getInstance().getModel(),
         showingList.getSelectedShowing());

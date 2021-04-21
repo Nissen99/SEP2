@@ -1,9 +1,10 @@
-package shared;
+package shared.transferobjects;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-public class Showing
+public class Showing implements Serializable
 {
   private Timestamp timestamp;
   private Movie movie;

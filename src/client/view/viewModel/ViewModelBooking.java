@@ -1,10 +1,11 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.Model;
-import shared.Seat;
-import shared.Showing;
+import client.model.ClientModel;
+import shared.transferobjects.Seat;
+import shared.transferobjects.Showing;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class ViewModelBooking
@@ -12,16 +13,16 @@ public class ViewModelBooking
 
   private  Showing showing;
   private Seat seat;
-  Model modelManager = ModelFactory.getInstance().getModel();
+  ClientModel clientModelManager = ModelFactory.getInstance().getModel();
 
   public ViewModelBooking(Showing showing,Seat seat){
     this.showing = showing;
     this.seat = seat;
   }
 
-  public void makeBooking(String username) throws SQLException
+  public void makeBooking(String username) throws SQLException, RemoteException
   {
-    modelManager.addBooking(showing,username,seat.getSeatNo());
+    clientModelManager.addBooking(showing,username,seat.getSeatNo());
     System.out.println(" seat is " + seat.getSeatNo());
   }
 

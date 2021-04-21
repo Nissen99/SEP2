@@ -6,7 +6,10 @@ import databaseConnection.dao.ResetDAO;
 import databaseConnection.dao.SeatDAOImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import shared.*;
+import shared.transferobjects.Hall;
+import shared.transferobjects.Movie;
+import shared.transferobjects.Seat;
+import shared.transferobjects.Showing;
 
 import java.sql.Timestamp;
 import java.util.Date;
