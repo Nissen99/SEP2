@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.transferobjects.Showing;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -44,17 +45,40 @@ public class ShowingListController
 public void confirmChoice() throws IOException, SQLException
 {
 
-  Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
+  if (JOptionPane
+      .showConfirmDialog(null, "Do you want to confirm your choice?",
+          "Confirmation", JOptionPane.YES_NO_OPTION)
+      == JOptionPane.YES_OPTION)
+  {
+    Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
+    viewModel.setSelectedShowing(showing);
+    ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
+  }
+  else
+  {
+    // do nothing
+  }
 
-  viewModel.setSelectedShowing(showing);
 
-  ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
+
 }
 
 
 public void backButton() throws IOException, SQLException
 {
-  ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+
+  if (JOptionPane
+      .showConfirmDialog(null, "Do you want to go back to movie list?",
+          "Back", JOptionPane.YES_NO_OPTION)
+      == JOptionPane.YES_OPTION)
+  {
+    ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+
+  }
+  else
+  {
+    // do nothing
+  }
 
 }
 }

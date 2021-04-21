@@ -17,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import shared.transferobjects.Seat;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -165,19 +166,40 @@ public class SeatViewController
       seat.setSeatNo(pane.idProperty().get());
       seats.add(seat);
     }
-
+    if (JOptionPane
+        .showConfirmDialog(null, "Do you want to confirm?",
+            "Confirmation", JOptionPane.YES_NO_OPTION)
+        == JOptionPane.YES_OPTION)
+    {
       viewModel.setSelectedSeat(seats);
+      ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
+
+    }
+    else
+    {
+      // do nothing
+    }
 
 
-    ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
+
 
   }
 
   @FXML void onBackButton(ActionEvent event) throws IOException, SQLException
   {
+    if (JOptionPane
+        .showConfirmDialog(null, "Do you want to cancel?",
+            "Cancel", JOptionPane.YES_NO_OPTION)
+        == JOptionPane.YES_OPTION)
+    {
+      ViewHandler.getInstance()
+          .openView("../view/showingList/showingListView.fxml");
+    }
+    else
+    {
+      // do nothing
+    }
 
-    ViewHandler.getInstance()
-        .openView("../view/showingList/showingListView.fxml");
 
   }
 
