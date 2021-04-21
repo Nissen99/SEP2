@@ -1,7 +1,7 @@
-package client.model;
+package server.model;
 
 import databaseConnection.dao.*;
-import shared.*;
+import shared.transferobjects.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ModelManager implements Model
+public class ServerModelManager implements ServerModel
 {
 
   private BookingDAO bookingDAO;
@@ -18,9 +18,9 @@ public class ModelManager implements Model
   private ShowingDAO showingDAO;
   private HallDAO hallDAO;
 
-  public ModelManager()
+  public ServerModelManager()
   {
-     this.bookingDAO = new BookingDAOImpl();
+    this.bookingDAO = new BookingDAOImpl();
     this.userDAO = new UserDAOImpl();
     this.movieDAO = new MovieDAOImpl();
     this.showingDAO = new ShowingDAOImpl();
@@ -28,7 +28,7 @@ public class ModelManager implements Model
   }
 
   @Override public Booking addBooking(Showing showing, String username,
-      String seatNo) throws SQLException
+      String seatNo)
   {
 
     User user = null;
@@ -41,32 +41,60 @@ public class ModelManager implements Model
     {
       e.printStackTrace();
       System.out.println("Catch In addBooking");
-        userDAO.deleteUser(user);
+      userDAO.deleteUser(user);
     }
 
     return null;
   }
 
-  @Override public Movie addMovie(Movie movie) throws SQLException
+  @Override public Movie addMovie(Movie movie)
   {
-  return movieDAO.create(movie.getMovieTitle());
+
+    try
+    {
+      return movieDAO.create(movie.getMovieTitle());
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+      System.out.println("Catch in addMovie");
+    }
+    return null;
   }
 
-  @Override public Showing addShowing(Showing showing) throws SQLException
+  @Override public Showing addShowing(Showing showing)
   {
 
-    return showingDAO.create(showing);
+    try
+    {
+      return showingDAO.create(showing);
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+      System.out.println("Catch in addShowing");
+    }
+    return null;
 
   }
 
-  @Override public Hall addHall(Hall hall) throws SQLException
+  @Override public Hall addHall(Hall hall)
   {
-    return hallDAO.create(hall);
+    try
+    {
+      return hallDAO.create(hall);
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+      System.out.println("Catch in addHall");
+    }
+    return null;
   }
 
   @Override public ArrayList<Movie> getMovieList() throws SQLException
   {
-      return movieDAO.getAllMovies();
+    return movieDAO.getAllMovies();
 
   }
 
@@ -84,8 +112,4 @@ public class ModelManager implements Model
 
     return bookingDAO.getOccupiedSeats(showing);
   }
-
-
-
-
 }

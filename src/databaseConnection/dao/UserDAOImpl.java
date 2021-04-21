@@ -1,6 +1,6 @@
 package databaseConnection.dao;
 
-import shared.User;
+import shared.transferobjects.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

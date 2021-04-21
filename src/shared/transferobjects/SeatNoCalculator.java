@@ -1,6 +1,8 @@
-package shared;
+package shared.transferobjects;
 
-public class SeatNoCalculator
+import java.io.Serializable;
+
+public class SeatNoCalculator implements Serializable
 {
   private String hallNo;
   private int currentSeatNo;

@@ -2,6 +2,7 @@ package shared;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import shared.transferobjects.Movie;
 
 import static org.junit.jupiter.api.Assertions.*;
 

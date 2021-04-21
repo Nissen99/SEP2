@@ -1,27 +1,30 @@
 package client.core;
 
-import client.model.Model;
-import client.model.ModelManager;
+import client.model.ClientModel;
+import client.model.ClientModelManager;
 
 public class ModelFactory
 {
 
   private static ModelFactory modelFactory;
-  private Model model;
+  private ClientModel clientModel;
+  private ClientFactory clientFactory;
 
-  private ModelFactory(){}
+  private ModelFactory(ClientFactory clientFactory){
+    this.clientFactory = clientFactory;
+  }
 
   public static ModelFactory getInstance(){
     if (modelFactory == null){
-      modelFactory = new ModelFactory();
+      modelFactory = new ModelFactory(ClientFactory.getInstance());
     }
     return modelFactory;
   }
 
-  public Model getModel(){
-    if (model == null){
-      model = new ModelManager();
+  public ClientModel getModel(){
+    if (clientModel == null){
+      clientModel = new ClientModelManager(ClientFactory.getInstance().getClient());
     }
-    return model;
+    return clientModel;
   }
 }

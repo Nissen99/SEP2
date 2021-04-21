@@ -1,9 +1,9 @@
 package databaseConnection.dao;
 
-import shared.Booking;
-import shared.Seat;
-import shared.Showing;
-import shared.User;
+import shared.transferobjects.Booking;
+import shared.transferobjects.Seat;
+import shared.transferobjects.Showing;
+import shared.transferobjects.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

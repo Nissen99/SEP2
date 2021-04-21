@@ -1,36 +1,38 @@
 package client.view.viewModel;
 
-import client.model.Model;
+import client.model.ClientModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import shared.Movie;
-import shared.Showing;
+import shared.transferobjects.Movie;
+import shared.transferobjects.Showing;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class ViewModelShowingList
   {
 
     private Movie movie;
-    private Model modelManger;
+    private ClientModel clientModelManger;
     private ObservableList<Showing> showings = FXCollections.observableArrayList();
     private Showing selectedShowing;
 
-    public ViewModelShowingList(Model model, Movie movie)
+    public ViewModelShowingList(ClientModel clientModel, Movie movie)
   {
-    this.modelManger = model;
+    this.clientModelManger = clientModel;
     this.movie = movie;
   }
 
 
 
 
-    public ObservableList<Showing> getAllShowings() throws SQLException
+    public ObservableList<Showing> getAllShowings()
+        throws SQLException, RemoteException
     {
 
       showings.removeAll(showings);
 
-      showings.addAll(modelManger.getShowingList(movie));
+      showings.addAll(clientModelManger.getShowingList(movie));
 
       return showings;
     }

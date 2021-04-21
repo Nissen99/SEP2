@@ -15,9 +15,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import shared.Seat;
+import shared.transferobjects.Seat;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -34,11 +35,11 @@ public class SeatViewController
 
   private ViewModelSeat viewModel = ViewModelFactory.getInstance().getSeatVM();
 
-  public SeatViewController() throws SQLException
+  public SeatViewController() throws SQLException, RemoteException
   {
   }
 
-  public void init() throws SQLException
+  public void init() throws SQLException, RemoteException
   {
     setChoiceBox();
     seatArrayList = viewModel.getOccupiedSeats();

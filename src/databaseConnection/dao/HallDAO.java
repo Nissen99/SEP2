@@ -1,7 +1,7 @@
 package databaseConnection.dao;
 
 
-import shared.Hall;
+import shared.transferobjects.Hall;
 
 import java.sql.SQLException;
 

@@ -1,11 +1,11 @@
-package client.model;
+package server.model;
 
-import shared.*;
+import shared.transferobjects.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface Model
+public interface ServerModel
 {
   Booking addBooking(Showing showing, String username, String seatNo) throws SQLException;
   Movie addMovie(Movie movie) throws SQLException;

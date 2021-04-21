@@ -1,6 +1,6 @@
 package databaseConnection.dao;
 
-import shared.User;
+import shared.transferobjects.User;
 
 import java.sql.SQLException;
 import java.util.List;
