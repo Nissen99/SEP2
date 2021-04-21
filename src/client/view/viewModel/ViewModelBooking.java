@@ -1,9 +1,9 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.Model;
-import shared.Seat;
-import shared.Showing;
+import client.model.ClientModel;
+import shared.transferobjects.Seat;
+import shared.transferobjects.Showing;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ViewModelBooking
 {
 
-  private  Showing showing;
+  private Showing showing;
   private ArrayList<Seat> seatArrayList;
   ClientModel clientModelManager = ModelFactory.getInstance().getModel();
 

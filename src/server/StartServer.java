@@ -25,7 +25,7 @@ public class StartServer
 
     RMIServerImpl server = new RMIServerImpl(new ServerModelManager());
     server.startServer();
-    //setup();
+    setup();
     System.out.println("Server is running");
   }
 
