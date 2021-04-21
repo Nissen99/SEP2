@@ -2,7 +2,7 @@ package databaseConnection.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import shared.Hall;
+import shared.transferobjects.Hall;
 
 import java.sql.SQLException;
 

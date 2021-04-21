@@ -2,7 +2,7 @@ package databaseConnection.dao;
 
 
 import org.junit.jupiter.api.Test;
-import shared.User;
+import shared.transferobjects.User;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.sql.SQLException;

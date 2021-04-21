@@ -1,7 +1,7 @@
 package databaseConnection.dao;
 
 import org.junit.jupiter.api.Test;
-import shared.Movie;
+import shared.transferobjects.Movie;
 
 import static org.junit.jupiter.api.Assertions.*;
 
