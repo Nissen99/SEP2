@@ -45,40 +45,17 @@ public class ShowingListController
 public void confirmChoice() throws IOException, SQLException
 {
 
-  if (JOptionPane
-      .showConfirmDialog(null, "Do you want to confirm your choice?",
-          "Confirmation", JOptionPane.YES_NO_OPTION)
-      == JOptionPane.YES_OPTION)
-  {
+
     Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
     viewModel.setSelectedShowing(showing);
     ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
   }
-  else
-  {
-    // do nothing
-  }
-
-
-
-}
 
 
 public void backButton() throws IOException, SQLException
 {
-
-  if (JOptionPane
-      .showConfirmDialog(null, "Do you want to go back to movie list?",
-          "Back", JOptionPane.YES_NO_OPTION)
-      == JOptionPane.YES_OPTION)
-  {
-    ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
-
-  }
-  else
-  {
-    // do nothing
-  }
+  ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
 
 }
+
 }

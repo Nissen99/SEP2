@@ -1,6 +1,9 @@
 package client.core;
 
+import client.view.adminView.AdminViewController;
+import client.view.adminView.editView.EditMovieController;
 import client.view.bookingView.BookingViewController;
+import client.view.loginView.LoginViewController;
 import client.view.movieList.MovieListController;
 import client.view.seatView.SeatViewController;
 import client.view.showingList.ShowingListController;
@@ -40,7 +43,7 @@ public class ViewHandler
 
   public void start(Stage stage) throws Exception{
     setStage(stage);
-    openView("../view/movieList/movieListView.fxml");
+    openView("../view/loginView/loginView.fxml");
   }
 
   public void openView(String viewToOpen) throws IOException, SQLException
@@ -76,6 +79,32 @@ public class ViewHandler
       controller.init();
 
       stage.setTitle("SeatView");
+
+    } else if ("../view/loginView/loginView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+      LoginViewController controller = loader.getController();
+      controller.init();
+
+      stage.setTitle("login");
+
+    } else if ("../view/adminView/adminView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+      AdminViewController controller = loader.getController();
+      controller.init();
+
+      stage.setTitle("login");
+
+    }
+    else if ("../view/adminView/editView/editMovieView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      System.out.println("WE GET HERE");
+      root = loader.load();
+      EditMovieController controller = loader.getController();
+      controller.init();
+
+      stage.setTitle("EditMovie");
     }
 
     scene = new Scene(root);

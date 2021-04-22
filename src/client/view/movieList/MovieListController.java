@@ -44,4 +44,9 @@ public class MovieListController
 
   }
 
+
+  public void back() throws IOException, SQLException
+  {
+    ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
+  }
 }
