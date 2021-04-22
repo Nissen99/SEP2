@@ -16,4 +16,5 @@ public interface ServerModel
   // ArrayList<Booking> getBookingList();
   ArrayList<Seat> getOccupiedSeats(Showing showing) throws SQLException;
 
+  Hall getHallByNumber(String hallNo) throws SQLException;
 }

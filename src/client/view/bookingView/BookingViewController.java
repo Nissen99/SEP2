@@ -5,7 +5,9 @@ import client.core.ViewModelFactory;
 import client.view.viewModel.ViewModelBooking;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import shared.transferobjects.Showing;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -19,15 +21,40 @@ public class BookingViewController
 
   public void makeBooking() throws IOException, SQLException
   {
-    viewModel.makeBooking(usernameField.getText());
-    System.out.println("You made a booking");
-    ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+    if (JOptionPane
+        .showConfirmDialog(null, "Do you confirm your booking",
+            "Confirmation", JOptionPane.YES_NO_OPTION)
+        == JOptionPane.YES_OPTION)
+    {
+      viewModel.makeBooking(usernameField.getText());
+      JOptionPane.showMessageDialog(null, "You have successfully made a booking");
+      ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+
+    }
+    else
+    {
+      // do nothing
+    }
+
+
 
   }
 
   public void backButtonHit() throws IOException, SQLException
   {
 
-    ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
+    if (JOptionPane
+        .showConfirmDialog(null, "Do you want to go back to seat view",
+            "Confirmation", JOptionPane.YES_NO_OPTION)
+        == JOptionPane.YES_OPTION)
+    {
+      ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
+
+    }
+    else
+    {
+      // do nothing
+    }
+
   }
 }

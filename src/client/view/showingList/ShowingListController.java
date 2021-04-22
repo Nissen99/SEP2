@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.transferobjects.Showing;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -44,12 +45,11 @@ public class ShowingListController
 public void confirmChoice() throws IOException, SQLException
 {
 
-  Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
 
-  viewModel.setSelectedShowing(showing);
-
-  ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
-}
+    Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
+    viewModel.setSelectedShowing(showing);
+    ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
+  }
 
 
 public void backButton() throws IOException, SQLException
@@ -57,4 +57,5 @@ public void backButton() throws IOException, SQLException
   ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
 
 }
+
 }

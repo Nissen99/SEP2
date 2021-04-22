@@ -1,9 +1,6 @@
 package client.core;
 
-import client.view.viewModel.ViewModelBooking;
-import client.view.viewModel.ViewModelMovieList;
-import client.view.viewModel.ViewModelSeat;
-import client.view.viewModel.ViewModelShowingList;
+import client.view.viewModel.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -16,6 +13,8 @@ public class ViewModelFactory
   private ViewModelShowingList showingList;
   private ViewModelBooking booking;
   private ViewModelSeat seatVM;
+  private ViewModelEditMovie editMovie;
+  private ViewModelAddShowing addShowing;
 
   private ViewModelFactory()
   {
@@ -66,6 +65,21 @@ public class ViewModelFactory
 
     return seatVM;
 
+  }
+
+  public ViewModelEditMovie getEditMovie(){
+    if (editMovie == null){
+      editMovie = new ViewModelEditMovie(ModelFactory.getInstance().getModel());
+    }
+    return editMovie;
+  }
+
+  public ViewModelAddShowing getAddShowing(){
+    if (addShowing == null){
+      addShowing = new ViewModelAddShowing( ViewModelFactory.getInstance()
+          .getEditMovie().getSelectedMovie());
+    }
+    return addShowing;
   }
 
 }

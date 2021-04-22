@@ -19,5 +19,5 @@ public interface RMIServer extends Remote
       throws RemoteException, SQLException;
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws RemoteException, SQLException;
-
+  Hall getHallByNumber(String hallNo) throws RemoteException, SQLException;
 }

@@ -13,5 +13,6 @@
         </columns>
       </TableView>
       <Button fx:id="confirmMovieChoice" layoutX="509.0" layoutY="365.0" mnemonicParsing="false" onAction="#confirmButtonPressed" text="Vælg film" />
+      <Button layoutX="6.0" layoutY="365.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>

@@ -72,4 +72,11 @@ public class ClientModelManager implements ClientModel
   {
     return client.getOccupiedSeats(showing);
   }
+
+  @Override public Hall getHallByNumber(String hallNo)
+      throws SQLException, RemoteException
+  {
+    return client.getHallByNumber(hallNo);
+  }
+
 }

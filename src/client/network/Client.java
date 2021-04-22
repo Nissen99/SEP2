@@ -19,4 +19,5 @@ public interface Client
       throws RemoteException, SQLException;
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws RemoteException, SQLException;
+  Hall getHallByNumber(String hallNo) throws SQLException, RemoteException;
 }
