@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface ClientModel
 {
-  Booking addBooking(Showing showing, String username, String seatNo)
+  Booking addBooking(Showing showing, String username, ArrayList<Seat> seats)
       throws RemoteException, SQLException;
   Movie addMovie(Movie movie) throws SQLException, RemoteException;
   Showing addShowing(Showing showing) throws SQLException, RemoteException;

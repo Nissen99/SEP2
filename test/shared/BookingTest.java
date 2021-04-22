@@ -32,7 +32,7 @@ class BookingTest
 
     showing = new Showing(1, movie, rightNow, hall);
     user = new User(1, "Henning");
-    booking = new Booking(1, showing, user, "A101");
+    booking = new Booking(1, showing, user);
   }
 
   @Test

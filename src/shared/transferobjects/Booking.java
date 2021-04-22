@@ -7,15 +7,13 @@ public class Booking implements Serializable
   private int bookingId;
   private Showing showing;
   private User user;
-  private Seat seat;
 
-  public Booking( int bookingId, Showing showing, User user, String seatNo)
+
+  public Booking( int bookingId, Showing showing, User user)
   {
     this.showing = showing;
     this.user = user;
     this.bookingId = bookingId;
-    this.seat = new Seat();
-    seat.setSeatNo(seatNo);
   }
 
   public int getBookingId()
@@ -29,6 +27,6 @@ public class Booking implements Serializable
   }
 
   public String toString(){
-    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName() + " " + seat.getSeatNo();
+    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName();
   }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public interface RMIServer extends Remote
 {
-  Booking addBooking(Showing showing, String username, String seatNo)
+  Booking addBooking(Showing showing, String username, ArrayList<Seat> seats)
       throws RemoteException, SQLException;
   Movie addMovie(Movie movie) throws RemoteException, SQLException;
   Showing addShowing(Showing showing) throws RemoteException, SQLException;

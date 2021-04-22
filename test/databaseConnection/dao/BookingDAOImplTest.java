@@ -37,7 +37,7 @@ class BookingDAOImplTest
     setUpGood("T");
 
     showingDAO.create(showing);
-    bookingDAO.create(showing, user, hall.getHallNo() + "101");
+    bookingDAO.create(showing, user);
   }
 
   @Test
@@ -59,9 +59,9 @@ class BookingDAOImplTest
     seatArrayList.add(seat3);
 
 
-    bookingDAO.create(showing,user, seat.getSeatNo());
-    bookingDAO.create(showing,user, seat2.getSeatNo());
-    bookingDAO.create(showing,user, seat3.getSeatNo());
+    bookingDAO.create(showing,user);
+    bookingDAO.create(showing,user);
+    bookingDAO.create(showing,user);
 
     assertEquals(seatArrayList.get(0).getSeatNo(), bookingDAO.getOccupiedSeats(showing).get(0).getSeatNo());
     assertEquals(seatArrayList.get(1).getSeatNo(), bookingDAO.getOccupiedSeats(showing).get(1).getSeatNo());

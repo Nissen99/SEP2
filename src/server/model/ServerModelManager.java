@@ -17,6 +17,7 @@ public class ServerModelManager implements ServerModel
   private MovieDAO movieDAO;
   private ShowingDAO showingDAO;
   private HallDAO hallDAO;
+  private BookingSpecDAO bookingSpecDAO;
 
   public ServerModelManager()
   {
@@ -25,17 +26,23 @@ public class ServerModelManager implements ServerModel
     this.movieDAO = new MovieDAOImpl();
     this.showingDAO = new ShowingDAOImpl();
     this.hallDAO = new HallDAOImpl();
+    this.bookingSpecDAO = new BookingSpecDAOImpl();
   }
 
   @Override public Booking addBooking(Showing showing, String username,
-      String seatNo)
+      ArrayList<Seat> seats)
   {
 
     User user = null;
     try
     {
       user = userDAO.create(username);
-      return bookingDAO.create(showing, user, seatNo);
+      Booking booking = bookingDAO.create(showing, user);
+      for (Seat seat : seats
+           )
+      {
+        bookingSpecDAO.create(booking, seat);
+      }
     }
     catch (SQLException e)
     {

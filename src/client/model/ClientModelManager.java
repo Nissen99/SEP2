@@ -29,9 +29,9 @@ public class ClientModelManager implements ClientModel
   }
 
   @Override public Booking addBooking(Showing showing, String username,
-      String seatNo) throws RemoteException, SQLException
+      ArrayList<Seat> seats) throws RemoteException, SQLException
   {
-    return client.addBooking(showing, username, seatNo);
+    return client.addBooking(showing, username, seats);
   }
 
   @Override public Movie addMovie(Movie movie)

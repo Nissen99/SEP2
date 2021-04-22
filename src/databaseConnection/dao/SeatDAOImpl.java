@@ -15,10 +15,9 @@ public class SeatDAOImpl extends BaseDAO implements SeatDAO
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO Seat(seatNo, isOccupied, hallNo) VALUES (?, ?, ?)");
+          "INSERT INTO Seat(seatNo, hallNo) VALUES (?, ?)");
       statement.setString(1, seat.getSeatNo());
-      statement.setBoolean(2, seat.IsOccupied());
-      statement.setString(3, hall.getHallNo());
+      statement.setString(2, hall.getHallNo());
       statement.executeUpdate();
     }
     catch (SQLException throwables)
@@ -26,20 +25,6 @@ public class SeatDAOImpl extends BaseDAO implements SeatDAO
       throwables.printStackTrace();
     }
 
-  }
-
-  @Override public void setSeatOccupiedStatus(Seat seat, boolean b)
-  {
-    try (Connection connection = getConnection())
-    {
-      PreparedStatement statement = connection.prepareStatement("UPDATE seat set isOccupied = ?");
-      statement.setBoolean(1, b);
-      statement.executeUpdate();
-    }
-    catch (SQLException throwables)
-    {
-      throwables.printStackTrace();
-    }
   }
 
   @Override public Seat getSeatBySeatNo(String seatNo)

@@ -23,11 +23,12 @@ public class ViewModelBooking
 
   public void makeBooking(String username) throws SQLException, RemoteException
   {
-    for (Seat seat : seatArrayList)
-    {
-      clientModelManager.addBooking(showing, username, seat.getSeatNo());
-      System.out.println(" seat is " + seat.getSeatNo());
-    }
+//    for (Seat seat : seatArrayList)
+//    {
+//      clientModelManager.addBooking(showing, username, seat.getSeatNo());
+//      System.out.println(" seat is " + seat.getSeatNo());
+//    }
+    clientModelManager.addBooking(showing, username, seatArrayList);
 
   }
 

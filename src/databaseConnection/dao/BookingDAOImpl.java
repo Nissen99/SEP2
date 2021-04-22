@@ -15,21 +15,20 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
 {
 
   @Override
-  public Booking create(Showing showing, User user, String seatNo) throws
+  public Booking create(Showing showing, User user) throws
       SQLException
   {
     try(Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO Booking (showingId, userId, seatNo) VALUES (?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO Booking (showingId, userId) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 
       statement.setInt(1, showing.getId());
 
       statement.setInt(2, user.getUserID());
-      statement.setString(3, seatNo);
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next()) {
-        return new Booking(keys.getInt("bookingId"), showing, user, seatNo);
+        return new Booking(keys.getInt("bookingId"), showing, user);
       } else {
         throw new SQLException();
       }
@@ -41,7 +40,9 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     ArrayList<Seat> seatArrayList = new ArrayList<>();
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("SELECT seatNo FROM booking WHERE showingId = ?");
+      PreparedStatement statement = connection.prepareStatement("SELECT seatNo FROM BookingSpec\n"
+          + "JOIN Booking B ON B.bookingId = BookingSpec.bookingId\n"
+          + "WHERE showingId = ?;");
       statement.setInt(1, showing.getId());
       ResultSet resultSet = statement.executeQuery();
 

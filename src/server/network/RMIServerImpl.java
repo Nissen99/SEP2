@@ -29,9 +29,9 @@ public class RMIServerImpl implements RMIServer
   }
 
   @Override public Booking addBooking(Showing showing, String username,
-      String seatNo) throws SQLException
+      ArrayList<Seat> seats) throws SQLException
   {
-    model.addBooking(showing, username, seatNo);
+    model.addBooking(showing, username, seats);
     return null;
   }
 
