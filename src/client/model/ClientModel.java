@@ -19,5 +19,6 @@ public interface ClientModel
   // ArrayList<Booking> getBookingList();
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException, RemoteException;
+  Hall getHallByNumber(String hallNo) throws SQLException, RemoteException;
 
 }

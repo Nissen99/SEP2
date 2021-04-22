@@ -112,4 +112,9 @@ public class ServerModelManager implements ServerModel
 
     return bookingDAO.getOccupiedSeats(showing);
   }
+
+  @Override public Hall getHallByNumber(String hallNo) throws SQLException
+  {
+    return hallDAO.getHallByNumber(hallNo);
+  }
 }

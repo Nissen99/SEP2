@@ -14,6 +14,7 @@ public class ViewModelFactory
   private ViewModelBooking booking;
   private ViewModelSeat seatVM;
   private ViewModelEditMovie editMovie;
+  private ViewModelAddShowing addShowing;
 
   private ViewModelFactory()
   {
@@ -73,5 +74,12 @@ public class ViewModelFactory
     return editMovie;
   }
 
+  public ViewModelAddShowing getAddShowing(){
+    if (addShowing == null){
+      addShowing = new ViewModelAddShowing( ViewModelFactory.getInstance()
+          .getEditMovie().getSelectedMovie());
+    }
+    return addShowing;
+  }
 
 }

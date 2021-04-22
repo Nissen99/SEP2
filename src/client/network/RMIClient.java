@@ -75,6 +75,12 @@ public class RMIClient implements Client, ClientCallBack
     return rmiServer.getOccupiedSeats(showing);
   }
 
+  @Override public Hall getHallByNumber(String hallNo)
+      throws SQLException, RemoteException
+  {
+    return rmiServer.getHallByNumber(hallNo);
+  }
+
   @Override public void update() throws RemoteException
   {
 

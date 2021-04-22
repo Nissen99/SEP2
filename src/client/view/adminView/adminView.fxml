@@ -7,5 +7,6 @@
    <children>
       <Button layoutX="250.0" layoutY="108.0" mnemonicParsing="false" onAction="#editMovie" text="Edit Movie" />
       <Button layoutX="61.0" layoutY="305.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="231.0" layoutY="163.0" mnemonicParsing="false" text="Ban motherfucker" />
    </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ package client.core;
 
 import client.view.adminView.AdminViewController;
 import client.view.adminView.editView.EditMovieController;
+import client.view.adminView.editView.EditShowingController;
 import client.view.bookingView.BookingViewController;
 import client.view.loginView.LoginViewController;
 import client.view.movieList.MovieListController;
@@ -99,12 +100,19 @@ public class ViewHandler
     }
     else if ("../view/adminView/editView/editMovieView.fxml".equals(viewToOpen)){
       loader.setLocation(getClass().getResource(viewToOpen));
-      System.out.println("WE GET HERE");
       root = loader.load();
       EditMovieController controller = loader.getController();
       controller.init();
 
       stage.setTitle("EditMovie");
+    }
+    else if ("../view/adminView/editView/editShowingView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+      EditShowingController controller = loader.getController();
+      controller.init();
+
+      stage.setTitle("Edit Showing");
     }
 
     scene = new Scene(root);

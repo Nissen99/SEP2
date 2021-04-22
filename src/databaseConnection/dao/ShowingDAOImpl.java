@@ -33,7 +33,6 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
     ArrayList<Showing> showingArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
     {
-      //TODO
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM Showing right Join Hall ON Showing.hallNo = Hall.hallNo  WHERE movieId = ?");
       statement.setInt(1, movie.getMovieId());
       ResultSet showings = statement.executeQuery();

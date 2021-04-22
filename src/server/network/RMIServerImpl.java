@@ -66,4 +66,9 @@ public class RMIServerImpl implements RMIServer
   {
     return model.getOccupiedSeats(showing);
   }
+
+  @Override public Hall getHallByNumber(String hallNo) throws SQLException
+  {
+    return model.getHallByNumber(hallNo);
+  }
 }
