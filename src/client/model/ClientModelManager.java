@@ -5,6 +5,9 @@ import client.network.RMIClient;
 import databaseConnection.dao.*;
 import shared.transferobjects.*;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,20 +15,18 @@ import java.util.ArrayList;
 public class ClientModelManager implements ClientModel
 {
   private RMIClient client;
-  private BookingDAO bookingDAO;
-  private UserDAO userDAO;
-  private MovieDAO movieDAO;
-  private ShowingDAO showingDAO;
-  private HallDAO hallDAO;
+  private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
 
   public ClientModelManager(RMIClient client)
   {
     this.client = client;
-    this.bookingDAO = new BookingDAOImpl();
-    this.userDAO = new UserDAOImpl();
-    this.movieDAO = new MovieDAOImpl();
-    this.showingDAO = new ShowingDAOImpl();
-    this.hallDAO = new HallDAOImpl();
+    client.addPropertyChangeListener(this::update);
+  }
+
+  private void update(PropertyChangeEvent propertyChangeEvent)
+  {
+    propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
   @Override public Booking addBooking(Showing showing, String username,
@@ -79,4 +80,28 @@ public class ClientModelManager implements ClientModel
     return client.getHallByNumber(hallNo);
   }
 
+  @Override public void addPropertyChangeListener(
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.addPropertyChangeListener(listener);
+  }
+
+  @Override public void addPropertyChangeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.addPropertyChangeListener(eventName, listener);
+  }
+
+  @Override public void removePropertyChangeListener(
+      PropertyChangeListener listener)
+  {
+  propertyChangeSupport.removePropertyChangeListener(listener);
+  }
+
+  @Override public void removePropertyChangeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.removePropertyChangeListener(eventName, listener);
+
+  }
 }

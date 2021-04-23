@@ -19,6 +19,7 @@ public class ViewModelBooking
   public ViewModelBooking(Showing showing, ArrayList<Seat> seatArray){
     this.showing = showing;
     this.seatArrayList = seatArray;
+
   }
 
   public void makeBooking(String username) throws SQLException, RemoteException

@@ -5,7 +5,7 @@ import shared.transferobjects.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface ServerModel
+public interface ServerModel extends PropertyChangeSubject
 {
   Booking addBooking(Showing showing, String username, ArrayList<Seat> seats) throws SQLException;
   Movie addMovie(Movie movie) throws SQLException;

@@ -1,8 +1,11 @@
 package server.model;
 
 import databaseConnection.dao.*;
+import shared.ENUM;
 import shared.transferobjects.*;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +21,7 @@ public class ServerModelManager implements ServerModel
   private ShowingDAO showingDAO;
   private HallDAO hallDAO;
   private BookingSpecDAO bookingSpecDAO;
+  private PropertyChangeSupport propertyChangeSupport;
 
   public ServerModelManager()
   {
@@ -27,6 +31,7 @@ public class ServerModelManager implements ServerModel
     this.showingDAO = new ShowingDAOImpl();
     this.hallDAO = new HallDAOImpl();
     this.bookingSpecDAO = new BookingSpecDAOImpl();
+    propertyChangeSupport = new PropertyChangeSupport(this);
   }
 
   @Override public Booking addBooking(Showing showing, String username,
@@ -50,6 +55,7 @@ public class ServerModelManager implements ServerModel
       System.out.println("Catch In addBooking");
       userDAO.deleteUser(user);
     }
+    propertyChangeSupport.firePropertyChange(String.valueOf(ENUM.ADDBOOKING), null, "booking");
 
     return null;
   }
@@ -123,5 +129,31 @@ public class ServerModelManager implements ServerModel
   @Override public Hall getHallByNumber(String hallNo) throws SQLException
   {
     return hallDAO.getHallByNumber(hallNo);
+  }
+
+  @Override public void addPropertyChangeListener(
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.addPropertyChangeListener(listener);
+  }
+
+  @Override public void addPropertyChangeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.addPropertyChangeListener(eventName, listener);
+
+  }
+
+  @Override public void removePropertyChangeListener(
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.removePropertyChangeListener(listener);
+  }
+
+  @Override public void removePropertyChangeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.removePropertyChangeListener(eventName, listener);
+
   }
 }

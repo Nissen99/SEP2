@@ -1,6 +1,7 @@
 package client.core;
 
 import client.view.adminView.AdminViewController;
+import client.view.adminView.editView.AddShowingController;
 import client.view.adminView.editView.EditMovieController;
 import client.view.adminView.editView.EditShowingController;
 import client.view.bookingView.BookingViewController;
@@ -113,6 +114,14 @@ public class ViewHandler
       controller.init();
 
       stage.setTitle("Edit Showing");
+    }
+    else if ("../view/adminView/editView/addShowingView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+      AddShowingController controller = loader.getController();
+      controller.init();
+
+      stage.setTitle("Add Showing");
     }
 
     scene = new Scene(root);

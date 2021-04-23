@@ -27,11 +27,14 @@ public class EditMovieController
   {
    viewModel = ViewModelFactory.getInstance().getEditMovie();
 
+    setUpTableView();
+  }
 
+  private void setUpTableView() throws SQLException, RemoteException
+  {
     movieTableView.setItems(viewModel.getAllMovies());
     movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
-
-}
+  }
 
   public void editShowingButton() throws IOException, SQLException
   {
@@ -54,6 +57,7 @@ public class EditMovieController
       Movie movie = new Movie(movieTitleTextField.getText());
       viewModel.addMovie(movie);
       movieTitleTextField.clear();
+      setUpTableView();
     }
   }
 

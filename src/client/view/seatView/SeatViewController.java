@@ -169,7 +169,7 @@ public class SeatViewController
 
       viewModel.setSelectedSeat(seats);
       ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
-
+      viewModel.removeListen();
   }
 
   @FXML void onBackButton(ActionEvent event) throws IOException, SQLException

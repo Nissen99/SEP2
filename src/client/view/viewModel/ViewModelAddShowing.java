@@ -26,7 +26,7 @@ public class ViewModelAddShowing
     this.selectedMovie = movie;
   }
 
-  public void addShowing() throws SQLException, RemoteException
+  public void addShowing(Timestamp timestamp) throws SQLException, RemoteException
   {
     Showing showing = new Showing(selectedMovie, timestamp, getHallByNumber());
     clientModel.addShowing(showing);
@@ -35,7 +35,7 @@ public class ViewModelAddShowing
   public Hall getHallByNumber() throws SQLException, RemoteException
   {
 
-    return clientModel.getHallByNumber(hallNo.getValue());
+    return clientModel.getHallByNumber(this.hallNo.getValue());
   }
 
 
@@ -48,5 +48,6 @@ public class ViewModelAddShowing
   {
     return hallNo;
   }
+
 
 }

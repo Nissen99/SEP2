@@ -43,8 +43,8 @@ public class StartServer
       Seat seat = new Seat();
       seatDAO.create(hall.addSeat(seat), hall);
     }
-    Date date = new Date();
-    Timestamp time = new Timestamp(date.getTime());
+
+    Timestamp time = new Timestamp(System.currentTimeMillis());
     Showing showing = new Showing(1, movie, time, hall);
     ShowingDAO showingDAO = new ShowingDAOImpl();
     showingDAO.create(showing);

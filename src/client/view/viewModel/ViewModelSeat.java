@@ -4,11 +4,13 @@ import client.model.ClientModel;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ViewModelSeat
+public class ViewModelSeat implements PropertyChangeListener
 {
   private Showing selectedShowing;
   private ClientModel clientModelManger;
@@ -23,14 +25,17 @@ public class ViewModelSeat
     this.selectedShowing = selectedShowing;
     this.clientModelManger = clientModelManger;
     seatArrayList = clientModelManger.getOccupiedSeats(selectedShowing);
+    clientModelManger.addPropertyChangeListener(this::update);
     for (Seat occupiedSeat : seatArrayList )
     {
      String id = occupiedSeat.getSeatNo();
-
-
     }
   }
 
+  private void update(PropertyChangeEvent propertyChangeEvent)
+  {
+
+  }
 
   public ArrayList<Seat> getSelectedSeat()
   {
@@ -47,4 +52,12 @@ public class ViewModelSeat
     return clientModelManger.getOccupiedSeats(selectedShowing);
   }
 
+  public void removeListen(){
+    clientModelManger.removePropertyChangeListener(this);
+  }
+
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+
+  }
 }

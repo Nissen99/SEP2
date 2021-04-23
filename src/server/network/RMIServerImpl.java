@@ -1,9 +1,15 @@
 package server.network;
 
+import server.model.PropertyChangeSubject;
 import server.model.ServerModelManager;
+import shared.ENUM;
+import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -12,9 +18,10 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RMIServerImpl implements RMIServer
+public class RMIServerImpl implements RMIServer, PropertyChangeListener
 {
   private ServerModelManager model;
+  private ArrayList<ClientCallBack> clientCallBackArrayList = new ArrayList<>();
 
   public RMIServerImpl(ServerModelManager model) throws RemoteException
   {
@@ -25,14 +32,14 @@ public class RMIServerImpl implements RMIServer
   public void startServer() throws RemoteException, AlreadyBoundException
   {
     Registry registry = LocateRegistry.createRegistry(1099);
-    registry.bind("BioServer", this);
+    registry.bind(String.valueOf(ENUM.BIOSERVER), this);
   }
 
   @Override public Booking addBooking(Showing showing, String username,
       ArrayList<Seat> seats) throws SQLException
   {
-    model.addBooking(showing, username, seats);
-    return null;
+    return model.addBooking(showing, username, seats);
+
   }
 
   @Override public Movie addMovie(Movie movie) throws SQLException
@@ -70,5 +77,20 @@ public class RMIServerImpl implements RMIServer
   @Override public Hall getHallByNumber(String hallNo) throws SQLException
   {
     return model.getHallByNumber(hallNo);
+  }
+
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+    for (ClientCallBack clientCallBack : clientCallBackArrayList)
+    {
+      try
+      {
+        clientCallBack.update(evt);
+      }
+      catch (RemoteException e)
+      {
+        e.printStackTrace();
+      }
+    }
   }
 }
