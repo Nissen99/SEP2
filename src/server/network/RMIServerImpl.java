@@ -27,6 +27,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   {
     UnicastRemoteObject.exportObject(this, 0);
     this.model = model;
+    model.addPropertyChangeListener(this::propertyChange);
   }
 
   public void startServer() throws RemoteException, AlreadyBoundException
@@ -68,6 +69,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
     return model.getShowingList(movie);
   }
 
+
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException
   {
@@ -79,13 +81,21 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
     return model.getHallByNumber(hallNo);
   }
 
+  @Override public void registerCallback(ClientCallBack client)
+  {
+    clientCallBackArrayList.add(client);
+    System.out.println("Added Client to call back list");
+  }
+
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     for (ClientCallBack clientCallBack : clientCallBackArrayList)
     {
       try
       {
+        System.out.println("Call back client fires before");
         clientCallBack.update(evt);
+        System.out.println("Call back client fires after");
       }
       catch (RemoteException e)
       {

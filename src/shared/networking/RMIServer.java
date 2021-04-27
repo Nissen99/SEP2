@@ -20,4 +20,5 @@ public interface RMIServer extends Remote
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws RemoteException, SQLException;
   Hall getHallByNumber(String hallNo) throws RemoteException, SQLException;
+  void registerCallback(ClientCallBack client)  throws RemoteException;
 }

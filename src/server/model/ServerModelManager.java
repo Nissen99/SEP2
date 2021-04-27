@@ -43,8 +43,7 @@ public class ServerModelManager implements ServerModel
     {
       user = userDAO.create(username);
       Booking booking = bookingDAO.create(showing, user);
-      for (Seat seat : seats
-           )
+      for (Seat seat : seats)
       {
         bookingSpecDAO.create(booking, seat);
       }
@@ -56,6 +55,7 @@ public class ServerModelManager implements ServerModel
       userDAO.deleteUser(user);
     }
     propertyChangeSupport.firePropertyChange(String.valueOf(ENUM.ADDBOOKING), null, "booking");
+    System.out.println("FIRE 1");
 
     return null;
   }

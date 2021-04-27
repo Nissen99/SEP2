@@ -24,18 +24,18 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   @Override
   public void startClient() {
-    System.out.println("Hallo");
+    System.out.println("Client started");
     try
     {
       UnicastRemoteObject.exportObject(this, 0);
       Registry registry = LocateRegistry.getRegistry("localhost", 1099);
       rmiServer = (RMIServer) registry.lookup(String.valueOf(ENUM.BIOSERVER));
+      rmiServer.registerCallback(this);
     }
     catch (RemoteException | NotBoundException e)
     {
       e.printStackTrace();
     }
-
   }
 
   @Override public Booking addBooking(Showing showing, String username,
@@ -87,6 +87,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   @Override public void update(PropertyChangeEvent evt) throws RemoteException
   {
+    System.out.println("FIRE 2");
     propertyChangeSupport.firePropertyChange(evt);
   }
 

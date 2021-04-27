@@ -18,12 +18,14 @@ import javafx.scene.layout.VBox;
 import shared.transferobjects.Seat;
 
 import javax.swing.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SeatViewController
+public class SeatViewController implements PropertyChangeListener
 {
 
   @FXML public ChoiceBox antalSeats;
@@ -44,6 +46,7 @@ public class SeatViewController
   {
     setChoiceBox();
     seatArrayList = viewModel.getOccupiedSeats();
+
     for (Node node : getAllNodes(anchorPane))
     {
 
@@ -53,8 +56,9 @@ public class SeatViewController
         paneArrayList.add((Pane) node);
       }
     }
-    setOccupiedColor();
 
+    setOccupiedColor();
+    viewModel.addPropertyChangeListener(this::propertyChange);
   }
 
   private void setChoiceBox()
@@ -194,5 +198,21 @@ public class SeatViewController
 
   }
 
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+    try
+    {
+      System.out.println("PROPERTY CHANGED");
+      init();
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+  }
 }
 

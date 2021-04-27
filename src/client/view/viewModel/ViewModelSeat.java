@@ -1,18 +1,22 @@
 package client.view.viewModel;
 
 import client.model.ClientModel;
+import server.model.PropertyChangeSubject;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ViewModelSeat implements PropertyChangeListener
+public class ViewModelSeat implements PropertyChangeListener,
+    PropertyChangeSubject
 {
   private Showing selectedShowing;
+  private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   private ClientModel clientModelManger;
   private Seat selectedSeat ;
   private ArrayList<Seat> seatArrayList;
@@ -34,7 +38,8 @@ public class ViewModelSeat implements PropertyChangeListener
 
   private void update(PropertyChangeEvent propertyChangeEvent)
   {
-
+    System.out.println("FIRE 4");
+    propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
   public ArrayList<Seat> getSelectedSeat()
@@ -58,6 +63,31 @@ public class ViewModelSeat implements PropertyChangeListener
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
-
+    update(evt);
   }
+
+  @Override public void addPropertyChangeListener(
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.addPropertyChangeListener(listener);
+  }
+
+  @Override public void addPropertyChangeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.addPropertyChangeListener(eventName, listener);
+  }
+
+  @Override public void removePropertyChangeListener(
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.removePropertyChangeListener(listener);
+  }
+
+  @Override public void removePropertyChangeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.removePropertyChangeListener(eventName, listener);
+  }
+
 }

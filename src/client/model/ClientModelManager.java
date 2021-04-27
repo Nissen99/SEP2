@@ -26,6 +26,7 @@ public class ClientModelManager implements ClientModel
 
   private void update(PropertyChangeEvent propertyChangeEvent)
   {
+    System.out.println("FIRE 3");
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
