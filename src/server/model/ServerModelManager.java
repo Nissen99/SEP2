@@ -1,6 +1,7 @@
 package server.model;
 
 import databaseConnection.dao.*;
+import javafx.collections.ObservableList;
 import server.mail.FileHandler;
 import server.mail.JavaMailUtil;
 import shared.ENUM;
@@ -140,6 +141,11 @@ public class ServerModelManager implements ServerModel
       String hallNo, Timestamp timestamp) throws SQLException
   {
     return showingDAO.getShowingTimesByHallNoAndDate(hallNo, timestamp);
+  }
+
+  @Override public ArrayList<String> getHallNumbers() throws SQLException
+  {
+    return hallDAO.getHallNumbers();
   }
 
   @Override public void addPropertyChangeListener(

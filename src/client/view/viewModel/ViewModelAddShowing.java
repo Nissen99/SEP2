@@ -4,32 +4,32 @@ import client.core.ModelFactory;
 import client.model.ClientModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ViewModelAddShowing
 {
-  private StringProperty hallNo = new SimpleStringProperty("");
-
   private Movie selectedMovie;
-  private Timestamp timestamp = new Timestamp(new Date().getTime());
   private ClientModel clientModel = ModelFactory.getInstance().getModel();
+  private ObservableList observableList = FXCollections.observableArrayList();
 
 
 
-
-  public void addShowing(Timestamp timestamp) throws SQLException, RemoteException
+  public void addShowing(Timestamp timestamp, String hallNo) throws SQLException, RemoteException
   {
     Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
-    ArrayList<Timestamp> showingTimes = clientModel.getShowingTimesByHallNoAndDate(getHallNo(), timestamp);
+    ArrayList<Timestamp> showingTimes = clientModel.getShowingTimesByHallNoAndDate(hallNo, timestamp);
 
     for (Timestamp showingTime : showingTimes)
     {
@@ -42,7 +42,7 @@ public class ViewModelAddShowing
     }
     if (0 < timestamp.compareTo(currentTime))
     {
-      Showing showing = new Showing(selectedMovie, timestamp, getHallByNumber());
+      Showing showing = new Showing(selectedMovie, timestamp, getHallByNumber(hallNo));
       clientModel.addShowing(showing);
     }
     else {
@@ -50,25 +50,21 @@ public class ViewModelAddShowing
     }
   }
 
-  public Hall getHallByNumber() throws SQLException, RemoteException
+  public Hall getHallByNumber(String hallNo) throws SQLException, RemoteException
   {
 
-    return clientModel.getHallByNumber(this.hallNo.getValue());
-  }
-
-
-  public String getHallNo()
-  {
-    return hallNo.get();
-  }
-
-  public StringProperty hallNoProperty()
-  {
-    return hallNo;
+    return clientModel.getHallByNumber(hallNo);
   }
 
   public void setSelectedMovie(Movie selectedMovie)
   {
     this.selectedMovie = selectedMovie;
+  }
+
+  public ObservableList<String> getChoiceList()
+      throws RemoteException, SQLException
+  {
+    observableList.addAll(clientModel.getHallNumbers());
+    return observableList;
   }
 }

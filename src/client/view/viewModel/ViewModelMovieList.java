@@ -2,6 +2,8 @@ package client.view.viewModel;
 
 import client.core.ModelFactory;
 import client.model.ClientModel;
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.transferobjects.Movie;
@@ -20,9 +22,7 @@ public class ViewModelMovieList
   public ObservableList<Movie> getAllMovies()
       throws SQLException, RemoteException
   {
-
-    movies.removeAll(movies);
-
+   movies.removeAll(movies);
    movies.addAll(clientModelManger.getMovieList());
 
     return movies;
@@ -36,4 +36,6 @@ public class ViewModelMovieList
   {
     return selectedMovie;
   }
+
+
 }

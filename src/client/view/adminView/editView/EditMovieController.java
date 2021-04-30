@@ -28,6 +28,8 @@ public class EditMovieController
   {
    viewModel = ViewModelFactory.getInstance().getEditMovie();
 
+   movieTitleTextField.textProperty().bindBidirectional(viewModel.movieTitleProperty());
+
     setUpTableView();
   }
 
@@ -41,11 +43,9 @@ public class EditMovieController
   {
     try {
       Movie movie = movieTableView.getSelectionModel().getSelectedItem();
-
       viewModel.setSelectedMovie(movie);
 
       ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
-
     } catch (NullPointerException e) {
       JOptionPane.showMessageDialog(null, "No movie selected");
     }
@@ -61,8 +61,7 @@ public class EditMovieController
   {
     try
     {
-      viewModel.addMovie(movieTitleTextField.getText());
-
+      viewModel.addMovie();
     }
     catch (IllegalArgumentException e)
     {

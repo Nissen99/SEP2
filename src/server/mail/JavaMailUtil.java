@@ -48,7 +48,7 @@ public class JavaMailUtil
     message.setSubject("Min første mail");
 
     MimeBodyPart bodyPart = new MimeBodyPart();
-    File file = new File("C:\\Users\\mathi\\IdeaProjects\\SEP2\\src\\server\\mail\\mailOrder.pdf");
+    File file = new File("C:\\Users\\Mikkel\\IdeaProjects\\SEP2Kode\\src\\server\\mail\\mailOrder.pdf");
     System.out.println(file.exists() + " hvad?");
 
     bodyPart.attachFile(file);

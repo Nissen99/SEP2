@@ -1,5 +1,6 @@
 package shared.networking;
 
+import javafx.collections.ObservableList;
 import shared.transferobjects.*;
 
 import java.rmi.Remote;
@@ -23,4 +24,5 @@ public interface RMIServer extends Remote
   Hall getHallByNumber(String hallNo) throws RemoteException, SQLException;
   void registerCallback(ClientCallBack client)  throws RemoteException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp) throws RemoteException, SQLException;
+  ArrayList<String> getHallNumbers() throws RemoteException, SQLException;
 }

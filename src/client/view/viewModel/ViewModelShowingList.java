@@ -2,6 +2,8 @@ package client.view.viewModel;
 
 import client.core.ModelFactory;
 import client.model.ClientModel;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.transferobjects.Movie;
@@ -21,7 +23,13 @@ public class ViewModelShowingList
         .getModel();
     private ObservableList<Showing> showings = FXCollections.observableArrayList();
     private Showing selectedShowing;
+    private StringProperty movieTitle = new SimpleStringProperty();
 
+
+    public StringProperty movieTitleProperty()
+    {
+      return movieTitle;
+    }
 
     public ObservableList<Showing> getAllShowings()
         throws SQLException, RemoteException

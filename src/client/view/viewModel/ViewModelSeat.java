@@ -2,6 +2,8 @@ package client.view.viewModel;
 
 import client.core.ModelFactory;
 import client.model.ClientModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import server.model.PropertyChangeSubject;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
@@ -21,6 +23,8 @@ public class ViewModelSeat implements PropertyChangeListener,
   private ClientModel clientModelManger = ModelFactory.getInstance().getModel();
   private Seat selectedSeat ;
   private ArrayList<Seat> seatArrayList;
+  ObservableList<Integer> integerObservableList = FXCollections.observableArrayList();
+
 
 
   public ViewModelSeat() throws SQLException, RemoteException
@@ -42,7 +46,7 @@ public class ViewModelSeat implements PropertyChangeListener,
     return seatArrayList;
   }
 
-  public void setSelectedSeat(ArrayList<Seat> seatArray)
+  public void setSelectedSeats(ArrayList<Seat> seatArray)
   {
     this.seatArrayList = seatArray;
   }
@@ -52,9 +56,6 @@ public class ViewModelSeat implements PropertyChangeListener,
     return clientModelManger.getOccupiedSeats(selectedShowing);
   }
 
-  public void removeListen(){
-    clientModelManger.removePropertyChangeListener(this);
-  }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
@@ -86,8 +87,20 @@ public class ViewModelSeat implements PropertyChangeListener,
   }
 
   public void setSelectedShowing(Showing selectedShowing)
-      throws SQLException, RemoteException
   {
     this.selectedShowing = selectedShowing;
      }
+
+  public ObservableList<Integer> getChoiceList()
+  {
+    if (integerObservableList.size() < 13){
+      integerObservableList.clear();
+      for (int i = 1; i <= 14; i++)
+      {
+        integerObservableList.add(i);
+      }
+    }
+
+    return integerObservableList;
+  }
 }

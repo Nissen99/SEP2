@@ -1,5 +1,6 @@
 package server.model;
 
+import javafx.collections.ObservableList;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;
@@ -19,4 +20,5 @@ public interface ServerModel extends PropertyChangeSubject
 
   Hall getHallByNumber(String hallNo) throws SQLException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp) throws SQLException;
+  ArrayList<String> getHallNumbers() throws SQLException;
 }

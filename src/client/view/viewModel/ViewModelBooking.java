@@ -2,6 +2,8 @@ package client.view.viewModel;
 
 import client.core.ModelFactory;
 import client.model.ClientModel;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 
@@ -13,31 +15,21 @@ public class ViewModelBooking
 {
 
   private Showing showing;
+  private StringProperty userNameField = new SimpleStringProperty();
+
+
+  private StringProperty emailField = new SimpleStringProperty();
+
   private ArrayList<Seat> seatArrayList;
   ClientModel clientModelManager = ModelFactory.getInstance().getModel();
 
 
-  public void makeBooking(String username,String email) throws SQLException, RemoteException
+  public void makeBooking() throws SQLException, RemoteException
   {
-    System.out.println("Make booking i viewModel ? " + email.toString());
-//    for (Seat seat : seatArrayList)
-//    {
-//      clientModelManager.addBooking(showing, username, seat.getSeatNo());
-//      System.out.println(" seat is " + seat.getSeatNo());
-//    }
-    clientModelManager.addBooking(showing, username,email, seatArrayList);
+    System.out.println("Make booking i viewModel ? " + getEmailField());
 
-  }
+    clientModelManager.addBooking(showing, getUserNameField(), getEmailField(), seatArrayList);
 
-  public Seat getSeat(String seatNo)
-  {
-    for (Seat seat : seatArrayList)
-    {
-      if (seat.getSeatNo().equals(seatNo)){
-        return seat;
-      }
-    }
-  return null;
   }
 
   public void setShowing(Showing selectedShowing)
@@ -50,4 +42,25 @@ public class ViewModelBooking
     this.seatArrayList = selectedSeats;
 
   }
+
+  public String getUserNameField()
+  {
+    return userNameField.get();
+  }
+
+  public StringProperty userNameFieldProperty()
+  {
+    return userNameField;
+  }
+
+  public String getEmailField()
+  {
+    return emailField.get();
+  }
+
+  public StringProperty emailFieldProperty()
+  {
+    return emailField;
+  }
+
 }

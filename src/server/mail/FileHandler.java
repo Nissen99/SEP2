@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class FileHandler
 {
-  private final String path = "C:\\Users\\mathi\\IdeaProjects\\SEP2\\src\\server\\mail\\mailOrder.pdf";
+  private final String path = "C:\\Users\\Mikkel\\IdeaProjects\\SEP2Kode\\src\\server\\mail\\mailOrder.pdf";
   /** HUSK AT ÆNDRE PATH **/
   private File file;
   private Document document;

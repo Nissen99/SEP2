@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class HallDAOImpl extends BaseDAO implements HallDAO
 {
@@ -39,6 +40,20 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
 
       }
       return hall;
+    }
+  }
+
+  @Override public ArrayList<String> getHallNumbers() throws SQLException
+  {
+    ArrayList<String> stringArrayList = new ArrayList<>();
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT hallNo FROM hall;");
+      ResultSet resultSet = statement.executeQuery();
+      while (resultSet.next()){
+        stringArrayList.add(resultSet.getString("hallNo"));
+      }
+      return stringArrayList;
     }
   }
 }

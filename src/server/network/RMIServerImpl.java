@@ -1,5 +1,6 @@
 package server.network;
 
+import javafx.collections.ObservableList;
 import server.model.PropertyChangeSubject;
 import server.model.ServerModelManager;
 import shared.ENUM;
@@ -92,6 +93,11 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
       String hallNo, Timestamp timestamp) throws RemoteException, SQLException
   {
     return model.getShowingTimesByHallNoAndDate(hallNo, timestamp);
+  }
+
+  @Override public ArrayList<String> getHallNumbers() throws SQLException
+  {
+    return model.getHallNumbers();
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

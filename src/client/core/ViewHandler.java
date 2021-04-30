@@ -72,6 +72,7 @@ public class ViewHandler
       loader.setLocation(getClass().getResource(viewToOpen));
       root = loader.load();
       BookingViewController controller = loader.getController();
+      controller.init();
 
       stage.setTitle("Booking");
     } else if ("../view/seatView/seatView.fxml".equals(viewToOpen)){

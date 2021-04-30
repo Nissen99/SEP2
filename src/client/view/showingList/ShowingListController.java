@@ -20,7 +20,7 @@ public class ShowingListController
   @FXML public TableColumn<Timestamp, String> datoerForFremvisning;
   @FXML public TableColumn<Timestamp, String> ugedagForFremvisning;
   @FXML public TableColumn<Timestamp, String> tidspunktForFremvisning;
-  @FXML public Label filmShowingsErFor;
+  @FXML public Label movieTitle;
   @FXML public TableView<Showing> tableViewForFilmFremvisninger;
 
   private ViewModelShowingList viewModel = ViewModelFactory.getInstance()
@@ -29,22 +29,20 @@ public class ShowingListController
 
   public void init() throws SQLException, RemoteException
   {
+    movieTitle.textProperty().bindBidirectional(viewModel.movieTitleProperty());
 
     tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 
-    tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory("time"));
+    tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory<>("time"));
 
-    ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory("weekDay"));
+    ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory<>("weekDay"));
 
-   datoerForFremvisning.setCellValueFactory(new PropertyValueFactory("date"));
+   datoerForFremvisning.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-    filmShowingsErFor.setText(viewModel.getMovieTitle());
   }
 
 public void confirmChoice() throws IOException, SQLException
 {
-
-
     Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
     viewModel.setSelectedShowing(showing);
     ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");

@@ -1,5 +1,6 @@
 package client.model;
 
+import javafx.collections.ObservableList;
 import server.model.PropertyChangeSubject;
 import shared.transferobjects.*;
 
@@ -25,5 +26,5 @@ public interface ClientModel extends PropertyChangeSubject
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
       throws RemoteException, SQLException;
 
-
+  ArrayList<String> getHallNumbers() throws RemoteException, SQLException;
 }

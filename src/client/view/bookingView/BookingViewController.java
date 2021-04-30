@@ -18,45 +18,40 @@ public class BookingViewController
 
   private ViewModelBooking viewModel = ViewModelFactory.getInstance().getBooking();
 
-
+  public void init(){
+    usernameField.textProperty().bindBidirectional(viewModel.userNameFieldProperty());
+    emailField.textProperty().bindBidirectional(viewModel.emailFieldProperty());
+  }
 
   public void makeBooking() throws IOException, SQLException
   {
-    if (JOptionPane
-        .showConfirmDialog(null, "Do you confirm your booking",
-            "Confirmation", JOptionPane.YES_NO_OPTION)
-        == JOptionPane.YES_OPTION)
+    if (confirmBookingBox("Do you confirm your booking"))
     {
-      System.out.println(emailField.getText()+"Vi er i controlleren");
-      viewModel.makeBooking(usernameField.getText(),emailField.getText());
+
+      viewModel.makeBooking();
+
       JOptionPane.showMessageDialog(null, "You have successfully made a booking");
+
       ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
 
     }
-    else
-    {
-      // do nothing
-    }
 
+  }
 
-
+  private boolean confirmBookingBox(String s)
+  {
+    return JOptionPane
+        .showConfirmDialog(null, s, "Confirmation", JOptionPane.YES_NO_OPTION)
+        == JOptionPane.YES_OPTION;
   }
 
   public void backButtonHit() throws IOException, SQLException
   {
 
-    if (JOptionPane
-        .showConfirmDialog(null, "Do you want to go back to seat view",
-            "Confirmation", JOptionPane.YES_NO_OPTION)
-        == JOptionPane.YES_OPTION)
+    if (confirmBookingBox("Do you want to go back to seat view"))
     {
       ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
 
     }
-    else
-    {
-      // do nothing
-    }
-
-  }
+     }
 }

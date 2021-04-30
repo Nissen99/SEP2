@@ -1305,9 +1305,9 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="confirmButtom" layoutX="607.0" layoutY="615.0" mnemonicParsing="false" onAction="#OnConfirmButtom" text="Confirm" />
+      <Button fx:id="confirmButton" layoutX="607.0" layoutY="615.0" mnemonicParsing="false" onAction="#OnConfirmButton" text="Confirm" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="615.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
       <Label layoutX="550.0" layoutY="104.0" text="Vælg antal" />
-      <ChoiceBox fx:id="antalSeats" layoutX="613.0" layoutY="100.0" prefHeight="25.0" prefWidth="48.0" />
+      <ChoiceBox fx:id="numberOfSeats" layoutX="613.0" layoutY="100.0" prefHeight="25.0" prefWidth="48.0" />
    </children>
 </AnchorPane>

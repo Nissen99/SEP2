@@ -1,5 +1,6 @@
 package client.network;
 
+import javafx.collections.ObservableList;
 import shared.transferobjects.*;
 
 import java.rmi.RemoteException;
@@ -23,4 +24,5 @@ public interface Client
   Hall getHallByNumber(String hallNo) throws SQLException, RemoteException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
       throws RemoteException, SQLException;
+  ArrayList<String> getHallNumbers() throws RemoteException, SQLException;
 }

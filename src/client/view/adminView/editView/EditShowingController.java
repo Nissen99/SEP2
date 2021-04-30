@@ -28,11 +28,12 @@ public class EditShowingController
   {
 
     tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
+
     tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory("time"));
     ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory("weekDay"));
     datoerForFremvisning.setCellValueFactory(new PropertyValueFactory("date"));
 
-    filmShowingsErFor.setText(viewModel.getMovieTitle());
+    filmShowingsErFor.textProperty().bind(viewModel.movieTitleProperty());
 
   }
 

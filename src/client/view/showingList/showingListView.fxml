@@ -16,7 +16,7 @@
             <TableColumn fx:id="tidspunktForFremvisning" prefWidth="366.0" text="Tidspunk" />
         </columns>
       </TableView>
-      <Label fx:id="filmShowingsErFor" layoutX="283.0" layoutY="1.0" text="Film">
+      <Label fx:id="movieTitle" layoutX="283.0" layoutY="1.0" text="Film">
          <font>
             <Font size="18.0" />
          </font>

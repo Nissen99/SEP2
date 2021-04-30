@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import shared.transferobjects.Showing;
@@ -26,11 +27,13 @@ public class AddShowingController
 
   @FXML public JFXTimePicker timePicker;
   @FXML public JFXDatePicker datePicker;
-  @FXML public JFXTextField hallNo;
+  @FXML public ChoiceBox<String> hallNo;
   private ViewModelAddShowing viewModel = ViewModelFactory.getInstance().getAddShowing();
 
-  public void init(){
-    hallNo.textProperty().bindBidirectional(viewModel.hallNoProperty());
+  public void init() throws RemoteException, SQLException
+  {
+    setChoiceBox();
+
   }
 
   public void back() throws IOException, SQLException
@@ -47,7 +50,7 @@ public class AddShowingController
       Timestamp timestamp = new Timestamp(date.getYear() - 1900, date.getMonthValue() - 1,
           date.getDayOfMonth(), time.getHour(), time.getMinute(), time.getSecond(),
           0);
-      viewModel.addShowing(timestamp);
+      viewModel.addShowing(timestamp, hallNo.getValue());
       back();
     } catch (NullPointerException e) {
       JOptionPane.showMessageDialog(null, "Invalid input - Time and Date needs to be filled");
@@ -58,5 +61,10 @@ public class AddShowingController
 
   }
 
+  private void setChoiceBox() throws RemoteException, SQLException
+  {
+    hallNo.setItems(viewModel.getChoiceList());
+    hallNo.setValue("A");
+  }
 
 }

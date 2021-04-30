@@ -3,6 +3,7 @@ package client.model;
 import client.network.Client;
 import client.network.RMIClient;
 import databaseConnection.dao.*;
+import javafx.collections.ObservableList;
 import shared.transferobjects.*;
 
 import java.beans.PropertyChangeEvent;
@@ -87,6 +88,12 @@ public class ClientModelManager implements ClientModel
       String hallNo, Timestamp timestamp) throws RemoteException, SQLException
   {
     return client.getShowingTimesByHallNoAndDate(hallNo, timestamp);
+  }
+
+  @Override public ArrayList<String> getHallNumbers()
+      throws RemoteException, SQLException
+  {
+    return client.getHallNumbers();
   }
 
   @Override public void addPropertyChangeListener(

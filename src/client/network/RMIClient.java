@@ -1,5 +1,6 @@
 package client.network;
 
+import javafx.collections.ObservableList;
 import server.model.PropertyChangeSubject;
 import shared.ENUM;
 import shared.networking.ClientCallBack;
@@ -91,6 +92,12 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
       String hallNo, Timestamp timestamp) throws RemoteException, SQLException
   {
     return rmiServer.getShowingTimesByHallNoAndDate(hallNo, timestamp);
+  }
+
+  @Override public ArrayList<String> getHallNumbers()
+      throws RemoteException, SQLException
+  {
+    return rmiServer.getHallNumbers();
   }
 
   @Override public void update(PropertyChangeEvent evt) throws RemoteException

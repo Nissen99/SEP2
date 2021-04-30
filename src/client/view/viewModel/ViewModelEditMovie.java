@@ -19,6 +19,18 @@ public class ViewModelEditMovie
   private ClientModel clientModel = ModelFactory.getInstance().getModel();
   private ObservableList<Movie> movies = FXCollections.observableArrayList();
 
+  public String getMovieTitle()
+  {
+    return movieTitle.get();
+  }
+
+  public StringProperty movieTitleProperty()
+  {
+    return movieTitle;
+  }
+
+  private StringProperty movieTitle = new SimpleStringProperty();
+
 
   private Movie selectedMovie;
 
@@ -27,11 +39,11 @@ public class ViewModelEditMovie
 
   }
 
-  public void addMovie(String movieTitel) throws SQLException, RemoteException
+  public void addMovie() throws SQLException, RemoteException
   {
-    if (!movieTitel.equals("") && (movieTitel.charAt(0) != ' ') )
+    if (!getMovieTitle().equals("") && (getMovieTitle().charAt(0) != ' ') )
     {
-      Movie movie = new Movie(movieTitel);
+      Movie movie = new Movie(getMovieTitle());
       clientModel.addMovie(movie);
     } else {
       throw new IllegalArgumentException("Invalid Title");
