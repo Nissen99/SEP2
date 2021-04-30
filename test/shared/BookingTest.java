@@ -31,7 +31,7 @@ class BookingTest
     }
 
     showing = new Showing(1, movie, rightNow, hall);
-    user = new User(1, "Henning");
+    user = new User(1, "Henning","heninsmail@mail.com");
     booking = new Booking(1, showing, user);
   }
 

@@ -1,5 +1,6 @@
 package databaseConnection.dao;
 
+import databaseConnection.dao.*;
 import org.junit.jupiter.api.Test;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;

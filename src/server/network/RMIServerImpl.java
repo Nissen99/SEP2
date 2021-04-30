@@ -36,10 +36,10 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
     registry.bind(String.valueOf(ENUM.BIOSERVER), this);
   }
 
-  @Override public Booking addBooking(Showing showing, String username,
+  @Override public Booking addBooking(Showing showing, String username, String email,
       ArrayList<Seat> seats) throws SQLException
   {
-    return model.addBooking(showing, username, seats);
+    return model.addBooking(showing, username,email, seats);
 
   }
 

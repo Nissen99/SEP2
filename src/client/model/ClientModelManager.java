@@ -30,10 +30,11 @@ public class ClientModelManager implements ClientModel
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
-  @Override public Booking addBooking(Showing showing, String username,
+  @Override public Booking addBooking(Showing showing, String username,String email,
       ArrayList<Seat> seats) throws RemoteException, SQLException
   {
-    return client.addBooking(showing, username, seats);
+    System.out.println("Booking in clientModel manager");
+    return client.addBooking(showing, username, email, seats);
   }
 
   @Override public Movie addMovie(Movie movie)
