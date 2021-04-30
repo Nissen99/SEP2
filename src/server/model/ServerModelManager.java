@@ -1,9 +1,12 @@
 package server.model;
 
 import databaseConnection.dao.*;
+import server.mail.FileHandler;
+import server.mail.JavaMailUtil;
 import shared.ENUM;
 import shared.transferobjects.*;
 
+import javax.mail.MessagingException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
@@ -38,18 +41,21 @@ public class ServerModelManager implements ServerModel
   @Override public Booking addBooking(Showing showing, String username,String email,
       ArrayList<Seat> seats)
   {
-
+    Booking booking = null;
     User user = null;
     try
     {
       user = userDAO.create(username,email);
-      Booking booking = bookingDAO.create(showing,user);
+      booking = bookingDAO.create(showing,user);
+      FileHandler fileHandler = new FileHandler();
+      fileHandler.createPDF(booking,seats);
+      JavaMailUtil.sendMail(email);
       for (Seat seat : seats)
       {
         bookingSpecDAO.create(booking, seat);
       }
     }
-    catch (SQLException e)
+    catch (SQLException | MessagingException | IOException e)
     {
       e.printStackTrace();
       System.out.println("Catch In addBooking");
@@ -57,6 +63,7 @@ public class ServerModelManager implements ServerModel
     }
     propertyChangeSupport.firePropertyChange(String.valueOf(ENUM.ADDBOOKING), null, "booking");
     System.out.println("FIRE 1");
+
 
     return null;
   }

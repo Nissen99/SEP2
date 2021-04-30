@@ -26,6 +26,8 @@ public class Booking implements Serializable
     return showing;
   }
 
+  public User getUser(){return user;}
+
   public String toString(){
     return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName();
   }
