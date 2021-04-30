@@ -3,6 +3,7 @@ package server.model;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public interface ServerModel extends PropertyChangeSubject
@@ -17,4 +18,5 @@ public interface ServerModel extends PropertyChangeSubject
   ArrayList<Seat> getOccupiedSeats(Showing showing) throws SQLException;
 
   Hall getHallByNumber(String hallNo) throws SQLException;
+  ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp) throws SQLException;
 }

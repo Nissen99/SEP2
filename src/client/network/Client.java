@@ -4,6 +4,7 @@ import shared.transferobjects.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public interface Client
@@ -20,4 +21,6 @@ public interface Client
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws RemoteException, SQLException;
   Hall getHallByNumber(String hallNo) throws SQLException, RemoteException;
+  ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
+      throws RemoteException, SQLException;
 }

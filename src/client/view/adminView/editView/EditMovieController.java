@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -38,11 +39,17 @@ public class EditMovieController
 
   public void editShowingButton() throws IOException, SQLException
   {
-    Movie movie = movieTableView.getSelectionModel().getSelectedItem();
+    try {
+      Movie movie = movieTableView.getSelectionModel().getSelectedItem();
 
-    viewModel.setSelectedMovie(movie);
+      viewModel.setSelectedMovie(movie);
 
-    ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
+      ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
+
+    } catch (NullPointerException e) {
+      JOptionPane.showMessageDialog(null, "No movie selected");
+    }
+
   }
 
   public void back() throws IOException, SQLException
@@ -52,13 +59,17 @@ public class EditMovieController
 
   public void addMovie() throws SQLException, RemoteException
   {
-    if (!movieTitleTextField.getText().equals(""))
+    try
     {
-      Movie movie = new Movie(movieTitleTextField.getText());
-      viewModel.addMovie(movie);
-      movieTitleTextField.clear();
-      setUpTableView();
+      viewModel.addMovie(movieTitleTextField.getText());
+
     }
+    catch (IllegalArgumentException e)
+    {
+      JOptionPane.showMessageDialog(null, "Invalid title");
+    }
+    movieTitleTextField.clear();
+    setUpTableView();
   }
 
   public void removeMovie(){

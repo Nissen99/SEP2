@@ -16,6 +16,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class RMIServerImpl implements RMIServer, PropertyChangeListener
@@ -85,6 +86,12 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   {
     clientCallBackArrayList.add(client);
     System.out.println("Added Client to call back list");
+  }
+
+  @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(
+      String hallNo, Timestamp timestamp) throws RemoteException, SQLException
+  {
+    return model.getShowingTimesByHallNoAndDate(hallNo, timestamp);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

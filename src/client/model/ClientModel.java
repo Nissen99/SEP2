@@ -5,6 +5,7 @@ import shared.transferobjects.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public interface ClientModel extends PropertyChangeSubject
@@ -21,6 +22,8 @@ public interface ClientModel extends PropertyChangeSubject
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException, RemoteException;
   Hall getHallByNumber(String hallNo) throws SQLException, RemoteException;
+  ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
+      throws RemoteException, SQLException;
 
 
 }

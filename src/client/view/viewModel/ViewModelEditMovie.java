@@ -27,9 +27,15 @@ public class ViewModelEditMovie
 
   }
 
-  public void addMovie(Movie movie) throws SQLException, RemoteException
+  public void addMovie(String movieTitel) throws SQLException, RemoteException
   {
-    clientModel.addMovie(movie);
+    if (!movieTitel.equals("") && (movieTitel.charAt(0) != ' ') )
+    {
+      Movie movie = new Movie(movieTitel);
+      clientModel.addMovie(movie);
+    } else {
+      throw new IllegalArgumentException("Invalid Title");
+    }
   }
 
   public ObservableList<Movie> getAllMovies()

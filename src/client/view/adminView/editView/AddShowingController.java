@@ -11,6 +11,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import shared.transferobjects.Showing;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -39,18 +40,21 @@ public class AddShowingController
 
   public void confirm() throws SQLException, IOException
   {
-    LocalDate date = datePicker.getValue();
-    LocalTime time = timePicker.getValue();
-    Timestamp timestamp = new Timestamp(
-        date.getYear()-1900,
-        date.getMonthValue(),
-        date.getDayOfMonth(),
-        time.getHour(),
-        time.getMinute(),
-        time.getSecond(),
-        0);
-    viewModel.addShowing(timestamp);
-    back();
+    try
+    {
+      LocalDate date = datePicker.getValue();
+      LocalTime time = timePicker.getValue();
+      Timestamp timestamp = new Timestamp(date.getYear() - 1900, date.getMonthValue() - 1,
+          date.getDayOfMonth(), time.getHour(), time.getMinute(), time.getSecond(),
+          0);
+      viewModel.addShowing(timestamp);
+      back();
+    } catch (NullPointerException e) {
+      JOptionPane.showMessageDialog(null, "Invalid input - Time and Date needs to be filled");
+    }
+    catch (IllegalArgumentException e) {
+      JOptionPane.showMessageDialog(null, e.getMessage());
+    }
 
   }
 

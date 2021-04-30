@@ -10,6 +10,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class ClientModelManager implements ClientModel
@@ -79,6 +80,12 @@ public class ClientModelManager implements ClientModel
       throws SQLException, RemoteException
   {
     return client.getHallByNumber(hallNo);
+  }
+
+  @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(
+      String hallNo, Timestamp timestamp) throws RemoteException, SQLException
+  {
+    return client.getShowingTimesByHallNoAndDate(hallNo, timestamp);
   }
 
   @Override public void addPropertyChangeListener(

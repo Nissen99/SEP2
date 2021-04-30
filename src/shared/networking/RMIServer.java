@@ -5,6 +5,7 @@ import shared.transferobjects.*;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public interface RMIServer extends Remote
@@ -21,4 +22,5 @@ public interface RMIServer extends Remote
       throws RemoteException, SQLException;
   Hall getHallByNumber(String hallNo) throws RemoteException, SQLException;
   void registerCallback(ClientCallBack client)  throws RemoteException;
+  ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp) throws RemoteException, SQLException;
 }

@@ -48,4 +48,19 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
   return showingArrayList;
     }
   }
+
+  @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp) throws SQLException {
+    ArrayList<Timestamp> showingTimes = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("SELECT time FROM Showing WHERE (hallNo = ? AND DATE(time) = ?)");
+      Date date = new Date(timestamp.getTime());
+      statement.setString(1, hallNo);
+      statement.setDate(2, date);
+      ResultSet resultSet = statement.executeQuery();
+      while (resultSet.next()) {
+        showingTimes.add(resultSet.getTimestamp("time"));
+      }
+      return showingTimes;
+    }
+  }
 }

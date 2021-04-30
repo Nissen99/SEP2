@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class ServerModelManager implements ServerModel
@@ -128,9 +129,11 @@ public class ServerModelManager implements ServerModel
     return hallDAO.getHallByNumber(hallNo);
   }
 
-
-
-
+  @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(
+      String hallNo, Timestamp timestamp) throws SQLException
+  {
+    return showingDAO.getShowingTimesByHallNoAndDate(hallNo, timestamp);
+  }
 
   @Override public void addPropertyChangeListener(
       PropertyChangeListener listener)

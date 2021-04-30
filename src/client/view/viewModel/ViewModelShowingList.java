@@ -9,6 +9,9 @@ import shared.transferobjects.Showing;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class ViewModelShowingList
   {
@@ -23,15 +26,25 @@ public class ViewModelShowingList
     public ObservableList<Showing> getAllShowings()
         throws SQLException, RemoteException
     {
+      ArrayList<Showing> tempShowings = new ArrayList<>();
 
       showings.removeAll(showings);
 
-      showings.addAll(clientModelManger.getShowingList(movie));
+      tempShowings.addAll(clientModelManger.getShowingList(movie));
+
+      Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+
+      for (Showing showing: tempShowings)
+      {
+        if (0 < showing.getTimestamp().compareTo(currentTime)) {
+          showings.add(showing);
+        }
+      }
 
       return showings;
     }
 
-    public String getMovie(){
+    public String getMovieTitle(){
     return movie.getMovieTitle();
     }
 
