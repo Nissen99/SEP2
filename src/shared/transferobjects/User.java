@@ -1,19 +1,18 @@
 package shared.transferobjects;
 
 import java.io.Serializable;
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class User implements Serializable
 {
   private String name;
   private int userID;
+  private String email;
 
-  public User(int userID, String name)
+  public User(int userID, String name, String email)
   {
     this.name = name;
     this.userID = userID;
+    this.email = email;
   }
 
   public String getName()
@@ -24,5 +23,10 @@ public class User implements Serializable
   public int getUserID()
   {
     return userID;
+  }
+
+  public String getEmail()
+  {
+    return email;
   }
 }

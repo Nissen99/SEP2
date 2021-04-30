@@ -2,7 +2,6 @@ package client.view;
 
 import client.core.ModelFactory;
 import client.core.ViewHandler;
-import databaseConnection.dao.ResetDAO;
 import databaseConnection.dao.SeatDAOImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -20,8 +19,7 @@ public class CinemaBookingApp extends Application
   @Override public void start(Stage stage) throws Exception
   {
 
-    ResetDAO resetDAO = new ResetDAO();
-    resetDAO.resetDB();
+
     SeatDAOImpl seatDAO = new SeatDAOImpl();
 
     //TODO Fjern den her, det er til test

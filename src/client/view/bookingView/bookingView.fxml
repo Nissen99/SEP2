@@ -5,12 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.bookingView.BookingViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.bookingView.BookingViewController">
    <children>
       <Label layoutX="153.0" layoutY="90.0" text="Username:" />
       <TextField fx:id="usernameField" layoutX="362.0" layoutY="86.0" />
       <Button layoutX="493.0" layoutY="361.0" mnemonicParsing="false" onAction="#makeBooking" text="Make booking" />
       <Button layoutX="7.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonHit" text="Back" />
+      <TextField fx:id="emailField" layoutX="362.0" layoutY="124.0" />
+      <Label layoutX="153.0" layoutY="128.0" text="Email:" />
    </children>
 </AnchorPane>

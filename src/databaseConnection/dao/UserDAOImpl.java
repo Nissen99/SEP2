@@ -11,18 +11,18 @@ import java.util.List;
 
 public class UserDAOImpl extends BaseDAO implements UserDAO
 {
-  @Override public User create(String name) throws SQLException
+  @Override public User create(String name,String email) throws SQLException
   {
     {
       try (Connection connection = getConnection())
       {
-        PreparedStatement statement = connection
-            .prepareStatement("INSERT INTO User_ (fName) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO User_ (fName, email) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
         statement.setString(1, name);
+        statement.setString(2,email);
         statement.executeUpdate();
         ResultSet keys = statement.getGeneratedKeys();
         if (keys.next()) {
-          return new User(keys.getInt("userId"), name);
+          return new User(keys.getInt("userId"),name,email);
         } else {
           throw new SQLException("No keys generated");
         }
@@ -43,7 +43,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       while (result.next())
       {
       }
-      retur.add(new User(result.getInt("userId"), result.getString("fName")));
+      retur.add(new User(result.getInt("userId"), result.getString("fName"),result.getString("e_mail")));
       return retur;
 
     }
@@ -58,8 +58,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       User user = null;
       if (resultSet.next()){
         user = new User(
-            resultSet.getInt("userId"),
-            resultSet.getString("fName")
+            resultSet.getInt("userId"), resultSet.getString("fName"),resultSet.getString("e_mail")
             );
       }
       return user;

@@ -1,6 +1,8 @@
 package databaseConnection.dao;
 
 
+import databaseConnection.dao.UserDAO;
+import databaseConnection.dao.UserDAOImpl;
 import org.junit.jupiter.api.Test;
 import shared.transferobjects.User;
 
@@ -13,7 +15,7 @@ class UserDAOImplTest
   public void testCreate() throws SQLException
   {
     UserDAO userDAO = new UserDAOImpl();
-    User user = userDAO.create("Solaiman");
+    User user = userDAO.create("Solaiman","solaiman@gmail.com");
 
 
     assertEquals("Solaiman", userDAO.getById(user.getUserID()).getName());

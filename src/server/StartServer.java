@@ -20,12 +20,10 @@ public class StartServer
   public static void main(String[] args)
       throws RemoteException, AlreadyBoundException, SQLException
   {
-    ResetDAO resetDAO = new ResetDAO();
-    resetDAO.resetDB();
 
     RMIServerImpl server = new RMIServerImpl(new ServerModelManager());
     server.startServer();
-    //setup();
+    setup();
     System.out.println("Server is running");
   }
 

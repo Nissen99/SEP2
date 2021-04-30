@@ -13,4 +13,5 @@ public interface BookingDAO
   Booking create(Showing showing, User user) throws SQLException;
   //ArrayList<Booking> getAllBookings() throws SQLException;
   ArrayList<Seat> getOccupiedSeats(Showing showing) throws SQLException;
+  //Booking getBookingByID(int bookingId) throws SQLException;
 }

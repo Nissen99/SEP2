@@ -39,10 +39,11 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public Booking addBooking(Showing showing, String username,
+  @Override public Booking addBooking(Showing showing, String username,String email,
       ArrayList<Seat> seats) throws RemoteException, SQLException
   {
-    return rmiServer.addBooking(showing, username, seats);
+    System.out.println("Vi er i RMI client booking");
+    return rmiServer.addBooking(showing, username,email, seats);
   }
 
   @Override public Movie addMovie(Movie movie)

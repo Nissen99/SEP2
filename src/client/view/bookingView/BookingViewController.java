@@ -14,6 +14,7 @@ import java.sql.SQLException;
 public class BookingViewController
 {
   @FXML public TextField usernameField;
+  @FXML public TextField emailField;
 
   private ViewModelBooking viewModel = ViewModelFactory.getInstance().getBooking();
 
@@ -26,7 +27,8 @@ public class BookingViewController
             "Confirmation", JOptionPane.YES_NO_OPTION)
         == JOptionPane.YES_OPTION)
     {
-      viewModel.makeBooking(usernameField.getText());
+      System.out.println(emailField.getText()+"Vi er i controlleren");
+      viewModel.makeBooking(usernameField.getText(),emailField.getText());
       JOptionPane.showMessageDialog(null, "You have successfully made a booking");
       ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
 

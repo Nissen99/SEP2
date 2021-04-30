@@ -35,15 +35,15 @@ public class ServerModelManager implements ServerModel
     propertyChangeSupport = new PropertyChangeSupport(this);
   }
 
-  @Override public Booking addBooking(Showing showing, String username,
+  @Override public Booking addBooking(Showing showing, String username,String email,
       ArrayList<Seat> seats)
   {
 
     User user = null;
     try
     {
-      user = userDAO.create(username);
-      Booking booking = bookingDAO.create(showing, user);
+      user = userDAO.create(username,email);
+      Booking booking = bookingDAO.create(showing,user);
       for (Seat seat : seats)
       {
         bookingSpecDAO.create(booking, seat);

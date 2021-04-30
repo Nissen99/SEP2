@@ -1,5 +1,7 @@
 package databaseConnection.dao;
 
+import databaseConnection.dao.HallDAO;
+import databaseConnection.dao.HallDAOImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.transferobjects.Hall;

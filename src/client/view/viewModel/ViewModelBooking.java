@@ -17,14 +17,15 @@ public class ViewModelBooking
   ClientModel clientModelManager = ModelFactory.getInstance().getModel();
 
 
-  public void makeBooking(String username) throws SQLException, RemoteException
+  public void makeBooking(String username,String email) throws SQLException, RemoteException
   {
+    System.out.println("Make booking i viewModel ? " + email.toString());
 //    for (Seat seat : seatArrayList)
 //    {
 //      clientModelManager.addBooking(showing, username, seat.getSeatNo());
 //      System.out.println(" seat is " + seat.getSeatNo());
 //    }
-    clientModelManager.addBooking(showing, username, seatArrayList);
+    clientModelManager.addBooking(showing, username,email, seatArrayList);
 
   }
 
