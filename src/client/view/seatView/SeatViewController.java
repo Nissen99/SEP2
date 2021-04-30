@@ -94,7 +94,7 @@ public class SeatViewController implements PropertyChangeListener
 
     for (Seat seat : occupiedSeatArrayList)
     {
-      for (Pane pane : paneArrayList)
+      for (Pane pane : selectedPane)
       {
         if (pane.idProperty().get().equals(seat.getSeatNo())){
           makeOldPanesTransparent();

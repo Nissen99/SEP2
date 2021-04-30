@@ -11,6 +11,7 @@ import shared.transferobjects.Showing;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -20,7 +21,7 @@ public class StartServer
   public static void main(String[] args)
       throws RemoteException, AlreadyBoundException, SQLException
   {
-
+    DriverManager.registerDriver(new org.postgresql.Driver());
     RMIServerImpl server = new RMIServerImpl(new ServerModelManager());
     server.startServer();
     //setup();

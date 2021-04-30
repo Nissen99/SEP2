@@ -10,11 +10,11 @@ public class BaseDAO
 
   protected static Connection getConnection() throws SQLException
   {
-    DriverManager.registerDriver(new org.postgresql.Driver());
+
 
       connection = DriverManager.getConnection(
           "jdbc:postgresql://localhost:5432/postgres?currentSchema=bioDatabase",
-          "postgres", "123456789");
+          "postgres", "Bimmer95");
 
     return connection;
   }

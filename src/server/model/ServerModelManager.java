@@ -42,7 +42,7 @@ public class ServerModelManager implements ServerModel
   @Override public Booking addBooking(Showing showing, String username,String email,
       ArrayList<Seat> seats)
   {
-    Booking booking = null;
+    Booking booking;
     User user = null;
     try
     {

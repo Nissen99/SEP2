@@ -10,6 +10,8 @@ import java.util.Properties;
 
 public class JavaMailUtil
 {
+  private static String path = "C:\\Users\\mathi\\IdeaProjects\\SEP2\\src\\server\\mail\\mailOrder.pdf";
+
 
   public static void sendMail(String recepient)
       throws MessagingException, IOException
@@ -35,7 +37,7 @@ public class JavaMailUtil
     });
 
     Message message = prepareMessage(session, myAccountEmail, recepient);
-    Transport.send(message);
+    //Transport.send(message);
     System.out.println("Beskeden er sendt succesfuldt");
   }
 
@@ -48,7 +50,7 @@ public class JavaMailUtil
     message.setSubject("Min første mail");
 
     MimeBodyPart bodyPart = new MimeBodyPart();
-    File file = new File("C:\\Users\\Mikkel\\IdeaProjects\\SEP2Kode\\src\\server\\mail\\mailOrder.pdf");
+    File file = new File(path);
     System.out.println(file.exists() + " hvad?");
 
     bodyPart.attachFile(file);

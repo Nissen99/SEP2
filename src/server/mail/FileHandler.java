@@ -4,18 +4,19 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
-import shared.transferobjects.Showing;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class FileHandler
 {
-  private final String path = "C:\\Users\\Mikkel\\IdeaProjects\\SEP2Kode\\src\\server\\mail\\mailOrder.pdf";
+  private final String path = "C:\\Users\\mathi\\IdeaProjects\\SEP2\\src\\server\\mail\\mailOrder.pdf";
   /** HUSK AT ÆNDRE PATH **/
+  private final String logoPath = "C:\\Users\\mathi\\IdeaProjects\\SEP2\\src\\shared\\image\\nyt.jpg";
   private File file;
   private Document document;
 
@@ -44,54 +45,65 @@ public class FileHandler
       PdfWriter.getInstance(document, new FileOutputStream(file));
       document.open();
 
+      Image image = Image.getInstance(logoPath);
+      image.setAlignment(Element.ALIGN_TOP);
+      image.setAlignment(Element.ALIGN_CENTER);
+      document.add(image);
+
       //Setting up BookingId
-      Paragraph pBookingID = new Paragraph(
-          new Phrase(10f, "BookingID: " + bookingID,
-              FontFactory.getFont(FontFactory.COURIER, 10)));
+      Paragraph pBookingID = setupParagraph(10f,"BookingID: " + bookingID, 10,false);
+      pBookingID.setSpacingBefore(13f);
       document.add(pBookingID);
 
+
       //Setting up fName
-      Paragraph pFName = new Paragraph(new Phrase(10f, "Name: " + fName,
-          FontFactory.getFont(FontFactory.COURIER, 10)));
+      Paragraph pFName = setupParagraph(10f,"Name: " + fName, 10,false);
       document.add(pFName);
 
       //Setting up Movie Title
-      Paragraph pMovieTitle = new Paragraph(new Phrase(10f, movieTitle,
-          FontFactory.getFont(FontFactory.COURIER, 30)));
-      pMovieTitle.setAlignment(Element.ALIGN_CENTER);
+      Paragraph pMovieTitle = setupParagraph(10f,movieTitle,30,true);
       pMovieTitle.setSpacingBefore(30f);
       pMovieTitle.setSpacingAfter(15f);
       document.add(pMovieTitle);
 
       //Setting up Date & Time
-      Paragraph pDateTime = new Paragraph(new Phrase(10f, dateTime,
-          FontFactory.getFont(FontFactory.COURIER, 12)));
-      pDateTime.setAlignment(Element.ALIGN_CENTER);
+      Paragraph pDateTime = setupParagraph(10f,dateTime,12,true);
       document.add(pDateTime);
 
       //Setting up HallNo
-      Paragraph pHall = new Paragraph(new Phrase(10f, "Hall: " +hallNo,
-          FontFactory.getFont(FontFactory.COURIER_BOLD, 20)));
-      pHall.setAlignment(Element.ALIGN_CENTER);
-      pHall.setSpacingBefore(150f);
+      Paragraph pHall = setupParagraph(10f,"Hall: " + hallNo, 20,true);
+      pHall.getFont().setStyle(Font.BOLD);
+      pHall.setSpacingBefore(69f);
       pHall.setSpacingAfter(20f);
       document.add(pHall);
 
       //Setting up seats
       for (String seat : seatNos)
       {
-        Paragraph pSeat = new Paragraph(new Phrase(30f, "Seat Number: " +seat,
-            FontFactory.getFont(FontFactory.TIMES, 12)));
-        pSeat.setAlignment(Element.ALIGN_CENTER);
+        Paragraph pSeat = setupParagraph(20f,"Seat Number: " +seat,12,true);
+
         document.add(pSeat);
       }
 
+
+
       document.close();
     }
-    catch (DocumentException | FileNotFoundException e)
+    catch (DocumentException | IOException e)
     {
       e.printStackTrace();
     }
+  }
+
+  public Paragraph setupParagraph(Float linespace, String element, int fontSize, boolean centerAlign)
+      throws DocumentException
+  {
+    Paragraph p = new Paragraph(
+        new Phrase(linespace, element,
+            FontFactory.getFont(FontFactory.COURIER, fontSize)));
+    if (centerAlign)
+      p.setAlignment(Element.ALIGN_CENTER);
+    return p;
   }
 
 }
