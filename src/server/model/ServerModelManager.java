@@ -113,7 +113,6 @@ public class ServerModelManager implements ServerModel
 
   @Override public ArrayList<Showing> getShowingList(Movie movie) throws SQLException
   {
-
     return showingDAO.getAllShowings(movie);
   }
 
@@ -121,8 +120,6 @@ public class ServerModelManager implements ServerModel
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException
   {
-
-
     return bookingDAO.getOccupiedSeats(showing);
   }
 
@@ -130,6 +127,10 @@ public class ServerModelManager implements ServerModel
   {
     return hallDAO.getHallByNumber(hallNo);
   }
+
+
+
+
 
   @Override public void addPropertyChangeListener(
       PropertyChangeListener listener)

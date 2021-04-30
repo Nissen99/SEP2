@@ -34,7 +34,7 @@ public class ViewModelFactory
   {
     if (movieList == null)
     {
-      movieList = new ViewModelMovieList(ModelFactory.getInstance().getModel());
+      movieList = new ViewModelMovieList();
     }
     return movieList;
   }
@@ -42,27 +42,37 @@ public class ViewModelFactory
   public ViewModelShowingList getShowingList()
   {
 
+if (showingList == null)
+{
+  showingList = new ViewModelShowingList();
+}
     //Vores showinList skal vide hvilke film der er valgt, den information
-    // skal den have hver gang, så vi har ikke gjort den lazy
-
-    showingList = new ViewModelShowingList(
-        ModelFactory.getInstance().getModel(), movieList.getSelectedMovie());
+    // skal den have hver gang også hvis den ikke er null
+    showingList.setSelectedMovie(movieList.getSelectedMovie());
 
     return showingList;
   }
 
   public ViewModelBooking getBooking()
   {
+    if (booking == null){
+      booking = new ViewModelBooking();
+    }
 
-    booking = new ViewModelBooking(showingList.getSelectedShowing(),
-        seatVM.getSelectedSeat());
+    booking.setShowing(showingList.getSelectedShowing());
+    booking.setSelectedSeats(seatVM.getSelectedSeat());
+
     return booking;
   }
 
   public ViewModelSeat getSeatVM() throws SQLException, RemoteException
   {
-    seatVM = new ViewModelSeat(ModelFactory.getInstance().getModel(),
-        showingList.getSelectedShowing());
+
+    if (seatVM == null){
+      seatVM = new ViewModelSeat();
+    }
+
+      seatVM.setSelectedShowing(showingList.getSelectedShowing());
 
     return seatVM;
 
@@ -70,22 +80,30 @@ public class ViewModelFactory
 
   public ViewModelEditMovie getEditMovie(){
     if (editMovie == null){
-      editMovie = new ViewModelEditMovie(ModelFactory.getInstance().getModel());
+      editMovie = new ViewModelEditMovie();
     }
     return editMovie;
   }
 
   public ViewModelAddShowing getAddShowing(){
 
-      addShowing = new ViewModelAddShowing( ViewModelFactory.getInstance()
-          .getEditMovie().getSelectedMovie());
+    if (addShowing == null){
+      addShowing = new ViewModelAddShowing();
+    }
+
+addShowing.setSelectedMovie(ViewModelFactory.getInstance()
+    .getEditMovie().getSelectedMovie());
 
     return addShowing;
   }
 
   public ViewModelEditShowing getEditShowing(){
 
-    editShowing = new ViewModelEditShowing(ViewModelFactory.getInstance().editMovie.getSelectedMovie());
+    if (editShowing == null){
+      editShowing = new ViewModelEditShowing();
+    }
+    editShowing.setSelectedMovie(ViewModelFactory.getInstance().editMovie.getSelectedMovie());
+
     return editShowing;
   }
 

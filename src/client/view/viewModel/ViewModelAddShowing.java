@@ -22,9 +22,7 @@ public class ViewModelAddShowing
   private ClientModel clientModel = ModelFactory.getInstance().getModel();
 
 
-  public ViewModelAddShowing(Movie movie){
-    this.selectedMovie = movie;
-  }
+
 
   public void addShowing(Timestamp timestamp) throws SQLException, RemoteException
   {
@@ -49,5 +47,8 @@ public class ViewModelAddShowing
     return hallNo;
   }
 
-
+  public void setSelectedMovie(Movie selectedMovie)
+  {
+    this.selectedMovie = selectedMovie;
+  }
 }

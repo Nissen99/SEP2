@@ -1,5 +1,6 @@
 package client.view.viewModel;
 
+import client.core.ModelFactory;
 import client.model.ClientModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -15,15 +16,15 @@ import java.sql.SQLException;
 public class ViewModelEditMovie
 {
 
-  private ClientModel clientModel;
+  private ClientModel clientModel = ModelFactory.getInstance().getModel();
   private ObservableList<Movie> movies = FXCollections.observableArrayList();
 
 
   private Movie selectedMovie;
 
-  public ViewModelEditMovie(ClientModel model)
+  public ViewModelEditMovie()
   {
-    this.clientModel = model;
+
   }
 
   public void addMovie(Movie movie) throws SQLException, RemoteException

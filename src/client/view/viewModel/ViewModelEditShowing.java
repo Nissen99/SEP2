@@ -17,9 +17,7 @@ public class ViewModelEditShowing
   private ClientModel clientModel = ModelFactory.getInstance().getModel();
   private ObservableList<Showing> showings = FXCollections.observableArrayList();
 
-  public ViewModelEditShowing(Movie movie){
-    this.selectedMovie = movie;
-  }
+
 
   public String getMovieTitle(){
     return selectedMovie.getMovieTitle();
@@ -31,5 +29,10 @@ public class ViewModelEditShowing
     showings.removeAll(showings);
     showings.addAll(clientModel.getShowingList(selectedMovie));
     return showings;
+  }
+
+  public void setSelectedMovie(Movie selectedMovie)
+  {
+    this.selectedMovie = selectedMovie;
   }
 }
