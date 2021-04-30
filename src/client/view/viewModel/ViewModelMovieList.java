@@ -1,5 +1,6 @@
 package client.view.viewModel;
 
+import client.core.ModelFactory;
 import client.model.ClientModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,15 +12,10 @@ import java.sql.SQLException;
 public class ViewModelMovieList
 {
 
-  private ClientModel clientModelManger;
+  private ClientModel clientModelManger = ModelFactory.getInstance().getModel();
   private Movie selectedMovie;
   private ObservableList<Movie> movies = FXCollections.observableArrayList();
 
-
-  public ViewModelMovieList(ClientModel clientModel)
-  {
-    this.clientModelManger = clientModel;
-  }
 
   public ObservableList<Movie> getAllMovies()
       throws SQLException, RemoteException

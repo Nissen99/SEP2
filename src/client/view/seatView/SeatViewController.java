@@ -3,6 +3,7 @@ package client.view.seatView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.viewModel.ViewModelSeat;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -45,6 +46,13 @@ public class SeatViewController implements PropertyChangeListener
   public void init() throws SQLException, RemoteException
   {
     setChoiceBox();
+    setOccupiedSeats();
+
+    viewModel.addPropertyChangeListener(this);
+  }
+
+  private void setOccupiedSeats() throws SQLException, RemoteException
+  {
     seatArrayList = viewModel.getOccupiedSeats();
 
     for (Node node : getAllNodes(anchorPane))
@@ -56,9 +64,8 @@ public class SeatViewController implements PropertyChangeListener
         paneArrayList.add((Pane) node);
       }
     }
-
     setOccupiedColor();
-    viewModel.addPropertyChangeListener(this::propertyChange);
+
   }
 
   private void setChoiceBox()
@@ -172,8 +179,12 @@ public class SeatViewController implements PropertyChangeListener
     }
 
       viewModel.setSelectedSeat(seats);
+
+    //Når vi skifter view er der ingen grund til vi stadigvæk lytter
+    viewModel.removePropertyChangeListener(this);
+    viewModel.removeListen();
       ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
-      viewModel.removeListen();
+
   }
 
   @FXML void onBackButton(ActionEvent event) throws IOException, SQLException
@@ -191,6 +202,9 @@ public class SeatViewController implements PropertyChangeListener
     //    }
 
 
+    //Når vi skifter view er der ingen grund til vi stadigvæk lytter
+      viewModel.removePropertyChangeListener(this);
+      viewModel.removeListen();
       ViewHandler.getInstance()
           .openView("../view/showingList/showingListView.fxml");
 
@@ -200,19 +214,20 @@ public class SeatViewController implements PropertyChangeListener
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
-    try
-    {
-      System.out.println("PROPERTY CHANGED");
-      init();
-    }
-    catch (SQLException throwables)
-    {
-      throwables.printStackTrace();
-    }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
+
+      Platform.runLater(() -> {
+        try
+        {
+          System.out.println("PROPERTY CHANGED");
+          setOccupiedSeats();
+        }
+        catch (SQLException | RemoteException throwables)
+        {
+          throwables.printStackTrace();
+        }
+      });
+
+
   }
 }
 

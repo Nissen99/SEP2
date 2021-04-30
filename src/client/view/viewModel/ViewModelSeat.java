@@ -1,5 +1,6 @@
 package client.view.viewModel;
 
+import client.core.ModelFactory;
 import client.model.ClientModel;
 import server.model.PropertyChangeSubject;
 import shared.transferobjects.Seat;
@@ -17,23 +18,17 @@ public class ViewModelSeat implements PropertyChangeListener,
 {
   private Showing selectedShowing;
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-  private ClientModel clientModelManger;
+  private ClientModel clientModelManger = ModelFactory.getInstance().getModel();
   private Seat selectedSeat ;
   private ArrayList<Seat> seatArrayList;
 
 
-  public ViewModelSeat(ClientModel clientModelManger,Showing selectedShowing)
-      throws SQLException, RemoteException
-
+  public ViewModelSeat() throws SQLException, RemoteException
   {
-    this.selectedShowing = selectedShowing;
-    this.clientModelManger = clientModelManger;
-    seatArrayList = clientModelManger.getOccupiedSeats(selectedShowing);
+
     clientModelManger.addPropertyChangeListener(this::update);
-    for (Seat occupiedSeat : seatArrayList )
-    {
-     String id = occupiedSeat.getSeatNo();
-    }
+
+
   }
 
   private void update(PropertyChangeEvent propertyChangeEvent)
@@ -90,4 +85,9 @@ public class ViewModelSeat implements PropertyChangeListener,
     propertyChangeSupport.removePropertyChangeListener(eventName, listener);
   }
 
+  public void setSelectedShowing(Showing selectedShowing)
+      throws SQLException, RemoteException
+  {
+    this.selectedShowing = selectedShowing;
+     }
 }

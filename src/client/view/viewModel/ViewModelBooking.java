@@ -16,11 +16,6 @@ public class ViewModelBooking
   private ArrayList<Seat> seatArrayList;
   ClientModel clientModelManager = ModelFactory.getInstance().getModel();
 
-  public ViewModelBooking(Showing showing, ArrayList<Seat> seatArray){
-    this.showing = showing;
-    this.seatArrayList = seatArray;
-
-  }
 
   public void makeBooking(String username,String email) throws SQLException, RemoteException
   {
@@ -45,6 +40,14 @@ public class ViewModelBooking
   return null;
   }
 
+  public void setShowing(Showing selectedShowing)
+  {
+  this.showing = selectedShowing;
+  }
 
+  public void setSelectedSeats(ArrayList<Seat> selectedSeats)
+  {
+    this.seatArrayList = selectedSeats;
 
+  }
 }

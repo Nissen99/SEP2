@@ -1,5 +1,6 @@
 package client.view.viewModel;
 
+import client.core.ModelFactory;
 import client.model.ClientModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,17 +14,10 @@ public class ViewModelShowingList
   {
 
     private Movie movie;
-    private ClientModel clientModelManger;
+    private ClientModel clientModelManger = ModelFactory.getInstance()
+        .getModel();
     private ObservableList<Showing> showings = FXCollections.observableArrayList();
     private Showing selectedShowing;
-
-    public ViewModelShowingList(ClientModel clientModel, Movie movie)
-  {
-    this.clientModelManger = clientModel;
-    this.movie = movie;
-  }
-
-
 
 
     public ObservableList<Showing> getAllShowings()
@@ -48,5 +42,10 @@ public class ViewModelShowingList
     public Showing getSelectedShowing()
     {
       return selectedShowing;
+    }
+
+    public void setSelectedMovie(Movie selectedMovie)
+    {
+      this.movie = selectedMovie;
     }
   }
