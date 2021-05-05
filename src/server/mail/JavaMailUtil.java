@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class JavaMailUtil
 {
-  private static String path = "C:\\Users\\mathi\\IdeaProjects\\SEP2\\src\\server\\mail\\mailOrder.pdf";
+  private static String path = "C:\\Users\\Mikkel\\IdeaProjects\\SEP2Kode\\src\\server\\mail\\mailOrder.pdf";
 
 
   public static void sendMail(String recepient)
@@ -37,7 +37,7 @@ public class JavaMailUtil
     });
 
     Message message = prepareMessage(session, myAccountEmail, recepient);
-    //Transport.send(message);
+    Transport.send(message);
     System.out.println("Beskeden er sendt succesfuldt");
   }
 

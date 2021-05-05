@@ -1,6 +1,6 @@
 package client.network;
 
-import javafx.collections.ObservableList;
+import server.ServerException;
 import shared.transferobjects.*;
 
 import java.rmi.RemoteException;
@@ -12,7 +12,7 @@ public interface Client
 {
   void startClient();
   Booking addBooking(Showing showing, String username,String email, ArrayList<Seat> seats)
-      throws RemoteException, SQLException;
+      throws ServerException, RemoteException;
   Movie addMovie(Movie movie) throws RemoteException, SQLException;
   Showing addShowing(Showing showing) throws RemoteException, SQLException;
   Hall addHall(Hall hall) throws RemoteException, SQLException;

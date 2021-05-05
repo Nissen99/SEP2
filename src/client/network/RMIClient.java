@@ -1,6 +1,6 @@
 package client.network;
 
-import javafx.collections.ObservableList;
+import server.ServerException;
 import server.model.PropertyChangeSubject;
 import shared.ENUM;
 import shared.networking.ClientCallBack;
@@ -41,7 +41,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   }
 
   @Override public Booking addBooking(Showing showing, String username,String email,
-      ArrayList<Seat> seats) throws RemoteException, SQLException
+      ArrayList<Seat> seats) throws ServerException, RemoteException
   {
     System.out.println("Vi er i RMI client booking");
     return rmiServer.addBooking(showing, username,email, seats);

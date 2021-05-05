@@ -1,7 +1,7 @@
 package server.model;
 
 import databaseConnection.dao.*;
-import javafx.collections.ObservableList;
+import server.ServerException;
 import server.mail.FileHandler;
 import server.mail.JavaMailUtil;
 import shared.ENUM;
@@ -10,8 +10,6 @@ import shared.transferobjects.*;
 import javax.mail.MessagingException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -40,7 +38,7 @@ public class ServerModelManager implements ServerModel
   }
 
   @Override public Booking addBooking(Showing showing, String username,String email,
-      ArrayList<Seat> seats)
+      ArrayList<Seat> seats) throws ServerException
   {
     Booking booking;
     User user = null;
@@ -61,6 +59,7 @@ public class ServerModelManager implements ServerModel
       e.printStackTrace();
       System.out.println("Catch In addBooking");
       userDAO.deleteUser(user);
+      throw new ServerException();
     }
     propertyChangeSupport.firePropertyChange(String.valueOf(ENUM.ADDBOOKING), null, "booking");
     System.out.println("FIRE 1");

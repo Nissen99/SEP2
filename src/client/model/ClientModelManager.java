@@ -1,9 +1,7 @@
 package client.model;
 
-import client.network.Client;
 import client.network.RMIClient;
-import databaseConnection.dao.*;
-import javafx.collections.ObservableList;
+import server.ServerException;
 import shared.transferobjects.*;
 
 import java.beans.PropertyChangeEvent;
@@ -33,10 +31,20 @@ public class ClientModelManager implements ClientModel
   }
 
   @Override public Booking addBooking(Showing showing, String username,String email,
-      ArrayList<Seat> seats) throws RemoteException, SQLException
+      ArrayList<Seat> seats)
+      throws ServerException
   {
     System.out.println("Booking in clientModel manager");
-    return client.addBooking(showing, username, email, seats);
+    try
+    {
+      return client.addBooking(showing, username, email, seats);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+
   }
 
   @Override public Movie addMovie(Movie movie)

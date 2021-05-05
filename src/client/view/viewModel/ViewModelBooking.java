@@ -4,11 +4,11 @@ import client.core.ModelFactory;
 import client.model.ClientModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import server.ServerException;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ViewModelBooking
@@ -24,11 +24,18 @@ public class ViewModelBooking
   ClientModel clientModelManager = ModelFactory.getInstance().getModel();
 
 
-  public void makeBooking() throws SQLException, RemoteException
+  public void makeBooking() throws  RemoteException
   {
     System.out.println("Make booking i viewModel ? " + getEmailField());
 
-    clientModelManager.addBooking(showing, getUserNameField(), getEmailField(), seatArrayList);
+    try
+    {
+      clientModelManager.addBooking(showing, getUserNameField(), getEmailField(), seatArrayList);
+    }
+    catch (ServerException serverException)
+    {
+      serverException.printStackTrace();
+    }
 
   }
 

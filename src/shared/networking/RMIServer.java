@@ -1,6 +1,6 @@
 package shared.networking;
 
-import javafx.collections.ObservableList;
+import server.ServerException;
 import shared.transferobjects.*;
 
 import java.rmi.Remote;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface RMIServer extends Remote
 {
   Booking addBooking(Showing showing, String username,String email, ArrayList<Seat> seats)
-      throws RemoteException, SQLException;
+      throws RemoteException, ServerException;
   Movie addMovie(Movie movie) throws RemoteException, SQLException;
   Showing addShowing(Showing showing) throws RemoteException, SQLException;
   Hall addHall(Hall hall) throws RemoteException, SQLException;

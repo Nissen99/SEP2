@@ -1,7 +1,6 @@
 package server.network;
 
-import javafx.collections.ObservableList;
-import server.model.PropertyChangeSubject;
+import server.ServerException;
 import server.model.ServerModelManager;
 import shared.ENUM;
 import shared.networking.ClientCallBack;
@@ -10,7 +9,6 @@ import shared.transferobjects.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -39,7 +37,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   }
 
   @Override public Booking addBooking(Showing showing, String username, String email,
-      ArrayList<Seat> seats) throws SQLException
+      ArrayList<Seat> seats) throws ServerException
   {
     return model.addBooking(showing, username,email, seats);
 

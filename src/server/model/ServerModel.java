@@ -1,6 +1,6 @@
 package server.model;
 
-import javafx.collections.ObservableList;
+import server.ServerException;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;
@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 public interface ServerModel extends PropertyChangeSubject
 {
-  Booking addBooking(Showing showing, String username, String email, ArrayList<Seat> seats) throws SQLException;
+  Booking addBooking(Showing showing, String username, String email, ArrayList<Seat> seats)
+      throws ServerException;
   Movie addMovie(Movie movie) throws SQLException;
   Showing addShowing(Showing showing) throws SQLException;
   Hall addHall(Hall hall) throws SQLException;
