@@ -1,7 +1,7 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.ClientModel;
+import client.model.ClientModelBooking;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import server.model.PropertyChangeSubject;
@@ -20,8 +20,7 @@ public class ViewModelSeat implements PropertyChangeListener,
 {
   private Showing selectedShowing;
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-  private ClientModel clientModelManger = ModelFactory.getInstance().getModel();
-  private Seat selectedSeat ;
+  private ClientModelBooking clientModel = ModelFactory.getInstance().getModelBooking();
   private ArrayList<Seat> seatArrayList;
   ObservableList<Integer> integerObservableList = FXCollections.observableArrayList();
 
@@ -30,7 +29,7 @@ public class ViewModelSeat implements PropertyChangeListener,
   public ViewModelSeat() throws SQLException, RemoteException
   {
 
-    clientModelManger.addPropertyChangeListener(this::update);
+    clientModel.addPropertyChangeListener(this::update);
 
 
   }
@@ -53,7 +52,7 @@ public class ViewModelSeat implements PropertyChangeListener,
 
   public ArrayList<Seat> getOccupiedSeats() throws SQLException, RemoteException
   {
-    return clientModelManger.getOccupiedSeats(selectedShowing);
+    return clientModel.getOccupiedSeats(selectedShowing);
   }
 
 

@@ -2,6 +2,7 @@ package client.view.viewModel;
 
 import client.core.ModelFactory;
 import client.model.ClientModel;
+import client.model.ClientModelShowing;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -20,7 +21,7 @@ import java.util.Date;
 public class ViewModelAddShowing
 {
   private Movie selectedMovie;
-  private ClientModel clientModel = ModelFactory.getInstance().getModel();
+  private ClientModelShowing clientModel = ModelFactory.getInstance().getModelShowing();
   private ObservableList observableList = FXCollections.observableArrayList();
 
 

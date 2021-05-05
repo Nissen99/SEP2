@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class ClientModelManager implements ClientModel
+public class ClientModelManager implements ClientModelBooking, ClientModelMovie, ClientModelShowing
 {
   private RMIClient client;
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -59,11 +59,6 @@ public class ClientModelManager implements ClientModel
 
     return client.addShowing(showing);
 
-  }
-
-  @Override public Hall addHall(Hall hall) throws SQLException, RemoteException
-  {
-    return client.addHall(hall);
   }
 
   @Override public ArrayList<Movie> getMovieList()

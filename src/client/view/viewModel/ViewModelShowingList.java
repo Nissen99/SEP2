@@ -1,7 +1,7 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.ClientModel;
+import client.model.ClientModelBooking;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -11,7 +11,6 @@ import shared.transferobjects.Showing;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -19,12 +18,11 @@ public class ViewModelShowingList
   {
 
     private Movie movie;
-    private ClientModel clientModelManger = ModelFactory.getInstance()
-        .getModel();
+    private ClientModelBooking clientModel = ModelFactory.getInstance()
+        .getModelBooking();
     private ObservableList<Showing> showings = FXCollections.observableArrayList();
     private Showing selectedShowing;
     private StringProperty movieTitle = new SimpleStringProperty();
-
 
     public StringProperty movieTitleProperty()
     {
@@ -38,7 +36,7 @@ public class ViewModelShowingList
 
       showings.removeAll(showings);
 
-      tempShowings.addAll(clientModelManger.getShowingList(movie));
+      tempShowings.addAll(clientModel.getShowingList(movie));
 
       Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 

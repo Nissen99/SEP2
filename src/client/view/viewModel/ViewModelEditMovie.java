@@ -2,6 +2,7 @@ package client.view.viewModel;
 
 import client.core.ModelFactory;
 import client.model.ClientModel;
+import client.model.ClientModelMovie;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 public class ViewModelEditMovie
 {
 
-  private ClientModel clientModel = ModelFactory.getInstance().getModel();
+  private ClientModelMovie clientModel = ModelFactory.getInstance().getModelMovie();
   private ObservableList<Movie> movies = FXCollections.observableArrayList();
 
   public String getMovieTitle()

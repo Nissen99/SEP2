@@ -1,13 +1,15 @@
 package client.core;
 
-import client.model.ClientModel;
-import client.model.ClientModelManager;
+import client.model.*;
 
 public class ModelFactory
 {
 
   private static ModelFactory modelFactory;
   private ClientModel clientModel;
+  private ClientModelShowing clientModelShowing;
+  private ClientModelBooking clientModelBooking;
+  private ClientModelMovie clientModelMovie;
   private ClientFactory clientFactory;
 
   private ModelFactory(ClientFactory clientFactory){
@@ -26,5 +28,31 @@ public class ModelFactory
       clientModel = new ClientModelManager(ClientFactory.getInstance().getClient());
     }
     return clientModel;
+  }
+
+  public ClientModelShowing getModelShowing()
+  {
+    if (clientModelShowing == null){
+      clientModelShowing = (ClientModelShowing) new ClientModelManager(ClientFactory.getInstance().getClient());
+    }
+    return clientModelShowing;
+  }
+
+  public ClientModelBooking getModelBooking()
+  {
+    if (clientModelBooking == null) {
+      clientModelBooking = (ClientModelBooking) new ClientModelManager(ClientFactory.getInstance()
+          .getClient());
+    }
+    return clientModelBooking;
+  }
+
+  public ClientModelMovie getModelMovie()
+  {
+    if (clientModelMovie == null) {
+      clientModelMovie = (ClientModelMovie) new ClientModelManager(ClientFactory.getInstance()
+          .getClient());
+    }
+    return clientModelMovie;
   }
 }

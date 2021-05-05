@@ -9,7 +9,7 @@ public class SeatNoCalculator implements Serializable
   private int maxSeatsInRow;
   private int maxRows;
 
-  SeatNoCalculator(int maxRows, int maxSeatsInRow, String hallNo) {
+  public SeatNoCalculator(String hallNo, int maxSeatsInRow, int maxRows) {
     this.maxRows = maxRows;
     this.maxSeatsInRow = maxSeatsInRow;
     this.hallNo = hallNo;

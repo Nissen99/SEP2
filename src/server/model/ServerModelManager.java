@@ -48,11 +48,11 @@ public class ServerModelManager implements ServerModel
       booking = bookingDAO.create(showing,user);
       FileHandler fileHandler = new FileHandler();
       fileHandler.createPDF(booking,seats);
-      JavaMailUtil.sendMail(email);
       for (Seat seat : seats)
       {
         bookingSpecDAO.create(booking, seat);
       }
+      JavaMailUtil.sendMail(email);
     }
     catch (SQLException | MessagingException | IOException e)
     {

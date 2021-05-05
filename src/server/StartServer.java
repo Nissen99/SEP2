@@ -4,10 +4,7 @@ import databaseConnection.dao.*;
 import server.model.ServerModel;
 import server.model.ServerModelManager;
 import server.network.RMIServerImpl;
-import shared.transferobjects.Hall;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Seat;
-import shared.transferobjects.Showing;
+import shared.transferobjects.*;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -37,9 +34,12 @@ public class StartServer
     Hall hall = new Hall("A", 16, 14);
     HallDAO hallDAO = new HallDAOImpl();
     hallDAO.create(hall);
+    SeatNoCalculator seatNoCalculator = new SeatNoCalculator(hall.getHallNo(),
+        hall.getMaxSeatsInRow(), hall.getMaxRows());
     for (int i = 0; i < hall.getMaxRows() * hall.getMaxSeatsInRow(); i++)
     {
       Seat seat = new Seat();
+      seat.setSeatNo(seatNoCalculator.calculateSeatNo());
       seatDAO.create(hall.addSeat(seat), hall);
     }
 

@@ -2,6 +2,7 @@ package client.view.viewModel;
 
 import client.core.ModelFactory;
 import client.model.ClientModel;
+import client.model.ClientModelMovie;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 public class ViewModelMovieList
 {
 
-  private ClientModel clientModelManger = ModelFactory.getInstance().getModel();
+  private ClientModelMovie clientModel = ModelFactory.getInstance().getModelMovie();
   private Movie selectedMovie;
   private ObservableList<Movie> movies = FXCollections.observableArrayList();
 
@@ -23,7 +24,7 @@ public class ViewModelMovieList
       throws SQLException, RemoteException
   {
    movies.removeAll(movies);
-   movies.addAll(clientModelManger.getMovieList());
+   movies.addAll(clientModel.getMovieList());
 
     return movies;
   }

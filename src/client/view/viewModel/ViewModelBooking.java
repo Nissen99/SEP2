@@ -1,7 +1,7 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.ClientModel;
+import client.model.ClientModelBooking;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import server.ServerException;
@@ -9,6 +9,7 @@ import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ViewModelBooking
@@ -21,7 +22,7 @@ public class ViewModelBooking
   private StringProperty emailField = new SimpleStringProperty();
 
   private ArrayList<Seat> seatArrayList;
-  ClientModel clientModelManager = ModelFactory.getInstance().getModel();
+  ClientModelBooking clientModel = ModelFactory.getInstance().getModelBooking();
 
 
   public void makeBooking() throws  RemoteException
@@ -30,9 +31,9 @@ public class ViewModelBooking
 
     try
     {
-      clientModelManager.addBooking(showing, getUserNameField(), getEmailField(), seatArrayList);
+      clientModel.addBooking(showing, getUserNameField(), getEmailField(), seatArrayList);
     }
-    catch (ServerException serverException)
+    catch (ServerException | SQLException serverException)
     {
       serverException.printStackTrace();
     }
