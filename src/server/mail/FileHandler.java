@@ -14,15 +14,17 @@ import java.util.ArrayList;
 
 public class FileHandler
 {
-  private final String path = "C:\\Users\\basti\\OneDrive\\Documents\\VIA_SW\\SW2\\SDJ2\\SEP2_v3\\src\\server\\mail\\mailOrder.pdf";
-  /** HUSK AT ÆNDRE PATH **/
-  private final String logoPath = "C:\\Users\\basti\\OneDrive\\Documents\\VIA_SW\\SW2\\SDJ2\\SEP2_v3\\src\\shared\\image\\nyt.jpg";
+  private final String path = "src/server/mail/mailOrder.pdf";
+
+  //private final String logoPath = "C:\\Users\\mathi\\IdeaProjects\\SEP2\\src\\shared\\image\\nyt.jpg";
+  private final String logoPath = "src/shared/image/nyt.jpg";
   private File file;
   private Document document;
 
   public FileHandler()
   {
     file = new File(path);
+    System.out.println("Creating file at: " + file.getAbsolutePath());
     document = new Document();
 
   }

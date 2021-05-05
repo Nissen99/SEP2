@@ -10,7 +10,8 @@ import java.util.Properties;
 
 public class JavaMailUtil
 {
-  private static String path = "C:\\Users\\basti\\OneDrive\\Documents\\VIA_SW\\SW2\\SDJ2\\SEP2_v3\\src\\server\\mail\\mailOrder.pdf";
+  //private static String path = "C:\\Users\\basti\\OneDrive\\Documents\\VIA_SW\\SW2\\SDJ2\\SEP2_v3\\src\\server\\mail\\mailOrder.pdf";
+  private static String path = "src/server/mail/mailOrder.pdf";
 
 
   public static void sendMail(String recepient)
@@ -51,7 +52,7 @@ public class JavaMailUtil
 
     MimeBodyPart bodyPart = new MimeBodyPart();
     File file = new File(path);
-    System.out.println(file.exists() + " hvad?");
+    System.out.println("Attaching file from : " + file.getAbsolutePath());
 
     bodyPart.attachFile(file);
 
