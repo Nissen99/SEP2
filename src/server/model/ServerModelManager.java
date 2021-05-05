@@ -46,12 +46,12 @@ public class ServerModelManager implements ServerModel
     {
       user = userDAO.create(username,email);
       booking = bookingDAO.create(showing,user);
-      FileHandler fileHandler = new FileHandler();
-      fileHandler.createPDF(booking,seats);
       for (Seat seat : seats)
       {
         bookingSpecDAO.create(booking, seat);
       }
+      FileHandler fileHandler = new FileHandler();
+      fileHandler.createPDF(booking,seats);
       JavaMailUtil.sendMail(email);
     }
     catch (SQLException | MessagingException | IOException e)
