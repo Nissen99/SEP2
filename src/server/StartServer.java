@@ -21,7 +21,7 @@ public class StartServer
     DriverManager.registerDriver(new org.postgresql.Driver());
     RMIServerImpl server = new RMIServerImpl(new ServerModelManager());
     server.startServer();
-    //setup();
+    setup();
     System.out.println("Server is running");
   }
 

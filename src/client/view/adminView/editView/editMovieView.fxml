@@ -6,19 +6,32 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.editView.EditMovieController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: #d2ba74;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.editView.EditMovieController">
    <children>
-      <Label layoutX="9.0" layoutY="309.0" text="Movie title:" />
-      <TextField fx:id="movieTitleTextField" layoutX="75.0" layoutY="305.0" />
-      <Button layoutX="235.0" layoutY="305.0" mnemonicParsing="false" onAction="#addMovie" text="Add Movie" />
-      <TableView fx:id="movieTableView" prefHeight="233.0" prefWidth="600.0">
+      <Label layoutX="9.0" layoutY="309.0" text="Movie title:" textFill="#d2ba74" />
+      <TextField fx:id="movieTitleTextField" layoutX="75.0" layoutY="305.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" />
+      <Button layoutX="235.0" layoutY="305.0" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Add Movie" textFill="#d2ba74">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TableView fx:id="movieTableView" prefHeight="233.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: #d2ba74;">
         <columns>
           <TableColumn fx:id="movieTitleColumn" prefWidth="599.0" text="Movie Title" />
         </columns>
       </TableView>
-      <Button layoutX="9.0" layoutY="250.0" mnemonicParsing="false" text="Remove movie" />
-      <Button layoutX="18.0" layoutY="350.0" mnemonicParsing="false" onAction="#back" text="Back" />
-      <Button layoutX="497.0" layoutY="250.0" mnemonicParsing="false" onAction="#editShowingButton" text="Edit showings" />
+      <Button layoutX="9.0" layoutY="250.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Remove movie" textFill="#d2ba74">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="9.0" layoutY="350.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Back" textFill="#d2ba74">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="497.0" layoutY="250.0" mnemonicParsing="false" onAction="#editShowingButton" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Edit showings" textFill="#d2ba74">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>
