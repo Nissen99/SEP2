@@ -21,18 +21,20 @@ public class StartServer
     DriverManager.registerDriver(new org.postgresql.Driver());
     RMIServerImpl server = new RMIServerImpl(new ServerModelManager());
     server.startServer();
-    //setup();
+    setup();
     System.out.println("Server is running");
   }
 
   private static void setup() throws SQLException
   {
+    HallDAO hallDAO = new HallDAOImpl();
+
+    if (hallDAO.getHallByNumber("A") == null){
     MovieDAO movieDAO = new MovieDAOImpl();
     movieDAO.create("Jackass");
     Movie movie = new Movie(1,"Jackass");
     SeatDAO seatDAO = new SeatDAOImpl();
     Hall hall = new Hall("A", 16, 14);
-    HallDAO hallDAO = new HallDAOImpl();
     hallDAO.create(hall);
     SeatNoCalculator seatNoCalculator = new SeatNoCalculator(hall.getHallNo(),
         hall.getMaxSeatsInRow(), hall.getMaxRows());
@@ -47,5 +49,5 @@ public class StartServer
     Showing showing = new Showing(1, movie, time, hall);
     ShowingDAO showingDAO = new ShowingDAOImpl();
     showingDAO.create(showing);
-  }
+  }}
 }
