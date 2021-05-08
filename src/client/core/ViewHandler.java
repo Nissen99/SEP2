@@ -4,7 +4,8 @@ import client.view.adminView.AdminViewController;
 import client.view.adminView.editView.AddShowingController;
 import client.view.adminView.editView.EditMovieController;
 import client.view.adminView.editView.EditShowingController;
-import client.view.bookingView.BookingViewController;
+//import client.view.bookingView.BookingViewController;
+import client.view.createUserView.CreateUserViewController;
 import client.view.loginView.LoginViewController;
 import client.view.movieList.MovieListController;
 import client.view.seatView.SeatViewController;
@@ -68,14 +69,17 @@ public class ViewHandler
       ShowingListController controller = loader.getController();
       controller.init();
       stage.setTitle("Showing List");
-    }else if ("../view/bookingView/bookingView.fxml".equals(viewToOpen)){
+    }
+    /*else if ("../view/bookingView/bookingView.fxml".equals(viewToOpen)){
       loader.setLocation(getClass().getResource(viewToOpen));
       root = loader.load();
       BookingViewController controller = loader.getController();
       controller.init();
 
       stage.setTitle("Booking");
-    } else if ("../view/seatView/seatView.fxml".equals(viewToOpen)){
+    }  */
+    else if ("../view/seatView/seatView.fxml".equals(viewToOpen)){
+
       loader.setLocation(getClass().getResource(viewToOpen));
       root = loader.load();
       SeatViewController controller = loader.getController();
@@ -91,13 +95,13 @@ public class ViewHandler
 
       stage.setTitle("login");
 
-    } else if ("../view/adminView/adminView.fxml".equals(viewToOpen)){
+    } else if ("../view/createUserView/createUserView.fxml".equals(viewToOpen)){
       loader.setLocation(getClass().getResource(viewToOpen));
       root = loader.load();
-      AdminViewController controller = loader.getController();
+      CreateUserViewController controller = loader.getController();
       controller.init();
 
-      stage.setTitle("login");
+      stage.setTitle("Create User");
 
     }
     else if ("../view/adminView/editView/editMovieView.fxml".equals(viewToOpen)){
@@ -124,6 +128,15 @@ public class ViewHandler
 
       stage.setTitle("Add Showing");
     }
+    else if ("../view/adminView/adminView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+      AdminViewController controller = loader.getController();
+      controller.init();
+
+      stage.setTitle("Admin");
+    }
+
 
     scene = new Scene(root);
     stage.setScene(scene);

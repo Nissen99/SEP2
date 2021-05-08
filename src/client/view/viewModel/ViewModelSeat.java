@@ -4,6 +4,7 @@ import client.core.ModelFactory;
 import client.model.ClientModelBooking;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import server.ServerException;
 import server.model.PropertyChangeSubject;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
@@ -101,5 +102,10 @@ public class ViewModelSeat implements PropertyChangeListener,
     }
 
     return integerObservableList;
+  }
+
+  public void addBooking() throws ServerException, RemoteException, SQLException
+  {
+    clientModel.addBooking(selectedShowing,seatArrayList);
   }
 }

@@ -29,6 +29,6 @@ public class Booking implements Serializable
   public User getUser(){return user;}
 
   public String toString(){
-    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getName();
+    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getUserName();
   }
 }

@@ -11,11 +11,13 @@ public class ViewModelFactory
   private static ViewModelFactory viewModelFactory;
   private ViewModelMovieList movieList;
   private ViewModelShowingList showingList;
-  private ViewModelBooking booking;
+  //private ViewModelBooking booking;
   private ViewModelSeat seatVM;
   private ViewModelEditMovie editMovie;
   private ViewModelAddShowing addShowing;
   private ViewModelEditShowing editShowing;
+  private ViewModelLogin login;
+  private ViewModelCreateUser createUser;
 
   private ViewModelFactory()
   {
@@ -53,7 +55,7 @@ if (showingList == null)
     return showingList;
   }
 
-  public ViewModelBooking getBooking()
+/*  public ViewModelBooking getBooking()
   {
     if (booking == null){
       booking = new ViewModelBooking();
@@ -65,6 +67,8 @@ if (showingList == null)
     return booking;
   }
 
+
+ */
   public ViewModelSeat getSeatVM() throws SQLException, RemoteException
   {
 
@@ -105,6 +109,25 @@ addShowing.setSelectedMovie(ViewModelFactory.getInstance()
     editShowing.setSelectedMovie(ViewModelFactory.getInstance().editMovie.getSelectedMovie());
 
     return editShowing;
+  }
+
+
+  public ViewModelLogin getlogin(){
+
+    if (login == null){
+      login = new ViewModelLogin();
+    }
+
+        return login;
+  }
+
+  public ViewModelCreateUser getCreateUser()
+  {
+    if (createUser == null){
+      createUser = new ViewModelCreateUser();
+    }
+
+    return createUser;
   }
 
 }

@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import server.ServerException;
 import shared.transferobjects.Seat;
 
 import javax.swing.*;
@@ -198,21 +199,28 @@ public class SeatViewController implements PropertyChangeListener
   }
 
 
-  @FXML void OnConfirmButton() throws IOException, SQLException
+  @FXML void OnConfirmButton() throws IOException, SQLException, ServerException
   {
-    ArrayList<Seat> seats = new ArrayList<>();
-    for (Pane pane : selectedPane)
+    if (confirmBookingBox("Are you sure you want to confirm your booking"))
     {
-      Seat seat = new Seat();
-      seat.setSeatNo(pane.idProperty().get());
-      seats.add(seat);
-    }
+
+      ArrayList<Seat> seats = new ArrayList<>();
+      for (Pane pane : selectedPane)
+      {
+        Seat seat = new Seat();
+        seat.setSeatNo(pane.idProperty().get());
+        seats.add(seat);
+      }
+
       viewModel.setSelectedSeats(seats);
 
-    //Når vi skifter view er der ingen grund til vi stadigvæk lytter
-    viewModel.removePropertyChangeListener(this);
-      ViewHandler.getInstance().openView("../view/bookingView/bookingView.fxml");
+      //Når vi skifter view er der ingen grund til vi stadigvæk lytter
+      viewModel.removePropertyChangeListener(this);
+      viewModel.addBooking();
 
+      JOptionPane.showMessageDialog(null, "You have successfully made a booking. An email has been sent to your mailbox");
+      ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+    }
   }
 
   private void checkIfSeatOccupied(Pane pane){
@@ -233,6 +241,12 @@ public class SeatViewController implements PropertyChangeListener
 
 
 
+  }
+
+  private boolean confirmBookingBox(String s)
+  {
+    return JOptionPane.showConfirmDialog(null, s, "Confirmation", JOptionPane.YES_NO_OPTION)
+        == JOptionPane.YES_OPTION;
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

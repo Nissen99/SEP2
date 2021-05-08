@@ -7,6 +7,7 @@ import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
 
+import javax.security.auth.login.LoginException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.AlreadyBoundException;
@@ -36,10 +37,10 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
     registry.bind(String.valueOf(ENUM.BIOSERVER), this);
   }
 
-  @Override public Booking addBooking(Showing showing, String username, String email,
+  @Override public Booking addBooking(Showing showing,User user,
       ArrayList<Seat> seats) throws ServerException
   {
-    return model.addBooking(showing, username,email, seats);
+    return model.addBooking(showing,user, seats);
 
   }
 
@@ -96,6 +97,17 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   @Override public ArrayList<String> getHallNumbers() throws SQLException
   {
     return model.getHallNumbers();
+  }
+
+  @Override public void createUser(String userName, String email,String password) throws SQLException
+  {
+    model.createUser(userName,email,password);
+  }
+
+  @Override public User login(String userName, String password)
+      throws LoginException
+  {
+    return model.login(userName,password);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

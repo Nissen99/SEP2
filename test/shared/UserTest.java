@@ -11,7 +11,7 @@ class UserTest
   User user;
   @BeforeEach
   public void setUp() {
-    user = new User(1, "Henning","henningsmai@mail.com");
+    user = new User(1, "Henning","henningsmai@mail.com","pass123");
   }
 
   @Test
@@ -21,7 +21,7 @@ class UserTest
 
   @Test
   public void bliverNavnSatIConstructor() {
-    assertEquals("Henning", user.getName());
+    assertEquals("Henning", user.getUserName());
   }
 
   @Test

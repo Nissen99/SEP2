@@ -8,6 +8,7 @@ import shared.ENUM;
 import shared.transferobjects.*;
 
 import javax.mail.MessagingException;
+import javax.security.auth.login.LoginException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
@@ -37,14 +38,12 @@ public class ServerModelManager implements ServerModel
     propertyChangeSupport = new PropertyChangeSupport(this);
   }
 
-  @Override public Booking addBooking(Showing showing, String username,String email,
+  @Override public Booking addBooking(Showing showing, User user,
       ArrayList<Seat> seats) throws ServerException
   {
     Booking booking;
-    User user = null;
     try
     {
-      user = userDAO.create(username,email);
       booking = bookingDAO.create(showing,user);
       for (Seat seat : seats)
       {
@@ -52,7 +51,7 @@ public class ServerModelManager implements ServerModel
       }
       FileHandler fileHandler = new FileHandler();
       fileHandler.createPDF(booking,seats);
-      JavaMailUtil.sendMail(email);
+      JavaMailUtil.sendMail(user.getEmail());
     }
     catch (SQLException | MessagingException | IOException e)
     {
@@ -145,6 +144,17 @@ public class ServerModelManager implements ServerModel
   @Override public ArrayList<String> getHallNumbers() throws SQLException
   {
     return hallDAO.getHallNumbers();
+  }
+
+  @Override public void createUser(String userName, String email,String password) throws SQLException
+  {
+    userDAO.create(userName,email,password);
+  }
+
+  @Override public User login(String userName, String password)
+      throws LoginException
+  {
+    return userDAO.login(userName,password);
   }
 
   @Override public void addPropertyChangeListener(

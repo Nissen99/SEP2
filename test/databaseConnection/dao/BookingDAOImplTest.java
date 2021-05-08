@@ -1,6 +1,5 @@
 package databaseConnection.dao;
 
-import databaseConnection.dao.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.transferobjects.*;
@@ -29,9 +28,9 @@ class BookingDAOImplTest
   public void setUp() throws SQLException
   {
     bookingDAO= new BookingDAOImpl();
-    user = new User(1, "Hej","hejdu@gmail.com");
+    user = new User(1, "Hej","hejdu@gmail.com","pass123");
     userDAO = new UserDAOImpl();
-    userDAO.create(user.getName(),user.getEmail());
+    userDAO.create("hans","hans@hotmail.com","pass123");
   }
 
 

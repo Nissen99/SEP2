@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.loginView.LoginViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: back;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.loginView.LoginViewController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0">
+      <ImageView fitHeight="870.0" fitWidth="1288.0" layoutX="-8.0" layoutY="-150.0">
          <image>
             <Image url="@NextGenCine.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="238.0" layoutY="339.0" mnemonicParsing="false" onAction="#userButtonPressed" style="-fx-background-color: transparent; -fx-border-color: D2BA74;" text="User" textFill="#d2ba74">
+      <Button layoutX="684.0" layoutY="625.0" mnemonicParsing="false" onAction="#loginButtonPressed" style="-fx-background-color: transparent; -fx-border-color: D2BA74;" text="Login" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="300.0" layoutY="339.0" mnemonicParsing="false" onAction="#adminButtonPressed" style="-fx-background-color: transparent; -fx-border-color: D2BA74;" text="Admin" textFill="#d2ba74">
+      <Button layoutX="537.0" layoutY="625.0" mnemonicParsing="false" onAction="#createAccountButtonPressed" style="-fx-background-color: transparent; -fx-border-color: D2BA74;" text="Create Account" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Text fill="#d2ba74" layoutX="271.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+      <TextField fx:id="usernameField" alignment="TOP_CENTER" layoutX="537.0" layoutY="526.0" prefHeight="26.0" prefWidth="206.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: D2BA74; -fx-border-width: 1px 1px 3px 1px; -fx-text-inner-color: White;">
          <font>
-            <Font size="24.0" />
+            <Font size="13.0" />
          </font>
-      </Text>
+      </TextField>
+      <PasswordField fx:id="passwordField" alignment="TOP_CENTER" layoutX="537.0" layoutY="574.0" prefHeight="31.0" prefWidth="206.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: D2BA74; -fx-border-width: 1px 1px 3px 1px; -fx-text-inner-color: white;" />
    </children>
 </AnchorPane>

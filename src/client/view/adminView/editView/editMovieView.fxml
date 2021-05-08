@@ -11,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: #d2ba74;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.editView.EditMovieController">
    <children>
       <Label layoutX="9.0" layoutY="309.0" text="Movie title:" textFill="#d2ba74" />
-      <TextField fx:id="movieTitleTextField" layoutX="75.0" layoutY="305.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" />
+      <TextField fx:id="movieTitleTextField" layoutX="75.0" layoutY="305.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74; fx-text-inner-color: white;" />
       <Button layoutX="235.0" layoutY="305.0" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Add Movie" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="12.0" />

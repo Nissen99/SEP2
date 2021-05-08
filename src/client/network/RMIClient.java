@@ -7,6 +7,7 @@ import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
 
+import javax.security.auth.login.LoginException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -23,6 +24,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 {
   private RMIServer rmiServer;
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+  private User user;
 
   @Override
   public void startClient() {
@@ -40,11 +42,18 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public Booking addBooking(Showing showing, String username,String email,
+  @Override public void crateUser(String userName, String email,String password)
+      throws RemoteException, SQLException
+  {
+    rmiServer.createUser(userName,email,password);
+  }
+
+  @Override public Booking addBooking(Showing showing,
       ArrayList<Seat> seats) throws ServerException, RemoteException
   {
     System.out.println("Vi er i RMI client booking");
-    return rmiServer.addBooking(showing, username,email, seats);
+    return rmiServer.addBooking(showing,user,seats);
+
   }
 
   @Override public Movie addMovie(Movie movie)
@@ -98,6 +107,13 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
       throws RemoteException, SQLException
   {
     return rmiServer.getHallNumbers();
+  }
+
+  @Override public void login(String username, String password)
+      throws LoginException, RemoteException
+  {
+    user = rmiServer.login(username,password);
+
   }
 
   @Override public void update(PropertyChangeEvent evt) throws RemoteException

@@ -6,10 +6,8 @@ import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class FileHandler
@@ -33,7 +31,7 @@ public class FileHandler
   {
     String movieTitle = booking.getShowing().getMovie().getMovieTitle();
     String bookingID = String.valueOf(booking.getBookingId());
-    String fName = booking.getUser().getName();
+    String fName = booking.getUser().getUserName();
     String dateTime = booking.getShowing().getDate() + "   " + booking.getShowing().getTime();
     String hallNo = booking.getShowing().getHall().getHallNo();
     String[] seatNos = new String[seats.size()];

@@ -31,7 +31,7 @@ class BookingTest
     }
 
     showing = new Showing(1, movie, rightNow, hall);
-    user = new User(1, "Henning","heninsmail@mail.com");
+    user = new User(1, "Henning","heninsmail@mail.com","pass123");
     booking = new Booking(1, showing, user);
   }
 
@@ -47,7 +47,7 @@ class BookingTest
 
   @Test
   public void consSkalSætteRigtigUser() {
-    assertEquals("Henning", user.getName());
+    assertEquals("Henning", user.getUserName());
   }
 
   @Test

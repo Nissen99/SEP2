@@ -4,6 +4,7 @@ import client.network.RMIClient;
 import server.ServerException;
 import shared.transferobjects.*;
 
+import javax.security.auth.login.LoginException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class ClientModelManager implements ClientModelBooking, ClientModelMovie, ClientModelShowing
+public class ClientModelManager implements ClientModelBooking, ClientModelMovie, ClientModelShowing,ClientModelCreateUser,ClientModelLogin
 {
   private RMIClient client;
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -30,14 +31,14 @@ public class ClientModelManager implements ClientModelBooking, ClientModelMovie,
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
-  @Override public Booking addBooking(Showing showing, String username,String email,
+  @Override public Booking addBooking(Showing showing,
       ArrayList<Seat> seats)
       throws ServerException
   {
     System.out.println("Booking in clientModel manager");
     try
     {
-      return client.addBooking(showing, username, email, seats);
+      return client.addBooking(showing, seats);
     }
     catch (RemoteException e)
     {
@@ -122,5 +123,17 @@ public class ClientModelManager implements ClientModelBooking, ClientModelMovie,
   {
     propertyChangeSupport.removePropertyChangeListener(eventName, listener);
 
+  }
+
+  @Override public void createUser(String userName,String email, String password)
+      throws RemoteException, SQLException
+  {
+    client.crateUser(userName,email,password);
+  }
+
+  @Override public void login(String userName, String password)
+      throws LoginException, RemoteException
+  {
+    client.login(userName,password);
   }
 }
