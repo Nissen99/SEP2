@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.AdminViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.AdminViewController">
    <children>
       <ImageView fitHeight="416.0" fitWidth="617.0" layoutX="-10.0" layoutY="-9.0">
          <image>
@@ -21,7 +21,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="240.0" layoutY="161.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Cancel Booking" textFill="#d2ba74">
+      <Button layoutX="240.0" layoutY="161.0" mnemonicParsing="false" onAction="#editBooking" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Cancel Booking" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

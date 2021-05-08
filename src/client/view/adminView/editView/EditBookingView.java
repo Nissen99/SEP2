@@ -46,7 +46,7 @@ public class EditBookingView
       bookingTable.setItems(viewModel.getAllBookings());
       bookingId.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getBookingId())));
       name.setCellValueFactory(cellData -> new SimpleStringProperty(
-          cellData.getValue().getUser().getName()));
+          cellData.getValue().getUser().getUserName()));
       email.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getEmail()));
       title.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShowing().getMovie().getMovieTitle()));
       time.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShowing().getTime()));

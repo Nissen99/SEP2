@@ -2,9 +2,11 @@ package client.view.loginView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.util.AlertBox;
 import client.view.viewModel.ViewModelLogin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -45,8 +47,16 @@ public class LoginViewController
 
     }
     else {
-      viewModelLogin.login();
-      ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+      try
+      {
+        viewModelLogin.login();
+        ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+      }
+      catch (LoginException e)
+      {
+        Alert alert = AlertBox.makeAlert("information","Login error ",e.getMessage());
+        alert.showAndWait();
+      }
 
     }
   }

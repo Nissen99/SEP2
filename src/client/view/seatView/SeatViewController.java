@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -37,7 +38,6 @@ public class SeatViewController implements PropertyChangeListener
   private int currentNumber = 0;
 
   private ViewModelSeat viewModel;
-
 
   public void init() throws SQLException, RemoteException
   {
@@ -94,23 +94,21 @@ public class SeatViewController implements PropertyChangeListener
   {
     occupiedSeatArrayList = viewModel.getOccupiedSeats();
 
-
     for (Seat seat : occupiedSeatArrayList)
     {
       for (Pane pane : selectedPane)
       {
-        if (pane.idProperty().get().equals(seat.getSeatNo())){
+        if (pane.idProperty().get().equals(seat.getSeatNo()))
+        {
           makeOldPanesTransparent();
           selectedPane.clear();
           break;
         }
       }
 
-
       Pane occupiedPane = getPane(seat.getSeatNo());
       occupiedPane.setStyle("-fx-background-color:red;");
       occupiedPane.setDisable(true);
-
 
     }
 
@@ -139,32 +137,31 @@ public class SeatViewController implements PropertyChangeListener
 
     Pane pane = (Pane) mouseEvent.getSource();
 
-      selectedPane.clear();
+    selectedPane.clear();
 
-      String id = pane.idProperty().get();
+    String id = pane.idProperty().get();
 
-
-
-      for (int i = 0; i < numberOfSeats.getValue(); i++)
+    for (int i = 0; i < numberOfSeats.getValue(); i++)
+    {
+      try
       {
-        try
-        {
-          id = idCounter(id);
-        }
-        catch (IndexOutOfBoundsException e){
-            Alert alert = AlertBox
-                .makeAlert("information","Error!", e.getMessage());
-            alert.showAndWait();
-          selectedPane.clear();
-          return;
-        }
+        id = idCounter(id);
       }
+      catch (IndexOutOfBoundsException e)
+      {
+        Alert alert = AlertBox
+            .makeAlert("information", "Error!", e.getMessage());
+        alert.showAndWait();
+        selectedPane.clear();
+        return;
+      }
+    }
     for (Pane selectedPane : selectedPane)
     {
 
       selectedPane.setStyle("-fx-background-color:blue;");
     }
-      }
+  }
 
   private void makeOldPanesTransparent()
   {
@@ -192,82 +189,97 @@ public class SeatViewController implements PropertyChangeListener
   {
     if (idSplit.length > 4)
     {
-     currentNumber = Integer.parseInt(
-         idSplit[1] + idSplit[2] + idSplit[3] + idSplit[4]);
-    } else
+      currentNumber = Integer
+          .parseInt(idSplit[1] + idSplit[2] + idSplit[3] + idSplit[4]);
+    }
+    else
     {
-       currentNumber = Integer.parseInt(idSplit[1] + idSplit[2] + idSplit[3]);
+      currentNumber = Integer.parseInt(idSplit[1] + idSplit[2] + idSplit[3]);
     }
 
     return ++currentNumber;
   }
 
-
   @FXML void OnConfirmButton() throws IOException, SQLException, ServerException
   {
-    if (confirmBookingBox("Are you sure you want to confirm your booking"))
+    if (selectedPane.size() ==0)
     {
+      Alert alert2 = AlertBox.makeAlert("Information","Error","No seats has been selected");
+      alert2.showAndWait();
 
-      ArrayList<Seat> seats = new ArrayList<>();
-      for (Pane pane : selectedPane)
-      {
-        Seat seat = new Seat();
-        seat.setSeatNo(pane.idProperty().get());
-        seats.add(seat);
-      }
+    }
+    else
+    {
+      Alert alert = AlertBox.makeAlert("confirmation", "Make Booking",
+          "Do you want to confirm your booking?");
+      alert.showAndWait().ifPresent(type -> {
+        if (type.getButtonData() == ButtonBar.ButtonData.YES)
+        {
+          try
+          {
+            ArrayList<Seat> seats = new ArrayList<>();
+            for (Pane pane : selectedPane)
+            {
+              Seat seat = new Seat();
+              seat.setSeatNo(pane.idProperty().get());
+              seats.add(seat);
+            }
+            viewModel.setSelectedSeats(seats);
+            //Når vi skifter view er der ingen grund til vi stadigvæk lytter
+            viewModel.removePropertyChangeListener(this);
+            viewModel.addBooking();
 
-      viewModel.setSelectedSeats(seats);
+            Alert alert1 = AlertBox.makeAlert("Information", "Booking made",
+                "You have successfully made a booking. An email has been sent to your mailbox ");
+            alert1.showAndWait();
+            ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+          }
+          catch (ServerException | SQLException | IOException e)
+          {
+            e.printStackTrace();
+          }
+        }
 
-      //Når vi skifter view er der ingen grund til vi stadigvæk lytter
-      viewModel.removePropertyChangeListener(this);
-      viewModel.addBooking();
-
-      JOptionPane.showMessageDialog(null, "You have successfully made a booking. An email has been sent to your mailbox");
-      ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+      });
     }
   }
 
-  private void checkIfSeatOccupied(Pane pane){
+  private void checkIfSeatOccupied(Pane pane)
+  {
     for (Seat seat : occupiedSeatArrayList)
     {
-      if (seat.getSeatNo().equals(pane.idProperty().get())){
-        throw new IndexOutOfBoundsException("Invalid input - Seat already occupied");
-      }}}
+      if (seat.getSeatNo().equals(pane.idProperty().get()))
+      {
+        throw new IndexOutOfBoundsException(
+            "Invalid input - Seat already occupied");
+      }
+    }
+  }
 
   @FXML void onBackButton() throws IOException, SQLException
   {
 
-
     //Når vi skifter view er der ingen grund til vi stadigvæk lytter
-      viewModel.removePropertyChangeListener(this);
-      ViewHandler.getInstance()
-          .openView("../view/showingList/showingListView.fxml");
+    viewModel.removePropertyChangeListener(this);
+    ViewHandler.getInstance()
+        .openView("../view/showingList/showingListView.fxml");
 
-
-
-  }
-
-  private boolean confirmBookingBox(String s)
-  {
-    return JOptionPane.showConfirmDialog(null, s, "Confirmation", JOptionPane.YES_NO_OPTION)
-        == JOptionPane.YES_OPTION;
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
 
-      Platform.runLater(() -> {
-        try
-        {
-          System.out.println("PROPERTY CHANGED");
-          setOccupiedSeats();
-        }
-        catch (SQLException | RemoteException throwables)
-        {
-          throwables.printStackTrace();
-        }
-      });
-
+    Platform.runLater(() -> {
+      try
+      {
+        System.out.println("PROPERTY CHANGED");
+        setOccupiedSeats();
+      }
+      catch (SQLException | RemoteException throwables)
+      {
+        throwables.printStackTrace();
+      }
+    });
 
   }
 }

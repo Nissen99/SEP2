@@ -39,7 +39,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     ArrayList<Booking> bookingArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("SELECT s.movieId, title, b.userId, username, email, hallNo, b.showingId, time, bookingId\n"
+      PreparedStatement statement = connection.prepareStatement("SELECT s.movieId, title, b.userId, username, email,password, hallNo, b.showingId, time, bookingId\n"
           + "FROM Booking b\n" + "JOIN User_ u on b.userId = u.userId\n"
           + "JOIN Showing s on b.showingId = s.showingId\n"
           + "Join Movie m on s.movieId = m.movieId;");
@@ -50,7 +50,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
             bookings.getString("title"));
         User user = new User(bookings.getInt("userId"),
             bookings.getString("username"),
-            bookings.getString("email"));
+            bookings.getString("email"),"password");
         Hall hall = new Hall(bookings.getString("hallNo"),16,14);
         Showing showing = new Showing(bookings.getInt("showingId"),
             movie,

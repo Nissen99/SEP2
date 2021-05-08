@@ -11,7 +11,7 @@ public class ViewModelFactory
   private static ViewModelFactory viewModelFactory;
   private ViewModelMovieList movieList;
   private ViewModelShowingList showingList;
-  private ViewModelBooking booking;
+  //private ViewModelBooking booking;
   private ViewModelSeat seatVM;
   private ViewModelEditMovie editMovie;
   private ViewModelAddShowing addShowing;
