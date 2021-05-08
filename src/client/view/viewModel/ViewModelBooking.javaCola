@@ -19,6 +19,7 @@ public class ViewModelBooking
   private StringProperty userNameField = new SimpleStringProperty();
 
 
+
   private StringProperty emailField = new SimpleStringProperty();
 
   private ArrayList<Seat> seatArrayList;

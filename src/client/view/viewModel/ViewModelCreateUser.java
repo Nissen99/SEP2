@@ -13,6 +13,7 @@ public class ViewModelCreateUser
 {
 
 
+
   private StringProperty userNameField = new SimpleStringProperty();
   private StringProperty emailField = new SimpleStringProperty();
   private StringProperty passwordField = new SimpleStringProperty();
