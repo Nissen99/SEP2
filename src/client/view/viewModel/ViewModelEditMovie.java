@@ -72,6 +72,11 @@ public class ViewModelEditMovie
     this.selectedMovie = selectedMovie;
   }
 
+  public void removeMovie(Movie movie) throws RemoteException, SQLException
+  {
+      clientModel.removeMovie(movie);
+  }
+
 
 
 }

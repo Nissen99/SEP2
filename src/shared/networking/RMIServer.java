@@ -13,12 +13,15 @@ public interface RMIServer extends Remote
 {
   Booking addBooking(Showing showing, String username,String email, ArrayList<Seat> seats)
       throws RemoteException, ServerException;
+  void removeBooking(Booking booking) throws RemoteException, SQLException;
   Movie addMovie(Movie movie) throws RemoteException, SQLException;
+  void removeMovie(Movie movie) throws RemoteException, SQLException;
   Showing addShowing(Showing showing) throws RemoteException, SQLException;
   Hall addHall(Hall hall) throws RemoteException, SQLException;
   ArrayList<Movie> getMovieList() throws RemoteException, SQLException;
   ArrayList<Showing> getShowingList(Movie movie)
       throws RemoteException, SQLException;
+  ArrayList<Booking> getBookingList() throws RemoteException, SQLException;
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws RemoteException, SQLException;
   Hall getHallByNumber(String hallNo) throws RemoteException, SQLException;

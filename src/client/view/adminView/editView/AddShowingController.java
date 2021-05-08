@@ -2,11 +2,13 @@ package client.view.adminView.editView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.util.AlertBox;
 import client.view.viewModel.ViewModelAddShowing;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -53,10 +55,12 @@ public class AddShowingController
       viewModel.addShowing(timestamp, hallNo.getValue());
       back();
     } catch (NullPointerException e) {
-      JOptionPane.showMessageDialog(null, "Invalid input - Time and Date needs to be filled");
+      Alert alert = AlertBox.makeAlert("information", "Error!","Invalid input - Time and Date needs to be filled");
+      alert.showAndWait();
     }
     catch (IllegalArgumentException e) {
-      JOptionPane.showMessageDialog(null, e.getMessage());
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.showAndWait();
     }
 
   }

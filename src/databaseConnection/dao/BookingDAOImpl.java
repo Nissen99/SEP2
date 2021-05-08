@@ -34,6 +34,45 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
   }
 
+  @Override public ArrayList<Booking> getAllBookings() throws SQLException
+  {
+    ArrayList<Booking> bookingArrayList = new ArrayList<>();
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT s.movieId, title, b.userId, username, email, hallNo, b.showingId, time, bookingId\n"
+          + "FROM Booking b\n" + "JOIN User_ u on b.userId = u.userId\n"
+          + "JOIN Showing s on b.showingId = s.showingId\n"
+          + "Join Movie m on s.movieId = m.movieId;");
+      ResultSet bookings = statement.executeQuery();
+      while (bookings.next()){
+
+        Movie movie = new Movie(bookings.getInt("movieId"),
+            bookings.getString("title"));
+        User user = new User(bookings.getInt("userId"),
+            bookings.getString("username"),
+            bookings.getString("email"));
+        Hall hall = new Hall(bookings.getString("hallNo"),16,14);
+        Showing showing = new Showing(bookings.getInt("showingId"),
+            movie,
+            bookings.getTimestamp("time"), hall);
+        Booking booking = new Booking(bookings.getInt("bookingId"),
+            showing,user);
+
+        bookingArrayList.add(booking);
+      }
+    }
+    return bookingArrayList;
+  }
+
+  @Override public void removeBooking(Booking booking) throws SQLException
+  {
+    try (Connection connection = getConnection()){
+      PreparedStatement statement = connection.prepareStatement("DELETE FROM Booking WHERE bookingId = ?");
+      statement.setInt(1, booking.getBookingId());
+      statement.executeUpdate();
+    }
+  }
+
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException
   {
@@ -92,17 +131,4 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
   }
 
  */
-
-  //  @Override public ArrayList<Booking> getAllBookings() throws SQLException
-  //  {
-  //    ArrayList<Booking> bookingArrayList = new ArrayList<>();
-  //    try(Connection connection = getConnection()){
-  //      PreparedStatement statement = connection.prepareStatement("SELECT * From Booking");
-  //      ResultSet bookings = statement.executeQuery();
-  //      while (bookings.next()){
-  //      //TODO OPret booking og tilføj til listen
-  //      }
-  //    }
-  //    return null;
-  //  }
 }

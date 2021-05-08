@@ -16,6 +16,7 @@ public class ViewModelFactory
   private ViewModelEditMovie editMovie;
   private ViewModelAddShowing addShowing;
   private ViewModelEditShowing editShowing;
+  private ViewModelEditBooking editBooking;
 
   private ViewModelFactory()
   {
@@ -105,6 +106,14 @@ addShowing.setSelectedMovie(ViewModelFactory.getInstance()
     editShowing.setSelectedMovie(ViewModelFactory.getInstance().editMovie.getSelectedMovie());
 
     return editShowing;
+  }
+
+  public ViewModelEditBooking getEditBooking(){
+
+    if (editBooking == null){
+      editBooking = new ViewModelEditBooking();
+    }
+    return editBooking;
   }
 
 }

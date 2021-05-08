@@ -2,8 +2,10 @@ package client.view.adminView.editView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.util.AlertBox;
 import client.view.viewModel.ViewModelEditMovie;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -47,7 +49,8 @@ public class EditMovieController
 
       ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
     } catch (NullPointerException e) {
-      JOptionPane.showMessageDialog(null, "No movie selected");
+      Alert alert = AlertBox.makeAlert("information", "Error!","No movie selected");
+      alert.showAndWait();
     }
 
   }
@@ -65,14 +68,28 @@ public class EditMovieController
     }
     catch (IllegalArgumentException e)
     {
-      JOptionPane.showMessageDialog(null, "Invalid title");
+      Alert alert = AlertBox.makeAlert("information", "Error!","Invalid title");
+      alert.showAndWait();
     }
     movieTitleTextField.clear();
     setUpTableView();
   }
 
-  public void removeMovie(){
-    //TODO
+  public void removeMovie() throws SQLException, RemoteException
+  {
+    try
+    {
+      Movie movie = movieTableView.getSelectionModel().getSelectedItem();
+      viewModel.removeMovie(movie);
+    }
+    catch ( NullPointerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!","No movie selected");
+      alert.showAndWait();
+    }
+    movieTitleTextField.clear();
+    setUpTableView();
+
   }
 
 

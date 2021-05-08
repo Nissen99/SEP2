@@ -21,7 +21,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="231.0" layoutY="161.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Ban motherfucker" textFill="#d2ba74">
+      <Button layoutX="231.0" layoutY="161.0" mnemonicParsing="false" onAction="#editBooking" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Ban motherfucker" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

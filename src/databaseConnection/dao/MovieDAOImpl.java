@@ -40,4 +40,14 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
       return movieArrayList;
     }
   }
+
+  @Override public void removeMovie(Movie movie) throws SQLException
+  {
+    System.out.println("Er vi i DAO?");
+    try (Connection connection = getConnection()){
+      PreparedStatement statement = connection.prepareStatement("DELETE FROM Movie WHERE movieId = ?");
+      statement.setInt(1, movie.getMovieId());
+      statement.executeUpdate();
+    }
+  }
 }

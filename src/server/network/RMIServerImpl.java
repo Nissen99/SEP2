@@ -43,9 +43,21 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
   }
 
+  @Override public void removeBooking(Booking booking)
+      throws RemoteException, SQLException
+  {
+    model.removeBooking(booking);
+  }
+
   @Override public Movie addMovie(Movie movie) throws SQLException
   {
     return model.addMovie(movie);
+  }
+
+  @Override public void removeMovie(Movie movie)
+      throws RemoteException, SQLException
+  {
+    model.removeMovie(movie);
   }
 
   @Override public Showing addShowing(Showing showing) throws SQLException
@@ -69,6 +81,11 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
     return model.getShowingList(movie);
   }
 
+  @Override public ArrayList<Booking> getBookingList()
+      throws RemoteException, SQLException
+  {
+    return model.getBookingList();
+  }
 
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException

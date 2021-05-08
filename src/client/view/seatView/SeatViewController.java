@@ -2,11 +2,13 @@ package client.view.seatView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.util.AlertBox;
 import client.view.viewModel.ViewModelSeat;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -149,7 +151,9 @@ public class SeatViewController implements PropertyChangeListener
           id = idCounter(id);
         }
         catch (IndexOutOfBoundsException e){
-          JOptionPane.showMessageDialog(null, e.getMessage());
+            Alert alert = AlertBox
+                .makeAlert("information","Error!", e.getMessage());
+            alert.showAndWait();
           selectedPane.clear();
           return;
         }

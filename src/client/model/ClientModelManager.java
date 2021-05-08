@@ -47,10 +47,22 @@ public class ClientModelManager implements ClientModelBooking, ClientModelMovie,
 
   }
 
+  @Override public void removeBooking(Booking booking)
+      throws RemoteException, SQLException
+  {
+    client.removeBooking(booking);
+  }
+
   @Override public Movie addMovie(Movie movie)
       throws SQLException, RemoteException
   {
     return client.addMovie(movie);
+  }
+
+  @Override public void removeMovie(Movie movie)
+      throws RemoteException, SQLException
+  {
+    client.removeMovie(movie);
   }
 
   @Override public Showing addShowing(Showing showing)
@@ -79,6 +91,12 @@ public class ClientModelManager implements ClientModelBooking, ClientModelMovie,
       throws RemoteException, SQLException
   {
     return client.getOccupiedSeats(showing);
+  }
+
+  @Override public ArrayList<Booking> getBookingList()
+      throws RemoteException, SQLException
+  {
+    return client.getBookingList();
   }
 
   @Override public Hall getHallByNumber(String hallNo)

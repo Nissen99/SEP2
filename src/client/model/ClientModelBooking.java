@@ -13,6 +13,8 @@ public interface ClientModelBooking extends ClientModelShowingList
 {
   Booking addBooking(Showing showing, String username, String email,  ArrayList<Seat> seats)
       throws RemoteException, SQLException, ServerException;
+  void removeBooking(Booking booking) throws RemoteException, SQLException;
   ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException, RemoteException;
+  ArrayList<Booking> getBookingList() throws RemoteException, SQLException;
 }
