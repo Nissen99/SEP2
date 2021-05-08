@@ -21,7 +21,7 @@
           <TableColumn fx:id="movieTitleColumn" prefWidth="599.0" text="Movie Title" />
         </columns>
       </TableView>
-      <Button layoutX="9.0" layoutY="250.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Remove movie" textFill="#d2ba74">
+      <Button layoutX="9.0" layoutY="250.0" mnemonicParsing="false" onAction="#removeMovie" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Remove movie" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

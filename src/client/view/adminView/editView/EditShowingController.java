@@ -43,7 +43,9 @@ public void backButton() throws IOException, SQLException
 }
 
 
-  public void removeShowing(){}
+  public void removeShowing(){
+
+  }
 
   public void addShowing() throws IOException, SQLException
   {

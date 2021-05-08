@@ -2,6 +2,7 @@ package client.core;
 
 import client.view.adminView.AdminViewController;
 import client.view.adminView.editView.AddShowingController;
+import client.view.adminView.editView.EditBookingView;
 import client.view.adminView.editView.EditMovieController;
 import client.view.adminView.editView.EditShowingController;
 //import client.view.bookingView.BookingViewController;
@@ -137,6 +138,14 @@ public class ViewHandler
       stage.setTitle("Admin");
     }
 
+    else if ("../view/adminView/editView/editBookingView.fxml".equals(viewToOpen)){
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+      EditBookingView controller = loader.getController();
+      controller.init();
+
+      stage.setTitle("Edit Booking");
+    }
 
     scene = new Scene(root);
     stage.setScene(scene);

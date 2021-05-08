@@ -10,9 +10,7 @@ import java.util.Properties;
 
 public class JavaMailUtil
 {
-  //private static String path = "C:\\Users\\basti\\OneDrive\\Documents\\VIA_SW\\SW2\\SDJ2\\SEP2_v3\\src\\server\\mail\\mailOrder.pdf";
   private static String path = "src/server/mail/mailOrder.pdf";
-
 
   public static void sendMail(String recepient)
       throws MessagingException, IOException

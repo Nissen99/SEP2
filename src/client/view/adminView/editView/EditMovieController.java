@@ -2,8 +2,10 @@ package client.view.adminView.editView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.util.AlertBox;
 import client.view.viewModel.ViewModelEditMovie;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -48,41 +50,52 @@ public class EditMovieController
           Movie movie = movieTableView.getSelectionModel().getSelectedItem();
           viewModel.setSelectedMovie(movie);
 
-          ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
-        }
-        catch (NullPointerException e)
-        {
-          JOptionPane.showMessageDialog(null, "No movie selected");
-        }
+      ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
+    } catch (NullPointerException e) {
+      Alert alert = AlertBox.makeAlert("information", "Error!","No movie selected");
+      alert.showAndWait();
+    }
 
-      }
+  }
 
       public void back() throws IOException, SQLException
       {
         ViewHandler.getInstance().openView("../view/adminView/adminView.fxml");
       }
 
-      public void addMovie() throws SQLException, RemoteException
-      {
-        try
-        {
-          viewModel.addMovie();
-        }
-        catch (IllegalArgumentException e)
-        {
-          JOptionPane.showMessageDialog(null, "Invalid title");
-        }
-        movieTitleTextField.clear();
-        setUpTableView();
-      }
-
-      public void removeMovie()
-      {
-        //TODO
-      }
-
+  public void addMovie() throws SQLException, RemoteException
+  {
+    try
+    {
+      viewModel.addMovie();
     }
+    catch (IllegalArgumentException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!","Invalid title");
+      alert.showAndWait();
+    }
+    movieTitleTextField.clear();
+    setUpTableView();
+  }
+
+  public void removeMovie() throws SQLException, RemoteException
+  {
+    try
+    {
+      Movie movie = movieTableView.getSelectionModel().getSelectedItem();
+      viewModel.removeMovie(movie);
+    }
+    catch ( NullPointerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!","No movie selected");
+      alert.showAndWait();
+    }
+    movieTitleTextField.clear();
+    setUpTableView();
+
+  }
 
 
 
 
+}

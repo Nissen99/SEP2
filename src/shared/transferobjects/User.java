@@ -1,5 +1,8 @@
 package shared.transferobjects;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.io.Serializable;
 
 public class User implements Serializable
@@ -21,6 +24,7 @@ public class User implements Serializable
   {
     return userName;
   }
+
 
   public int getUserID()
   {

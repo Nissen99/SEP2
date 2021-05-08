@@ -21,4 +21,9 @@ public void init(){}
 
   ViewHandler.getInstance().openView("../view/adminView/editView/editMovieView.fxml");
   }
+
+  public void editBooking() throws IOException, SQLException
+  {
+  ViewHandler.getInstance().openView("../view/adminView/editView/editBookingView.fxml");
+  }
 }

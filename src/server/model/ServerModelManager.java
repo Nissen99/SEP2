@@ -67,6 +67,11 @@ public class ServerModelManager implements ServerModel
     return null;
   }
 
+  @Override public void removeBooking(Booking booking) throws SQLException
+  {
+    bookingDAO.removeBooking(booking);
+  }
+
   @Override public Movie addMovie(Movie movie)
   {
 
@@ -123,11 +128,20 @@ public class ServerModelManager implements ServerModel
     return showingDAO.getAllShowings(movie);
   }
 
+  @Override public ArrayList<Booking> getBookingList() throws SQLException
+  {
+    return bookingDAO.getAllBookings();
+  }
 
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException
   {
     return bookingDAO.getOccupiedSeats(showing);
+  }
+
+  @Override public void removeMovie(Movie movie) throws SQLException
+  {
+    movieDAO.removeMovie(movie);
   }
 
   @Override public Hall getHallByNumber(String hallNo) throws SQLException

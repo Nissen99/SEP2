@@ -56,10 +56,23 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   }
 
+  @Override public void removeBooking(Booking booking)
+      throws RemoteException, SQLException
+  {
+    rmiServer.removeBooking(booking);
+  }
+
   @Override public Movie addMovie(Movie movie)
       throws RemoteException, SQLException
   {
     return rmiServer.addMovie(movie);
+  }
+
+  @Override public void removeMovie(Movie movie)
+      throws RemoteException, SQLException
+  {
+    System.out.println("Er vi i RMIClient");
+    rmiServer.removeMovie(movie);
   }
 
   @Override public Showing addShowing(Showing showing)
@@ -83,6 +96,12 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
       throws RemoteException, SQLException
   {
     return rmiServer.getShowingList(movie);
+  }
+
+  @Override public ArrayList<Booking> getBookingList()
+      throws RemoteException, SQLException
+  {
+    return rmiServer.getBookingList();
   }
 
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)

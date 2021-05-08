@@ -13,8 +13,6 @@ import java.util.ArrayList;
 public class FileHandler
 {
   private final String path = "src/server/mail/mailOrder.pdf";
-
-  //private final String logoPath = "C:\\Users\\mathi\\IdeaProjects\\SEP2\\src\\shared\\image\\nyt.jpg";
   private final String logoPath = "src/shared/image/nyt.jpg";
   private File file;
   private Document document;

@@ -11,13 +11,14 @@ public class ViewModelFactory
   private static ViewModelFactory viewModelFactory;
   private ViewModelMovieList movieList;
   private ViewModelShowingList showingList;
-  //private ViewModelBooking booking;
+  private ViewModelBooking booking;
   private ViewModelSeat seatVM;
   private ViewModelEditMovie editMovie;
   private ViewModelAddShowing addShowing;
   private ViewModelEditShowing editShowing;
   private ViewModelLogin login;
   private ViewModelCreateUser createUser;
+  private ViewModelEditBooking editBooking;
 
   private ViewModelFactory()
   {
@@ -109,6 +110,14 @@ addShowing.setSelectedMovie(ViewModelFactory.getInstance()
     editShowing.setSelectedMovie(ViewModelFactory.getInstance().editMovie.getSelectedMovie());
 
     return editShowing;
+  }
+
+  public ViewModelEditBooking getEditBooking(){
+
+    if (editBooking == null){
+      editBooking = new ViewModelEditBooking();
+    }
+    return editBooking;
   }
 
 
