@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.AdminViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.AdminViewController">
    <children>
-      <ImageView fitHeight="416.0" fitWidth="617.0" layoutX="-10.0" layoutY="-9.0">
-         <image>
-            <Image url="@editView/black-background.jpg" />
-         </image>
-      </ImageView>
-      <Button layoutX="240.0" layoutY="209.0" mnemonicParsing="false" onAction="#editMovie" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Edit Movie" textFill="#d2ba74">
+      <Button layoutX="647.0" layoutY="177.0" mnemonicParsing="false" onAction="#editMovie" prefHeight="62.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Edit Movie" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="28.0" layoutY="347.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Back" textFill="#d2ba74">
+      <Button layoutX="28.0" layoutY="654.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="99.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Back" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="240.0" layoutY="161.0" mnemonicParsing="false" onAction="#editBooking" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Cancel Booking" textFill="#d2ba74">
+      <Button layoutX="647.0" layoutY="264.0" mnemonicParsing="false" onAction="#editBooking" prefHeight="62.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-border-color: #d2ba74;" text="Cancel Booking" textFill="#d2ba74">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
