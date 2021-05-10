@@ -1,4 +1,4 @@
-package server;
+package shared.exception;
 
 public class ServerException extends Exception
 {

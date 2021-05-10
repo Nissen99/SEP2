@@ -4,7 +4,7 @@ import client.core.ModelFactory;
 import client.model.ClientModelBooking;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import server.ServerException;
+import shared.exception.ServerException;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 

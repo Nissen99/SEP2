@@ -1,7 +1,7 @@
 package client.model;
 
 import client.network.RMIClient;
-import server.ServerException;
+import shared.exception.ServerException;
 import shared.transferobjects.*;
 
 import javax.security.auth.login.LoginException;

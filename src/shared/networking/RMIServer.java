@@ -1,6 +1,6 @@
 package shared.networking;
 
-import server.ServerException;
+import shared.exception.ServerException;
 import shared.transferobjects.*;
 
 import javax.security.auth.login.LoginException;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public interface RMIServer extends Remote
 {
-  Booking addBooking(Showing showing,User user, ArrayList<Seat> seats)
+  Booking addBooking(Showing showing, User user, ArrayList<Seat> seats)
       throws RemoteException, ServerException;
   void removeBooking(Booking booking) throws RemoteException, SQLException;
   Movie addMovie(Movie movie) throws RemoteException, SQLException;

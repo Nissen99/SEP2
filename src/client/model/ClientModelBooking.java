@@ -1,10 +1,9 @@
 package client.model;
 
-import server.ServerException;
+import shared.exception.ServerException;
 import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
-import shared.transferobjects.User;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
