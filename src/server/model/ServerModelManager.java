@@ -1,7 +1,7 @@
 package server.model;
 
-import databaseConnection.dao.*;
-import server.ServerException;
+import server.dao.*;
+import shared.exception.ServerException;
 import server.mail.FileHandler;
 import server.mail.JavaMailUtil;
 import shared.ENUM;

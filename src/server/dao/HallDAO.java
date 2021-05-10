@@ -1,4 +1,4 @@
-package databaseConnection.dao;
+package server.dao;
 
 
 import shared.transferobjects.Hall;

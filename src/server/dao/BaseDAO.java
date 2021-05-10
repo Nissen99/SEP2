@@ -1,6 +1,6 @@
-package databaseConnection.dao;
+package server.dao;
 
-import shared.MINKODE;
+import server.util.MINKODE;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

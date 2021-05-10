@@ -1,9 +1,9 @@
 package server;
 
-import databaseConnection.dao.*;
-import server.model.ServerModel;
+import server.dao.*;
 import server.model.ServerModelManager;
 import server.network.RMIServerImpl;
+import server.util.SeatNoCalculator;
 import shared.transferobjects.*;
 
 import java.rmi.AlreadyBoundException;
@@ -11,7 +11,6 @@ import java.rmi.RemoteException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class StartServer
 {

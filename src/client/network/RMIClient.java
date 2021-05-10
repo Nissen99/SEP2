@@ -1,6 +1,6 @@
 package client.network;
 
-import server.ServerException;
+import shared.exception.ServerException;
 import server.model.PropertyChangeSubject;
 import shared.ENUM;
 import shared.networking.ClientCallBack;

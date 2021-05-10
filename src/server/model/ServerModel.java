@@ -1,6 +1,6 @@
 package server.model;
 
-import server.ServerException;
+import shared.exception.ServerException;
 import shared.transferobjects.*;
 
 import javax.security.auth.login.LoginException;

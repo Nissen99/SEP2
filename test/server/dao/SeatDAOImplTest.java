@@ -1,8 +1,5 @@
-package databaseConnection.dao;
+package server.dao;
 
-import databaseConnection.dao.HallDAOImpl;
-import databaseConnection.dao.SeatDAO;
-import databaseConnection.dao.SeatDAOImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.transferobjects.Hall;

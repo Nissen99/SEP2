@@ -1,9 +1,8 @@
-package databaseConnection.dao;
+package server.dao;
 
 import shared.transferobjects.User;
 
 import javax.security.auth.login.LoginException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

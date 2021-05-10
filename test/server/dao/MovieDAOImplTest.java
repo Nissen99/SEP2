@@ -1,7 +1,5 @@
-package databaseConnection.dao;
+package server.dao;
 
-import databaseConnection.dao.MovieDAO;
-import databaseConnection.dao.MovieDAOImpl;
 import org.junit.jupiter.api.Test;
 import shared.transferobjects.Movie;
 

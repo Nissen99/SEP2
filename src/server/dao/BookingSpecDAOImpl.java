@@ -1,11 +1,10 @@
-package databaseConnection.dao;
+package server.dao;
 
 import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO

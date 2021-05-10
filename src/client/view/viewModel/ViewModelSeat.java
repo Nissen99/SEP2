@@ -4,7 +4,7 @@ import client.core.ModelFactory;
 import client.model.ClientModelBooking;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import server.ServerException;
+import shared.exception.ServerException;
 import server.model.PropertyChangeSubject;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
@@ -29,10 +29,7 @@ public class ViewModelSeat implements PropertyChangeListener,
 
   public ViewModelSeat() throws SQLException, RemoteException
   {
-
     clientModel.addPropertyChangeListener(this::update);
-
-
   }
 
   private void update(PropertyChangeEvent propertyChangeEvent)
