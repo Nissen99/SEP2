@@ -15,4 +15,5 @@ public interface ClientModelShowing extends ClientModelShowingList
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
       throws RemoteException, SQLException;
   ArrayList<String> getHallNumbers() throws RemoteException, SQLException;
+  void removeShowing(Showing showing) throws SQLException;
 }

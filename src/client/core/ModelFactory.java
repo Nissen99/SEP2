@@ -13,6 +13,7 @@ public class ModelFactory
   private ClientFactory clientFactory;
   private ClientModelLogin clientModelLogin;
   private ClientModelCreateUser clientModelCreateUser;
+  private ClientModelShowingList clientModelShowingList;
 
   private ModelFactory(ClientFactory clientFactory)
   {
@@ -42,7 +43,7 @@ public class ModelFactory
   {
     if (clientModelShowing == null)
     {
-      clientModelShowing = (ClientModelShowing) new ClientModelManager(
+      clientModelShowing = new ClientModelShowingManager(
           ClientFactory.getInstance().getClient());
     }
     return clientModelShowing;
@@ -52,7 +53,7 @@ public class ModelFactory
   {
     if (clientModelBooking == null)
     {
-      clientModelBooking = (ClientModelBooking) new ClientModelManager(
+      clientModelBooking = new ClientModelBookingManager(
           ClientFactory.getInstance().getClient());
     }
     return clientModelBooking;
@@ -62,7 +63,7 @@ public class ModelFactory
   {
     if (clientModelMovie == null)
     {
-      clientModelMovie = (ClientModelMovie) new ClientModelManager(
+      clientModelMovie = new ClientModelMovieManager(
           ClientFactory.getInstance().getClient());
     }
     return clientModelMovie;
@@ -72,7 +73,7 @@ public class ModelFactory
   {
     if (clientModelLogin == null)
     {
-      clientModelLogin = new ClientModelManager(
+      clientModelLogin = new ClientModelLoginManager(
           ClientFactory.getInstance().getClient());
     }
     return clientModelLogin;
@@ -82,10 +83,19 @@ public class ModelFactory
   {
     if (clientModelCreateUser == null)
     {
-      clientModelCreateUser = new ClientModelManager(
+      clientModelCreateUser = new ClientModelCreateUserManager(
           ClientFactory.getInstance().getClient());
     }
     return clientModelCreateUser;
+  }
+
+  public ClientModelShowingList getShowingList(){
+
+    if (clientModelShowingList == null){
+      clientModelShowingList = new ClientModelShowingListManager(ClientFactory.getInstance()
+          .getClient());
+    }
+    return clientModelShowingList;
   }
 
 }

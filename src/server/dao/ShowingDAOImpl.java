@@ -63,4 +63,15 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
       return showingTimes;
     }
   }
+
+  @Override public void removeShowing(Showing showing) throws SQLException
+  {
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("DELETE FROM Showing WHERE showingId = ?");
+      statement.setInt(1, showing.getId());
+      statement.executeUpdate();
+    }
+  }
+
 }

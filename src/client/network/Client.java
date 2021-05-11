@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface Client
 {
   void startClient();
-  void crateUser(String userName, String email,String password) throws RemoteException, SQLException;
+  void createUser(String userName, String email,String password) throws RemoteException, SQLException;
 
   Booking addBooking(Showing showing,
       ArrayList<Seat> seats) throws ServerException, RemoteException;
@@ -33,4 +33,5 @@ public interface Client
   ArrayList<String> getHallNumbers() throws RemoteException, SQLException;
   void login(String username, String password)
       throws LoginException, RemoteException;
+  void removeShowing(Showing showing) throws SQLException;
 }

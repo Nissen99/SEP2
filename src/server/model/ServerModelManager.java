@@ -171,6 +171,11 @@ public class ServerModelManager implements ServerModel
     return userDAO.login(userName,password);
   }
 
+  @Override public void removeShowing(Showing showing) throws SQLException
+  {
+    showingDAO.removeShowing(showing);
+  }
+
   @Override public void addPropertyChangeListener(
       PropertyChangeListener listener)
   {

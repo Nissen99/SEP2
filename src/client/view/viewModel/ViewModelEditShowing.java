@@ -47,4 +47,9 @@ public class ViewModelEditShowing
     this.selectedMovie = selectedMovie;
     movieTitle.setValue(selectedMovie.getMovieTitle());
   }
+
+  public void removeShowing(Showing showing) throws SQLException
+  {
+    clientModel.removeShowing(showing);
+  }
 }

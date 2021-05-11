@@ -35,6 +35,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   {
     Registry registry = LocateRegistry.createRegistry(1099);
     registry.bind(String.valueOf(ENUM.BIOSERVER), this);
+
   }
 
   @Override public Booking addBooking(Showing showing,User user,
@@ -125,6 +126,11 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
       throws LoginException
   {
     return model.login(userName,password);
+  }
+
+  @Override public void removeShowing(Showing showing) throws SQLException
+  {
+    model.removeShowing(showing);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
