@@ -1,5 +1,6 @@
 package client.model;
 
+import client.network.Client;
 import server.model.PropertyChangeSubject;
 import shared.transferobjects.*;
 
@@ -7,9 +8,9 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface ClientModel extends PropertyChangeSubject
+public interface ClientModel
 {
   ArrayList<Movie> getMovieList() throws SQLException, RemoteException;
-  // ArrayList<Booking> getBookingList();
+  Client getClient();
 
 }

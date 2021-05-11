@@ -1,5 +1,6 @@
 package client.model;
 
+import server.model.PropertyChangeSubject;
 import shared.exception.ServerException;
 import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
@@ -9,7 +10,8 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface ClientModelBooking extends ClientModelShowingList
+public interface ClientModelBooking extends ClientModelShowingList,
+    PropertyChangeSubject
 {
   Booking addBooking(Showing showing,  ArrayList<Seat> seats)
       throws RemoteException, SQLException, ServerException;

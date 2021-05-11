@@ -27,4 +27,5 @@ public interface ServerModel extends PropertyChangeSubject
   ArrayList<String> getHallNumbers() throws SQLException;
   void createUser(String userName, String email,String password) throws SQLException;
   User login(String userName, String password) throws LoginException;
+  void removeShowing(Showing showing) throws SQLException;
 }

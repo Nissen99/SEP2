@@ -2,6 +2,7 @@ package client.view.viewModel;
 
 import client.core.ModelFactory;
 import client.model.ClientModelBooking;
+import client.model.ClientModelShowing;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -18,8 +19,8 @@ public class ViewModelShowingList
   {
 
     private Movie movie;
-    private ClientModelBooking clientModel = ModelFactory.getInstance()
-        .getModelBooking();
+    private ClientModelShowing clientModel = ModelFactory.getInstance()
+        .getModelShowing();
     private ObservableList<Showing> showings = FXCollections.observableArrayList();
     private Showing selectedShowing;
     private StringProperty movieTitle = new SimpleStringProperty();

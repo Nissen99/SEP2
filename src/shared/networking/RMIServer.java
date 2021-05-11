@@ -31,4 +31,5 @@ public interface RMIServer extends Remote
   ArrayList<String> getHallNumbers() throws RemoteException, SQLException;
   void createUser(String userName, String email,String password) throws SQLException,RemoteException;
   User login(String userName,String password) throws LoginException,RemoteException;
+  void removeShowing(Showing showing) throws SQLException, RemoteException;
 }

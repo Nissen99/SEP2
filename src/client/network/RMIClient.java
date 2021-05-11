@@ -31,10 +31,17 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     System.out.println("Client started");
     try
     {
+
+      System.out.println("1");
       UnicastRemoteObject.exportObject(this, 0);
+      System.out.println("2");
       Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+      System.out.println("3");
+
       rmiServer = (RMIServer) registry.lookup(String.valueOf(ENUM.BIOSERVER));
+      System.out.println("4");
       rmiServer.registerCallback(this);
+      System.out.println("5");
     }
     catch (RemoteException | NotBoundException e)
     {
@@ -42,7 +49,8 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public void crateUser(String userName, String email,String password)
+
+  @Override public void createUser(String userName, String email,String password)
       throws RemoteException, SQLException
   {
     rmiServer.createUser(userName,email,password);
@@ -133,6 +141,18 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   {
     user = rmiServer.login(username,password);
 
+  }
+
+  @Override public void removeShowing(Showing showing) throws SQLException
+  {
+    try
+    {
+      rmiServer.removeShowing(showing);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
   }
 
   @Override public void update(PropertyChangeEvent evt) throws RemoteException

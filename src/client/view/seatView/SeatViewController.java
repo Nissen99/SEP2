@@ -40,9 +40,7 @@ public class SeatViewController implements PropertyChangeListener
 
   public void init() throws SQLException, RemoteException
   {
-
     viewModel = ViewModelFactory.getInstance().getSeatVM();
-
     setChoiceBox();
 
     setOccupiedSeats();
@@ -133,13 +131,9 @@ public class SeatViewController implements PropertyChangeListener
   public void onClick(MouseEvent mouseEvent)
   {
     makeOldPanesTransparent();
-
     Pane pane = (Pane) mouseEvent.getSource();
-
     selectedPane.clear();
-
     String id = pane.idProperty().get();
-
     for (int i = 0; i < numberOfSeats.getValue(); i++)
     {
       try
