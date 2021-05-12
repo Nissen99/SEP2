@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
+import shared.exception.ServerException;
 import shared.transferobjects.Booking;
 
 import javax.swing.*;
@@ -37,8 +38,13 @@ public class EditBookingView
   {
     viewModel = ViewModelFactory.getInstance()
         .getEditBooking();
+
+    searchBox.textProperty().bindBidirectional(viewModel.searchProperty());
+
     setupTable();
   }
+
+
   private void setupTable()
   {
     try
@@ -59,11 +65,10 @@ public class EditBookingView
   }
 
   public void searchByBookingId(){
-    String search="";
+
     try
     {
-      search = searchBox.getText();
-      Booking booking = viewModel.getBookingById(search);
+      Booking booking = viewModel.getBookingById();
       bookingTable.getSelectionModel().select(booking);
       bookingTable.requestFocus();
       bookingTable.scrollTo(booking);
@@ -72,7 +77,7 @@ public class EditBookingView
       Alert alert = AlertBox.makeAlert("information", "Error!", "Invalid input");
       alert.showAndWait();
     }catch (NullPointerException e){
-      Alert alert = AlertBox.makeAlert("information", "Error!", "No booking found, Id: " + search);
+      Alert alert = AlertBox.makeAlert("information", "Error!", "No booking found, Id: " + viewModel.getSearch());
       alert.showAndWait();
     }
   }
@@ -106,7 +111,7 @@ public class EditBookingView
     setupTable();
   }
 
-  public void back() throws IOException, SQLException
+  public void back() throws IOException, SQLException, ServerException
   {
     ViewHandler.getInstance().openView("../view/adminView/adminView.fxml");
   }

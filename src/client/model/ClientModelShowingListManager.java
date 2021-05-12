@@ -2,6 +2,7 @@ package client.model;
 
 import client.network.Client;
 import client.network.RMIClient;
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
@@ -25,7 +26,7 @@ public class ClientModelShowingListManager extends ClientModelManager implements
   }
 
   @Override public ArrayList<Showing> getShowingList(Movie movie)
-      throws SQLException, RemoteException
+      throws SQLException, RemoteException, ServerException
   {
     return super.getClient().getShowingList(movie);
   }

@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import shared.exception.ServerException;
 import shared.transferobjects.Showing;
 
 import javax.swing.*;
@@ -32,18 +33,18 @@ public class AddShowingController
   @FXML public ChoiceBox<String> hallNo;
   private ViewModelAddShowing viewModel = ViewModelFactory.getInstance().getAddShowing();
 
-  public void init() throws RemoteException, SQLException
+  public void init() throws RemoteException, SQLException, ServerException
   {
     setChoiceBox();
 
   }
 
-  public void back() throws IOException, SQLException
+  public void back() throws IOException, SQLException, ServerException
   {
     ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
   }
 
-  public void confirm() throws SQLException, IOException
+  public void confirm() throws SQLException, IOException, ServerException
   {
     try
     {
@@ -65,7 +66,8 @@ public class AddShowingController
 
   }
 
-  private void setChoiceBox() throws RemoteException, SQLException
+  private void setChoiceBox()
+      throws RemoteException, SQLException, ServerException
   {
     hallNo.setItems(viewModel.getChoiceList());
     hallNo.setValue("A");

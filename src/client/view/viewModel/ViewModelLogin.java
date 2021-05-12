@@ -5,6 +5,7 @@ import client.model.ClientModel;
 import client.model.ClientModelLogin;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import shared.exception.ServerException;
 
 import javax.security.auth.login.LoginException;
 import java.rmi.RemoteException;
@@ -35,7 +36,7 @@ public class ViewModelLogin
     return passwordProperty;
   }
 
-  public void login() throws LoginException, RemoteException
+  public void login() throws LoginException, RemoteException, ServerException
   {
     clientModelLogin.login(userNameProperty.get(),passwordProperty.get());
   }

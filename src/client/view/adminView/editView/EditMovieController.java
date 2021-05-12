@@ -11,6 +11,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
@@ -39,11 +40,12 @@ public class EditMovieController
       private void setUpTableView() throws SQLException, RemoteException
       {
         movieTableView.setItems(viewModel.getAllMovies());
-        movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
+        movieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
 
       }
 
-      public void editShowingButton() throws IOException, SQLException
+      public void editShowingButton()
+          throws IOException, SQLException, ServerException
       {
         try
         {
@@ -58,12 +60,12 @@ public class EditMovieController
 
   }
 
-      public void back() throws IOException, SQLException
+      public void back() throws IOException, SQLException, ServerException
       {
         ViewHandler.getInstance().openView("../view/adminView/adminView.fxml");
       }
 
-  public void addMovie() throws SQLException, RemoteException
+  public void addMovie() throws SQLException, RemoteException, ServerException
   {
     try
     {

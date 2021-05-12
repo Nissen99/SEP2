@@ -1,6 +1,7 @@
 package client.model;
 
 import client.network.RMIClient;
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
@@ -18,32 +19,33 @@ public class ClientModelShowingManager extends ClientModelManager implements Cli
   }
 
   @Override public ArrayList<Showing> getShowingList(Movie movie)
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
 
     return super.getClient().getShowingList(movie);
   }
 
   @Override public Showing addShowing(Showing showing)
-      throws SQLException, RemoteException
+      throws SQLException, RemoteException, ServerException
   {
     return super.getClient().addShowing(showing);
   }
 
   @Override public Hall getHallByNumber(String hallNo)
-      throws SQLException, RemoteException
+      throws SQLException, RemoteException, ServerException
   {
     return super.getClient().getHallByNumber(hallNo);
   }
 
   @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(
-      String hallNo, Timestamp timestamp) throws RemoteException, SQLException
+      String hallNo, Timestamp timestamp)
+      throws RemoteException, SQLException, ServerException
   {
     return super.getClient().getShowingTimesByHallNoAndDate(hallNo, timestamp);
   }
 
   @Override public ArrayList<String> getHallNumbers()
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
     return super.getClient().getHallNumbers();
   }

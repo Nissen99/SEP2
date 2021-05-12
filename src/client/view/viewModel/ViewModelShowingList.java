@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
@@ -31,7 +32,7 @@ public class ViewModelShowingList
     }
 
     public ObservableList<Showing> getAllShowings()
-        throws SQLException, RemoteException
+        throws SQLException, RemoteException, ServerException
     {
       ArrayList<Showing> tempShowings = new ArrayList<>();
 

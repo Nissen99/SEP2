@@ -7,6 +7,7 @@ import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.dao.ShowingDAOImpl;
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
@@ -48,7 +49,7 @@ class ViewModelAddShowingTest
   }
 
   @Test void testIfShowingIsAddedInDatabase()
-      throws SQLException, RemoteException
+      throws SQLException, RemoteException, ServerException
   {
     client.startClient();
     model.addShowing(showing);

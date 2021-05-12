@@ -1,4 +1,4 @@
-package server.util;
+package shared.util;
 
 import java.beans.PropertyChangeListener;
 

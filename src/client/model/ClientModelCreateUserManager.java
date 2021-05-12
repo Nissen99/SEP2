@@ -1,6 +1,7 @@
 package client.model;
 
 import client.network.RMIClient;
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 
 import java.rmi.RemoteException;
@@ -15,7 +16,7 @@ public class ClientModelCreateUserManager extends ClientModelManager implements 
   }
 
   @Override public void createUser(String userName, String email,
-      String password) throws RemoteException, SQLException
+      String password) throws RemoteException, SQLException, ServerException
   {
     super.getClient().createUser(userName, email, password);
   }

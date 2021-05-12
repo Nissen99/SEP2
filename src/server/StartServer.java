@@ -1,7 +1,7 @@
 package server;
 
 import server.dao.*;
-import server.model.ServerModelManager;
+import server.model.*;
 import server.network.RMIServerImpl;
 import server.util.SeatNoCalculator;
 import shared.transferobjects.*;
@@ -18,7 +18,19 @@ public class StartServer
       throws RemoteException, AlreadyBoundException, SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
-    RMIServerImpl server = new RMIServerImpl(new ServerModelManager());
+
+    ServerModel serverModel = new ServerModelManager();
+    ServerModelBooking serverModelBooking = new ServerModelBookingManager();
+    ServerModelCreateUser serverModelCreateUser = new ServerModelCreateUserManager();
+    ServerModelLogin serverModelLogin = new ServerModelLoginManger();
+    ServerModelMovie serverModelMovie = new ServerModelMovieManager();
+    ServerModelShowing serverModelShowing = new ServerModelShowingManager();
+    ServerModelShowingList serverModelShowingList = new ServerModelShowingListManager();
+
+    RMIServerImpl server = new RMIServerImpl(serverModel, serverModelBooking,
+        serverModelCreateUser, serverModelLogin, serverModelMovie,
+        serverModelShowing, serverModelShowingList);
+
     server.startServer();
     setup();
     System.out.println("Server is running");
@@ -28,25 +40,27 @@ public class StartServer
   {
     HallDAO hallDAO = new HallDAOImpl();
 
-    if (hallDAO.getHallByNumber("A") == null){
-    MovieDAO movieDAO = new MovieDAOImpl();
-    movieDAO.create("Jackass");
-    Movie movie = new Movie(1,"Jackass");
-    SeatDAO seatDAO = new SeatDAOImpl();
-    Hall hall = new Hall("A", 16, 14);
-    hallDAO.create(hall);
-    SeatNoCalculator seatNoCalculator = new SeatNoCalculator(hall.getHallNo(),
-        hall.getMaxSeatsInRow(), hall.getMaxRows());
-    for (int i = 0; i < hall.getMaxRows() * hall.getMaxSeatsInRow(); i++)
+    if (hallDAO.getHallByNumber("A") == null)
     {
-      Seat seat = new Seat();
-      seat.setSeatNo(seatNoCalculator.calculateSeatNo());
-      seatDAO.create(hall.addSeat(seat), hall);
-    }
+      MovieDAO movieDAO = new MovieDAOImpl();
+      movieDAO.create("Jackass");
+      Movie movie = new Movie(1, "Jackass");
+      SeatDAO seatDAO = new SeatDAOImpl();
+      Hall hall = new Hall("A", 16, 14);
+      hallDAO.create(hall);
+      SeatNoCalculator seatNoCalculator = new SeatNoCalculator(hall.getHallNo(),
+          hall.getMaxSeatsInRow(), hall.getMaxRows());
+      for (int i = 0; i < hall.getMaxRows() * hall.getMaxSeatsInRow(); i++)
+      {
+        Seat seat = new Seat();
+        seat.setSeatNo(seatNoCalculator.calculateSeatNo());
+        seatDAO.create(hall.addSeat(seat), hall);
+      }
 
-    Timestamp time = new Timestamp(System.currentTimeMillis());
-    Showing showing = new Showing(1, movie, time, hall);
-    ShowingDAO showingDAO = new ShowingDAOImpl();
-    showingDAO.create(showing);
-  }}
+      Timestamp time = new Timestamp(System.currentTimeMillis());
+      Showing showing = new Showing(1, movie, time, hall);
+      ShowingDAO showingDAO = new ShowingDAOImpl();
+      showingDAO.create(showing);
+    }
+  }
 }

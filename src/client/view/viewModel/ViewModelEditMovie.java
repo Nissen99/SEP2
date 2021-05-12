@@ -8,6 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
@@ -40,7 +41,7 @@ public class ViewModelEditMovie
 
   }
 
-  public void addMovie() throws SQLException, RemoteException
+  public void addMovie() throws SQLException, RemoteException, ServerException
   {
     if (!getMovieTitle().equals("") && (getMovieTitle().charAt(0) != ' ') )
     {

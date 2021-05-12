@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import shared.exception.ServerException;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,7 +51,8 @@ public class ViewHandler
     openView("../view/loginView/loginView.fxml");
   }
 
-  public void openView(String viewToOpen) throws IOException, SQLException
+  public void openView(String viewToOpen)
+      throws IOException, SQLException, ServerException
   {
     Scene scene = null;
     FXMLLoader loader = new FXMLLoader();

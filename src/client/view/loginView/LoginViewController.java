@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import shared.exception.ServerException;
 
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class LoginViewController
 
 
   @FXML void createAccountButtonPressed(ActionEvent event)
-      throws IOException, SQLException
+      throws IOException, SQLException, ServerException
   {
 
     ViewHandler.getInstance().openView("../view/createUserView/createUserView.fxml");
@@ -39,7 +40,7 @@ public class LoginViewController
   }
 
   @FXML void loginButtonPressed(ActionEvent event)
-      throws IOException, SQLException, LoginException
+      throws IOException, SQLException, LoginException, ServerException
   {
     if (usernameField.getText().equals("Admin") && passwordField.getText().equals("Admin"))
     {

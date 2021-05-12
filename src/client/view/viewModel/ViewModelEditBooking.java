@@ -15,6 +15,17 @@ public class ViewModelEditBooking
 {
   private ClientModelBooking clientModel = ModelFactory.getInstance().getModelBooking();
   private ObservableList<Booking> bookings = FXCollections.observableArrayList();
+  private StringProperty search = new SimpleStringProperty("");
+
+  public String getSearch()
+  {
+    return search.get();
+  }
+
+  public StringProperty searchProperty()
+  {
+    return search;
+  }
 
   public ViewModelEditBooking(){}
 
@@ -36,9 +47,9 @@ public class ViewModelEditBooking
     clientModel.removeBooking(booking);
   }
 
-  public Booking getBookingById(String id){
+  public Booking getBookingById(){
     try{
-      int x = Integer.parseInt(id);
+      int x = Integer.parseInt(search.get());
       for (Booking b : bookings)
       {
         if (b.getBookingId() == x)

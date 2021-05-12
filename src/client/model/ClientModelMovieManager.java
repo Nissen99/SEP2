@@ -1,6 +1,7 @@
 package client.model;
 
 import client.network.RMIClient;
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
@@ -23,7 +24,7 @@ public class ClientModelMovieManager extends ClientModelManager implements Clien
 
 
   @Override public Movie addMovie(Movie movie)
-      throws SQLException, RemoteException
+      throws SQLException, RemoteException, ServerException
   {
     return super.getClient().addMovie(movie);
   }

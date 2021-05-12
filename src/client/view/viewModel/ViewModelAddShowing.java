@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
@@ -26,7 +27,11 @@ public class ViewModelAddShowing
 
 
 
-  public void addShowing(Timestamp timestamp, String hallNo) throws SQLException, RemoteException
+
+
+
+  public void addShowing(Timestamp timestamp, String hallNo)
+      throws SQLException, RemoteException, ServerException
   {
     Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
@@ -51,7 +56,8 @@ public class ViewModelAddShowing
     }
   }
 
-  public Hall getHallByNumber(String hallNo) throws SQLException, RemoteException
+  public Hall getHallByNumber(String hallNo)
+      throws SQLException, RemoteException, ServerException
   {
 
     return clientModel.getHallByNumber(hallNo);
@@ -63,7 +69,7 @@ public class ViewModelAddShowing
   }
 
   public ObservableList<String> getChoiceList()
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
     observableList.addAll(clientModel.getHallNumbers());
     return observableList;
