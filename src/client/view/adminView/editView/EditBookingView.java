@@ -34,7 +34,7 @@ public class EditBookingView
 
   private ViewModelEditBooking viewModel;
 
-  public void init() throws RemoteException, SQLException
+  public void init()
   {
     viewModel = ViewModelFactory.getInstance()
         .getEditBooking();

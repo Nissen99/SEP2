@@ -246,11 +246,12 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
       }
       catch (RemoteException e)
       {
+        System.out.println("Vi Kom i Catch på callBack");
         Platform.runLater(() -> {
           clientCallBackArrayList.remove(clientCallBack);
 
        });
-        System.out.println("Vi Kom i Catch på callBack");
+
       }
     }
   }

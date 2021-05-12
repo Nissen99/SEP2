@@ -36,11 +36,11 @@ public class ViewModelEditMovie
 
   private Movie selectedMovie;
 
-  public ViewModelEditMovie()
-  {
-
-  }
-
+  /**
+   * Vores eneste kriterieer for en valid film er at der skal være en title,
+   * og at titlen ikke starter med ' ', for at prøve sikre os mod fejl input af brugeren
+   *
+   */
   public void addMovie() throws SQLException, RemoteException, ServerException
   {
     if (!getMovieTitle().equals("") && (getMovieTitle().charAt(0) != ' ') )
@@ -77,7 +77,6 @@ public class ViewModelEditMovie
   {
       clientModel.removeMovie(movie);
   }
-
 
 
 }
