@@ -1,5 +1,6 @@
 package server.network;
 
+import javafx.application.Platform;
 import server.model.*;
 import shared.exception.ServerException;
 import shared.util.ENUM;
@@ -245,7 +246,11 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
       }
       catch (RemoteException e)
       {
-        e.printStackTrace();
+        Platform.runLater(() -> {
+          clientCallBackArrayList.remove(clientCallBack);
+
+       });
+        System.out.println("Vi Kom i Catch på callBack");
       }
     }
   }

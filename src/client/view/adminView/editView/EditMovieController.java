@@ -40,7 +40,7 @@ public class EditMovieController
       private void setUpTableView() throws SQLException, RemoteException
       {
         movieTableView.setItems(viewModel.getAllMovies());
-        movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
+        movieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
 
       }
 

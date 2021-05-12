@@ -199,7 +199,6 @@ public class SeatViewController implements PropertyChangeListener
     {
       Alert alert2 = AlertBox.makeAlert("Information","Error","No seats has been selected");
       alert2.showAndWait();
-
     }
     else
     {
