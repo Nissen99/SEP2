@@ -5,7 +5,7 @@ import client.model.ClientModelBooking;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
-import server.model.PropertyChangeSubject;
+import server.util.PropertyChangeSubject;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 

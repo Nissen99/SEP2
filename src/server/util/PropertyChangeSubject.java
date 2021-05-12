@@ -1,4 +1,4 @@
-package server.model;
+package server.util;
 
 import java.beans.PropertyChangeListener;
 

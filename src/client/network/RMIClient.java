@@ -1,7 +1,7 @@
 package client.network;
 
 import shared.exception.ServerException;
-import server.model.PropertyChangeSubject;
+import server.util.PropertyChangeSubject;
 import shared.ENUM;
 import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;

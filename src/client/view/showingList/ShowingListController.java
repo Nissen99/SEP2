@@ -31,7 +31,7 @@ public class ShowingListController
 
   public void init() throws SQLException, RemoteException
   {
-    movieTitle.textProperty().bindBidirectional(viewModel.movieTitleProperty());
+    movieTitle.textProperty().bind(viewModel.movieTitleProperty());
 
     tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 

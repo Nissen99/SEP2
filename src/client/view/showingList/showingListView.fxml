@@ -5,23 +5,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.showingList.ShowingListController">
    <children>
-      <TableView fx:id="tableViewForFilmFremvisninger" layoutY="30.0" prefHeight="343.0" prefWidth="600.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0">
+         <children>
+            <Label fx:id="movieTitle" alignment="CENTER" contentDisplay="CENTER" text="Film" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <TableView fx:id="tableViewForFilmFremvisninger" layoutX="221.0" layoutY="99.0" prefHeight="523.0" prefWidth="839.0">
         <columns>
-            <TableColumn fx:id="datoerForFremvisning" prefWidth="83.0" text="Dato" />
-          <TableColumn fx:id="ugedagForFremvisning" prefWidth="150.0" text="Ugedag" />
-            <TableColumn fx:id="tidspunktForFremvisning" prefWidth="366.0" text="Tidspunk" />
+            <TableColumn fx:id="datoerForFremvisning" prefWidth="265.0" text="Dato" />
+          <TableColumn fx:id="ugedagForFremvisning" prefWidth="297.0" text="Ugedag" />
+            <TableColumn fx:id="tidspunktForFremvisning" prefWidth="274.0" text="Tidspunkt" />
         </columns>
       </TableView>
-      <Label fx:id="movieTitle" layoutX="283.0" layoutY="1.0" text="Film">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button layoutX="527.0" layoutY="374.0" mnemonicParsing="false" onAction="#confirmChoice" text="Confirm" />
-      <Button layoutY="374.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
+      <Button layoutX="970.0" layoutY="646.0" mnemonicParsing="false" onAction="#confirmChoice" prefHeight="35.0" prefWidth="90.0" text="Bekræft" />
+      <Button layoutX="221.0" layoutY="646.0" mnemonicParsing="false" onAction="#backButton" prefHeight="35.0" prefWidth="90.0" text="Tilbage" />
    </children>
 </AnchorPane>
