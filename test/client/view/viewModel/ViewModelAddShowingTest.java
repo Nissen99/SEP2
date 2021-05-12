@@ -1,21 +1,33 @@
 package client.view.viewModel;
 
+import client.model.ClientModelShowing;
+import client.model.ClientModelShowingManager;
+import client.network.Client;
+import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import server.dao.ShowingDAOImpl;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelAddShowingTest
 {
-  private Hall hall = new Hall("B", 5, 5);
+  private RMIClient client = new RMIClient();
+  private ClientModelShowing model = new ClientModelShowingManager(client);
+  private ShowingDAOImpl dao = new ShowingDAOImpl();
+  private Hall hall = new Hall("A", 5, 5);
   private Showing showing = null;
-  private Movie movie = new Movie("Forest Gump");
-  Timestamp time = new Timestamp(2021, 05, 14,
+  private String movieTitle = "Jackass";
+  private Movie movie = new Movie(1, movieTitle);
+  Timestamp time = new Timestamp(121, 4, 14,
   13, 30, 0, 0);
 
   @BeforeEach void setup() {
@@ -30,9 +42,18 @@ class ViewModelAddShowingTest
 
   @Test void testIfShowingIsCreatedWithCorrectInfo() {
     assertEquals(1, showing.getId());
-    assertEquals("Forest Gump", showing.getMovie().getMovieTitle());
+    assertEquals(movieTitle, showing.getMovie().getMovieTitle());
     assertEquals(time, showing.getTimestamp());
-    assertEquals("B", showing.getHall().getHallNo());
+    assertEquals("A", showing.getHall().getHallNo());
+  }
+
+  @Test void testIfShowingIsAddedInDatabase()
+      throws SQLException, RemoteException
+  {
+    client.startClient();
+    model.addShowing(showing);
+    ArrayList<Showing> showingList = dao.getAllShowings(movie);
+    assertEquals(movieTitle, showingList.get(0).getMovie().getMovieTitle());
   }
 
 
