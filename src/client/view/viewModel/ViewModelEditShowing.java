@@ -43,6 +43,13 @@ public class ViewModelEditShowing
     return movieTitle;
   }
 
+
+  /**
+   * For at vide hvilken film der skal laves showings til skal vi vide hvad
+   * brugeren har valgt på det forgående view, den information sender vi gennem
+   * denne metode der bliver kaldt i ViewModelFactory.
+   * @param selectedMovie
+   */
   public void setSelectedMovie(Movie selectedMovie)
   {
     this.selectedMovie = selectedMovie;

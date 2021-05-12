@@ -37,6 +37,7 @@ public class EditMovieController
     setUpTableView();
   }
 
+
       private void setUpTableView() throws SQLException, RemoteException
       {
         movieTableView.setItems(viewModel.getAllMovies());

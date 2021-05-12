@@ -56,6 +56,9 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     rmiServer.createUser(userName,email,password);
   }
 
+
+  //Når man logger ind gemmer vi hvilken User der er logget ind
+  //Den sender vi med i addBooking
   @Override public Booking addBooking(Showing showing,
       ArrayList<Seat> seats) throws ServerException, RemoteException
   {

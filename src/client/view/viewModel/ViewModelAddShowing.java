@@ -23,13 +23,18 @@ public class ViewModelAddShowing
 {
   private Movie selectedMovie;
   private ClientModelShowing clientModel = ModelFactory.getInstance().getModelShowing();
-  private ObservableList observableList = FXCollections.observableArrayList();
+  private ObservableList<String> observableList = FXCollections.observableArrayList();
 
 
 
 
 
-
+/**Vi laver nogle checks der checker om man er ved at oprette en valid Showing
+  *Vi har besluttet at der skal være 3 timer mellem hver film, så den kan vises
+  *og der kan gøres rent. derfor tjekker vi 3 timer før og efter det angivede tidspunkt
+ * Vi mener også at showings der forgår i fortiden ikke giver mening, derfor skal
+ * det være efter currentTime
+ */
   public void addShowing(Timestamp timestamp, String hallNo)
       throws SQLException, RemoteException, ServerException
   {
@@ -55,6 +60,7 @@ public class ViewModelAddShowing
       throw new IllegalArgumentException("Invalid input - Timestamp is before current time.");
     }
   }
+
 
   public Hall getHallByNumber(String hallNo)
       throws SQLException, RemoteException, ServerException
