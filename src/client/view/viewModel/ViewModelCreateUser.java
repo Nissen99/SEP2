@@ -5,6 +5,7 @@ import client.model.ClientModel;
 import client.model.ClientModelCreateUser;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import shared.exception.ServerException;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -50,7 +51,7 @@ public class ViewModelCreateUser
     return userNameField;
   }
 
-  public void create() throws RemoteException, SQLException
+  public void create() throws RemoteException, SQLException, ServerException
   {
 
     clientModel.createUser(userNameField.get(),emailField.get(),passwordField.get());

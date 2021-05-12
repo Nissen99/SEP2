@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 
 import java.io.IOException;
@@ -36,7 +37,8 @@ public class MovieListController
 
   }
 
-  public void confirmButtonPressed() throws IOException, SQLException
+  public void confirmButtonPressed()
+      throws IOException, SQLException, ServerException
   {
     Movie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
 
@@ -53,7 +55,7 @@ public class MovieListController
   }
 
 
-  public void back() throws IOException, SQLException
+  public void back() throws IOException, SQLException, ServerException
   {
     ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
   }

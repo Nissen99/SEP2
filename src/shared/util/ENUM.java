@@ -1,4 +1,4 @@
-package shared;
+package shared.util;
 
 public enum ENUM
 {

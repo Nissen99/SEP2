@@ -249,7 +249,7 @@ public class SeatViewController implements PropertyChangeListener
     }
   }
 
-  @FXML void onBackButton() throws IOException, SQLException
+  @FXML void onBackButton() throws IOException, SQLException, ServerException
   {
 
     //Når vi skifter view er der ingen grund til vi stadigvæk lytter

@@ -72,7 +72,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   }
 
   @Override public ArrayList<Showing> getShowingList(Movie movie)
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
 
     return super.getClient().getShowingList(movie);
