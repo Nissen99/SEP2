@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
@@ -26,7 +27,7 @@ public class EditShowingController
   private ViewModelEditShowing viewModel = ViewModelFactory.getInstance()
       .getEditShowing();
 
-  public void init() throws SQLException, RemoteException
+  public void init() throws SQLException, RemoteException, ServerException
   {
 
     setUpTableView();
@@ -35,7 +36,8 @@ public class EditShowingController
 
   }
 
-  private void setUpTableView() throws SQLException, RemoteException
+  private void setUpTableView()
+      throws SQLException, RemoteException, ServerException
   {
     tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 
@@ -44,13 +46,14 @@ public class EditShowingController
     datoerForFremvisning.setCellValueFactory(new PropertyValueFactory("date"));
   }
 
-  public void backButton() throws IOException, SQLException
-{
+  public void backButton() throws IOException, SQLException, ServerException
+  {
   ViewHandler.getInstance().openView("../view/adminView/editView/editMovieView.fxml");
 }
 
 
-  public void removeShowing() throws SQLException, RemoteException
+  public void removeShowing()
+      throws SQLException, RemoteException, ServerException
   {
 
     Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
@@ -58,7 +61,7 @@ public class EditShowingController
     setUpTableView();
   }
 
-  public void addShowing() throws IOException, SQLException
+  public void addShowing() throws IOException, SQLException, ServerException
   {
     ViewHandler.getInstance().openView("../view/adminView/editView/addShowingView.fxml");
 

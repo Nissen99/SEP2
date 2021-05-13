@@ -1,8 +1,9 @@
 package server.network;
 
+import javafx.application.Platform;
+import server.model.*;
 import shared.exception.ServerException;
-import server.model.ServerModelManager;
-import shared.ENUM;
+import shared.util.ENUM;
 import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
@@ -21,14 +22,30 @@ import java.util.ArrayList;
 
 public class RMIServerImpl implements RMIServer, PropertyChangeListener
 {
-  private ServerModelManager model;
+  private ServerModel modelManager;
+  private ServerModelBooking modelBooking;
+  private ServerModelCreateUser modelCreateUser;
+  private ServerModelLogin modelLogin;
+  private ServerModelMovie modelMovie;
+  private ServerModelShowing modelShowing;
+  private ServerModelShowingList modelShowingList;
+
+
   private ArrayList<ClientCallBack> clientCallBackArrayList = new ArrayList<>();
 
-  public RMIServerImpl(ServerModelManager model) throws RemoteException
+  public RMIServerImpl(ServerModel modelManager, ServerModelBooking modelBooking, ServerModelCreateUser modelCreateUser,
+      ServerModelLogin modelLogin, ServerModelMovie modelMovie, ServerModelShowing modelShowing,
+      ServerModelShowingList modelShowingList) throws RemoteException
   {
     UnicastRemoteObject.exportObject(this, 0);
-    this.model = model;
-    model.addPropertyChangeListener(this::propertyChange);
+    this.modelManager = modelManager;
+    this.modelBooking = modelBooking;
+    this.modelCreateUser = modelCreateUser;
+    this.modelLogin = modelLogin;
+    this.modelMovie = modelMovie;
+    this.modelShowing = modelShowing;
+    this.modelShowingList = modelShowingList;
+    modelBooking.addPropertyChangeListener(this::propertyChange);
   }
 
   public void startServer() throws RemoteException, AlreadyBoundException
@@ -38,99 +55,183 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
   }
 
+  //SHARED
+  @Override public ArrayList<Movie> getMovieList() throws SQLException
+  {
+    return modelManager.getMovieList();
+  }
+
+  //BOOKING
   @Override public Booking addBooking(Showing showing,User user,
       ArrayList<Seat> seats) throws ServerException
   {
-    return model.addBooking(showing,user, seats);
+    return modelBooking.addBooking(showing, user, seats);
 
   }
 
   @Override public void removeBooking(Booking booking)
       throws RemoteException, SQLException
   {
-    model.removeBooking(booking);
-  }
-
-  @Override public Movie addMovie(Movie movie) throws SQLException
-  {
-    return model.addMovie(movie);
-  }
-
-  @Override public void removeMovie(Movie movie)
-      throws RemoteException, SQLException
-  {
-    model.removeMovie(movie);
-  }
-
-  @Override public Showing addShowing(Showing showing) throws SQLException
-  {
-    return model.addShowing(showing);
-  }
-
-  @Override public Hall addHall(Hall hall) throws SQLException
-  {
-    return model.addHall(hall);
-  }
-
-  @Override public ArrayList<Movie> getMovieList() throws SQLException
-  {
-    return model.getMovieList();
-  }
-
-  @Override public ArrayList<Showing> getShowingList(Movie movie)
-      throws SQLException
-  {
-    return model.getShowingList(movie);
+    modelBooking.removeBooking(booking);
   }
 
   @Override public ArrayList<Booking> getBookingList()
       throws RemoteException, SQLException
   {
-    return model.getBookingList();
+    return modelBooking.getBookingList();
   }
 
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
       throws SQLException
   {
-    return model.getOccupiedSeats(showing);
+    return modelBooking.getOccupiedSeats(showing);
   }
 
-  @Override public Hall getHallByNumber(String hallNo) throws SQLException
-  {
-    return model.getHallByNumber(hallNo);
+
+  //MOVIE
+   @Override public Movie addMovie(Movie movie)
+       throws SQLException, ServerException
+   {
+    try
+    {
+      return modelMovie.addMovie(movie);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      throw new ServerException();
+    }
   }
+
+  @Override public void removeMovie(Movie movie)
+      throws RemoteException, SQLException
+  {
+    modelMovie.removeMovie(movie);
+  }
+
+
+
+  //SHOWINGLIST
+  @Override public ArrayList<Showing> getShowingList(Movie movie)
+      throws SQLException, ServerException
+  {
+    try
+    {
+      return modelShowingList.getShowingList(movie);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      throw new ServerException();
+    }
+  }
+
+
+  //SHOWING
+  @Override public Showing addShowing(Showing showing) throws SQLException, ServerException
+  {
+    try
+    {
+      return modelShowing.addShowing(showing);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      throw new ServerException();
+    }
+  }
+
+
+  @Override public Hall getHallByNumber(String hallNo)
+      throws SQLException, ServerException
+  {
+    try
+    {
+      return modelShowing.getHallByNumber(hallNo);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      throw new ServerException();
+    }
+  }
+
+  @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(
+      String hallNo, Timestamp timestamp) throws SQLException, ServerException
+  {
+    try
+    {
+      return modelShowing.getShowingTimesByHallNoAndDate(hallNo, timestamp);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    throw new ServerException();
+    }
+
+  }
+
+  @Override public ArrayList<String> getHallNumbers()
+      throws SQLException, ServerException
+  {
+    try
+    {
+      return modelShowing.getHallNumbers();
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      throw new ServerException();
+    }
+  }
+
+
+  @Override public void removeShowing(Showing showing) throws SQLException
+  {
+    modelShowing.removeShowing(showing);
+  }
+
+
+
+
+  //CREATE USER
+  @Override public void createUser(String userName, String email,String password)
+      throws SQLException, ServerException
+  {
+    try
+    {
+      modelCreateUser.createUser(userName,email,password);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      throw new ServerException();
+    }
+  }
+
+
+
+  //LOGIN
+  @Override public User login(String userName, String password)
+      throws LoginException, ServerException
+  {
+    try
+    {
+      return modelLogin.login(userName,password);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      throw new ServerException();
+    }
+  }
+
+
 
   @Override public void registerCallback(ClientCallBack client)
   {
     clientCallBackArrayList.add(client);
     System.out.println("Added Client to call back list");
-  }
-
-  @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(
-      String hallNo, Timestamp timestamp) throws RemoteException, SQLException
-  {
-    return model.getShowingTimesByHallNoAndDate(hallNo, timestamp);
-  }
-
-  @Override public ArrayList<String> getHallNumbers() throws SQLException
-  {
-    return model.getHallNumbers();
-  }
-
-  @Override public void createUser(String userName, String email,String password) throws SQLException
-  {
-    model.createUser(userName,email,password);
-  }
-
-  @Override public User login(String userName, String password)
-      throws LoginException
-  {
-    return model.login(userName,password);
-  }
-
-  @Override public void removeShowing(Showing showing) throws SQLException
-  {
-    model.removeShowing(showing);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
@@ -145,7 +246,12 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
       }
       catch (RemoteException e)
       {
-        e.printStackTrace();
+        System.out.println("Vi Kom i Catch på callBack");
+        Platform.runLater(() -> {
+          clientCallBackArrayList.remove(clientCallBack);
+
+       });
+
       }
     }
   }

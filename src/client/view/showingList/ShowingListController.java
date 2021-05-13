@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import shared.exception.ServerException;
 import shared.transferobjects.Showing;
 
 import java.io.IOException;
@@ -29,9 +30,9 @@ public class ShowingListController
       .getShowingList();
 
 
-  public void init() throws SQLException, RemoteException
+  public void init() throws SQLException, RemoteException, ServerException
   {
-    movieTitle.textProperty().bindBidirectional(viewModel.movieTitleProperty());
+    movieTitle.textProperty().bind(viewModel.movieTitleProperty());
 
     tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 
@@ -43,7 +44,7 @@ public class ShowingListController
 
   }
 
-public void confirmChoice() throws IOException, SQLException
+public void confirmChoice() throws IOException, SQLException, ServerException
 {
     Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
     if (showing == null){
@@ -58,7 +59,7 @@ public void confirmChoice() throws IOException, SQLException
   }
 
 
-public void backButton() throws IOException, SQLException
+public void backButton() throws IOException, SQLException, ServerException
 {
   ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
 

@@ -1,10 +1,11 @@
 package shared.transferobjects;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 import java.io.Serializable;
 
+
+/**
+ * Simple Klasse der holder informationer omkring en bruger
+ */
 public class User implements Serializable
 {
   private String userName;

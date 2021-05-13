@@ -1,6 +1,6 @@
 package client.model;
 
-import server.model.PropertyChangeSubject;
+import shared.util.PropertyChangeSubject;
 import shared.exception.ServerException;
 import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;

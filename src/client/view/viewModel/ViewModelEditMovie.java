@@ -8,6 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 
@@ -35,12 +36,12 @@ public class ViewModelEditMovie
 
   private Movie selectedMovie;
 
-  public ViewModelEditMovie()
-  {
-
-  }
-
-  public void addMovie() throws SQLException, RemoteException
+  /**
+   * Vores eneste kriterieer for en valid film er at der skal være en title,
+   * og at titlen ikke starter med ' ', for at prøve sikre os mod fejl input af brugeren
+   *
+   */
+  public void addMovie() throws SQLException, RemoteException, ServerException
   {
     if (!getMovieTitle().equals("") && (getMovieTitle().charAt(0) != ' ') )
     {
@@ -76,7 +77,6 @@ public class ViewModelEditMovie
   {
       clientModel.removeMovie(movie);
   }
-
 
 
 }

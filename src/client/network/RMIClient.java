@@ -1,8 +1,8 @@
 package client.network;
 
 import shared.exception.ServerException;
-import server.model.PropertyChangeSubject;
-import shared.ENUM;
+import shared.util.PropertyChangeSubject;
+import shared.util.ENUM;
 import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
@@ -51,11 +51,14 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
 
   @Override public void createUser(String userName, String email,String password)
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
     rmiServer.createUser(userName,email,password);
   }
 
+
+  //Når man logger ind gemmer vi hvilken User der er logget ind
+  //Den sender vi med i addBooking
   @Override public Booking addBooking(Showing showing,
       ArrayList<Seat> seats) throws ServerException, RemoteException
   {
@@ -71,7 +74,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   }
 
   @Override public Movie addMovie(Movie movie)
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
     return rmiServer.addMovie(movie);
   }
@@ -84,14 +87,9 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   }
 
   @Override public Showing addShowing(Showing showing)
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
     return rmiServer.addShowing(showing);
-  }
-
-  @Override public Hall addHall(Hall hall) throws RemoteException, SQLException
-  {
-    return rmiServer.addHall(hall);
   }
 
   @Override public ArrayList<Movie> getMovieList()
@@ -101,7 +99,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   }
 
   @Override public ArrayList<Showing> getShowingList(Movie movie)
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
     return rmiServer.getShowingList(movie);
   }
@@ -119,25 +117,26 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   }
 
   @Override public Hall getHallByNumber(String hallNo)
-      throws SQLException, RemoteException
+      throws SQLException, RemoteException, ServerException
   {
     return rmiServer.getHallByNumber(hallNo);
   }
 
   @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(
-      String hallNo, Timestamp timestamp) throws RemoteException, SQLException
+      String hallNo, Timestamp timestamp)
+      throws RemoteException, SQLException, ServerException
   {
     return rmiServer.getShowingTimesByHallNoAndDate(hallNo, timestamp);
   }
 
   @Override public ArrayList<String> getHallNumbers()
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
     return rmiServer.getHallNumbers();
   }
 
   @Override public void login(String username, String password)
-      throws LoginException, RemoteException
+      throws LoginException, RemoteException, ServerException
   {
     user = rmiServer.login(username,password);
 

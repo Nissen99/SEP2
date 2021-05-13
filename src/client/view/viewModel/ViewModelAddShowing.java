@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
@@ -22,11 +23,20 @@ public class ViewModelAddShowing
 {
   private Movie selectedMovie;
   private ClientModelShowing clientModel = ModelFactory.getInstance().getModelShowing();
-  private ObservableList observableList = FXCollections.observableArrayList();
+  private ObservableList<String> observableList = FXCollections.observableArrayList();
 
 
 
-  public void addShowing(Timestamp timestamp, String hallNo) throws SQLException, RemoteException
+
+
+/**Vi laver nogle checks der checker om man er ved at oprette en valid Showing
+  *Vi har besluttet at der skal være 3 timer mellem hver film, så den kan vises
+  *og der kan gøres rent. derfor tjekker vi 3 timer før og efter det angivede tidspunkt
+ * Vi mener også at showings der forgår i fortiden ikke giver mening, derfor skal
+ * det være efter currentTime
+ */
+  public void addShowing(Timestamp timestamp, String hallNo)
+      throws SQLException, RemoteException, ServerException
   {
     Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
@@ -51,7 +61,9 @@ public class ViewModelAddShowing
     }
   }
 
-  public Hall getHallByNumber(String hallNo) throws SQLException, RemoteException
+
+  public Hall getHallByNumber(String hallNo)
+      throws SQLException, RemoteException, ServerException
   {
 
     return clientModel.getHallByNumber(hallNo);
@@ -63,7 +75,7 @@ public class ViewModelAddShowing
   }
 
   public ObservableList<String> getChoiceList()
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, ServerException
   {
     observableList.addAll(clientModel.getHallNumbers());
     return observableList;

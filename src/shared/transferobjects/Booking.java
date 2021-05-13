@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 
 import java.io.Serializable;
 
+
 public class Booking implements Serializable
 {
   private int bookingId;
@@ -16,7 +17,6 @@ public class Booking implements Serializable
   {
     this.showing = showing;
     this.user = user;
-
     this.bookingId = bookingId;
   }
 

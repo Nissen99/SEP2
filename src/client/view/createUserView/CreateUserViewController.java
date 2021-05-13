@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import shared.exception.ServerException;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class CreateUserViewController
   }
 
   public void onCreateButton(ActionEvent actionEvent)
-      throws IOException, SQLException
+      throws IOException, SQLException, ServerException
   {
    viewModelCreateUser.create();
 
@@ -44,7 +45,7 @@ public class CreateUserViewController
 
 
   public void onBackButton(ActionEvent actionEvent)
-      throws IOException, SQLException
+      throws IOException, SQLException, ServerException
   {
    ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
 
