@@ -1,5 +1,6 @@
 package server.dao;
 
+import shared.exception.ServerException;
 import shared.transferobjects.*;
 
 import java.sql.*;
@@ -9,7 +10,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
 {
 
   @Override public Booking create(Showing showing, User user)
-      throws SQLException
+      throws ServerException
   {
     try (Connection connection = getConnection())
     {
@@ -31,9 +32,14 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
         throw new SQLException();
       }
     }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+      throw new ServerException("Database connection failed");
+    }
   }
 
-  @Override public ArrayList<Booking> getAllBookings() throws SQLException
+  @Override public ArrayList<Booking> getAllBookings() throws ServerException
   {
     ArrayList<Booking> bookingArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
@@ -60,20 +66,31 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
         bookingArrayList.add(booking);
       }
     }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
+    }
     return bookingArrayList;
   }
 
-  @Override public void removeBooking(Booking booking) throws SQLException
+  @Override public void removeBooking(Booking booking) throws ServerException
   {
     try (Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("DELETE FROM Booking WHERE bookingId = ?");
       statement.setInt(1, booking.getBookingId());
       statement.executeUpdate();
     }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
+    }
   }
 
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
-      throws SQLException
+      throws ServerException
+
   {
     ArrayList<Seat> seatArrayList = new ArrayList<>();
     try (Connection connection = getConnection())
@@ -92,6 +109,11 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
         seatArrayList.add(seat);
       }
       return seatArrayList;
+    }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
     }
   }
 

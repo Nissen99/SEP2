@@ -2,6 +2,7 @@ package server.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ class HallDAOImplTest
   }
 
   @Test
-  public void hallGetsPutInDatabase() throws SQLException
+  public void hallGetsPutInDatabase() throws SQLException, ServerException
   {
     Hall hall = setUpWithHallNo("J");
     hallDAO.create(hall);

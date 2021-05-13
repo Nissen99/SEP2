@@ -19,7 +19,6 @@ public class FileHandler
   public FileHandler()
   {
     file = new File(path);
-    System.out.println("Creating file at: " + file.getAbsolutePath());
     document = new Document();
 
   }
@@ -93,7 +92,6 @@ public class FileHandler
   }
 
   public Paragraph setupParagraph(Float linespace, String element, int fontSize, boolean centerAlign)
-      throws DocumentException
   {
     Paragraph p = new Paragraph(
         new Phrase(linespace, element,

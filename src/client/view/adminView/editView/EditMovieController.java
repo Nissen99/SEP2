@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -23,7 +22,7 @@ public class EditMovieController
   @FXML public TableColumn<Movie, String> movieTitleColumn;
   private ViewModelEditMovie viewModel;
 
-  public void init() throws SQLException, RemoteException
+  public void init()
   {
    viewModel = ViewModelFactory.getInstance().getEditMovie();
 
@@ -33,15 +32,24 @@ public class EditMovieController
   }
 
 
-      private void setUpTableView() throws SQLException, RemoteException
+      private void setUpTableView()
       {
-        movieTableView.setItems(viewModel.getAllMovies());
-        movieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
+        try
+        {
+          movieTableView.setItems(viewModel.getAllMovies());
+          movieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
+
+        }
+        catch (ServerException e)
+        {
+          Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+          alert.showAndWait();
+          e.printStackTrace();
+        }
 
       }
 
       public void editShowingButton()
-          throws IOException, SQLException, ServerException
       {
         try
         {
@@ -56,12 +64,12 @@ public class EditMovieController
 
   }
 
-      public void back() throws IOException, SQLException, ServerException
+      public void back()
       {
         ViewHandler.getInstance().openView("../view/adminView/adminView.fxml");
       }
 
-  public void addMovie() throws SQLException, RemoteException, ServerException
+  public void addMovie() throws  ServerException
   {
     try
     {
@@ -76,7 +84,7 @@ public class EditMovieController
     setUpTableView();
   }
 
-  public void removeMovie() throws SQLException, RemoteException
+  public void removeMovie()
   {
     try
     {
@@ -86,6 +94,11 @@ public class EditMovieController
     catch ( NullPointerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!","No movie selected");
+      alert.showAndWait();
+    }
+    catch (ServerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!",e.getMessage());
       alert.showAndWait();
     }
     movieTitleTextField.clear();

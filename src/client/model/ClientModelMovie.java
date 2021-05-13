@@ -9,6 +9,6 @@ import java.sql.SQLException;
 public interface ClientModelMovie extends ClientModel
 {
   Movie addMovie(Movie movie)
-      throws SQLException, RemoteException, ServerException;
-  void removeMovie(Movie movie) throws RemoteException, SQLException;
+      throws ServerException;
+  void removeMovie(Movie movie) throws ServerException;
 }

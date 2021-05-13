@@ -49,8 +49,10 @@ public class EditBookingView
       title.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShowing().getMovie().getMovieTitle()));
       time.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShowing().getTime()));
     }
-    catch (RemoteException | SQLException  | NullPointerException e)
+    catch (ServerException e)
     {
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage() +". Try restarting the app");
+      alert.showAndWait();
       e.printStackTrace();
     }
   }
@@ -91,8 +93,10 @@ public class EditBookingView
           {
             viewModel.removeBooking(booking);
           }
-          catch (RemoteException | SQLException e)
+          catch (ServerException e)
           {
+           Alert serverAlert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+            serverAlert.showAndWait();
             e.printStackTrace();
           }
         }
@@ -101,7 +105,7 @@ public class EditBookingView
     setupTable();
   }
 
-  public void back() throws IOException, SQLException, ServerException
+  public void back()
   {
     ViewHandler.getInstance().openView("../view/adminView/adminView.fxml");
   }

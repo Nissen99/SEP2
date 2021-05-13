@@ -22,7 +22,7 @@ public class ClientModelShowingListManager extends ClientModelManager implements
   }
 
   @Override public ArrayList<Showing> getShowingList(Movie movie)
-      throws SQLException, RemoteException, ServerException
+      throws ServerException
   {
     return super.getClient().getShowingList(movie);
   }

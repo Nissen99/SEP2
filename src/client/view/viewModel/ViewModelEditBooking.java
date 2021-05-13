@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.exception.ServerException;
 import shared.transferobjects.Booking;
 
 import java.rmi.RemoteException;
@@ -30,8 +31,7 @@ public class ViewModelEditBooking
   public ViewModelEditBooking(){}
 
 
-  public ObservableList<Booking> getAllBookings()
-      throws RemoteException, SQLException
+  public ObservableList<Booking> getAllBookings() throws ServerException
   {
     bookings.removeAll(bookings);
     bookings.addAll(clientModel.getBookingList());
@@ -39,8 +39,7 @@ public class ViewModelEditBooking
     return bookings;
   }
 
-  public void removeBooking(Booking booking)
-      throws RemoteException, SQLException
+  public void removeBooking(Booking booking) throws ServerException
   {
     if (booking == null)
       throw new NullPointerException();

@@ -2,39 +2,37 @@ package shared.networking;
 
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-import javax.security.auth.login.LoginException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public interface RMIServer extends Remote
 {
-  Booking addBooking(Showing showing, User user, ArrayList<Seat> seats)
-      throws RemoteException, ServerException;
-  void removeBooking(Booking booking) throws RemoteException, SQLException;
+  void addBooking(Showing showing, User user, ArrayList<Seat> seats)
+      throws ServerException, RemoteException;
+  void removeBooking(Booking booking) throws RemoteException, ServerException;
   Movie addMovie(Movie movie)
-      throws RemoteException, SQLException, ServerException;
-  void removeMovie(Movie movie) throws RemoteException, SQLException;
-  Showing addShowing(Showing showing) throws RemoteException, SQLException,
-      ServerException;
-  ArrayList<Movie> getMovieList() throws RemoteException, SQLException;
+      throws RemoteException, ServerException;
+  void removeMovie(Movie movie)
+      throws RemoteException, ServerException;
+  Showing addShowing(Showing showing) throws RemoteException, ServerException;
+  ArrayList<Movie> getMovieList() throws RemoteException, ServerException;
   ArrayList<Showing> getShowingList(Movie movie)
-      throws RemoteException, SQLException, ServerException;
-  ArrayList<Booking> getBookingList() throws RemoteException, SQLException;
+      throws RemoteException,ServerException;
+  ArrayList<Booking> getBookingList() throws RemoteException, ServerException;
   ArrayList<Seat> getOccupiedSeats(Showing showing)
-      throws RemoteException, SQLException;
+      throws RemoteException, ServerException;
   Hall getHallByNumber(String hallNo)
-      throws RemoteException, SQLException, ServerException;
+      throws RemoteException, ServerException;
   void registerCallback(ClientCallBack client)  throws RemoteException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
-      throws RemoteException, SQLException, ServerException;
+      throws RemoteException, ServerException;
   ArrayList<String> getHallNumbers()
-      throws RemoteException, SQLException, ServerException;
+      throws RemoteException,ServerException;
   void createUser(String userName, String email,String password)
-      throws SQLException, RemoteException, ServerException;
+      throws RemoteException, ServerException;
   User login(String userName,String password)
-      throws LoginException, RemoteException, ServerException;
-  void removeShowing(Showing showing) throws SQLException, RemoteException;
+      throws RemoteException, ServerException;
+  void removeShowing(Showing showing) throws RemoteException, ServerException;
 }

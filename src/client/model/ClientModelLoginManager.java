@@ -14,7 +14,7 @@ public class ClientModelLoginManager extends ClientModelManager implements Clien
   }
 
   @Override public void login(String userName, String password)
-      throws LoginException, RemoteException, ServerException
+      throws ServerException
   {
     super.getClient().login(userName,password);
   }

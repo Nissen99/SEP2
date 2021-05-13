@@ -9,8 +9,7 @@ import javafx.collections.ObservableList;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -30,7 +29,7 @@ public class ViewModelShowingList
     }
 
     public ObservableList<Showing> getAllShowings()
-        throws SQLException, RemoteException, ServerException
+        throws ServerException
     {
       ArrayList<Showing> tempShowings = new ArrayList<>();
 
@@ -55,6 +54,9 @@ public class ViewModelShowingList
     }
 
     public void setSelectedShowing(Showing showing){
+      if (showing == null){
+        throw new NullPointerException("No showing selected");
+      }
     this.selectedShowing = showing;
     }
 

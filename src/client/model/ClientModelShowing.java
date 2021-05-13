@@ -11,12 +11,12 @@ import java.util.ArrayList;
 public interface ClientModelShowing extends ClientModelShowingList
 {
   Showing addShowing(Showing showing)
-      throws SQLException, RemoteException, ServerException;
+      throws  ServerException;
   Hall getHallByNumber(String hallNo)
-      throws SQLException, RemoteException, ServerException;
+      throws  ServerException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   ArrayList<String> getHallNumbers()
-      throws RemoteException, SQLException, ServerException;
-  void removeShowing(Showing showing) throws SQLException;
+      throws ServerException;
+  void removeShowing(Showing showing) throws ServerException;
 }

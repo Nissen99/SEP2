@@ -1,5 +1,6 @@
 package server.model;
 
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Showing;
 import java.rmi.RemoteException;
@@ -9,10 +10,10 @@ import java.util.ArrayList;
 
 public interface ServerModelShowing
 {
-  Showing addShowing(Showing showing) throws SQLException, RemoteException;
-  Hall getHallByNumber(String hallNo) throws SQLException, RemoteException;
+  Showing addShowing(Showing showing) throws ServerException;
+  Hall getHallByNumber(String hallNo) throws ServerException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
-      throws RemoteException, SQLException;
-  ArrayList<String> getHallNumbers() throws RemoteException, SQLException;
-  void removeShowing(Showing showing) throws SQLException;
+      throws ServerException;
+  ArrayList<String> getHallNumbers() throws ServerException;
+  void removeShowing(Showing showing) throws ServerException;
 }

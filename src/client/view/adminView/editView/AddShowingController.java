@@ -10,9 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import shared.exception.ServerException;
-import java.io.IOException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -25,18 +22,18 @@ public class AddShowingController
   @FXML public ChoiceBox<String> hallNo;
   private ViewModelAddShowing viewModel = ViewModelFactory.getInstance().getAddShowing();
 
-  public void init() throws RemoteException, SQLException, ServerException
+  public void init()
   {
     setChoiceBox();
 
   }
 
-  public void back() throws IOException, SQLException, ServerException
+  public void back()
   {
     ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
   }
 
-  public void confirm() throws SQLException, IOException, ServerException
+  public void confirm()
   {
     try
     {
@@ -51,7 +48,7 @@ public class AddShowingController
       Alert alert = AlertBox.makeAlert("information", "Error!","Invalid input - Time and Date needs to be filled");
       alert.showAndWait();
     }
-    catch (IllegalArgumentException e) {
+    catch (IllegalArgumentException | ServerException e) {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
       alert.showAndWait();
     }
@@ -59,10 +56,19 @@ public class AddShowingController
   }
 
   private void setChoiceBox()
-      throws RemoteException, SQLException, ServerException
+
   {
-    hallNo.setItems(viewModel.getChoiceList());
-    hallNo.setValue("A");
+    try
+    {
+      hallNo.setItems(viewModel.getChoiceList());
+
+      hallNo.setValue(viewModel.getChoiceList().get(0));
+
+    }
+    catch (ServerException e)
+    {
+      e.printStackTrace();
+    }
   }
 
 }

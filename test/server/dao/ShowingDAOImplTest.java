@@ -1,6 +1,7 @@
 package server.dao;
 
 import org.junit.jupiter.api.Test;
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
@@ -16,7 +17,7 @@ class ShowingDAOImplTest
 {
 
 @Test
-  public void testThatItGetsToDatabase() throws SQLException
+  public void testThatItGetsToDatabase() throws SQLException, ServerException
 {
 
   ShowingDAO showingDAO = new ShowingDAOImpl();

@@ -1,6 +1,7 @@
 package server.dao;
 
 
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 public class HallDAOImpl extends BaseDAO implements HallDAO
 {
-  @Override public Hall create(Hall hall) throws SQLException
+  @Override public Hall create(Hall hall) throws ServerException
   {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("INSERT INTO Hall(hallNo, maxSeatInRow, maxRows) VALUES (?, ?, ?)");
@@ -20,10 +21,15 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
       statement.executeUpdate();
       return hall;
     }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
+    }
 
   }
 
-  @Override public Hall getHallByNumber(String hallNo) throws SQLException
+  @Override public Hall getHallByNumber(String hallNo) throws ServerException
   {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("SELECT * from Hall where hallNo = ?");
@@ -40,9 +46,14 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
       }
       return hall;
     }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
+    }
   }
 
-  @Override public ArrayList<String> getHallNumbers() throws SQLException
+  @Override public ArrayList<String> getHallNumbers() throws ServerException
   {
     ArrayList<String> stringArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
@@ -53,6 +64,10 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
         stringArrayList.add(resultSet.getString("hallNo"));
       }
       return stringArrayList;
+    }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
     }
   }
 }

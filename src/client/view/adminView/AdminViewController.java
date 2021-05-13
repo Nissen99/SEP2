@@ -11,18 +11,18 @@ public class AdminViewController
 
 public void init(){}
 
-  public void back() throws IOException, SQLException, ServerException
+  public void back()
   {
   ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
   }
 
-  public void editMovie() throws IOException, SQLException, ServerException
+  public void editMovie()
   {
 
   ViewHandler.getInstance().openView("../view/adminView/editView/editMovieView.fxml");
   }
 
-  public void editBooking() throws IOException, SQLException, ServerException
+  public void editBooking()
   {
   ViewHandler.getInstance().openView("../view/adminView/editView/editBookingView.fxml");
   }

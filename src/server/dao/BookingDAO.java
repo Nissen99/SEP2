@@ -1,5 +1,6 @@
 package server.dao;
 
+import shared.exception.ServerException;
 import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
@@ -9,9 +10,9 @@ import java.util.ArrayList;
 
 public interface BookingDAO
 {
-  Booking create(Showing showing, User user) throws SQLException;
-  ArrayList<Booking> getAllBookings() throws SQLException;
-  void removeBooking(Booking booking) throws SQLException;
-  ArrayList<Seat> getOccupiedSeats(Showing showing) throws SQLException;
+  Booking create(Showing showing, User user) throws ServerException;
+  ArrayList<Booking> getAllBookings() throws ServerException;
+  void removeBooking(Booking booking) throws ServerException;
+  ArrayList<Seat> getOccupiedSeats(Showing showing) throws ServerException;
 
 }

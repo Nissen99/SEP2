@@ -1,5 +1,6 @@
 package server.dao;
 
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class MovieDAOImpl extends BaseDAO implements MovieDAO
 {
-  @Override public Movie create(String movieTitle) throws SQLException
+  @Override public Movie create(String movieTitle) throws ServerException
   {
       try(Connection connection = getConnection())
       {
@@ -22,10 +23,15 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
       }else {
       throw new SQLException("No keys generated");
       }}
+      catch (SQLException throwables)
+      {
+        throw new ServerException("Database connection failed");
+
+      }
   }
 
 
-  @Override public ArrayList<Movie> getAllMovies() throws SQLException
+  @Override public ArrayList<Movie> getAllMovies() throws ServerException
   {
     ArrayList<Movie> movieArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
@@ -38,15 +44,25 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
       }
       return movieArrayList;
     }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+    }
+
   }
 
-  @Override public void removeMovie(Movie movie) throws SQLException
+  @Override public void removeMovie(Movie movie) throws ServerException
   {
     System.out.println("Er vi i DAO?");
     try (Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("DELETE FROM Movie WHERE movieId = ?");
       statement.setInt(1, movie.getMovieId());
       statement.executeUpdate();
+    }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
     }
   }
 }

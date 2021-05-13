@@ -27,7 +27,7 @@ public class ViewModelEditShowing
   }
 
   public ObservableList<Showing> getAllShowings()
-      throws SQLException, RemoteException, ServerException
+      throws ServerException
   {
     showings.removeAll(showings);
 
@@ -54,8 +54,11 @@ public class ViewModelEditShowing
     movieTitle.setValue(selectedMovie.getMovieTitle());
   }
 
-  public void removeShowing(Showing showing) throws SQLException
+  public void removeShowing(Showing showing) throws ServerException
   {
+    if (showing == null){
+      throw new NullPointerException("No showing selected");
+    }
     clientModel.removeShowing(showing);
   }
 }

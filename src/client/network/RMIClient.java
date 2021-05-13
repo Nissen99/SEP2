@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 {
   private RMIServer rmiServer;
-  private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+  private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   private User user;
 
   @Override
@@ -43,95 +43,200 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
 
   @Override public void createUser(String userName, String email,String password)
-      throws RemoteException, SQLException, ServerException
+      throws ServerException
   {
-    rmiServer.createUser(userName,email,password);
+    try
+    {
+      rmiServer.createUser(userName,email,password);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+    }
   }
 
 
   //Når man logger ind gemmer vi hvilken User der er logget ind
   //Den sender vi med i addBooking
-  @Override public Booking addBooking(Showing showing,
-      ArrayList<Seat> seats) throws ServerException, RemoteException
+  @Override public void addBooking(Showing showing,
+      ArrayList<Seat> seats) throws ServerException
   {
-    return rmiServer.addBooking(showing,user,seats);
+    try
+    {
+      rmiServer.addBooking(showing,user,seats);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+    }
   }
 
   @Override public void removeBooking(Booking booking)
-      throws RemoteException, SQLException
+      throws ServerException
+
   {
-    rmiServer.removeBooking(booking);
+    try
+    {
+      rmiServer.removeBooking(booking);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+    }
   }
 
   @Override public Movie addMovie(Movie movie)
-      throws RemoteException, SQLException, ServerException
+      throws ServerException
   {
-    return rmiServer.addMovie(movie);
+    try
+    {
+      return rmiServer.addMovie(movie);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+    }
   }
 
   @Override public void removeMovie(Movie movie)
-      throws RemoteException, SQLException
+      throws ServerException
   {
-    rmiServer.removeMovie(movie);
+    try
+    {
+      rmiServer.removeMovie(movie);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+
+    }
   }
 
   @Override public Showing addShowing(Showing showing)
-      throws RemoteException, SQLException, ServerException
+      throws ServerException
   {
-    return rmiServer.addShowing(showing);
+    try
+    {
+      return rmiServer.addShowing(showing);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+
+    }
   }
 
-  @Override public ArrayList<Movie> getMovieList()
-      throws RemoteException, SQLException
+  @Override public ArrayList<Movie> getMovieList() throws ServerException
   {
-    return rmiServer.getMovieList();
+    try
+    {
+      return rmiServer.getMovieList();
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+    }
   }
 
   @Override public ArrayList<Showing> getShowingList(Movie movie)
-      throws RemoteException, SQLException, ServerException
+      throws ServerException
   {
-    return rmiServer.getShowingList(movie);
+    try
+    {
+      return rmiServer.getShowingList(movie);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+    }
   }
 
-  @Override public ArrayList<Booking> getBookingList()
-      throws RemoteException, SQLException
+  @Override public ArrayList<Booking> getBookingList() throws ServerException
   {
-    return rmiServer.getBookingList();
+    try
+    {
+      return rmiServer.getBookingList();
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+
+    }
+
   }
 
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
-      throws RemoteException, SQLException
+      throws ServerException
   {
-    return rmiServer.getOccupiedSeats(showing);
+    try
+    {
+      return rmiServer.getOccupiedSeats(showing);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+
+    }
   }
 
   @Override public Hall getHallByNumber(String hallNo)
-      throws SQLException, RemoteException, ServerException
+      throws ServerException
   {
-    return rmiServer.getHallByNumber(hallNo);
+    try
+    {
+      return rmiServer.getHallByNumber(hallNo);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+    }
   }
 
   @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(
       String hallNo, Timestamp timestamp)
-      throws RemoteException, SQLException, ServerException
+      throws ServerException
   {
-    return rmiServer.getShowingTimesByHallNoAndDate(hallNo, timestamp);
+    try
+    {
+      return rmiServer.getShowingTimesByHallNoAndDate(hallNo, timestamp);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+
+    }
   }
 
   @Override public ArrayList<String> getHallNumbers()
-      throws RemoteException, SQLException, ServerException
+      throws ServerException
   {
-    return rmiServer.getHallNumbers();
+    try
+    {
+      return rmiServer.getHallNumbers();
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+
+    }
   }
 
   @Override public void login(String username, String password)
-      throws LoginException, RemoteException, ServerException
+      throws ServerException
   {
-    user = rmiServer.login(username,password);
+    try
+    {
+      user = rmiServer.login(username,password);
+    }
+    catch (RemoteException e)
+    {
+      throw new ServerException("Connection to server failed");
+
+    }
 
   }
 
-  @Override public void removeShowing(Showing showing) throws SQLException
+  @Override public void removeShowing(Showing showing) throws ServerException
   {
     try
     {
@@ -139,7 +244,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
-      e.printStackTrace();
+      throw new ServerException("Connection to server failed");
     }
   }
 

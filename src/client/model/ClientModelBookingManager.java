@@ -31,51 +31,46 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
-  @Override public Booking addBooking(Showing showing,
+  @Override public void addBooking(Showing showing,
       ArrayList<Seat> seats)
       throws ServerException
   {
-    try
-    {
-      return super.getClient().addBooking(showing, seats);
-    }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
-    }
-    return null;
+
+    super.getClient().addBooking(showing, seats);
+
+
 
   }
 
 
-  @Override public void removeBooking(Booking booking)
-      throws RemoteException, SQLException
+  @Override public void removeBooking(Booking booking) throws ServerException
   {
     super.getClient().removeBooking(booking);
   }
 
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
-      throws RemoteException, SQLException
+      throws ServerException
+
   {
     return super.getClient().getOccupiedSeats(showing);
   }
 
 
-  @Override public ArrayList<Booking> getBookingList()
-      throws RemoteException, SQLException
+  @Override public ArrayList<Booking> getBookingList() throws ServerException
+
   {
     return super.getClient().getBookingList();
   }
 
   @Override public ArrayList<Showing> getShowingList(Movie movie)
-      throws RemoteException, SQLException, ServerException
+      throws ServerException
   {
 
     return super.getClient().getShowingList(movie);
   }
 
-  @Override public ArrayList<Movie> getMovieList()
-      throws RemoteException, SQLException
+  @Override public ArrayList<Movie> getMovieList() throws ServerException
+
   {
     return super.getClient().getMovieList();
 

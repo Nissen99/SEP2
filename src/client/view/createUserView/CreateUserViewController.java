@@ -2,8 +2,10 @@ package client.view.createUserView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.util.AlertBox;
 import client.view.viewModel.ViewModelCreateUser;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import shared.exception.ServerException;
@@ -29,12 +31,19 @@ public class CreateUserViewController
   }
 
   public void onCreateButton()
-      throws IOException, SQLException, ServerException
   {
-   viewModelCreateUser.create();
+    try
+    {
+      viewModelCreateUser.create();
 
+      ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
+    }
+    catch (ServerException | IllegalArgumentException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.showAndWait();
+    }
 
-   ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
 
 
   }
@@ -42,7 +51,6 @@ public class CreateUserViewController
 
 
   public void onBackButton()
-      throws IOException, SQLException, ServerException
   {
    ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
 

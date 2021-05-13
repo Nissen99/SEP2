@@ -1,5 +1,6 @@
 package server.dao;
 
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
 {
 
-  @Override public Showing create(Showing showing) throws SQLException
+  @Override public Showing create(Showing showing) throws ServerException
   {
     try(Connection connection = getConnection())
     {
@@ -22,12 +23,18 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
       if (keys.next()) {
         return new Showing( keys.getInt("showingId"),showing.getMovie(), showing.getTimestamp(), showing.getHall());
       } else {
-        throw new SQLException("No keys generated");
+        throw new ServerException("No keys generated in database");
       }
+    }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
     }
   }
 
-  @Override public ArrayList<Showing> getAllShowings(Movie movie) throws SQLException
+  @Override public ArrayList<Showing> getAllShowings(Movie movie)
+      throws ServerException
   {
     ArrayList<Showing> showingArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
@@ -46,9 +53,16 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
       }
   return showingArrayList;
     }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
+    }
   }
 
-  @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp) throws SQLException {
+  @Override public ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
+      throws ServerException
+  {
     ArrayList<Timestamp> showingTimes = new ArrayList<>();
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement("SELECT time FROM Showing WHERE (hallNo = ? AND DATE(time) = ?)");
@@ -61,15 +75,25 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
       }
       return showingTimes;
     }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
+    }
   }
 
-  @Override public void removeShowing(Showing showing) throws SQLException
+  @Override public void removeShowing(Showing showing) throws ServerException
   {
     try(Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("DELETE FROM Showing WHERE showingId = ?");
       statement.setInt(1, showing.getId());
       statement.executeUpdate();
+    }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
+
     }
   }
 
