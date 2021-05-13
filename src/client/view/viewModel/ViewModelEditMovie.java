@@ -68,6 +68,9 @@ public class ViewModelEditMovie
       throw new NullPointerException("No movie selected");
     }
     this.selectedMovie = selectedMovie;
+    if (selectedMovie == null) {
+      throw new NullPointerException();
+    }
   }
 
   public void removeMovie(Movie movie) throws ServerException
