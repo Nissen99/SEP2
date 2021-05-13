@@ -16,7 +16,6 @@ import javax.mail.MessagingException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ServerModelBookingManager implements ServerModelBooking
