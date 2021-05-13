@@ -6,10 +6,12 @@ import client.network.Client;
 import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import server.dao.ShowingDAOImpl;
+import server.dao.*;
+import server.util.SeatNoCalculator;
 import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
+import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 
 import java.rmi.RemoteException;
@@ -23,39 +25,43 @@ class ViewModelAddShowingTest
 {
   private RMIClient client = new RMIClient();
   private ClientModelShowing model = new ClientModelShowingManager(client);
-  private ShowingDAOImpl dao = new ShowingDAOImpl();
-  private Hall hall = new Hall("A", 5, 5);
-  private Showing showing = null;
-  private String movieTitle = "Jackass";
-  private Movie movie = new Movie(1, movieTitle);
-  Timestamp time = new Timestamp(121, 4, 14,
-  13, 30, 0, 0);
+  private ViewModelAddShowing viewModel = new ViewModelAddShowing();
+  private DAOTestSetup setup = new DAOTestSetup();
 
-  @BeforeEach void setup() {
-    if (showing == null) {
-      showing = new Showing(1 ,movie, time, hall);
-    }
+  @BeforeEach void setup() throws SQLException
+  {
+    setup.setup();
   }
 
   @Test void testIfShowingIsCreated() {
-    assertNotNull(showing);
+    assertNotNull(setup.getShowing());
   }
 
   @Test void testIfShowingIsCreatedWithCorrectInfo() {
-    assertEquals(1, showing.getId());
-    assertEquals(movieTitle, showing.getMovie().getMovieTitle());
-    assertEquals(time, showing.getTimestamp());
-    assertEquals("A", showing.getHall().getHallNo());
+    assertEquals(1, setup.getShowing().getId());
+    assertEquals(setup.getMovieTitle(), setup.getShowing().getMovie().getMovieTitle());
+    assertEquals(setup.getTime(), setup.getShowing().getTimestamp());
+    assertEquals("A", setup.getShowing().getHall().getHallNo());
   }
 
   @Test void testIfShowingIsAddedInDatabase()
       throws SQLException, RemoteException, ServerException
   {
     client.startClient();
-    model.addShowing(showing);
-    ArrayList<Showing> showingList = dao.getAllShowings(movie);
-    assertEquals(movieTitle, showingList.get(0).getMovie().getMovieTitle());
+    setup.getTime().setHours(18);
+    viewModel.setSelectedMovie(setup.getMovie());
+    viewModel.addShowing(setup.getTime(), setup.getHall().getHallNo());
+    ArrayList<Showing> showingList = model.getShowingList(setup.getMovie());
+    assertEquals(setup.getMovieTitle(), showingList.get(0).getMovie().getMovieTitle());
   }
+
+  @Test void testIfItsTheRightHall()
+      throws ServerException, SQLException, RemoteException
+  {
+    assertEquals(setup.getHall().getHallNo(), viewModel.getHallByNumber("A").getHallNo());
+  }
+
+
 
 
 }

@@ -71,6 +71,9 @@ public class ViewModelEditMovie
   public void setSelectedMovie(Movie selectedMovie)
   {
     this.selectedMovie = selectedMovie;
+    if (selectedMovie == null) {
+      throw new NullPointerException();
+    }
   }
 
   public void removeMovie(Movie movie) throws RemoteException, SQLException
