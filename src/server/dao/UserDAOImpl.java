@@ -1,7 +1,6 @@
 package server.dao;
 
 import shared.transferobjects.User;
-
 import javax.security.auth.login.LoginException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -94,4 +94,5 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       return seatArrayList;
     }
   }
+
 }

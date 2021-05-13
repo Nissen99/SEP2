@@ -18,7 +18,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import shared.exception.ServerException;
 import shared.transferobjects.Seat;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
@@ -78,7 +77,14 @@ public class SeatViewController implements PropertyChangeListener
   {
     for (Pane pane : paneArrayList)
     {
-
+      /**
+       * Hvis man har flere clients åben, man terminater en af dem mens de resterende
+       * er i SeatView, kommer vi ud for at der er panes i listen med id null
+       * Disse panes ligge til højre for de yderste seats, så vi kaster IndexOutOfBounds
+       */
+      if (pane.idProperty().get() == null){
+        throw new IndexOutOfBoundsException("Invalid input - Seat out of Bounds");
+      }
       if (pane.idProperty().get().equals(id))
       {
         return pane;
@@ -264,7 +270,6 @@ public class SeatViewController implements PropertyChangeListener
     Platform.runLater(() -> {
       try
       {
-        System.out.println("PROPERTY CHANGED");
         setOccupiedSeats();
       }
       catch (SQLException | RemoteException throwables)

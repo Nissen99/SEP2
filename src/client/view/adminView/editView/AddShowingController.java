@@ -5,25 +5,17 @@ import client.core.ViewModelFactory;
 import client.util.AlertBox;
 import client.view.viewModel.ViewModelAddShowing;
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import shared.exception.ServerException;
-import shared.transferobjects.Showing;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Calendar;
-import java.util.Date;
 
 public class AddShowingController
 {

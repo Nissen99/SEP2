@@ -2,7 +2,6 @@ package client.view.adminView;
 
 import client.core.ViewHandler;
 import shared.exception.ServerException;
-
 import java.io.IOException;
 import java.sql.SQLException;
 

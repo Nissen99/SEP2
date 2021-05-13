@@ -11,7 +11,6 @@ public class ViewModelFactory
   private static ViewModelFactory viewModelFactory;
   private ViewModelMovieList movieList;
   private ViewModelShowingList showingList;
-  //private ViewModelBooking booking;
   private ViewModelSeat seatVM;
   private ViewModelEditMovie editMovie;
   private ViewModelAddShowing addShowing;
@@ -56,20 +55,7 @@ if (showingList == null)
     return showingList;
   }
 
-/*  public ViewModelBooking getBooking()
-  {
-    if (booking == null){
-      booking = new ViewModelBooking();
-    }
 
-    booking.setShowing(showingList.getSelectedShowing());
-    booking.setSelectedSeats(seatVM.getSelectedSeat());
-
-    return booking;
-  }
-
-
- */
   public ViewModelSeat getSeatVM() throws SQLException, RemoteException
   {
 

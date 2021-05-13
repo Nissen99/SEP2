@@ -3,13 +3,10 @@ package client.view.createUserView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.viewModel.ViewModelCreateUser;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import shared.exception.ServerException;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -31,7 +28,7 @@ public class CreateUserViewController
 
   }
 
-  public void onCreateButton(ActionEvent actionEvent)
+  public void onCreateButton()
       throws IOException, SQLException, ServerException
   {
    viewModelCreateUser.create();
@@ -44,7 +41,7 @@ public class CreateUserViewController
 
 
 
-  public void onBackButton(ActionEvent actionEvent)
+  public void onBackButton()
       throws IOException, SQLException, ServerException
   {
    ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");

@@ -4,23 +4,15 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
 import client.view.viewModel.ViewModelEditBooking;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import shared.exception.ServerException;
 import shared.transferobjects.Booking;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Optional;
+
 
 public class EditBookingView
 {
@@ -60,7 +52,6 @@ public class EditBookingView
     catch (RemoteException | SQLException  | NullPointerException e)
     {
       e.printStackTrace();
-      System.out.println("Error setting up the booking list");
     }
   }
 
@@ -82,7 +73,7 @@ public class EditBookingView
     }
   }
 
-  public void deleteBooking() throws RemoteException, SQLException
+  public void deleteBooking()
   {
     Booking booking = bookingTable.getSelectionModel().getSelectedItem();
     if (booking == null){
@@ -96,7 +87,6 @@ public class EditBookingView
       alert.showAndWait().ifPresent(type -> {
         if (type.getButtonData() == ButtonBar.ButtonData.YES)
         {
-          System.out.println("Yes pressed");
           try
           {
             viewModel.removeBooking(booking);

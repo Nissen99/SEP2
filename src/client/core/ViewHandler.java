@@ -5,7 +5,6 @@ import client.view.adminView.editView.AddShowingController;
 import client.view.adminView.editView.EditBookingView;
 import client.view.adminView.editView.EditMovieController;
 import client.view.adminView.editView.EditShowingController;
-//import client.view.bookingView.BookingViewController;
 import client.view.createUserView.CreateUserViewController;
 import client.view.loginView.LoginViewController;
 import client.view.movieList.MovieListController;
@@ -24,25 +23,21 @@ public class ViewHandler
 {
 
   private static ViewHandler viewHandler;
-  private ViewModelFactory viewModelFactory;
   private Stage stage;
 
-  private ViewHandler(ViewModelFactory instance){
-    this.viewModelFactory = instance;
+  private ViewHandler(){}
+
+
+  public static ViewHandler getInstance(){
+    if (viewHandler == null){
+      viewHandler = new ViewHandler();
+    }
+    return viewHandler;
   }
 
   public void setStage(Stage stage)
   {
     this.stage = stage;
-  }
-
-
-
-  public static ViewHandler getInstance(){
-    if (viewHandler == null){
-      viewHandler = new ViewHandler(ViewModelFactory.getInstance());
-    }
-    return viewHandler;
   }
 
 
@@ -54,7 +49,7 @@ public class ViewHandler
   public void openView(String viewToOpen)
       throws IOException, SQLException, ServerException
   {
-    Scene scene = null;
+    Scene scene;
     FXMLLoader loader = new FXMLLoader();
     Parent root = null;
 
@@ -73,14 +68,7 @@ public class ViewHandler
       controller.init();
       stage.setTitle("Showing List");
     }
-    /*else if ("../view/bookingView/bookingView.fxml".equals(viewToOpen)){
-      loader.setLocation(getClass().getResource(viewToOpen));
-      root = loader.load();
-      BookingViewController controller = loader.getController();
-      controller.init();
 
-      stage.setTitle("Booking");
-    }  */
     else if ("../view/seatView/seatView.fxml".equals(viewToOpen)){
 
       loader.setLocation(getClass().getResource(viewToOpen));

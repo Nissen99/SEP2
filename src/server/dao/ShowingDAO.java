@@ -2,7 +2,6 @@ package server.dao;
 
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
-
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;

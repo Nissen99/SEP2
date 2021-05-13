@@ -1,7 +1,6 @@
 package client.model;
 
 import shared.exception.ServerException;
-import shared.transferobjects.User;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

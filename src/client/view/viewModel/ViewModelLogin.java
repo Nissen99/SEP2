@@ -1,12 +1,10 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.ClientModel;
 import client.model.ClientModelLogin;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.exception.ServerException;
-
 import javax.security.auth.login.LoginException;
 import java.rmi.RemoteException;
 

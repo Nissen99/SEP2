@@ -3,7 +3,6 @@ package server.dao;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
-
 import java.sql.*;
 import java.util.ArrayList;
 

@@ -24,13 +24,10 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   {
     super(client);
     super.getClient().addPropertyChangeListener(this::update);
-
-
   }
 
   private void update(PropertyChangeEvent propertyChangeEvent)
   {
-    System.out.println("FIRE 3");
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
@@ -38,7 +35,6 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
       ArrayList<Seat> seats)
       throws ServerException
   {
-    System.out.println("Booking in clientModel manager");
     try
     {
       return super.getClient().addBooking(showing, seats);
@@ -91,11 +87,6 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
     propertyChangeSupport.addPropertyChangeListener(listener);
   }
 
-  @Override public void addPropertyChangeListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    propertyChangeSupport.addPropertyChangeListener(eventName, listener);
-  }
 
   @Override public void removePropertyChangeListener(
       PropertyChangeListener listener)
@@ -103,10 +94,5 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
     propertyChangeSupport.removePropertyChangeListener(listener);
   }
 
-  @Override public void removePropertyChangeListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    propertyChangeSupport.removePropertyChangeListener(eventName, listener);
 
-  }
 }

@@ -1,7 +1,6 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.ClientModelBooking;
 import client.model.ClientModelShowing;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -10,7 +9,6 @@ import javafx.collections.ObservableList;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
-
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.sql.Timestamp;

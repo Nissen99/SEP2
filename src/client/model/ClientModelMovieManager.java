@@ -3,8 +3,6 @@ package client.model;
 import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
-
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 

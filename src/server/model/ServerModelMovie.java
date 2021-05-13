@@ -1,7 +1,6 @@
 package server.model;
 
 import shared.transferobjects.Movie;
-
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
