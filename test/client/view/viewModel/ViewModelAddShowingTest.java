@@ -26,7 +26,7 @@ class ViewModelAddShowingTest
   private ViewModelAddShowing viewModel = new ViewModelAddShowing();
   private DAOTestSetup setup = new DAOTestSetup();
 
-  @BeforeEach void setup() throws SQLException
+  @BeforeEach void setup() throws ServerException
   {
     setup.setup();
   }
@@ -43,7 +43,7 @@ class ViewModelAddShowingTest
   }
 
   @Test void testIfShowingIsAddedInDatabase()
-      throws SQLException, RemoteException, ServerException
+      throws  ServerException
   {
     client.startClient();
     setup.getTime().setHours(18);
@@ -54,7 +54,7 @@ class ViewModelAddShowingTest
   }
 
   @Test void testIfItsTheRightHall()
-      throws ServerException, SQLException, RemoteException
+      throws ServerException
   {
     assertEquals(setup.getHall().getHallNo(), viewModel.getHallByNumber("A").getHallNo());
   }

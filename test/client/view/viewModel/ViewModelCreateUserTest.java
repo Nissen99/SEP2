@@ -24,7 +24,7 @@ class ViewModelCreateUserTest
   private ClientModelCreateUser model = new ClientModelCreateUserManager(client);
   private UserDAO userDAO = new UserDAOImpl();
 
-  @BeforeEach void setup() throws SQLException
+  @BeforeEach void setup() throws SQLException, ServerException
   {
     setup.setup();
   }
