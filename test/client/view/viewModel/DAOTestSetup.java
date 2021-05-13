@@ -1,6 +1,7 @@
 package client.view.viewModel;
 
 import server.dao.*;
+import shared.exception.ServerException;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;
@@ -76,7 +77,7 @@ public class DAOTestSetup
     return user;
   }
 
-  public void setup() throws SQLException
+  public void setup() throws SQLException, ServerException
   {
     resetDAO.reset();
 

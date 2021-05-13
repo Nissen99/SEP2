@@ -26,7 +26,7 @@ class ViewModelAddShowingTest
   private ViewModelAddShowing viewModel = new ViewModelAddShowing();
   private DAOTestSetup setup = new DAOTestSetup();
 
-  @BeforeEach void setup() throws SQLException
+  @BeforeEach void setup() throws SQLException, ServerException
   {
     setup.setup();
   }

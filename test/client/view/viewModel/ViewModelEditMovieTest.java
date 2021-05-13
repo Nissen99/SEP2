@@ -14,7 +14,7 @@ class ViewModelEditMovieTest
   private DAOTestSetup setup = new DAOTestSetup();
   private ViewModelEditMovie viewModel = new ViewModelEditMovie();
 
-  @BeforeEach void setup() throws SQLException
+  @BeforeEach void setup() throws SQLException, ServerException
   {
     setup.setup();
   }
@@ -28,12 +28,13 @@ class ViewModelEditMovieTest
   }
 
   @Test void testIfMovieIsCreatedInDatabase()
-      throws SQLException, RemoteException
+      throws SQLException, RemoteException, ServerException
   {
     assertEquals(setup.getMovieTitle(), viewModel.getAllMovies().get(0).getMovieTitle());
   }
 
-  @Test void testRemoveMovie() throws RemoteException, SQLException
+  @Test void testRemoveMovie()
+      throws RemoteException, SQLException, ServerException
   {
     viewModel.removeMovie(setup.getMovie());
     assertEquals(0, viewModel.getAllMovies().size());

@@ -27,9 +27,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       }
       catch (SQLException throwables)
       {
-
-        throw new ServerException(throwables.getMessage());
-
+        throw new ServerException("Database fejl - " + throwables.getMessage());
       }
 
     }

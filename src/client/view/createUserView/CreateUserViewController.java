@@ -41,7 +41,7 @@ public class CreateUserViewController
     catch (ServerException | IllegalArgumentException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.showAndWait();
+      alert.show();
     }
 
 
