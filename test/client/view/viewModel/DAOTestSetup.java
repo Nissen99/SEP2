@@ -77,7 +77,7 @@ public class DAOTestSetup
     return user;
   }
 
-  public void setup() throws SQLException, ServerException
+  public void setup() throws ServerException
   {
     resetDAO.reset();
 
