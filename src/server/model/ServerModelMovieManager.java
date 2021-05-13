@@ -3,8 +3,6 @@ package server.model;
 import server.dao.MovieDAO;
 import server.dao.MovieDAOImpl;
 import shared.transferobjects.Movie;
-
-import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class ServerModelMovieManager implements ServerModelMovie
@@ -21,7 +19,6 @@ public class ServerModelMovieManager implements ServerModelMovie
     catch (SQLException throwables)
     {
       throwables.printStackTrace();
-      System.out.println("Catch in addMovie");
     }
     return null;
   }

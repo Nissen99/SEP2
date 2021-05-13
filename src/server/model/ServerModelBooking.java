@@ -6,7 +6,6 @@ import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 import shared.transferobjects.User;
 import shared.util.PropertyChangeSubject;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 

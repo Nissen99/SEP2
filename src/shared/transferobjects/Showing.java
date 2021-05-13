@@ -19,7 +19,11 @@ public class Showing implements Serializable
     this.hall = hall;
 
   }
-  //TODO Ved ikke om det er bedste løsning
+
+  /**
+   * Her overloader vi construtoren da vi generer ID gennem database, men stadigvæk
+   * gerne vil kunne oprette showings så de kan sendes gennem systemet
+   */
   public Showing(Movie movie, Timestamp timestamp, Hall hall)
 {
   this.movie = movie;

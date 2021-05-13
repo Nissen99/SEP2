@@ -4,9 +4,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
-
 public class AlertBox
 {
 

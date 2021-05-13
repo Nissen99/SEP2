@@ -4,7 +4,6 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

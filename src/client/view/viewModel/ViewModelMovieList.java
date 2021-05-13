@@ -1,10 +1,7 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.ClientModel;
 import client.model.ClientModelMovie;
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.transferobjects.Movie;

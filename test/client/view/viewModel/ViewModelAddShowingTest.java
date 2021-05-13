@@ -2,7 +2,6 @@ package client.view.viewModel;
 
 import client.model.ClientModelShowing;
 import client.model.ClientModelShowingManager;
-import client.network.Client;
 import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
-
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.sql.Timestamp;

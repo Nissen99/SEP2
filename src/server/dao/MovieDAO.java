@@ -1,7 +1,6 @@
 package server.dao;
 
 import shared.transferobjects.Movie;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 

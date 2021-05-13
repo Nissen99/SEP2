@@ -2,7 +2,6 @@ package shared.networking;
 
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
 import javax.security.auth.login.LoginException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
