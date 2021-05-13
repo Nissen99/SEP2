@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 public class StartServer
 {
   public static void main(String[] args)
-      throws RemoteException, AlreadyBoundException, SQLException,
+      throws RemoteException, SQLException,
       ServerException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
