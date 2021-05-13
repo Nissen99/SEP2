@@ -1,9 +1,7 @@
 package client.core;
 
-import client.network.Client;
 import client.network.RMIClient;
 
-import java.rmi.RemoteException;
 
 public class ClientFactory
 {

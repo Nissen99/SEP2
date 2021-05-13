@@ -10,21 +10,19 @@ public class ModelFactory
   private ClientModelShowing clientModelShowing;
   private ClientModelBooking clientModelBooking;
   private ClientModelMovie clientModelMovie;
-  private ClientFactory clientFactory;
   private ClientModelLogin clientModelLogin;
   private ClientModelCreateUser clientModelCreateUser;
   private ClientModelShowingList clientModelShowingList;
 
-  private ModelFactory(ClientFactory clientFactory)
+  private ModelFactory()
   {
-    this.clientFactory = clientFactory;
   }
 
   public static ModelFactory getInstance()
   {
     if (modelFactory == null)
     {
-      modelFactory = new ModelFactory(ClientFactory.getInstance());
+      modelFactory = new ModelFactory();
     }
     return modelFactory;
   }

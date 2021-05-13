@@ -2,13 +2,11 @@ package server.dao;
 
 import shared.exception.ServerException;
 import shared.transferobjects.User;
-import javax.security.auth.login.LoginException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class UserDAOImpl extends BaseDAO implements UserDAO
 {
