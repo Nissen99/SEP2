@@ -7,7 +7,6 @@ import shared.util.ENUM;
 import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
-
 import javax.security.auth.login.LoginException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -55,7 +54,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
   }
 
-  //SHARED
+  //SERVER
   @Override public ArrayList<Movie> getMovieList() throws SQLException
   {
     return modelManager.getMovieList();
@@ -70,13 +69,13 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   }
 
   @Override public void removeBooking(Booking booking)
-      throws RemoteException, SQLException
+      throws SQLException
   {
     modelBooking.removeBooking(booking);
   }
 
   @Override public ArrayList<Booking> getBookingList()
-      throws RemoteException, SQLException
+      throws SQLException
   {
     return modelBooking.getBookingList();
   }
@@ -231,11 +230,11 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   @Override public void registerCallback(ClientCallBack client)
   {
     clientCallBackArrayList.add(client);
-    System.out.println("Added Client to call back list");
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
+    ArrayList<ClientCallBack> clientCallBacksThatWentWrong = new ArrayList<>();
     for (ClientCallBack clientCallBack : clientCallBackArrayList)
     {
       try
@@ -247,12 +246,15 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
       catch (RemoteException e)
       {
         System.out.println("Vi Kom i Catch på callBack");
-        Platform.runLater(() -> {
-          clientCallBackArrayList.remove(clientCallBack);
 
-       });
+          clientCallBacksThatWentWrong.add(clientCallBack);
 
       }
+    }
+
+    for (ClientCallBack clientCallBack : clientCallBacksThatWentWrong)
+    {
+      clientCallBackArrayList.remove(clientCallBack);
     }
   }
 }

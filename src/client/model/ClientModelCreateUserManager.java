@@ -2,11 +2,8 @@ package client.model;
 
 import client.network.RMIClient;
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
-
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ClientModelCreateUserManager extends ClientModelManager implements ClientModelCreateUser
 {

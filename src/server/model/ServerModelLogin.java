@@ -1,7 +1,6 @@
 package server.model;
 
 import shared.transferobjects.User;
-
 import javax.security.auth.login.LoginException;
 import java.rmi.RemoteException;
 

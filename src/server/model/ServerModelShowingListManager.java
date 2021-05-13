@@ -4,8 +4,6 @@ import server.dao.ShowingDAO;
 import server.dao.ShowingDAOImpl;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
-
-import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

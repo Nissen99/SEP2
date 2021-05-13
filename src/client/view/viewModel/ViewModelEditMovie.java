@@ -1,17 +1,13 @@
 package client.view.viewModel;
 
 import client.core.ModelFactory;
-import client.model.ClientModel;
 import client.model.ClientModelMovie;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
-
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 

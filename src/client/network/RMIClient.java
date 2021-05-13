@@ -6,7 +6,6 @@ import shared.util.ENUM;
 import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
-
 import javax.security.auth.login.LoginException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -28,20 +27,13 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   @Override
   public void startClient() {
-    System.out.println("Client started");
     try
     {
-
-      System.out.println("1");
       UnicastRemoteObject.exportObject(this, 0);
-      System.out.println("2");
       Registry registry = LocateRegistry.getRegistry("localhost", 1099);
-      System.out.println("3");
 
       rmiServer = (RMIServer) registry.lookup(String.valueOf(ENUM.BIOSERVER));
-      System.out.println("4");
       rmiServer.registerCallback(this);
-      System.out.println("5");
     }
     catch (RemoteException | NotBoundException e)
     {
@@ -62,9 +54,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   @Override public Booking addBooking(Showing showing,
       ArrayList<Seat> seats) throws ServerException, RemoteException
   {
-    System.out.println("Vi er i RMI client booking");
     return rmiServer.addBooking(showing,user,seats);
-
   }
 
   @Override public void removeBooking(Booking booking)
@@ -82,7 +72,6 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   @Override public void removeMovie(Movie movie)
       throws RemoteException, SQLException
   {
-    System.out.println("Er vi i RMIClient");
     rmiServer.removeMovie(movie);
   }
 
@@ -154,9 +143,8 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public void update(PropertyChangeEvent evt) throws RemoteException
+  @Override public void update(PropertyChangeEvent evt)
   {
-    System.out.println("FIRE 2");
     propertyChangeSupport.firePropertyChange(evt);
   }
 
@@ -166,21 +154,10 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     propertyChangeSupport.addPropertyChangeListener(listener);
   }
 
-  @Override public void addPropertyChangeListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    propertyChangeSupport.addPropertyChangeListener(eventName, listener);
-  }
-
   @Override public void removePropertyChangeListener(
       PropertyChangeListener listener)
   {
     propertyChangeSupport.removePropertyChangeListener(listener);
   }
 
-  @Override public void removePropertyChangeListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    propertyChangeSupport.removePropertyChangeListener(eventName, listener);
-  }
 }

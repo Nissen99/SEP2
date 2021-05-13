@@ -9,9 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
-
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;

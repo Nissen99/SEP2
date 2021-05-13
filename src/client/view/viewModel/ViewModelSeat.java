@@ -8,7 +8,6 @@ import shared.exception.ServerException;
 import shared.util.PropertyChangeSubject;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -27,21 +26,15 @@ public class ViewModelSeat implements PropertyChangeListener,
 
 
 
-  public ViewModelSeat() throws SQLException, RemoteException
-  {
+  public ViewModelSeat()   {
     clientModel.addPropertyChangeListener(this::update);
   }
 
   private void update(PropertyChangeEvent propertyChangeEvent)
   {
-    System.out.println("FIRE 4");
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
-  public ArrayList<Seat> getSelectedSeat()
-  {
-    return seatArrayList;
-  }
 
   public void setSelectedSeats(ArrayList<Seat> seatArray)
   {
@@ -65,11 +58,6 @@ public class ViewModelSeat implements PropertyChangeListener,
     propertyChangeSupport.addPropertyChangeListener(listener);
   }
 
-  @Override public void addPropertyChangeListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    propertyChangeSupport.addPropertyChangeListener(eventName, listener);
-  }
 
   @Override public void removePropertyChangeListener(
       PropertyChangeListener listener)
@@ -77,11 +65,6 @@ public class ViewModelSeat implements PropertyChangeListener,
     propertyChangeSupport.removePropertyChangeListener(listener);
   }
 
-  @Override public void removePropertyChangeListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    propertyChangeSupport.removePropertyChangeListener(eventName, listener);
-  }
 
   public void setSelectedShowing(Showing selectedShowing)
   {
