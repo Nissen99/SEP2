@@ -13,9 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.Showing;
 
-import java.io.IOException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class ShowingListController
@@ -30,39 +27,51 @@ public class ShowingListController
       .getShowingList();
 
 
-  public void init() throws SQLException, RemoteException, ServerException
+  public void init()
   {
     movieTitle.textProperty().bind(viewModel.movieTitleProperty());
 
-    tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
+    try
+    {
+      tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 
-    tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory<>("time"));
+      tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory<>("time"));
 
-    ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory<>("weekDay"));
+      ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory<>("weekDay"));
 
-   datoerForFremvisning.setCellValueFactory(new PropertyValueFactory<>("date"));
+      datoerForFremvisning.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+    }
+    catch (ServerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.showAndWait();
+    }
+
 
   }
 
-public void confirmChoice() throws IOException, SQLException, ServerException
+public void confirmChoice()
 {
     Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
-    if (showing == null){
-        Alert alert = AlertBox
-            .makeAlert("information","Showings", "No showing selected");
-        alert.showAndWait();
-    }else
+
+    try
     {
       viewModel.setSelectedShowing(showing);
       ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
+
     }
+    catch (NullPointerException e){
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.showAndWait();
+    }
+
   }
 
 
-public void backButton() throws IOException, SQLException, ServerException
+public void backButton()
 {
   ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
-
 }
 
 }

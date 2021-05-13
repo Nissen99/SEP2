@@ -15,20 +15,24 @@ public interface Client
   void createUser(String userName, String email,String password)
       throws RemoteException, SQLException, ServerException;
 
-  Booking addBooking(Showing showing,
+  void addBooking(Showing showing,
       ArrayList<Seat> seats) throws ServerException, RemoteException;
-  void removeBooking(Booking booking) throws RemoteException, SQLException;
+  void removeBooking(Booking booking)
+      throws RemoteException, SQLException, ServerException;
   Movie addMovie(Movie movie)
       throws RemoteException, SQLException, ServerException;
-  void removeMovie(Movie movie) throws RemoteException, SQLException;
+  void removeMovie(Movie movie)
+      throws RemoteException, SQLException, ServerException;
   Showing addShowing(Showing showing)
       throws RemoteException, SQLException, ServerException;
-  ArrayList<Movie> getMovieList() throws RemoteException, SQLException;
+  ArrayList<Movie> getMovieList()
+      throws RemoteException, SQLException, ServerException;
   ArrayList<Showing> getShowingList(Movie movie)
       throws RemoteException, SQLException, ServerException;
-  ArrayList<Booking> getBookingList() throws RemoteException, SQLException;
+  ArrayList<Booking> getBookingList()
+      throws RemoteException, SQLException, ServerException;
   ArrayList<Seat> getOccupiedSeats(Showing showing)
-      throws RemoteException, SQLException;
+      throws RemoteException, SQLException, ServerException;
   Hall getHallByNumber(String hallNo)
       throws SQLException, RemoteException, ServerException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo,
@@ -38,5 +42,5 @@ public interface Client
       throws RemoteException, SQLException, ServerException;
   void login(String username, String password)
       throws LoginException, RemoteException, ServerException;
-  void removeShowing(Showing showing) throws SQLException;
+  void removeShowing(Showing showing) throws SQLException, ServerException;
 }

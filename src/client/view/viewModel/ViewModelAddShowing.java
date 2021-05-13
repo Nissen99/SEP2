@@ -30,7 +30,7 @@ public class ViewModelAddShowing
  * det være efter currentTime
  */
   public void addShowing(Timestamp timestamp, String hallNo)
-      throws SQLException, RemoteException, ServerException
+      throws ServerException
   {
     Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
@@ -57,7 +57,7 @@ public class ViewModelAddShowing
 
 
   public Hall getHallByNumber(String hallNo)
-      throws SQLException, RemoteException, ServerException
+      throws ServerException
   {
 
     return clientModel.getHallByNumber(hallNo);
@@ -69,7 +69,7 @@ public class ViewModelAddShowing
   }
 
   public ObservableList<String> getChoiceList()
-      throws RemoteException, SQLException, ServerException
+      throws ServerException
   {
     observableList.addAll(clientModel.getHallNumbers());
     return observableList;

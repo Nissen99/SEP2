@@ -1,6 +1,7 @@
 package client.model;
 
 import client.network.RMIClient;
+import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class ClientModelManager implements ClientModel
 
 
   @Override public ArrayList<Movie> getMovieList()
-      throws RemoteException, SQLException
+      throws ServerException
   {
     return client.getMovieList();
   }

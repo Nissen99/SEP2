@@ -1,5 +1,6 @@
 package server.dao;
 
+import shared.exception.ServerException;
 import shared.transferobjects.User;
 import javax.security.auth.login.LoginException;
 import java.sql.Connection;
@@ -11,7 +12,8 @@ import java.util.List;
 
 public class UserDAOImpl extends BaseDAO implements UserDAO
 {
-  @Override public void create(String userName, String email,String password) throws SQLException
+  @Override public void create(String userName, String email,String password)
+      throws ServerException
   {
     {
       try (Connection connection = getConnection())
@@ -23,31 +25,19 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
         statement.setString(3, password);
         statement.executeUpdate();
       }
-
-    }
-  }
-
-  @Override public List<User> getByName(String name) throws SQLException
-  {
-    try (Connection connection = getConnection())
-    {
-      PreparedStatement stm = connection
-          .prepareStatement("select * from User_ where fName = ?");
-      stm.setString(1, name);
-
-      ResultSet result = stm.executeQuery();
-      List<User> retur = new ArrayList<>();
-      while (result.next())
+      catch (SQLException throwables)
       {
+
+        throw new ServerException(throwables.getMessage());
+
       }
-      retur.add(new User(result.getInt("userId"), result.getString("userName"),
-          result.getString("email"),result.getString("password")));
-      return retur;
 
     }
   }
 
-  @Override public User getById(int userId) throws SQLException
+
+
+  @Override public User getById(int userId) throws ServerException
   {
     try (Connection connection = getConnection())
     {
@@ -63,29 +53,17 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       }
       return user;
     }
+    catch (SQLException throwables)
+    {
+      throw new ServerException("Database connection failed");
 
-  }
+    }
 
-  @Override public void deleteUser(User user)
-  {
-    try (Connection connection = getConnection())
-    {
-      PreparedStatement statement = connection
-          .prepareStatement("DELETE FROM User_ WHERE userid = ?");
-      statement.setInt(1, user.getUserID());
-      statement.executeUpdate();
-    }
-    catch (NullPointerException ignored)
-    {
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
   }
 
   @Override public User login(String userName, String password)
-      throws LoginException
+      throws ServerException
+
   {
     try (Connection connection = getConnection())
     {
@@ -105,8 +83,9 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
     }
     catch (SQLException e)
     {
-      e.printStackTrace();
+      throw new ServerException("Database connection failed");
     }
-    throw  new LoginException("This account has not been registered");
+    throw new ServerException("This account has not been registered");
+
   }
 }

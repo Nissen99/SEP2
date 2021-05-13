@@ -2,8 +2,10 @@ package client.view.adminView.editView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.util.AlertBox;
 import client.view.viewModel.ViewModelEditShowing;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,7 +27,7 @@ public class EditShowingController
   private ViewModelEditShowing viewModel = ViewModelFactory.getInstance()
       .getEditShowing();
 
-  public void init() throws SQLException, RemoteException, ServerException
+  public void init()
   {
 
     setUpTableView();
@@ -35,31 +37,52 @@ public class EditShowingController
   }
 
   private void setUpTableView()
-      throws SQLException, RemoteException, ServerException
-  {
-    tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 
-    tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory("time"));
-    ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory("weekDay"));
-    datoerForFremvisning.setCellValueFactory(new PropertyValueFactory("date"));
+  {
+    try
+    {
+      tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
+
+
+      tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory("time"));
+      ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory("weekDay"));
+      datoerForFremvisning.setCellValueFactory(new PropertyValueFactory("date"));
+    }
+    catch (ServerException e)
+    {
+      e.printStackTrace();
+    }
+
   }
 
-  public void backButton() throws IOException, SQLException, ServerException
+  public void backButton()
   {
   ViewHandler.getInstance().openView("../view/adminView/editView/editMovieView.fxml");
 }
 
 
   public void removeShowing()
-      throws SQLException, RemoteException, ServerException
   {
 
-    Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
-    viewModel.removeShowing(showing);
-    setUpTableView();
+    try
+    {
+      Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
+
+      viewModel.removeShowing(showing);
+
+      setUpTableView();
+
+    }
+    catch (ServerException | NullPointerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.showAndWait();
+    }
+
+
   }
 
-  public void addShowing() throws IOException, SQLException, ServerException
+  public void addShowing()
   {
     ViewHandler.getInstance().openView("../view/adminView/editView/addShowingView.fxml");
 

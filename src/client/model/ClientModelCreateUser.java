@@ -8,5 +8,5 @@ import java.sql.SQLException;
 public interface ClientModelCreateUser extends ClientModel
 {
   void createUser(String userName, String email, String password)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
 }

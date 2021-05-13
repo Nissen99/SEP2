@@ -11,10 +11,9 @@ import java.util.ArrayList;
 
 public interface ServerModelBooking extends PropertyChangeSubject
 {
-  Booking addBooking(Showing showing, User user, ArrayList<Seat> seats)
+  void addBooking(Showing showing, User user, ArrayList<Seat> seats)
       throws ServerException;
-  void removeBooking(Booking booking) throws SQLException;
-  ArrayList<Seat> getOccupiedSeats(Showing showing)
-      throws SQLException;
-  ArrayList<Booking> getBookingList() throws SQLException;
+  void removeBooking(Booking booking) throws ServerException;
+  ArrayList<Seat> getOccupiedSeats(Showing showing) throws ServerException;
+  ArrayList<Booking> getBookingList() throws ServerException;
 }

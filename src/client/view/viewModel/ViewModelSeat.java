@@ -41,7 +41,7 @@ public class ViewModelSeat implements PropertyChangeListener,
     this.seatArrayList = seatArray;
   }
 
-  public ArrayList<Seat> getOccupiedSeats() throws SQLException, RemoteException
+  public ArrayList<Seat> getOccupiedSeats() throws ServerException
   {
     return clientModel.getOccupiedSeats(selectedShowing);
   }
@@ -84,7 +84,7 @@ public class ViewModelSeat implements PropertyChangeListener,
     return integerObservableList;
   }
 
-  public void addBooking() throws ServerException, RemoteException, SQLException
+  public void addBooking() throws ServerException
   {
     clientModel.addBooking(selectedShowing,seatArrayList);
   }

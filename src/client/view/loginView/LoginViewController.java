@@ -31,7 +31,6 @@ public class LoginViewController
 
 
   @FXML void createAccountButtonPressed()
-      throws IOException, SQLException, ServerException
   {
 
     ViewHandler.getInstance().openView("../view/createUserView/createUserView.fxml");
@@ -39,7 +38,7 @@ public class LoginViewController
   }
 
   @FXML void loginButtonPressed()
-      throws IOException, SQLException, LoginException, ServerException
+
   {
     if (viewModelLogin.getUserNameProperty().equals("Admin") && viewModelLogin.getPasswordProperty().equals("Admin"))
     {
@@ -52,7 +51,7 @@ public class LoginViewController
         viewModelLogin.login();
         ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
       }
-      catch (LoginException e)
+      catch (ServerException e)
       {
         Alert alert = AlertBox.makeAlert("information","Login error ", e.getMessage());
         alert.showAndWait();

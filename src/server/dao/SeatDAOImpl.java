@@ -1,5 +1,6 @@
 package server.dao;
 
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Seat;
 import java.sql.Connection;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 
 public class SeatDAOImpl extends BaseDAO implements SeatDAO
 {
-  @Override public void create(Seat seat, Hall hall)
+  @Override public void create(Seat seat, Hall hall) throws ServerException
   {
     try (Connection connection = getConnection())
     {
@@ -21,12 +22,12 @@ public class SeatDAOImpl extends BaseDAO implements SeatDAO
     }
     catch (SQLException throwables)
     {
-      throwables.printStackTrace();
+      throw new ServerException("Database connection failed");
     }
 
   }
 
-  @Override public Seat getSeatBySeatNo(String seatNo)
+  @Override public Seat getSeatBySeatNo(String seatNo) throws ServerException
   {
     Seat seat = null;
     try (Connection connection = getConnection())
@@ -43,7 +44,7 @@ public class SeatDAOImpl extends BaseDAO implements SeatDAO
     }
     catch (SQLException throwables)
     {
-      throwables.printStackTrace();
+      throw new ServerException("Database connection failed");
     }
     return seat;
 

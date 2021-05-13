@@ -29,33 +29,44 @@ public class MovieListController
 
 
 
-  public void init() throws SQLException, RemoteException
+  public void init()
   {
 
-    tableViewForMovie.setItems(viewModel.getAllMovies());
-    movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
-
-  }
-
-  public void confirmButtonPressed()
-      throws IOException, SQLException, ServerException
-  {
-    Movie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
-
-    if (movie == null){
-      Alert alert = AlertBox
-          .makeAlert("information","Select Movie", "No movie selected");
-      alert.showAndWait();
-    } else
+    try
     {
-      viewModel.setSelectedMovie(movie);
-      ViewHandler.getInstance().openView("../view/showingList/showingListView.fxml");
+      tableViewForMovie.setItems(viewModel.getAllMovies());
+      movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
+
+    }
+    catch (ServerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.showAndWait();
     }
 
   }
 
+  public void confirmButtonPressed()
+  {
 
-  public void back() throws IOException, SQLException, ServerException
+    Movie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
+
+
+    try
+  {
+    viewModel.setSelectedMovie(movie);
+    ViewHandler.getInstance().openView("../view/showingList/showingListView.fxml");
+
+  }
+  catch (NullPointerException e){
+    Alert alert = AlertBox.makeAlert("information","Select Movie", "No movie selected");
+    alert.showAndWait();
+  }
+
+  }
+
+
+  public void back()
   {
     ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
   }

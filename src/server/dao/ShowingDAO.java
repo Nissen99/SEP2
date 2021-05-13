@@ -1,5 +1,6 @@
 package server.dao;
 
+import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
 import java.sql.SQLException;
@@ -10,8 +11,9 @@ public interface ShowingDAO
 {
 
 
-  ArrayList<Showing> getAllShowings(Movie movie) throws SQLException;
-  Showing create(Showing showing) throws SQLException;
-  ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp) throws SQLException;
-  void removeShowing(Showing showing) throws SQLException;
+  ArrayList<Showing> getAllShowings(Movie movie) throws ServerException;
+  Showing create(Showing showing) throws ServerException;
+  ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo, Timestamp timestamp)
+      throws ServerException;
+  void removeShowing(Showing showing) throws ServerException;
 }

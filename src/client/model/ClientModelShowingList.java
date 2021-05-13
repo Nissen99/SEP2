@@ -10,5 +10,5 @@ import java.util.ArrayList;
 public interface ClientModelShowingList extends ClientModel
 {
   ArrayList<Showing> getShowingList(Movie movie)
-      throws SQLException, RemoteException, ServerException;
+      throws ServerException;
 }

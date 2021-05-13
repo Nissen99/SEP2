@@ -4,6 +4,7 @@ import server.dao.*;
 import server.model.*;
 import server.network.RMIServerImpl;
 import server.util.SeatNoCalculator;
+import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -14,7 +15,8 @@ import java.sql.Timestamp;
 public class StartServer
 {
   public static void main(String[] args)
-      throws RemoteException, AlreadyBoundException, SQLException
+      throws RemoteException, AlreadyBoundException, SQLException,
+      ServerException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
 
@@ -35,7 +37,7 @@ public class StartServer
     System.out.println("Server is running");
   }
 
-  private static void setup() throws SQLException
+  private static void setup() throws ServerException
   {
     HallDAO hallDAO = new HallDAOImpl();
 

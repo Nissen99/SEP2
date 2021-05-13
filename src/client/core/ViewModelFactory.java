@@ -56,7 +56,7 @@ if (showingList == null)
   }
 
 
-  public ViewModelSeat getSeatVM() throws SQLException, RemoteException
+  public ViewModelSeat getSeatVM()
   {
 
     if (seatVM == null){

@@ -34,7 +34,7 @@ public class ViewModelLogin
     return passwordProperty;
   }
 
-  public void login() throws LoginException, RemoteException, ServerException
+  public void login() throws ServerException
   {
     clientModelLogin.login(userNameProperty.get(),passwordProperty.get());
   }

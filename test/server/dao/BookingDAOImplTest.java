@@ -2,6 +2,7 @@ package server.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import shared.exception.ServerException;
 import shared.transferobjects.*;
 
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ class BookingDAOImplTest
 
 
   @BeforeEach
-  public void setUp() throws SQLException
+  public void setUp() throws SQLException, ServerException
   {
     bookingDAO= new BookingDAOImpl();
     user = new User(1, "Hej","hejdu@gmail.com","pass123");
@@ -36,7 +37,8 @@ class BookingDAOImplTest
 
 
   @Test
-  public void testCreate() throws SQLException {
+  public void testCreate() throws SQLException, ServerException
+  {
     setUpGood("T");
 
     showingDAO.create(showing);
@@ -44,7 +46,7 @@ class BookingDAOImplTest
   }
 
   @Test
-  public void testGetOccupiedSeats() throws SQLException
+  public void testGetOccupiedSeats() throws SQLException, ServerException
   {
     setUpGood("Y");
 
@@ -75,7 +77,7 @@ class BookingDAOImplTest
 
 
   //Help metode til setup da vi skal bruge forskellige hallNo's
-  private void setUpGood(String hallNo) throws SQLException
+  private void setUpGood(String hallNo) throws SQLException, ServerException
   {
 
     hall = new Hall(hallNo, 5, 5);

@@ -1,6 +1,6 @@
 package server.dao;
 
-public class LoginException
+public class LoginException extends Exception
 {
 
 }

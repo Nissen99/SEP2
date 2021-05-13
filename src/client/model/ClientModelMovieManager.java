@@ -13,8 +13,7 @@ public class ClientModelMovieManager extends ClientModelManager implements Clien
     super(client);
   }
 
-  @Override public void removeMovie(Movie movie)
-      throws RemoteException, SQLException
+  @Override public void removeMovie(Movie movie) throws ServerException
   {
     super.getClient().removeMovie(movie);
   }
@@ -22,7 +21,7 @@ public class ClientModelMovieManager extends ClientModelManager implements Clien
 
 
   @Override public Movie addMovie(Movie movie)
-      throws SQLException, RemoteException, ServerException
+      throws ServerException
   {
     return super.getClient().addMovie(movie);
   }

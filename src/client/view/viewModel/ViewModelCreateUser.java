@@ -36,8 +36,11 @@ public class ViewModelCreateUser
     return userNameField;
   }
 
-  public void create() throws RemoteException, SQLException, ServerException
+  public void create() throws ServerException
   {
+    if (userNameField.get().isEmpty() || emailField.get().isEmpty() || passwordField.get().isEmpty()){
+      throw new IllegalArgumentException("Invalid input");
+    }
     clientModel.createUser(userNameField.get(),emailField.get(),passwordField.get());
   }
 }

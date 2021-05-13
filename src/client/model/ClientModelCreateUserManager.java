@@ -13,7 +13,7 @@ public class ClientModelCreateUserManager extends ClientModelManager implements 
   }
 
   @Override public void createUser(String userName, String email,
-      String password) throws RemoteException, SQLException, ServerException
+      String password) throws ServerException
   {
     super.getClient().createUser(userName, email, password);
   }

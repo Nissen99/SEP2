@@ -26,7 +26,7 @@ public class ServerModelBookingManager implements ServerModelBooking
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 
-  @Override public Booking addBooking(Showing showing, User user,
+  @Override public void addBooking(Showing showing, User user,
       ArrayList<Seat> seats) throws ServerException
   {
     Booking booking;
@@ -41,30 +41,29 @@ public class ServerModelBookingManager implements ServerModelBooking
       fileHandler.createPDF(booking,seats);
       JavaMailUtil.sendMail(user.getEmail());
     }
-    catch (SQLException | MessagingException | IOException e)
+    catch (MessagingException | IOException e)
     {
       e.printStackTrace();
-      throw new ServerException();
     }
     propertyChangeSupport.firePropertyChange(String.valueOf(ENUM.ADDBOOKING), null, "booking");
-    return null;
   }
 
-  @Override public void removeBooking(Booking booking)
-      throws SQLException
+  @Override public void removeBooking(Booking booking) throws ServerException
+
   {
     bookingDAO.removeBooking(booking);
 
   }
 
   @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
-      throws SQLException
+      throws ServerException
+
   {
     return bookingDAO.getOccupiedSeats(showing);
   }
 
   @Override public ArrayList<Booking> getBookingList()
-      throws SQLException
+      throws ServerException
   {
     return bookingDAO.getAllBookings();
 

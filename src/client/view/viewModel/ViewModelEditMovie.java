@@ -37,7 +37,7 @@ public class ViewModelEditMovie
    * og at titlen ikke starter med ' ', for at prøve sikre os mod fejl input af brugeren
    *
    */
-  public void addMovie() throws SQLException, RemoteException, ServerException
+  public void addMovie() throws ServerException
   {
     if (!getMovieTitle().equals("") && (getMovieTitle().charAt(0) != ' ') )
     {
@@ -48,12 +48,10 @@ public class ViewModelEditMovie
     }
   }
 
-  public ObservableList<Movie> getAllMovies()
-      throws SQLException, RemoteException
+  public ObservableList<Movie> getAllMovies() throws ServerException
   {
 
     movies.removeAll(movies);
-
     movies.addAll(clientModel.getMovieList());
 
     return movies;
@@ -66,10 +64,13 @@ public class ViewModelEditMovie
 
   public void setSelectedMovie(Movie selectedMovie)
   {
+    if (selectedMovie == null){
+      throw new NullPointerException("No movie selected");
+    }
     this.selectedMovie = selectedMovie;
   }
 
-  public void removeMovie(Movie movie) throws RemoteException, SQLException
+  public void removeMovie(Movie movie) throws ServerException
   {
       clientModel.removeMovie(movie);
   }

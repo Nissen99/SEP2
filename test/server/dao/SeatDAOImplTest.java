@@ -2,6 +2,7 @@ package server.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.Seat;
 
@@ -21,7 +22,7 @@ class SeatDAOImplTest
   }
 
   @Test
-  public void createSeatSeatInDatabase() throws SQLException
+  public void createSeatSeatInDatabase() throws SQLException, ServerException
   {
 
     Hall u = hallCreater("U");
@@ -35,7 +36,7 @@ class SeatDAOImplTest
     assertEquals(seat.getSeatNo(), seatDAO.getSeatBySeatNo("U104").getSeatNo());
   }
 
-  public Hall hallCreater(String hallNo) throws SQLException
+  public Hall hallCreater(String hallNo) throws SQLException, ServerException
   {
     Hall hall = new Hall(hallNo, 5, 5);
     HallDAOImpl hallDAO = new HallDAOImpl();

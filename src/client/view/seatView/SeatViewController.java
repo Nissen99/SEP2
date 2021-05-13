@@ -37,17 +37,20 @@ public class SeatViewController implements PropertyChangeListener
 
   private ViewModelSeat viewModel;
 
-  public void init() throws SQLException, RemoteException
+  public void init()
   {
-    viewModel = ViewModelFactory.getInstance().getSeatVM();
-    setChoiceBox();
 
-    setOccupiedSeats();
+      viewModel = ViewModelFactory.getInstance().getSeatVM();
 
-    viewModel.addPropertyChangeListener(this);
-  }
+      setOccupiedSeats();
 
-  private void setOccupiedSeats() throws SQLException, RemoteException
+      viewModel.addPropertyChangeListener(this);
+
+      setChoiceBox();
+
+   }
+
+  private void setOccupiedSeats()
   {
     for (Node node : getAllNodes(anchorPane))
     {
@@ -93,9 +96,12 @@ public class SeatViewController implements PropertyChangeListener
     throw new IndexOutOfBoundsException("Invalid input - Seat out of bounds");
   }
 
-  public void setOccupiedColor() throws SQLException, RemoteException
+  public void setOccupiedColor()
   {
-    occupiedSeatArrayList = viewModel.getOccupiedSeats();
+    try
+    {
+      occupiedSeatArrayList = viewModel.getOccupiedSeats();
+
 
     for (Seat seat : occupiedSeatArrayList)
     {
@@ -112,9 +118,13 @@ public class SeatViewController implements PropertyChangeListener
       Pane occupiedPane = getPane(seat.getSeatNo());
       occupiedPane.setStyle("-fx-background-color:red;");
       occupiedPane.setDisable(true);
-
     }
 
+    }
+    catch (ServerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.showAndWait();    }
   }
 
   public static ArrayList<Node> getAllNodes(Parent root)
@@ -199,7 +209,7 @@ public class SeatViewController implements PropertyChangeListener
     return ++currentNumber;
   }
 
-  @FXML void OnConfirmButton() throws IOException, SQLException, ServerException
+  @FXML void OnConfirmButton()
   {
     if (selectedPane.size() ==0)
     {
@@ -232,9 +242,10 @@ public class SeatViewController implements PropertyChangeListener
             alert1.showAndWait();
             ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
           }
-          catch (ServerException | SQLException | IOException e)
+          catch (ServerException e)
           {
-            e.printStackTrace();
+            Alert alertException = AlertBox.makeAlert("information", "Error!", e.getMessage());
+            alertException.showAndWait();
           }
         }
 
@@ -254,7 +265,7 @@ public class SeatViewController implements PropertyChangeListener
     }
   }
 
-  @FXML void onBackButton() throws IOException, SQLException, ServerException
+  @FXML void onBackButton()
   {
 
     //Når vi skifter view er der ingen grund til vi stadigvæk lytter
@@ -268,15 +279,10 @@ public class SeatViewController implements PropertyChangeListener
   {
 
     Platform.runLater(() -> {
-      try
-      {
-        setOccupiedSeats();
-      }
-      catch (SQLException | RemoteException throwables)
-      {
-        throwables.printStackTrace();
-      }
-    });
+
+      setOccupiedSeats();
+
+       });
 
   }
 }
