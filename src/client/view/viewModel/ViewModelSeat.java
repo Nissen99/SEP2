@@ -11,8 +11,6 @@ import shared.transferobjects.Showing;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ViewModelSeat implements PropertyChangeListener,
@@ -21,13 +19,17 @@ public class ViewModelSeat implements PropertyChangeListener,
   private Showing selectedShowing;
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   private ClientModelBooking clientModel = ModelFactory.getInstance().getModelBooking();
-  private ArrayList<Seat> seatArrayList;
+  private ArrayList<Seat> bookingSeatArrayList;
+  private ArrayList<Seat> occupiedSeatArrayList;
   ObservableList<Integer> integerObservableList = FXCollections.observableArrayList();
+  private int currentNumber = 0;
 
 
-
-  public ViewModelSeat()   {
+  public ViewModelSeat(Showing showing)
+  {
+    this.selectedShowing = showing;
     clientModel.addPropertyChangeListener(this::update);
+    bookingSeatArrayList = new ArrayList<>();
   }
 
   private void update(PropertyChangeEvent propertyChangeEvent)
@@ -35,11 +37,6 @@ public class ViewModelSeat implements PropertyChangeListener,
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
-
-  public void setSelectedSeats(ArrayList<Seat> seatArray)
-  {
-    this.seatArrayList = seatArray;
-  }
 
   public ArrayList<Seat> getOccupiedSeats() throws ServerException
   {
@@ -63,13 +60,9 @@ public class ViewModelSeat implements PropertyChangeListener,
       PropertyChangeListener listener)
   {
     propertyChangeSupport.removePropertyChangeListener(listener);
+    clientModel.removePropertyChangeListener(this);
   }
 
-
-  public void setSelectedShowing(Showing selectedShowing)
-  {
-    this.selectedShowing = selectedShowing;
-     }
 
   public ObservableList<Integer> getChoiceList()
   {
@@ -86,6 +79,54 @@ public class ViewModelSeat implements PropertyChangeListener,
 
   public void addBooking() throws ServerException
   {
-    clientModel.addBooking(selectedShowing,seatArrayList);
+    clientModel.addBooking(selectedShowing, bookingSeatArrayList);
+  }
+
+
+  public void setCurrentNumber(String id)
+       {
+       currentNumber = Integer.parseInt(id.substring(1));
+      ++currentNumber;
+    }
+
+  public int getCurrentNumber()
+  {
+    return currentNumber;
+  }
+
+  public void addSeat(String seatNo)
+  {
+    Seat seat = new Seat();
+    seat.setSeatNo(seatNo);
+    bookingSeatArrayList.add(seat);
+
+  }
+
+  public void checkIfSeatOccupied(String id) throws ServerException
+  {
+    for (Seat seat : getOccupiedSeats())
+    {
+      if (seat.getSeatNo().equals(id))
+      {
+        throw new IndexOutOfBoundsException(
+            "Invalid input - Seat already occupied");
+      }
+    }
+  }
+
+  public boolean seatIsOccupied(String id)
+  {
+    for (Seat seat : occupiedSeatArrayList)
+    {
+      if (seat.getSeatNo().equals(id)){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public void updateOccupiedSeatsList() throws ServerException
+  {
+    occupiedSeatArrayList = getOccupiedSeats();
   }
 }

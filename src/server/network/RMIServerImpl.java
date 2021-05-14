@@ -14,7 +14,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -68,7 +67,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   }
 
   //BOOKING
-  @Override public void addBooking(Showing showing,User user,
+  @Override public synchronized void addBooking(Showing showing,User user,
       ArrayList<Seat> seats) throws ServerException
   {
     modelBooking.addBooking(showing, user, seats);
@@ -153,8 +152,11 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
     modelShowing.removeShowing(showing);
   }
 
-
-
+  @Override public void removeCallBack(ClientCallBack clientCallBack)
+  {
+    clientCallBackArrayList.remove(clientCallBack);
+    modelBooking.removePropertyChangeListener(this);
+  }
 
   //CREATE USER
   @Override public void createUser(String userName, String email,String password)

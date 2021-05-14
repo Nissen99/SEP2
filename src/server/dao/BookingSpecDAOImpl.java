@@ -15,15 +15,16 @@ public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
   {
     try(Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO BookingSpec (bookingId, seatNo) VALUES (?, ?)");
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO BookingSpec (bookingId, seatNo, showingId) VALUES (?, ?, ?)");
 
       statement.setInt(1, booking.getBookingId());
       statement.setString(2, seat.getSeatNo());
+      statement.setInt(3, booking.getShowing().getId());
       statement.executeUpdate();
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException(throwables.getMessage());
     }
   }
 }

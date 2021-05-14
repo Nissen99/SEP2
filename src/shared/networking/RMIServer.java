@@ -1,5 +1,6 @@
 package shared.networking;
 
+import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.rmi.Remote;
@@ -35,4 +36,5 @@ public interface RMIServer extends Remote
   User login(String userName,String password)
       throws RemoteException, ServerException;
   void removeShowing(Showing showing) throws RemoteException, ServerException;
+  void removeCallBack(ClientCallBack clientCallBack) throws RemoteException;
 }

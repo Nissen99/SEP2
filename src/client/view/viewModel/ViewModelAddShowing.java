@@ -71,6 +71,7 @@ public class ViewModelAddShowing
   public ObservableList<String> getChoiceList()
       throws ServerException
   {
+    observableList.clear();
     observableList.addAll(clientModel.getHallNumbers());
     return observableList;
   }

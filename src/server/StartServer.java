@@ -58,7 +58,7 @@ public class StartServer
         seatDAO.create(hall.addSeat(seat), hall);
       }
 
-      Timestamp time = new Timestamp(System.currentTimeMillis());
+      Timestamp time = new Timestamp(System.currentTimeMillis() + 36000000);
       Showing showing = new Showing(1, movie, time, hall);
       ShowingDAO showingDAO = new ShowingDAOImpl();
       showingDAO.create(showing);

@@ -87,6 +87,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
       PropertyChangeListener listener)
   {
     propertyChangeSupport.removePropertyChangeListener(listener);
+    super.getClient().removePropertyChangeListener(this::update);
   }
 
 

@@ -263,6 +263,14 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
       PropertyChangeListener listener)
   {
     propertyChangeSupport.removePropertyChangeListener(listener);
+    try
+    {
+      rmiServer.removeCallBack(this);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
   }
 
 }

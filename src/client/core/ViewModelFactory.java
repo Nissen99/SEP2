@@ -1,6 +1,7 @@
 package client.core;
 
 import client.view.viewModel.*;
+import shared.exception.ServerException;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -59,11 +60,12 @@ if (showingList == null)
   public ViewModelSeat getSeatVM()
   {
 
-    if (seatVM == null){
-      seatVM = new ViewModelSeat();
-    }
+    /**
+     * Denne ViewModel kan ikke være lazy da den skal add sig selv som listener
+     * og sætte den selectedShowing
+     */
 
-      seatVM.setSelectedShowing(showingList.getSelectedShowing());
+    seatVM = new ViewModelSeat(showingList.getSelectedShowing());
 
     return seatVM;
 

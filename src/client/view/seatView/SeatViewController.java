@@ -17,51 +17,60 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import shared.exception.ServerException;
-import shared.transferobjects.Seat;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.IOException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SeatViewController implements PropertyChangeListener
 {
 
   @FXML public ChoiceBox<Integer> numberOfSeats;
+  @FXML private AnchorPane anchorPane;
   private ArrayList<Pane> paneArrayList = new ArrayList<>();
   private ArrayList<Pane> selectedPane = new ArrayList<>();
-  private ArrayList<Seat> occupiedSeatArrayList;
-  @FXML private AnchorPane anchorPane;
-  private int currentNumber = 0;
-
   private ViewModelSeat viewModel;
 
   public void init()
   {
 
-      viewModel = ViewModelFactory.getInstance().getSeatVM();
+    viewModel = ViewModelFactory.getInstance().getSeatVM();
 
-      setOccupiedSeats();
+    updateOccupiedSeatCatch();
 
-      viewModel.addPropertyChangeListener(this);
+    setPaneList();
 
-      setChoiceBox();
+    setOccupiedColor();
+
+    viewModel.addPropertyChangeListener(this);
+
+    setChoiceBox();
 
    }
 
-  private void setOccupiedSeats()
+  private void updateOccupiedSeatCatch()
+  {
+    try
+    {
+      viewModel.updateOccupiedSeatsList();
+    }
+    catch (ServerException e)
+    {
+    Alert alert = AlertBox.makeAlert("information", "Error", e.getMessage());
+    alert.showAndWait();
+    }
+  }
+
+  private void setPaneList()
   {
     for (Node node : getAllNodes(anchorPane))
     {
-
       if (checkPaneAndNotVboxOrHbox(node))
       {
-        paneArrayList.add((Pane) node);
+       paneArrayList.add((Pane) node);
       }
     }
 
-    setOccupiedColor();
   }
 
   private boolean checkPaneAndNotVboxOrHbox(Node node)
@@ -78,63 +87,54 @@ public class SeatViewController implements PropertyChangeListener
 
   public Pane getPane(String id)
   {
+
     for (Pane pane : paneArrayList)
     {
-      /**
-       * Hvis man har flere clients åben, man terminater en af dem mens de resterende
-       * er i SeatView, kommer vi ud for at der er panes i listen med id null
-       * Disse panes ligge til højre for de yderste seats, så vi kaster IndexOutOfBounds
-       */
-      if (pane.idProperty().get() == null){
-        throw new IndexOutOfBoundsException("Invalid input - Seat out of Bounds");
-      }
-      if (pane.idProperty().get().equals(id))
-      {
-        return pane;
-      }
+        if (pane.idProperty().get().equals(id))
+        {
+          return pane;
+        }
     }
     throw new IndexOutOfBoundsException("Invalid input - Seat out of bounds");
   }
 
   public void setOccupiedColor()
   {
-    try
-    {
-      occupiedSeatArrayList = viewModel.getOccupiedSeats();
 
-
-    for (Seat seat : occupiedSeatArrayList)
-    {
-      for (Pane pane : selectedPane)
+      for (Pane pane : paneArrayList)
       {
-        if (pane.idProperty().get().equals(seat.getSeatNo()))
-        {
-          makeOldPanesTransparent();
-          selectedPane.clear();
-          break;
+        if (viewModel.seatIsOccupied(pane.idProperty().get())){
+          Pane occupiedPane = getPane(pane.idProperty().get());
+          occupiedPane.setStyle("-fx-background-color:red;");
+          occupiedPane.setDisable(true);
         }
       }
 
-      Pane occupiedPane = getPane(seat.getSeatNo());
-      occupiedPane.setStyle("-fx-background-color:red;");
-      occupiedPane.setDisable(true);
-    }
-
-    }
-    catch (ServerException e)
-    {
-      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.showAndWait();    }
   }
 
-  public static ArrayList<Node> getAllNodes(Parent root)
+  private void selectedPaneTakken()
+  {
+    for (Pane pane : selectedPane)
+    {
+      if (viewModel.seatIsOccupied(pane.idProperty().get()))
+      {
+        makeOldPanesTransparent();
+        selectedPane.clear();
+        break;
+      }
+    }
+  }
+
+  private ArrayList<Node> getAllNodes(Parent root)
   {
     ArrayList<Node> nodes = new ArrayList<>();
     addAllDescendents(root, nodes);
     return nodes;
   }
 
-  private static void addAllDescendents(Parent parent, ArrayList<Node> nodes)
+
+
+  private void addAllDescendents(Parent parent, ArrayList<Node> nodes)
   {
     for (Node node : parent.getChildrenUnmodifiable())
     {
@@ -149,6 +149,7 @@ public class SeatViewController implements PropertyChangeListener
     makeOldPanesTransparent();
     Pane pane = (Pane) mouseEvent.getSource();
     selectedPane.clear();
+
     String id = pane.idProperty().get();
     for (int i = 0; i < numberOfSeats.getValue(); i++)
     {
@@ -156,7 +157,7 @@ public class SeatViewController implements PropertyChangeListener
       {
         id = idCounter(id);
       }
-      catch (IndexOutOfBoundsException e)
+      catch (IndexOutOfBoundsException | ServerException e)
       {
         Alert alert = AlertBox
             .makeAlert("information", "Error!", e.getMessage());
@@ -167,7 +168,6 @@ public class SeatViewController implements PropertyChangeListener
     }
     for (Pane selectedPane : selectedPane)
     {
-
       selectedPane.setStyle("-fx-background-color:blue;");
     }
   }
@@ -181,37 +181,21 @@ public class SeatViewController implements PropertyChangeListener
     }
   }
 
-  private String idCounter(String id)
+  private String idCounter(String id) throws ServerException
   {
-
-    String[] idSplit = id.split("");
     Pane pane = getPane(id);
-    checkIfSeatOccupied(pane);
+    viewModel.checkIfSeatOccupied(id);
     selectedPane.add(pane);
-    currentNumber = getCurrentNumber(idSplit);
+    viewModel.setCurrentNumber(id);
 
-    id = idSplit[0] + currentNumber;
+    id = id.substring(0,1) + viewModel.getCurrentNumber();
     return id;
   }
 
-  private int getCurrentNumber(String[] idSplit)
-  {
-    if (idSplit.length > 4)
-    {
-      currentNumber = Integer
-          .parseInt(idSplit[1] + idSplit[2] + idSplit[3] + idSplit[4]);
-    }
-    else
-    {
-      currentNumber = Integer.parseInt(idSplit[1] + idSplit[2] + idSplit[3]);
-    }
-
-    return ++currentNumber;
-  }
 
   @FXML void OnConfirmButton()
   {
-    if (selectedPane.size() ==0)
+    if (selectedPane.size() == 0)
     {
       Alert alert2 = AlertBox.makeAlert("Information","Error","No seats has been selected");
       alert2.showAndWait();
@@ -225,21 +209,20 @@ public class SeatViewController implements PropertyChangeListener
         {
           try
           {
-            ArrayList<Seat> seats = new ArrayList<>();
+
             for (Pane pane : selectedPane)
             {
-              Seat seat = new Seat();
-              seat.setSeatNo(pane.idProperty().get());
-              seats.add(seat);
+              viewModel.addSeat(pane.idProperty().get());
             }
-            viewModel.setSelectedSeats(seats);
+
+            viewModel.addBooking();
             //Når vi skifter view er der ingen grund til vi stadigvæk lytter
             viewModel.removePropertyChangeListener(this);
-            viewModel.addBooking();
 
             Alert alert1 = AlertBox.makeAlert("Information", "Booking made",
                 "You have successfully made a booking. An email has been sent to your mailbox ");
             alert1.showAndWait();
+
             ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
           }
           catch (ServerException e)
@@ -248,42 +231,27 @@ public class SeatViewController implements PropertyChangeListener
             alertException.showAndWait();
           }
         }
-
       });
     }
   }
 
-  private void checkIfSeatOccupied(Pane pane)
-  {
-    for (Seat seat : occupiedSeatArrayList)
-    {
-      if (seat.getSeatNo().equals(pane.idProperty().get()))
-      {
-        throw new IndexOutOfBoundsException(
-            "Invalid input - Seat already occupied");
-      }
-    }
-  }
 
   @FXML void onBackButton()
   {
-
     //Når vi skifter view er der ingen grund til vi stadigvæk lytter
     viewModel.removePropertyChangeListener(this);
     ViewHandler.getInstance()
         .openView("../view/showingList/showingListView.fxml");
-
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
-
     Platform.runLater(() -> {
+        updateOccupiedSeatCatch();
+        selectedPaneTakken();
+        setOccupiedColor();
 
-      setOccupiedSeats();
-
-       });
-
+    });
   }
 }
 

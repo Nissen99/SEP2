@@ -96,9 +96,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT seatNo FROM BookingSpec\n"
-              + "JOIN Booking B ON B.bookingId = BookingSpec.bookingId\n"
-              + "WHERE showingId = ?;");
+          "SELECT seatNo FROM BookingSpec WHERE showingId = ?;");
       statement.setInt(1, showing.getId());
       ResultSet resultSet = statement.executeQuery();
 

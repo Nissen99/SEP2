@@ -28,6 +28,9 @@ public class ServerModelBookingManager implements ServerModelBooking
   @Override public void addBooking(Showing showing, User user,
       ArrayList<Seat> seats) throws ServerException
   {
+    if (seats.isEmpty()){
+      throw new ServerException("Sæderne du havde valgt blev optaget");
+    }
     Booking booking;
     try
     {
