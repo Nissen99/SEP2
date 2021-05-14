@@ -13,9 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 
-import java.io.IOException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 public class MovieListController
 {
@@ -23,20 +20,15 @@ public class MovieListController
   @FXML public TableView<Movie> tableViewForMovie;
   @FXML public TableColumn<Movie, String> movieTitleColumn;
   @FXML public Button confirmMovieChoice;
-
   private ViewModelMovieList viewModel = ViewModelFactory.getInstance().getMovieListViewModel();
-
-
 
 
   public void init()
   {
-
     try
     {
       tableViewForMovie.setItems(viewModel.getAllMovies());
       movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
-
     }
     catch (ServerException e)
     {
@@ -48,23 +40,16 @@ public class MovieListController
 
   public void confirmButtonPressed()
   {
-
+    try {
     Movie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
-
-
-    try
-  {
     viewModel.setSelectedMovie(movie);
     ViewHandler.getInstance().openView("../view/showingList/showingListView.fxml");
-
   }
   catch (NullPointerException e){
     Alert alert = AlertBox.makeAlert("information","Select Movie", "No movie selected");
     alert.showAndWait();
   }
-
   }
-
 
   public void back()
   {

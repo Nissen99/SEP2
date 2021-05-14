@@ -9,8 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import shared.exception.ServerException;
-import java.io.IOException;
-import java.sql.SQLException;
+
 
 public class CreateUserViewController
 {
@@ -35,7 +34,6 @@ public class CreateUserViewController
     try
     {
       viewModelCreateUser.create();
-
       ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
     }
     catch (ServerException | IllegalArgumentException e)
@@ -43,16 +41,10 @@ public class CreateUserViewController
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
       alert.show();
     }
-
-
-
   }
-
-
 
   public void onBackButton()
   {
    ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
-
   }
 }

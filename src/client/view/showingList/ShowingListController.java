@@ -12,8 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.Showing;
-
 import java.sql.Timestamp;
+
 
 public class ShowingListController
 {
@@ -31,14 +31,16 @@ public class ShowingListController
   {
     movieTitle.textProperty().bind(viewModel.movieTitleProperty());
 
+    setUpTable();
+  }
+
+  private void setUpTable()
+  {
     try
     {
       tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
-
       tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory<>("time"));
-
       ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory<>("weekDay"));
-
       datoerForFremvisning.setCellValueFactory(new PropertyValueFactory<>("date"));
 
     }
@@ -47,31 +49,24 @@ public class ShowingListController
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
       alert.showAndWait();
     }
-
-
   }
 
-public void confirmChoice()
+  public void confirmChoice()
 {
-    Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
-
     try
     {
+      Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
       viewModel.setSelectedShowing(showing);
       ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
-
     }
     catch (NullPointerException e){
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
       alert.showAndWait();
     }
-
   }
-
 
 public void backButton()
 {
   ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
 }
-
 }

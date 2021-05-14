@@ -53,7 +53,7 @@ public class ViewModelShowingList
     return movie.getMovieTitle();
     }
 
-    public void setSelectedShowing(Showing showing){
+    public void setSelectedShowing(Showing showing) throws NullPointerException{
       if (showing == null){
         throw new NullPointerException("No showing selected");
       }

@@ -6,8 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.exception.ServerException;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 public class ViewModelCreateUser
 {
@@ -36,7 +34,7 @@ public class ViewModelCreateUser
     return userNameField;
   }
 
-  public void create() throws ServerException
+  public void create() throws ServerException, IllegalArgumentException
   {
     if (userNameField.get().isEmpty() || emailField.get().isEmpty() || passwordField.get().isEmpty()){
       throw new IllegalArgumentException("Invalid input");

@@ -10,9 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import shared.exception.ServerException;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class AddShowingController
 {
@@ -24,6 +21,9 @@ public class AddShowingController
 
   public void init()
   {
+  datePicker.valueProperty().bindBidirectional(viewModel.localDatePropertyProperty());
+  timePicker.valueProperty().bindBidirectional(viewModel.localTimePropertyProperty());
+  hallNo.valueProperty().bindBidirectional(viewModel.hallNoProperty());
     setChoiceBox();
 
   }
@@ -37,12 +37,7 @@ public class AddShowingController
   {
     try
     {
-      LocalDate date = datePicker.getValue();
-      LocalTime time = timePicker.getValue();
-      Timestamp timestamp = new Timestamp(date.getYear() - 1900, date.getMonthValue() - 1,
-          date.getDayOfMonth(), time.getHour(), time.getMinute(), time.getSecond(),
-          0);
-      viewModel.addShowing(timestamp, hallNo.getValue());
+      viewModel.addShowing();
       back();
     } catch (NullPointerException e) {
       Alert alert = AlertBox.makeAlert("information", "Error!","Invalid input - Time and Date needs to be filled");
@@ -52,22 +47,19 @@ public class AddShowingController
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
       alert.showAndWait();
     }
-
   }
 
   private void setChoiceBox()
-
   {
     try
     {
       hallNo.setItems(viewModel.getChoiceList());
-
       hallNo.setValue(viewModel.getChoiceList().get(0));
-
     }
     catch (ServerException e)
     {
-      e.printStackTrace();
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.showAndWait();
     }
   }
 

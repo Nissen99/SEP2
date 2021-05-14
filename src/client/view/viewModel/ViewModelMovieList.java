@@ -17,7 +17,6 @@ public class ViewModelMovieList
 
 
   public ObservableList<Movie> getAllMovies() throws ServerException
-
   {
    movies.removeAll(movies);
    movies.addAll(clientModel.getMovieList());
@@ -25,7 +24,8 @@ public class ViewModelMovieList
     return movies;
   }
 
-  public void setSelectedMovie(Movie movie){
+  public void setSelectedMovie(Movie movie) throws NullPointerException
+  {
     if (movie == null){
       throw new NullPointerException("No movie selected");
     }

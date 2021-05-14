@@ -12,14 +12,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.Showing;
-import java.io.IOException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 
 public class EditShowingController
 {
 
-  public Label filmShowingsErFor;
+  @FXML public Label filmShowingsErFor;
   @FXML public TableView<Showing> tableViewForFilmFremvisninger;
   @FXML public TableColumn<Showing, String> datoerForFremvisning;
   @FXML public TableColumn<Showing, String> ugedagForFremvisning;
@@ -29,30 +27,25 @@ public class EditShowingController
 
   public void init()
   {
-
     setUpTableView();
 
     filmShowingsErFor.textProperty().bind(viewModel.movieTitleProperty());
-
   }
-
   private void setUpTableView()
-
   {
     try
     {
       tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 
-
-      tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory("time"));
-      ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory("weekDay"));
-      datoerForFremvisning.setCellValueFactory(new PropertyValueFactory("date"));
+      tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory<>("time"));
+      ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory<>("weekDay"));
+      datoerForFremvisning.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
     catch (ServerException e)
     {
-      e.printStackTrace();
+      Alert alert = AlertBox.makeAlert("information", "Error", e.getMessage());
+      alert.showAndWait();
     }
-
   }
 
   public void backButton()
@@ -60,34 +53,24 @@ public class EditShowingController
   ViewHandler.getInstance().openView("../view/adminView/editView/editMovieView.fxml");
 }
 
-
   public void removeShowing()
   {
 
     try
     {
       Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
-
       viewModel.removeShowing(showing);
-
       setUpTableView();
-
     }
     catch (ServerException | NullPointerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
       alert.showAndWait();
     }
-
-
   }
 
   public void addShowing()
   {
     ViewHandler.getInstance().openView("../view/adminView/editView/addShowingView.fxml");
-
   }
-
-
-
 }

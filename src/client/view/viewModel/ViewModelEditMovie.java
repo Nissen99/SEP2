@@ -62,19 +62,20 @@ public class ViewModelEditMovie
     return selectedMovie;
   }
 
-  public void setSelectedMovie(Movie selectedMovie)
+  public void setSelectedMovie(Movie selectedMovie) throws NullPointerException
   {
     if (selectedMovie == null){
       throw new NullPointerException("No movie selected");
     }
     this.selectedMovie = selectedMovie;
-    if (selectedMovie == null) {
-      throw new NullPointerException();
-    }
+
   }
 
-  public void removeMovie(Movie movie) throws ServerException
+  public void removeMovie(Movie movie) throws ServerException, NullPointerException
   {
+    if (movie == null){
+      throw new NullPointerException("No movie selected");
+    }
       clientModel.removeMovie(movie);
   }
 

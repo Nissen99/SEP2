@@ -9,9 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import shared.exception.ServerException;
 import shared.transferobjects.Booking;
-import java.io.IOException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 
 public class EditBookingView
@@ -42,6 +39,7 @@ public class EditBookingView
     try
     {
       bookingTable.setItems(viewModel.getAllBookings());
+
       bookingId.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getBookingId())));
       name.setCellValueFactory(cellData -> new SimpleStringProperty(
           cellData.getValue().getUser().getUserName()));
@@ -53,7 +51,6 @@ public class EditBookingView
     {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage() +". Try restarting the app");
       alert.showAndWait();
-      e.printStackTrace();
     }
   }
 
@@ -92,25 +89,21 @@ public class EditBookingView
           try
           {
             viewModel.removeBooking(booking);
+            setupTable();
           }
           catch (ServerException e)
           {
            Alert serverAlert = AlertBox.makeAlert("information", "Error!", e.getMessage());
             serverAlert.showAndWait();
-            e.printStackTrace();
-          }
+           }
         }
       });
     }
-    setupTable();
   }
 
   public void back()
   {
     ViewHandler.getInstance().openView("../view/adminView/adminView.fxml");
   }
-
-
-
-  }
+}
 

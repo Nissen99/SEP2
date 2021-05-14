@@ -9,8 +9,6 @@ import javafx.collections.ObservableList;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Showing;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 
 public class ViewModelEditShowing
@@ -29,7 +27,7 @@ public class ViewModelEditShowing
   public ObservableList<Showing> getAllShowings()
       throws ServerException
   {
-    showings.removeAll(showings);
+    showings.clear();
 
     showings.addAll(clientModel.getShowingList(selectedMovie));
 
@@ -54,7 +52,7 @@ public class ViewModelEditShowing
     movieTitle.setValue(selectedMovie.getMovieTitle());
   }
 
-  public void removeShowing(Showing showing) throws ServerException
+  public void removeShowing(Showing showing) throws ServerException, NullPointerException
   {
     if (showing == null){
       throw new NullPointerException("No showing selected");

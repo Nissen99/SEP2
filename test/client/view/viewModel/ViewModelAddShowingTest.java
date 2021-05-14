@@ -48,7 +48,7 @@ class ViewModelAddShowingTest
     client.startClient();
     setup.getTime().setHours(18);
     viewModel.setSelectedMovie(setup.getMovie());
-    viewModel.addShowing(setup.getTime(), setup.getHall().getHallNo());
+    viewModel.addShowing();
     ArrayList<Showing> showingList = model.getShowingList(setup.getMovie());
     assertEquals(setup.getMovieTitle(), showingList.get(0).getMovie().getMovieTitle());
   }

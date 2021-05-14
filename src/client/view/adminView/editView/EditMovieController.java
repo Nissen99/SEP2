@@ -12,8 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 public class EditMovieController
 {
@@ -28,9 +26,8 @@ public class EditMovieController
 
    movieTitleTextField.textProperty().bindBidirectional(viewModel.movieTitleProperty());
 
-    setUpTableView();
+   setUpTableView();
   }
-
 
       private void setUpTableView()
       {
@@ -38,15 +35,12 @@ public class EditMovieController
         {
           movieTableView.setItems(viewModel.getAllMovies());
           movieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
-
         }
         catch (ServerException e)
         {
           Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
           alert.showAndWait();
-          e.printStackTrace();
         }
-
       }
 
       public void editShowingButton()
@@ -74,6 +68,7 @@ public class EditMovieController
     try
     {
       viewModel.addMovie();
+      setUpTableView();
     }
     catch (IllegalArgumentException e)
     {
@@ -81,7 +76,6 @@ public class EditMovieController
       alert.showAndWait();
     }
     movieTitleTextField.clear();
-    setUpTableView();
   }
 
   public void removeMovie()
@@ -90,19 +84,15 @@ public class EditMovieController
     {
       Movie movie = movieTableView.getSelectionModel().getSelectedItem();
       viewModel.removeMovie(movie);
+      setUpTableView();
     }
-    catch ( NullPointerException e)
-    {
-      Alert alert = AlertBox.makeAlert("information", "Error!","No movie selected");
-      alert.showAndWait();
-    }
-    catch (ServerException e)
+
+    catch (ServerException | NullPointerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!",e.getMessage());
       alert.showAndWait();
     }
-    movieTitleTextField.clear();
-    setUpTableView();
+
   }
 
 }

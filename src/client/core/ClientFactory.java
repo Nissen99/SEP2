@@ -20,8 +20,6 @@ public class ClientFactory
   public RMIClient getClient()
   {
     if (client == null){
-
-
       client = new RMIClient();
       client.startClient();
     }
