@@ -2,6 +2,7 @@ package shared;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import server.util.SeatNoCalculator;
 import shared.transferobjects.*;
 
 import java.sql.Timestamp;
@@ -24,9 +25,12 @@ class BookingTest
     Date date = new Date();
     rightNow = new Timestamp(date.getTime());
     hall = new Hall("A", 5, 5);
+    SeatNoCalculator seatNoCalculator = new SeatNoCalculator(hall.getHallNo(), hall.getMaxSeatsInRow(), hall.getMaxRows());
+
     for (int i = 0; i < hall.getMaxRows() * hall.getMaxSeatsInRow(); i++)
     {
       Seat seat = new Seat();
+      seat.setSeatNo(seatNoCalculator.calculateSeatNo());
       hall.addSeat(seat);
     }
 
@@ -50,11 +54,6 @@ class BookingTest
     assertEquals("Henning", user.getUserName());
   }
 
-  @Test
-  public void consSkalSætteRigtigSeatNo() {
-    String[] list = booking.toString().split(" ");
-    assertEquals("A101", list[3]);
-  }
 
   @Test
   public void consSkalSætteRigtigID () {

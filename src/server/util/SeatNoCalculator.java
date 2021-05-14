@@ -19,7 +19,6 @@ public class SeatNoCalculator implements Serializable
   /**
    * Vi har valgt at give sæder deres seatNo efter hvilken sal de er i + hvor de
    * er placeret i salen.
-
    */
   public String calculateSeatNo(){
     currentSeatNo++;

@@ -6,8 +6,6 @@ import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface ClientModelBooking extends ClientModelShowingList,

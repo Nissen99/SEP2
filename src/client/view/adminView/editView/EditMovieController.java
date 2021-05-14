@@ -70,7 +70,7 @@ public class EditMovieController
       viewModel.addMovie();
       setUpTableView();
     }
-    catch (IllegalArgumentException e)
+    catch (IllegalArgumentException | NullPointerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!","Invalid title");
       alert.showAndWait();

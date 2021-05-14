@@ -23,6 +23,15 @@ class UserTest
   public void bliverNavnSatIConstructor() {
     assertEquals("Henning", user.getUserName());
   }
+  @Test
+  public void bliverEmailSatiContructor() {
+    assertEquals("henningsmai@mail.com", user.getEmail());
+  }
+
+  @Test
+  public void bliverPasswordSatiContructor() {
+    assertEquals("pass123", user.getPassword());
+  }
 
   @Test
   public void bliverIdSatiContructor() {

@@ -6,12 +6,9 @@ import shared.transferobjects.Booking;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ClientModelBookingManager extends ClientModelShowingListManager implements ClientModelBooking

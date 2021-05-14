@@ -11,7 +11,7 @@ public class Booking implements Serializable
   private User user;
 
 
-  public Booking( int bookingId, Showing showing, User user)
+  public Booking(int bookingId, Showing showing, User user)
   {
     this.showing = showing;
     this.user = user;

@@ -70,6 +70,7 @@ public class EditBookingView
       Alert alert = AlertBox.makeAlert("information", "Error!", "No booking found, Id: " + viewModel.getSearch());
       alert.showAndWait();
     }
+    searchBox.clear();
   }
 
   public void deleteBooking()
