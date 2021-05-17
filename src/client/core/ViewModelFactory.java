@@ -6,6 +6,9 @@ import shared.exception.ServerException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
+/**
+ * Singleton
+ */
 public class ViewModelFactory
 {
 
@@ -42,88 +45,95 @@ public class ViewModelFactory
     return movieList;
   }
 
+
+
+  //Vores showingList, editShowing og addShowing skal vide hvilke film der er valgt,
+  //den information skal de have hver gang også hvis den ikke er null
   public ViewModelShowingList getShowingList()
   {
-
-if (showingList == null)
-{
-  showingList = new ViewModelShowingList();
-}
-    //Vores showinList skal vide hvilke film der er valgt, den information
-    // skal den have hver gang også hvis den ikke er null
+    if (showingList == null)
+    {
+      showingList = new ViewModelShowingList();
+    }
     showingList.setSelectedMovie(movieList.getSelectedMovie());
 
     return showingList;
   }
 
-
-  public ViewModelSeat getSeatVM()
+  public ViewModelAddShowing getAddShowing()
   {
 
-    /**
-     * Denne ViewModel kan ikke være lazy da den skal add sig selv som listener
-     * og sætte den selectedShowing
-     */
+    if (addShowing == null)
+    {
+      addShowing = new ViewModelAddShowing();
+    }
 
+    addShowing.setSelectedMovie(editMovie.getSelectedMovie());
+
+    return addShowing;
+  }
+
+  public ViewModelEditShowing getEditShowing()
+  {
+
+    if (editShowing == null)
+    {
+      editShowing = new ViewModelEditShowing();
+    }
+    editShowing.setSelectedMovie(editMovie.getSelectedMovie());
+
+    return editShowing;
+  }
+
+
+
+  //Denne ViewModel kan ikke være lazy da den skal tilføje sig selv som listener
+  //og sætte den selectedShowing
+  public ViewModelSeat getSeatVM()
+  {
     seatVM = new ViewModelSeat(showingList.getSelectedShowing());
 
     return seatVM;
 
   }
 
-  public ViewModelEditMovie getEditMovie(){
-    if (editMovie == null){
+
+
+  public ViewModelEditMovie getEditMovie()
+  {
+    if (editMovie == null)
+    {
       editMovie = new ViewModelEditMovie();
     }
     return editMovie;
   }
 
-  public ViewModelAddShowing getAddShowing(){
+  public ViewModelEditBooking getEditBooking()
+  {
 
-    if (addShowing == null){
-      addShowing = new ViewModelAddShowing();
-    }
-
-addShowing.setSelectedMovie(ViewModelFactory.getInstance()
-    .getEditMovie().getSelectedMovie());
-
-    return addShowing;
-  }
-
-  public ViewModelEditShowing getEditShowing(){
-
-    if (editShowing == null){
-      editShowing = new ViewModelEditShowing();
-    }
-    editShowing.setSelectedMovie(ViewModelFactory.getInstance().editMovie.getSelectedMovie());
-
-    return editShowing;
-  }
-
-  public ViewModelEditBooking getEditBooking(){
-
-    if (editBooking == null){
+    if (editBooking == null)
+    {
       editBooking = new ViewModelEditBooking();
     }
     return editBooking;
   }
 
+  public ViewModelLogin getlogin()
+  {
 
-  public ViewModelLogin getlogin(){
-
-    if (login == null){
+    if (login == null)
+    {
       login = new ViewModelLogin();
     }
-
-        return login;
+    return login;
   }
 
   public ViewModelCreateUser getCreateUser()
   {
-    if (createUser == null){
+    if (createUser == null)
+    {
       createUser = new ViewModelCreateUser();
     }
-
     return createUser;
   }
 

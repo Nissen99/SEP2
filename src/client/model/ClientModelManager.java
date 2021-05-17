@@ -7,6 +7,10 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Denne klasse bliver extended af alle managers, og er måden de andre managers
+ * kalder på client
+ */
 public class ClientModelManager implements ClientModel
 {
   private RMIClient client;

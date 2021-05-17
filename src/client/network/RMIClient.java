@@ -72,7 +72,6 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   @Override public void removeBooking(Booking booking)
       throws ServerException
-
   {
     try
     {

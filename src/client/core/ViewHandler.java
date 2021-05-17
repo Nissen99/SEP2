@@ -14,10 +14,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import shared.exception.ServerException;
-
 import java.io.IOException;
-import java.sql.SQLException;
+
+/**
+ * Singleton
+ */
 
 public class ViewHandler
 {
@@ -41,7 +42,7 @@ public class ViewHandler
   }
 
 
-  public void start(Stage stage) throws Exception{
+  public void start(Stage stage){
     setStage(stage);
     openView("../view/loginView/loginView.fxml");
   }
@@ -55,7 +56,6 @@ public class ViewHandler
 
     try
     {
-
       if ("../view/movieList/movieListView.fxml".equals(viewToOpen))
       {
         loader.setLocation(getClass().getResource(viewToOpen));
