@@ -5,6 +5,11 @@ import shared.exception.ServerException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
+/**
+ * Denne klasse extender ClientModelManager some har en referance til vores
+ * Client, vi bruger super.getClient når den skal bruges
+ */
+
 public class ClientModelCreateUserManager extends ClientModelManager implements ClientModelCreateUser
 {
   public ClientModelCreateUserManager(RMIClient client)

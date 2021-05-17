@@ -3,8 +3,11 @@ package client.model;
 import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.Movie;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+
+/**
+ * Denne klasse extender ClientModelManager some har en referance til vores
+ * Client, vi bruger super.getClient når den skal bruges
+ */
 
 public class ClientModelMovieManager extends ClientModelManager implements ClientModelMovie
 {

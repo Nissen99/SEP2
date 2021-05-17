@@ -6,6 +6,10 @@ import shared.transferobjects.Movie;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
+/**
+ * Implementeres af ClientModelMovieManager
+ */
+
 public interface ClientModelMovie extends ClientModel
 {
   Movie addMovie(Movie movie)

@@ -10,6 +10,9 @@ import javafx.scene.control.*;
 import shared.exception.ServerException;
 import shared.transferobjects.Booking;
 
+/**
+ *
+ */
 
 public class EditBookingView
 {
@@ -54,8 +57,10 @@ public class EditBookingView
     }
   }
 
+  //Vi søger efter det givne bookingId i viewModel, findes denne booking kaldes
+  // select på tableviewet og fokus bliver sat på tableViewet.
+  //tableViewet ruller ned til booking, som er selected
   public void searchByBookingId(){
-
     try
     {
       Booking booking = viewModel.getBookingById();
@@ -73,6 +78,7 @@ public class EditBookingView
     searchBox.clear();
   }
 
+
   public void deleteBooking()
   {
     Booking booking = bookingTable.getSelectionModel().getSelectedItem();
@@ -83,7 +89,6 @@ public class EditBookingView
     {
       Alert alert = AlertBox.makeAlert("confirmation", "Deleting Booking",
           "Are you sure you want to delete this booking?");
-
       alert.showAndWait().ifPresent(type -> {
         if (type.getButtonData() == ButtonBar.ButtonData.YES)
         {

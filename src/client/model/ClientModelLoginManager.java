@@ -6,6 +6,12 @@ import shared.exception.ServerException;
 import javax.security.auth.login.LoginException;
 import java.rmi.RemoteException;
 
+/**
+ * Denne klasse extender ClientModelManager some har en referance til vores
+ * Client, vi bruger super.getClient når den skal bruges
+ *
+ */
+
 public class ClientModelLoginManager extends ClientModelManager implements ClientModelLogin
 {
   public ClientModelLoginManager(RMIClient client)

@@ -2,8 +2,9 @@ package client.model;
 
 import shared.exception.ServerException;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+/**
+ * Implementeret af ClientModelCreateUserManager
+ */
 
 public interface ClientModelCreateUser extends ClientModel
 {

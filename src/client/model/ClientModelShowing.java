@@ -8,8 +8,12 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * Implementeres af ClientModelShowingManager
+ */
 public interface ClientModelShowing extends ClientModelShowingList
 {
+
   Showing addShowing(Showing showing)
       throws  ServerException;
   Hall getHallByNumber(String hallNo)

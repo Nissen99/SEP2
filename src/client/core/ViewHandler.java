@@ -56,100 +56,65 @@ public class ViewHandler
 
     try
     {
-      if ("../view/movieList/movieListView.fxml".equals(viewToOpen))
+      loader.setLocation(getClass().getResource(viewToOpen));
+      root = loader.load();
+
+      switch (viewToOpen)
       {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        MovieListController controller = loader.getController();
-        controller.init();
-        stage.setTitle("Movie List");
-      }
-      else if ("../view/showingList/showingListView.fxml".equals(viewToOpen))
-      {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        ShowingListController controller = loader.getController();
-        controller.init();
-        stage.setTitle("Showing List");
-      }
+        case "../view/movieList/movieListView.fxml" -> {
+          MovieListController controller = loader.getController();
+          controller.init();
+          stage.setTitle("Movie List");
+        }
+        case "../view/showingList/showingListView.fxml" -> {
+          ShowingListController controller = loader.getController();
+          controller.init();
+          stage.setTitle("Showing List");
+        }
+        case "../view/seatView/seatView.fxml" -> {
+          SeatViewController controller = loader.getController();
+          controller.init();
+          stage.setTitle("SeatView");
+        }
+        case "../view/loginView/loginView.fxml" -> {
+          LoginViewController controller = loader.getController();
+          controller.init();
+          stage.setTitle("login");
+        }
+        case "../view/createUserView/createUserView.fxml" -> {
+          CreateUserViewController controller = loader.getController();
+          controller.init();
+          stage.setTitle("Create User");
+        }
+        case "../view/adminView/editView/editMovieView.fxml" -> {
+          EditMovieController controller = loader.getController();
+          controller.init();
+          stage.setTitle("EditMovie");
+        }
+        case "../view/adminView/editView/editShowingView.fxml" -> {
+          EditShowingController controller = loader.getController();
+          controller.init();
+          stage.setTitle("Edit Showing");
+        }
+        case "../view/adminView/editView/addShowingView.fxml" -> {
+          AddShowingController controller = loader.getController();
+          controller.init();
 
-      else if ("../view/seatView/seatView.fxml".equals(viewToOpen))
-      {
+          stage.setTitle("Add Showing");
+        }
+        case "../view/adminView/adminView.fxml" -> {
+          AdminViewController controller = loader.getController();
+          controller.init();
 
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        SeatViewController controller = loader.getController();
-        controller.init();
-
-        stage.setTitle("SeatView");
-
-      }
-      else if ("../view/loginView/loginView.fxml".equals(viewToOpen))
-      {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        LoginViewController controller = loader.getController();
-        controller.init();
-
-        stage.setTitle("login");
-
-      }
-      else if ("../view/createUserView/createUserView.fxml".equals(viewToOpen))
-      {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        CreateUserViewController controller = loader.getController();
-        controller.init();
-
-        stage.setTitle("Create User");
-
-      }
-      else if ("../view/adminView/editView/editMovieView.fxml".equals(viewToOpen))
-      {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        EditMovieController controller = loader.getController();
-        controller.init();
-
-        stage.setTitle("EditMovie");
-      }
-      else if ("../view/adminView/editView/editShowingView.fxml".equals(viewToOpen))
-      {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        EditShowingController controller = loader.getController();
-        controller.init();
-
-        stage.setTitle("Edit Showing");
-      }
-      else if ("../view/adminView/editView/addShowingView.fxml".equals(viewToOpen))
-      {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        AddShowingController controller = loader.getController();
-        controller.init();
-
-        stage.setTitle("Add Showing");
-      }
-      else if ("../view/adminView/adminView.fxml".equals(viewToOpen))
-      {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        AdminViewController controller = loader.getController();
-        controller.init();
-
-        stage.setTitle("Admin");
+          stage.setTitle("Admin");
+        }
+        case "../view/adminView/editView/editBookingView.fxml" -> {
+          EditBookingView controller = loader.getController();
+          controller.init();
+          stage.setTitle("Edit Booking");
+        }
       }
 
-      else if ("../view/adminView/editView/editBookingView.fxml".equals(viewToOpen))
-      {
-        loader.setLocation(getClass().getResource(viewToOpen));
-        root = loader.load();
-        EditBookingView controller = loader.getController();
-        controller.init();
-
-        stage.setTitle("Edit Booking");
-      }
 
     }catch (IOException e){
 

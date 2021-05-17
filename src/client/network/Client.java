@@ -2,11 +2,13 @@ package client.network;
 
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * Implementeret af RMIClient
+ *
+ */
 public interface Client
 {
   void startClient();
