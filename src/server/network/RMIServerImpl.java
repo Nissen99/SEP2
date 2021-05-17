@@ -70,10 +70,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   @Override public synchronized void addBooking(Showing showing,User user,
       ArrayList<Seat> seats) throws ServerException
   {
-    System.out.println("RMIserverIMpl " + user );
     modelBooking.addBooking(showing, user, seats);
-
-
   }
 
   @Override public void removeBooking(Booking booking) throws ServerException

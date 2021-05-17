@@ -13,7 +13,6 @@ class ViewModelMovieListTest
 
   private DAOTestSetup setup = new DAOTestSetup();
   private ViewModelMovieList viewModel = new ViewModelMovieList();
-  private RMIClient client = new RMIClient();
 
 
 
@@ -26,7 +25,7 @@ class ViewModelMovieListTest
    @Test
   void testIfWeGetAllMovies() throws ServerException
    {
-     client.startClient();
+
      assertEquals(setup.getMovieList().size(),viewModel.getAllMovies().size());
 
    }

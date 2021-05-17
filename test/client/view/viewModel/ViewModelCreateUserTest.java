@@ -15,9 +15,7 @@ class ViewModelCreateUserTest
 {
 
   private DAOTestSetup setup = new DAOTestSetup();
-  private ViewModelCreateUser viewModel = new ViewModelCreateUser();
-  private RMIClient client = new RMIClient();
-  private ClientModelCreateUser model = new ClientModelCreateUserManager(client);
+  private ClientModelCreateUser model = new ClientModelCreateUserManager(setup.getClient());
   private UserDAO userDAO = new UserDAOImpl();
 
   @BeforeEach void setup() throws ServerException
@@ -38,7 +36,6 @@ class ViewModelCreateUserTest
   @Test void testIfUserIsCreatedInDatabase()
       throws ServerException
   {
-    client.startClient();
     model.createUser(setup.getUserName(), setup.getEmail() ,setup.getPassword());
     assertEquals(setup.getUserName(), userDAO.getById(1).getUserName());
   }

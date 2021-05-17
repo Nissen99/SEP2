@@ -1,5 +1,6 @@
 package client.view.viewModel;
 
+import client.core.ClientFactory;
 import client.model.ClientModelShowing;
 import client.model.ClientModelShowingManager;
 import client.network.RMIClient;
@@ -13,8 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelAddShowingTest
 {
-  private RMIClient client = new RMIClient();
-  private ClientModelShowing model = new ClientModelShowingManager(client);
   private ViewModelAddShowing viewModel = new ViewModelAddShowing();
   private DAOTestSetup setup = new DAOTestSetup();
 
@@ -33,7 +32,6 @@ class ViewModelAddShowingTest
     assertEquals(setup.getTime(), setup.getShowing().getTimestamp());
     assertEquals("A", setup.getShowing().getHall().getHallNo());
   }
-
 
 
   @Test void testIfItsTheRightHall()
