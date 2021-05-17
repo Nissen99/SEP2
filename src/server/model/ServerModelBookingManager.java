@@ -34,6 +34,7 @@ public class ServerModelBookingManager implements ServerModelBooking
     Booking booking;
     try
     {
+
       booking = bookingDAO.create(showing,user);
       for (Seat seat : seats)
       {

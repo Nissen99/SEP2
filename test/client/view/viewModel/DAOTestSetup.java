@@ -5,6 +5,7 @@ import shared.exception.ServerException;
 import shared.transferobjects.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class DAOTestSetup
 {
@@ -18,13 +19,19 @@ public class DAOTestSetup
   private Showing showing = null;
   private String movieTitle = "Jackass";
   private Movie movie = new Movie(1, movieTitle);
-  private Timestamp time = new Timestamp(121, 4, 15,
-      13, 30, 0, 0);
+  private Timestamp time = new Timestamp(122, 4, 20, 13, 30, 0, 0);
   private String userName = "TestPerson";
   private String email = "test@test.dk";
-  private String password = "1234";
+  private String password = "Test1234";
   private User user = new User(1, userName, email, password);
   private Booking booking = new Booking(1, showing, user);
+
+
+  //Lists
+  private ArrayList<Movie> movieList = new ArrayList<>();
+  private ArrayList<Showing> showingList = new ArrayList<>();
+  private ArrayList<Booking> bookingList = new ArrayList<>();
+  private ArrayList<User> userList = new ArrayList<>();
 
   public Hall getHall()
   {
@@ -76,6 +83,26 @@ public class DAOTestSetup
     return user;
   }
 
+  public ArrayList<Movie> getMovieList()
+  {
+    return movieList;
+  }
+
+  public ArrayList<Showing> getShowingList()
+  {
+    return showingList;
+  }
+
+  public ArrayList<Booking> getBookingList()
+  {
+    return bookingList;
+  }
+
+  public ArrayList<User> getUserList()
+  {
+    return userList;
+  }
+
   public void setup() throws ServerException
   {
     resetDAO.reset();
@@ -88,11 +115,12 @@ public class DAOTestSetup
 
     if (hallDAO.getHallByNumber("A") == null)
     {
-      movieDAO.create(movieTitle);
       hallDAO.create(hall);
-      showingDAO.create(showing);
-      userDAO.create(userName, email, password);
-      bookingDAO.create(showing, user);
+      userList.add(userDAO.create(userName, email, password));
+      movieList.add(movieDAO.create(movieTitle));
+      showingList.add(showingDAO.create(showing));
+      bookingList.add(bookingDAO.create(showing, user));
+
     }
   }
 }

@@ -32,6 +32,6 @@ class ViewModelEditMovieTest
   @Test void testRemoveMovie() throws ServerException
   {
     viewModel.removeMovie(setup.getMovie());
-    assertEquals(0, viewModel.getAllMovies().size());
+    assertEquals(setup.getMovieList().size()-1, viewModel.getAllMovies().size());
   }
 }

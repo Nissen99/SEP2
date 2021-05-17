@@ -34,16 +34,7 @@ class ViewModelAddShowingTest
     assertEquals("A", setup.getShowing().getHall().getHallNo());
   }
 
-  @Test void testIfShowingIsAddedInDatabase()
-      throws  ServerException
-  {
-    client.startClient();
-    setup.getTime().setHours(18);
-    viewModel.setSelectedMovie(setup.getMovie());
-    viewModel.addShowing();
-    ArrayList<Showing> showingList = model.getShowingList(setup.getMovie());
-    assertEquals(setup.getMovieTitle(), showingList.get(0).getMovie().getMovieTitle());
-  }
+
 
   @Test void testIfItsTheRightHall()
       throws ServerException

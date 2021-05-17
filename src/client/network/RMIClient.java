@@ -61,6 +61,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   {
     try
     {
+      System.out.println("RMI CLient " + user);
       rmiServer.addBooking(showing,user,seats);
     }
     catch (RemoteException e)
@@ -224,7 +225,9 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   {
     try
     {
+      System.out.println("RMI CLient Login " + user + "Before");
       user = rmiServer.login(username,password);
+      System.out.println("RMI CLient Login " + user + "After");
     }
     catch (RemoteException e)
     {

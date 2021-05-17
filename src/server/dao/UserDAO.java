@@ -6,7 +6,7 @@ import javax.security.auth.login.LoginException;
 
 public interface UserDAO
 {
-  void create(String userName, String email,String password)
+  User create(String userName, String email,String password)
       throws ServerException;
   User getById(int userId) throws ServerException;
   User login(String userName, String password)

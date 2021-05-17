@@ -25,6 +25,7 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
       }}
       catch (SQLException throwables)
       {
+        throwables.printStackTrace();
         throw new ServerException("Database connection failed");
 
       }
@@ -46,6 +47,7 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
     }
 
@@ -61,6 +63,7 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
 
     }

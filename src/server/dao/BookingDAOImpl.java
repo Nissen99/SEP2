@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class BookingDAOImpl extends BaseDAO implements BookingDAO
 {
 
+
   @Override public Booking create(Showing showing, User user)
       throws ServerException
   {
@@ -68,6 +69,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
 
     }
@@ -83,6 +85,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
 
     }
@@ -110,6 +113,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
 
     }
