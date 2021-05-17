@@ -13,34 +13,33 @@ public interface Client
 {
   void startClient();
   void createUser(String userName, String email,String password)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
 
   void addBooking(Showing showing,
-      ArrayList<Seat> seats) throws ServerException, RemoteException;
+      ArrayList<Seat> seats) throws ServerException;
   void removeBooking(Booking booking)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   Movie addMovie(Movie movie)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   void removeMovie(Movie movie)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   Showing addShowing(Showing showing)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   ArrayList<Movie> getMovieList()
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   ArrayList<Showing> getShowingList(Movie movie)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   ArrayList<Booking> getBookingList()
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   ArrayList<Seat> getOccupiedSeats(Showing showing)
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   Hall getHallByNumber(String hallNo)
-      throws SQLException, RemoteException, ServerException;
+      throws ServerException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo,
-      Timestamp timestamp) throws RemoteException, SQLException,
-      ServerException;
+      Timestamp timestamp) throws ServerException;
   ArrayList<String> getHallNumbers()
-      throws RemoteException, SQLException, ServerException;
+      throws ServerException;
   void login(String username, String password)
-      throws LoginException, RemoteException, ServerException;
-  void removeShowing(Showing showing) throws SQLException, ServerException;
+      throws ServerException;
+  void removeShowing(Showing showing) throws ServerException;
 }

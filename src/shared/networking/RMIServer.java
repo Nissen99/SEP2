@@ -1,6 +1,5 @@
 package shared.networking;
 
-import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.rmi.Remote;
