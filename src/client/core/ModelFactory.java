@@ -1,8 +1,10 @@
 package client.core;
 
 import client.model.*;
-import shared.exception.ServerException;
 
+/**
+ * Singleton
+ */
 public class ModelFactory
 {
 

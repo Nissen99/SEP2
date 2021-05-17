@@ -16,6 +16,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/**
+ * Singleton
+ */
+
 public class ViewHandler
 {
 
@@ -52,7 +56,6 @@ public class ViewHandler
 
     try
     {
-
       if ("../view/movieList/movieListView.fxml".equals(viewToOpen))
       {
         loader.setLocation(getClass().getResource(viewToOpen));

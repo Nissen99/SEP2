@@ -2,9 +2,13 @@ package client.core;
 
 import client.network.RMIClient;
 
+/**
+ * Singleton og starter client
+ */
 
 public class ClientFactory
 {
+
   private static ClientFactory clientFactory;
   private RMIClient client;
 
