@@ -1,5 +1,6 @@
 package shared.util;
 
+
 import java.beans.PropertyChangeListener;
 
 public interface PropertyChangeSubject

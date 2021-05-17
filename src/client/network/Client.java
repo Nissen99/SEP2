@@ -3,9 +3,7 @@ package client.network;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 
-import javax.security.auth.login.LoginException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 

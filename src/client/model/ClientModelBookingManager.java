@@ -20,7 +20,6 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   public ClientModelBookingManager(RMIClient client)
   {
     super(client);
-    super.getClient().addPropertyChangeListener(this::update);
   }
 
   private void update(PropertyChangeEvent propertyChangeEvent)
@@ -59,6 +58,8 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
     return super.getClient().getBookingList();
   }
 
+
+
   @Override public ArrayList<Showing> getShowingList(Movie movie)
       throws ServerException
   {
@@ -77,6 +78,8 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
       PropertyChangeListener listener)
   {
     propertyChangeSupport.addPropertyChangeListener(listener);
+    super.getClient().addPropertyChangeListener(this::update);
+
   }
 
 

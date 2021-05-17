@@ -6,7 +6,6 @@ import shared.util.ENUM;
 import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
-import javax.security.auth.login.LoginException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -15,7 +14,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -248,6 +246,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
+
   @Override public void update(PropertyChangeEvent evt)
   {
     propertyChangeSupport.firePropertyChange(evt);
@@ -257,6 +256,15 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
       PropertyChangeListener listener)
   {
     propertyChangeSupport.addPropertyChangeListener(listener);
+    try
+    {
+      rmiServer.registerCallback(this);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+
   }
 
   @Override public void removePropertyChangeListener(

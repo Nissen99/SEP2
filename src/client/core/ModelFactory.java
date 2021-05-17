@@ -1,6 +1,7 @@
 package client.core;
 
 import client.model.*;
+import shared.exception.ServerException;
 
 public class ModelFactory
 {
