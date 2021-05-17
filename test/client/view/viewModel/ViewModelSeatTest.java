@@ -34,9 +34,8 @@ class ViewModelSeatTest
 
 
     }
-
+    bookingSpecDAO.create(setup.getBookingList().get(0),setup.getHall().getSeats().get(1));
     viewModel = new ViewModelSeat(setup.getShowing());
-   bookingSpecDAO.create(setup.getBookingList().get(0),setup.getHall().getSeats().get(1));
   }
 
   @Test
