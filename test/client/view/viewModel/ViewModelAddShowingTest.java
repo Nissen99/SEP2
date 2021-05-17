@@ -50,8 +50,4 @@ class ViewModelAddShowingTest
   {
     assertEquals(setup.getHall().getHallNo(), viewModel.getHallByNumber("A").getHallNo());
   }
-
-
-
-
 }

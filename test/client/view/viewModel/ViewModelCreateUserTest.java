@@ -9,9 +9,6 @@ import server.dao.UserDAO;
 import server.dao.UserDAOImpl;
 import shared.exception.ServerException;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelCreateUserTest
@@ -23,7 +20,7 @@ class ViewModelCreateUserTest
   private ClientModelCreateUser model = new ClientModelCreateUserManager(client);
   private UserDAO userDAO = new UserDAOImpl();
 
-  @BeforeEach void setup() throws SQLException, ServerException
+  @BeforeEach void setup() throws ServerException
   {
     setup.setup();
   }
@@ -39,7 +36,7 @@ class ViewModelCreateUserTest
   }
 
   @Test void testIfUserIsCreatedInDatabase()
-      throws ServerException, RemoteException, SQLException
+      throws ServerException
   {
     client.startClient();
     model.createUser(setup.getUserName(), setup.getEmail() ,setup.getPassword());
