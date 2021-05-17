@@ -2,7 +2,6 @@ package client.view.viewModel;
 
 import client.model.ClientModelCreateUser;
 import client.model.ClientModelCreateUserManager;
-import client.network.Client;
 import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

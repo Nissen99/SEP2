@@ -5,16 +5,8 @@ import client.model.ClientModelShowingManager;
 import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import server.dao.*;
-import server.util.SeatNoCalculator;
 import shared.exception.ServerException;
-import shared.transferobjects.Hall;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
