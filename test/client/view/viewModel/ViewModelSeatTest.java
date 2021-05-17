@@ -1,5 +1,7 @@
 package client.view.viewModel;
 
+import client.core.ClientFactory;
+import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.dao.*;

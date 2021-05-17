@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.editView.EditBookingView">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.adminView.editView.EditBookingView">
    <children>
       <VBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="72.0" prefWidth="1260.0" spacing="10.0">
                <children>
                   <TextField fx:id="searchBox" prefHeight="25.0" prefWidth="91.0" promptText="Booking Id" />
-                  <Button mnemonicParsing="false" onAction="#searchByBookingId" prefWidth="60.0" text="Søg" />
+                  <Button mnemonicParsing="false" onAction="#searchByBookingId" prefHeight="36.0" prefWidth="74.0" text="Søg" />
                   <Label text="Rediger Bookings">
                      <font>
                         <Font name="System Bold" size="25.0" />
@@ -50,8 +50,8 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#back" prefHeight="35.0" prefWidth="100.0" text="Tilbage" />
-                  <Button mnemonicParsing="false" onAction="#deleteBooking" prefHeight="35.0" prefWidth="100.0" text="Slet Booking" />
+                  <Button mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="106.0" text="Tilbage" />
+                  <Button mnemonicParsing="false" onAction="#deleteBooking" prefHeight="36.0" prefWidth="110.0" text="Slet Booking" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" />
