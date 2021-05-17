@@ -18,6 +18,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/**
+ * ViewModel for AddShowingView, her håndteres den læste data fra controlleren,
+ * dette sker gennem bindings på forskellige Properties.
+ */
+
 public class ViewModelAddShowing
 {
   private Movie selectedMovie;
@@ -44,13 +49,15 @@ public class ViewModelAddShowing
     return localTimeProperty;
   }
 
-  /**Vi laver nogle checks der checker om man er ved at oprette en valid Showing
-  *Vi har besluttet at der skal være 3 timer mellem hver film, så den kan vises
-  *og der kan gøres rent. derfor tjekker vi 3 timer før og efter det angivede tidspunkt
+  /**
+   * Vi laver nogle checks der checker om man er ved at oprette en valid Showing
+   * Vi har besluttet at der skal være 3 timer mellem hver film, så den kan vises
+   * og der kan gøres rent.
+   * Derfor tjekker vi 3 timer før og efter det angivede tidspunkt
    * dette sker i checkIfTimeOverlaps metoden, der kaster exception hvis der der et overlap
- * Vi mener også at showings der forgår i fortiden ikke giver mening, derfor skal
- * det være efter currentTime
- */
+   * Vi mener også at showings der forgår i fortiden ikke giver mening, derfor skal
+   * det være efter currentTime
+   */
   public void addShowing() throws ServerException
   {
     Timestamp inputTimestamp = getTimestamp();

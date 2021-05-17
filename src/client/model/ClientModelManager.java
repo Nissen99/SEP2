@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Denne klasse bliver extended af alle managers, og er måden de andre managers
  * kalder på client
  */
+
 public class ClientModelManager implements ClientModel
 {
   private RMIClient client;
@@ -20,6 +21,7 @@ public class ClientModelManager implements ClientModel
   {
     this.client = client;
       }
+
   @Override public RMIClient getClient()
   {
     return client;

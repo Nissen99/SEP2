@@ -5,8 +5,11 @@ import shared.exception.ServerException;
 import shared.transferobjects.Booking;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
-
 import java.util.ArrayList;
+
+/**
+ * Implementeret af ClientModelBookingManager
+ */
 
 public interface ClientModelBooking extends ClientModelShowingList,
     PropertyChangeSubject
