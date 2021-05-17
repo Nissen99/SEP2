@@ -4,7 +4,6 @@ import server.dao.*;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class DAOTestSetup
