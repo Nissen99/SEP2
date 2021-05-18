@@ -5,6 +5,7 @@ import client.view.viewModel.*;
 
 /**
  * Factory og Singleton
+ * Lazy instantiation på alle viewModeller
  */
 public class ViewModelFactory
 {
@@ -20,9 +21,7 @@ public class ViewModelFactory
   private ViewModelCreateUser createUser;
   private ViewModelEditBooking editBooking;
 
-  private ViewModelFactory()
-  {
-  }
+  private ViewModelFactory() {}
 
   public static ViewModelFactory getInstance()
   {
@@ -42,10 +41,11 @@ public class ViewModelFactory
     return movieList;
   }
 
-
-
-  //Vores showingList, editShowing og addShowing skal vide hvilke film der er valgt,
-  //den information skal de have hver gang også hvis den ikke er null
+  /**
+   * Vores showingList, editShowing, SeatVM og addShowing skal vide hvilke film der er valgt,
+   * den information skal de have hver gang også hvis den ikke er null
+   * @return ViewModelShowingList
+   */
   public ViewModelShowingList getShowingList()
   {
     if (showingList == null)
@@ -82,16 +82,16 @@ public class ViewModelFactory
     return editShowing;
   }
 
-
-
-  //Denne ViewModel kan ikke være lazy da den skal tilføje sig selv som listener
-  //og sætte den selectedShowing
   public ViewModelSeat getSeatVM()
   {
-    seatVM = new ViewModelSeat(showingList.getSelectedShowing());
+    if (seatVM == null)
+    {
+      seatVM = new ViewModelSeat();
+    }
+    seatVM.clearBookingList();
+    seatVM.setShowing(showingList.getSelectedShowing());
 
     return seatVM;
-
   }
 
 

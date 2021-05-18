@@ -36,41 +36,45 @@ public class EditShowingController implements Controller
 
     filmShowingsErFor.textProperty().bind(viewModel.movieTitleProperty());
   }
+
   private void setUpTableView()
   {
     try
     {
       tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
 
-      tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory<>("time"));
-      ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory<>("weekDay"));
-      datoerForFremvisning.setCellValueFactory(new PropertyValueFactory<>("date"));
+      tidspunktForFremvisning
+          .setCellValueFactory(new PropertyValueFactory<>("time"));
+      ugedagForFremvisning
+          .setCellValueFactory(new PropertyValueFactory<>("weekDay"));
+      datoerForFremvisning
+          .setCellValueFactory(new PropertyValueFactory<>("date"));
     }
     catch (ServerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error", e.getMessage());
-      alert.showAndWait();
+      alert.show();
     }
   }
 
   public void backButton()
   {
-  ViewHandler.getInstance().openView("Edit Movie");
-}
+    ViewHandler.getInstance().openView("Edit Movie");
+  }
 
   public void removeShowing()
   {
-
     try
     {
-      IShowing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
+      IShowing showing = tableViewForFilmFremvisninger.getSelectionModel()
+          .getSelectedItem();
       viewModel.removeShowing(showing);
       setUpTableView();
     }
     catch (ServerException | NullPointerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.showAndWait();
+      alert.show();
     }
   }
 

@@ -33,10 +33,11 @@ public class CreateUserViewController implements Controller
 
   }
 
-
-  //Når man indsætter en user i databasen har vi lavet functioner + triggers der
-  //tjekker input, derfor kan vi give relevante fejlmeddelser til brugeren gennem
-  //e.getMessage()
+  /**
+   * Når man indsætter en user i databasen har vi lavet functioner + triggers der
+   * tjekker input, derfor kan vi give relevante fejlmeddelser til brugeren gennem
+   * e.getMessage()
+   */
   public void onCreateButton()
   {
     try

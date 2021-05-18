@@ -8,20 +8,21 @@ import client.view.viewModel.ViewModelEditBooking;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.IBooking;
 
 
 /**
  * Controller til editBookingView, står for at læse bruger inputs, dette er gjort
- * gennem bindings med viewModellen.
+ * gennem bindings med viewModellen og et tableView.
  */
 
 public class EditBookingView implements Controller
 {
   @FXML private TextField searchBox;
   @FXML private TableView<IBooking> bookingTable;
-  @FXML private TableColumn<IBooking, String> bookingId;
+  @FXML private TableColumn<IBooking, Integer> bookingId;
   @FXML private TableColumn<IBooking, String> name;
   @FXML private TableColumn<IBooking, String> email;
   @FXML private TableColumn<IBooking, String> title;
@@ -39,30 +40,41 @@ public class EditBookingView implements Controller
     setupTable();
   }
 
-
+  /**
+   * Fylder table med booking objekter.
+   * En booking består af en int og 2 objekter
+   * De data der ligger i objekter bliver udledt og sat i en celle
+   */
   private void setupTable()
   {
     try
     {
       bookingTable.setItems(viewModel.getAllBookings());
 
-      bookingId.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getBookingId())));
+      bookingId.setCellValueFactory(new PropertyValueFactory<>("bookingId"));
+
       name.setCellValueFactory(cellData -> new SimpleStringProperty(
           cellData.getValue().getUser().getUserName()));
+
       email.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getEmail()));
+
       title.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShowing().getMovie().getMovieTitle()));
+
       time.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getShowing().getTime()));
+
     }
     catch (ServerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage() +". Try restarting the app");
-      alert.showAndWait();
+      alert.show();
     }
   }
 
-  //Vi søger efter det givne bookingId i viewModel, findes denne booking kaldes
-  // select på tableviewet og fokus bliver sat på tableViewet.
-  //tableViewet ruller ned til booking, som er selected
+  /**
+   * Vi søger efter det givne bookingId i viewModel, findes denne booking kaldes
+   * select på tableviewet og fokus bliver sat på tableViewet.
+   * tableViewet ruller ned til booking, som er selected
+   */
   public void searchByBookingId(){
     try
     {

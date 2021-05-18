@@ -4,6 +4,7 @@ import client.model.*;
 
 /**
  * Factory og Singleton
+ * Lazy instantiation på alle modeller
  */
 public class ModelFactory
 {

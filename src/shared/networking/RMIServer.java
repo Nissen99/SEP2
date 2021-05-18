@@ -35,5 +35,6 @@ public interface RMIServer extends Remote
   IUser login(String userName,String password)
       throws RemoteException, ServerException;
   void removeShowing(IShowing showing) throws RemoteException, ServerException;
-  void removeCallBack(ClientCallBack clientCallBack) throws RemoteException;
+  void removeCallBack(ClientCallBack clientCallBack)
+      throws RemoteException, ServerException;
 }

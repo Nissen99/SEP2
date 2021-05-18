@@ -28,49 +28,54 @@ public class EditMovieController implements Controller
 
   public void init()
   {
-   viewModel = ViewModelFactory.getInstance().getEditMovie();
+    viewModel = ViewModelFactory.getInstance().getEditMovie();
 
-   movieTitleTextField.textProperty().bindBidirectional(viewModel.movieTitleProperty());
+    movieTitleTextField.textProperty()
+        .bindBidirectional(viewModel.movieTitleProperty());
 
-   setUpTableView();
+    setUpTableView();
   }
 
-      private void setUpTableView()
-      {
-        try
-        {
-          movieTableView.setItems(viewModel.getAllMovies());
-          movieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
-        }
-        catch (ServerException e)
-        {
-          Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-          alert.show();
-        }
-      }
+  private void setUpTableView()
+  {
+    try
+    {
+      movieTableView.setItems(viewModel.getAllMovies());
+      movieTitleColumn
+          .setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
+    }
+    catch (ServerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.show();
+    }
+  }
 
-      public void editShowingButton()
-      {
-        try
-        {
-          IMovie movie = movieTableView.getSelectionModel().getSelectedItem();
-          viewModel.setSelectedMovie(movie);
+  public void editShowingButton()
+  {
+    try
+    {
+      IMovie movie = movieTableView.getSelectionModel().getSelectedItem();
+      viewModel.setSelectedMovie(movie);
 
       ViewHandler.getInstance().openView("Edit Showing");
 
-    } catch (NullPointerException e) {
-      Alert alert = AlertBox.makeAlert("information", "Error!","No movie selected");
+    }
+    catch (NullPointerException e)
+    {
+      Alert alert = AlertBox
+          .makeAlert("information", "Error!", "No movie selected");
       alert.show();
     }
 
   }
 
-      public void back()
-      {
-        ViewHandler.getInstance().openView("Admin");
-      }
+  public void back()
+  {
+    ViewHandler.getInstance().openView("Admin");
+  }
 
-  public void addMovie() throws  ServerException
+  public void addMovie() throws ServerException
   {
     try
     {
@@ -79,7 +84,8 @@ public class EditMovieController implements Controller
     }
     catch (IllegalArgumentException | NullPointerException e)
     {
-      Alert alert = AlertBox.makeAlert("information", "Error!","Invalid title");
+      Alert alert = AlertBox
+          .makeAlert("information", "Error!", "Invalid title");
       alert.show();
     }
     movieTitleTextField.clear();
@@ -96,8 +102,8 @@ public class EditMovieController implements Controller
 
     catch (ServerException | NullPointerException e)
     {
-      Alert alert = AlertBox.makeAlert("information", "Error!",e.getMessage());
-      alert.showAndWait();
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+      alert.show();
     }
 
   }

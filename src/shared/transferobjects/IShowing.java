@@ -5,12 +5,12 @@ import java.sql.Timestamp;
 
 public interface IShowing extends Serializable
 {
-  public int getId();
-  public IHall getHall();
-  public IMovie getMovie();
-  public String toString();
-  public String getTime();
-  public String getWeekDay();
-  public Timestamp getTimestamp();
-  public String getDate();
+  int getId();
+  IHall getHall();
+  IMovie getMovie();
+  String toString();
+  String getTime();
+  String getWeekDay();
+  Timestamp getTimestamp();
+  String getDate();
 }

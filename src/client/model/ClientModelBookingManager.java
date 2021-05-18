@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * Denne klasse lytter på Client, dette bliver brugt til at dynamisk at opdatere
  * seatView.
  *
+ * Denne klasse sender videre fra ViewModel Til Client, har ikke i sig selv noget logik
  */
 public class ClientModelBookingManager extends ClientModelShowingListManager implements ClientModelBooking
 {
@@ -39,7 +40,6 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
       throws ServerException
   {
     super.getClient().addBooking(showing, seats);
-
   }
 
 
@@ -50,18 +50,15 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
 
   @Override public ArrayList<ISeat> getOccupiedSeats(IShowing showing)
       throws ServerException
-
   {
     return super.getClient().getOccupiedSeats(showing);
   }
 
 
   @Override public ArrayList<IBooking> getBookingList() throws ServerException
-
   {
     return super.getClient().getBookingList();
   }
-
 
 
   @Override public ArrayList<IShowing> getShowingList(IMovie movie)
@@ -77,18 +74,20 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
 
   }
 
-
-  //Når vores View tilføjer eller fjerner sig som listener, tilføjer eller
-  // fjerner denne model sig som listener på client
+  /**
+   * Når vores View tilføjer eller fjerner sig som listener, tilføjer eller
+   * fjerner denne model sig som listener på client
+   * @param listener den instance der skal lytte
+   */
   @Override public void addPropertyChangeListener(
-      PropertyChangeListener listener)
+      PropertyChangeListener listener) throws ServerException
   {
     propertyChangeSupport.addPropertyChangeListener(listener);
     super.getClient().addPropertyChangeListener(this::update);
   }
 
   @Override public void removePropertyChangeListener(
-      PropertyChangeListener listener)
+      PropertyChangeListener listener) throws ServerException
   {
     propertyChangeSupport.removePropertyChangeListener(listener);
     super.getClient().removePropertyChangeListener(this::update);

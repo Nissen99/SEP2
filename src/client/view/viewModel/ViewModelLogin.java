@@ -38,7 +38,7 @@ public class ViewModelLogin
     clientModelLogin.login(userNameProperty.get(),passwordProperty.get());
   }
 
-  public boolean admin()
+  public boolean admin() throws NullPointerException
   {
     return getUserNameProperty().equals("Admin") && getPasswordProperty().equals("Admin");
   }

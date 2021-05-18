@@ -1,5 +1,6 @@
 package client.model;
 
+import client.network.RMIClient;
 import shared.exception.ServerException;
 
 /**
@@ -8,6 +9,7 @@ import shared.exception.ServerException;
 
 public interface ClientModelCreateUser extends ClientModel
 {
+
   void createUser(String userName, String email, String password)
       throws ServerException;
 }

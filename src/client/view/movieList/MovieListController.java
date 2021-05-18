@@ -14,6 +14,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
 
+/**
+ * Controller til movieListView, står for at læse bruger inputs, dette er gjort
+ * gennem et tableView og confirm/back knap.
+ */
+
 public class MovieListController implements Controller
 {
 
@@ -22,17 +27,13 @@ public class MovieListController implements Controller
   @FXML public Button confirmMovieChoice;
   private ViewModelMovieList viewModel = ViewModelFactory.getInstance().getMovieListViewModel();
 
-/**
- * Controller til movieListView, står for at læse bruger inputs, dette er gjort
- * gennem et tableView og confirm/back knap.
- */
 
   public void init()
   {
     try
     {
       tableViewForMovie.setItems(viewModel.getAllMovies());
-      movieTitleColumn.setCellValueFactory(new PropertyValueFactory("movieTitle"));
+      movieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
     }
     catch (ServerException e)
     {
@@ -45,7 +46,7 @@ public class MovieListController implements Controller
   public void confirmButtonPressed()
   {
     try {
-      IMovie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
+    IMovie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
     viewModel.setSelectedMovie(movie);
     ViewHandler.getInstance().openView("Showing List");
   }
