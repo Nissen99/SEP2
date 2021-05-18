@@ -1,6 +1,7 @@
 package server.dao;
 
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
 import shared.transferobjects.User;
@@ -10,15 +11,19 @@ import java.sql.SQLException;
 
 class UserDAOImplTest
 {
-  @Test
-  public void testCreate() throws SQLException, ServerException
+  private DAOTestSetup setup = new DAOTestSetup();
+  private UserDAO userDAO = new UserDAOImpl();
+
+  @BeforeEach void setup() throws ServerException
   {
-    User user1 = null;
-    UserDAO userDAO = new UserDAOImpl();
-    userDAO.create("hans","ole@hotmail.com","pass123");
+    setup.setup();
+  }
 
+  @Test
+  public void testCreate() throws ServerException
+  {
+    assertEquals(setup.getUser().getUserName(), userDAO.create(setup.getUserName(), setup.getEmail(), setup.getPassword()).getUserName());
 
-    assertEquals("Solaiman", userDAO.getById(user1.getUserID()).getUserName());
   }
 
 
