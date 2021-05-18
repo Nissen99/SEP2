@@ -65,7 +65,7 @@ public class AddShowingController implements Controller
     catch (ServerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.showAndWait();
+      alert.show();
     }
   }
 
