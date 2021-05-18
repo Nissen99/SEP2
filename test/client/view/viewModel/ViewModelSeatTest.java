@@ -49,7 +49,7 @@ class ViewModelSeatTest
 
   @Test void testCurrentNumber() {
 
-    assertEquals("A102", viewModel.setCurrentNumber("A101"));
+    assertEquals("A102", viewModel.setNewId("A101"));
   }
 
   @Test void testIfSeatIsOccupiedOnClick()

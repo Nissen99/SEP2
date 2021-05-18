@@ -44,7 +44,6 @@ public class ViewModelFactory
   /**
    * Vores showingList, editShowing, SeatVM og addShowing skal vide hvilke film der er valgt,
    * den information skal de have hver gang også hvis den ikke er null
-   * @return ViewModelShowingList
    */
   public ViewModelShowingList getShowingList()
   {

@@ -233,7 +233,7 @@ public class SeatViewController implements PropertyChangeListener, Controller
     Pane pane = getPane(id);
     viewModel.checkIfSeatOccupiedOnClick(id);
     selectedPane.add(pane);
-    id = viewModel.setCurrentNumber(id);
+    id = viewModel.setNewId(id);
 
     return id;
   }

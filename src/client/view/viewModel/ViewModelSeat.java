@@ -37,28 +37,10 @@ public class ViewModelSeat implements PropertyChangeListener,
     return clientModel.getOccupiedSeats(selectedShowing);
   }
 
-
-  @Override public void propertyChange(PropertyChangeEvent evt)
-  {
-    propertyChangeSupport.firePropertyChange(evt);
-  }
-
-  @Override public void addPropertyChangeListener (
-      PropertyChangeListener listener) throws ServerException
-  {
-    propertyChangeSupport.addPropertyChangeListener(listener);
-    clientModel.addPropertyChangeListener(this::propertyChange);
-  }
-
-
-  @Override public void removePropertyChangeListener(
-      PropertyChangeListener listener) throws ServerException
-  {
-    propertyChangeSupport.removePropertyChangeListener(listener);
-    clientModel.removePropertyChangeListener(this);
-  }
-
-
+  /**
+   * Laver liste fra 1-14, da man kan booke 1-14 sæder af gangen
+   * @return liste med integers fra 1 til og med 14
+   */
   public ObservableList<Integer> getChoiceList()
   {
     if (integerObservableList.size() < 13){
@@ -68,7 +50,6 @@ public class ViewModelSeat implements PropertyChangeListener,
         integerObservableList.add(i);
       }
     }
-
     return integerObservableList;
   }
 
@@ -77,8 +58,12 @@ public class ViewModelSeat implements PropertyChangeListener,
       clientModel.addBooking(selectedShowing, bookingSeatArrayList);
     }
 
-
-  public String setCurrentNumber(String id)
+  /**
+   * Tager et id tæller det 1 op og retunere det
+   * @param id original id
+   * @return nyt id, original id + 1
+   */
+  public String setNewId(String id)
   {
     currentNumber = Integer.parseInt(id.substring(1));
     ++currentNumber;
@@ -93,6 +78,10 @@ public class ViewModelSeat implements PropertyChangeListener,
     bookingSeatArrayList.add(seat);
   }
 
+  /**
+   * Checkker om seat er optaget, hvis det er kaster det IndexOutOfBoundsExeption
+   * @param id seatNo
+   */
   public void checkIfSeatOccupiedOnClick(String id)
   {
     for (ISeat seat : occupiedSeatArrayList)
@@ -105,6 +94,11 @@ public class ViewModelSeat implements PropertyChangeListener,
     }
   }
 
+  /**
+   * Tjekker om seat er optaget
+   * @param id seatNo
+   * @return true hvis optaget false hvis ikke
+   */
   public boolean seatIsOccupied(String id)
   {
     for (ISeat seat : occupiedSeatArrayList)
@@ -125,4 +119,26 @@ public class ViewModelSeat implements PropertyChangeListener,
   {
     this.selectedShowing = selectedShowing;
   }
+
+
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+    propertyChangeSupport.firePropertyChange(evt);
+  }
+
+  @Override public void addPropertyChangeListener (
+      PropertyChangeListener listener) throws ServerException
+  {
+    propertyChangeSupport.addPropertyChangeListener(listener);
+    clientModel.addPropertyChangeListener(this::propertyChange);
+  }
+
+
+  @Override public void removePropertyChangeListener(
+      PropertyChangeListener listener) throws ServerException
+  {
+    propertyChangeSupport.removePropertyChangeListener(listener);
+    clientModel.removePropertyChangeListener(this);
+  }
 }
+
