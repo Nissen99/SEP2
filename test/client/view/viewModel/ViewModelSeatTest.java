@@ -7,8 +7,7 @@ import server.util.SeatNoCalculator;
 import shared.exception.ServerException;
 import shared.transferobjects.Seat;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelSeatTest
 {
@@ -55,9 +54,14 @@ class ViewModelSeatTest
   @Test void testIfSeatIsOccupiedOnClick()
   {
     assertThrows(IndexOutOfBoundsException.class, () -> {
-      viewModel.checkIfSeatOccupiedOnClick(setup.getHall().getSeats().get(1).getSeatNo());
+      viewModel.checkIfSeatOccupiedOnClick(
+          setup.getHall().getSeats().get(1).getSeatNo());
     });
   }
 
-
+  @Test void testIfSeatIsOccupiedOnLoad() throws ServerException
+  {
+    viewModel.updateOccupiedSeatsList();
+    assertTrue(viewModel.seatIsOccupiedOnLoad(setup.getHall().getSeats().get(1).getSeatNo()));
+  }
 }

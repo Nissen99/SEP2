@@ -25,12 +25,7 @@ public class ViewModelShowingList
 
     public StringProperty movieTitleProperty()
     {
-      System.out.println(movieTitle.toString());
       return movieTitle;
-    }
-    public String getmovieTitle()
-    {
-      return movieTitle.get();
     }
 
     public ObservableList<Showing> getAllShowings()
