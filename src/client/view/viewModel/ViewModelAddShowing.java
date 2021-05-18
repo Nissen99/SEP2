@@ -25,12 +25,15 @@ import java.util.ArrayList;
 public class ViewModelAddShowing
 {
   private IMovie selectedMovie;
-  private ClientModelShowing clientModel = ModelFactory.getInstance().getModelShowing();
+  private final ClientModelShowing clientModel;
   private ObservableList<String> observableList = FXCollections.observableArrayList();
   private Property<LocalDate> localDateProperty = new SimpleObjectProperty<>();
   private Property<LocalTime> localTimeProperty = new SimpleObjectProperty<>();
   private StringProperty hallNo = new SimpleStringProperty();
 
+public ViewModelAddShowing(){
+  this.clientModel = ModelFactory.getInstance().getModelShowing();
+}
 
   public StringProperty hallNoProperty()
   {

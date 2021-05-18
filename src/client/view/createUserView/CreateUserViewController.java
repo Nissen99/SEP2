@@ -3,15 +3,19 @@ package client.view.createUserView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
+import client.view.Controller;
 import client.view.viewModel.ViewModelCreateUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import shared.exception.ServerException;
+/**
+ * Controller til createUserView, står for at læse bruger inputs, dette er gjort
+ * gennem bindings med viewModellen.
+ */
 
-
-public class CreateUserViewController
+public class CreateUserViewController implements Controller
 {
 
   @FXML public TextField usernameField;
@@ -29,12 +33,16 @@ public class CreateUserViewController
 
   }
 
+
+  //Når man indsætter en user i databasen har vi lavet functioner + triggers der
+  //tjekker input, derfor kan vi give relevante fejlmeddelser til brugeren gennem
+  //e.getMessage()
   public void onCreateButton()
   {
     try
     {
       viewModelCreateUser.create();
-      ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
+      ViewHandler.getInstance().openView("Login");
     }
     catch (ServerException | IllegalArgumentException e)
     {
@@ -45,6 +53,6 @@ public class CreateUserViewController
 
   public void onBackButton()
   {
-   ViewHandler.getInstance().openView("../view/loginView/loginView.fxml");
+   ViewHandler.getInstance().openView("Login");
   }
 }

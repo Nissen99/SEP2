@@ -6,7 +6,6 @@ import shared.transferobjects.Hall;
 import shared.transferobjects.Movie;
 import shared.transferobjects.Seat;
 import shared.transferobjects.Showing;
-
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;

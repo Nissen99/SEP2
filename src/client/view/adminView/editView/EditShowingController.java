@@ -3,6 +3,7 @@ package client.view.adminView.editView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
+import client.view.Controller;
 import client.view.viewModel.ViewModelEditShowing;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -11,9 +12,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
-import shared.transferobjects.IShowing;
+import shared.transferobjects.Showing;
 
-public class EditShowingController
+/**
+ * Controller til editShowingView, står for at læse bruger inputs, dette er gjort
+ * gennem et tableview.
+ */
+
+public class EditShowingController implements Controller
 {
 
   @FXML public Label filmShowingsErFor;
@@ -49,7 +55,7 @@ public class EditShowingController
 
   public void backButton()
   {
-  ViewHandler.getInstance().openView("../view/adminView/editView/editMovieView.fxml");
+  ViewHandler.getInstance().openView("Edit Movie");
 }
 
   public void removeShowing()
@@ -70,6 +76,6 @@ public class EditShowingController
 
   public void addShowing()
   {
-    ViewHandler.getInstance().openView("../view/adminView/editView/addShowingView.fxml");
+    ViewHandler.getInstance().openView("Add Showing");
   }
 }

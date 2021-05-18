@@ -3,6 +3,7 @@ package client.view.adminView.editView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
+import client.view.Controller;
 import client.view.viewModel.ViewModelAddShowing;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
@@ -16,13 +17,14 @@ import shared.exception.ServerException;
  * gennem bindings med viewModellen.
  *
  */
-public class AddShowingController
+public class AddShowingController implements Controller
 {
 
   @FXML public JFXTimePicker timePicker;
   @FXML public JFXDatePicker datePicker;
   @FXML public ChoiceBox<String> hallNo;
   private ViewModelAddShowing viewModel = ViewModelFactory.getInstance().getAddShowing();
+
 
   public void init()
   {
@@ -34,7 +36,7 @@ public class AddShowingController
 
   public void back()
   {
-    ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
+    ViewHandler.getInstance().openView("Edit Showing");
   }
 
   public void confirm()
@@ -45,11 +47,11 @@ public class AddShowingController
       back();
     } catch (NullPointerException e) {
       Alert alert = AlertBox.makeAlert("information", "Error!","Invalid input - Time and Date needs to be filled");
-      alert.showAndWait();
+      alert.show();
     }
     catch (IllegalArgumentException | ServerException e) {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.showAndWait();
+      alert.show();
     }
   }
 

@@ -23,6 +23,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
 
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
+
   public ClientModelBookingManager(RMIClient client)
   {
     super(client);
