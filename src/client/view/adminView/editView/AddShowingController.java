@@ -11,6 +11,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import shared.exception.ServerException;
 
+/**
+ * Controller til addShowingView, står for at læse bruger inputs, dette er gjort
+ * gennem bindings med viewModellen.
+ *
+ */
 public class AddShowingController
 {
 

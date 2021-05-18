@@ -23,6 +23,7 @@ public class SeatDAOImpl extends BaseDAO implements SeatDAO
     }
     catch (SQLException throwables)
     {
+      System.out.println(throwables.getMessage());
       throw new ServerException("Database connection failed");
     }
 

@@ -103,7 +103,7 @@ public class SeatViewController implements PropertyChangeListener
 
       for (Pane pane : paneArrayList)
       {
-        if (viewModel.seatIsOccupied(pane.idProperty().get())){
+        if (viewModel.seatIsOccupiedOnLoad(pane.idProperty().get())){
           Pane occupiedPane = getPane(pane.idProperty().get());
           occupiedPane.setStyle("-fx-background-color:red;");
           occupiedPane.setDisable(true);
@@ -116,7 +116,7 @@ public class SeatViewController implements PropertyChangeListener
   {
     for (Pane pane : selectedPane)
     {
-      if (viewModel.seatIsOccupied(pane.idProperty().get()))
+      if (viewModel.seatIsOccupiedOnLoad(pane.idProperty().get()))
       {
         makeOldPanesTransparent();
         selectedPane.clear();
@@ -184,7 +184,7 @@ public class SeatViewController implements PropertyChangeListener
   private String idCounter(String id) throws ServerException
   {
     Pane pane = getPane(id);
-    viewModel.checkIfSeatOccupied(id);
+    viewModel.checkIfSeatOccupiedOnClick(id);
     selectedPane.add(pane);
     viewModel.setCurrentNumber(id);
 

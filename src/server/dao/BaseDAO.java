@@ -2,8 +2,7 @@ package server.dao;
 
 
 
-import shared.util.MINKODE;
-
+import server.util.MINKODE;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,8 +13,6 @@ public class BaseDAO
 
   protected static Connection getConnection() throws SQLException
   {
-
-
       connection = DriverManager.getConnection(
           "jdbc:postgresql://localhost:5432/postgres?currentSchema=bioDatabase",
           "postgres", MINKODE.PASSWORD.password);

@@ -9,6 +9,14 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
+/**
+ * Denne klasse extender ClientModelShowingListManager, som extender ClientModelManager
+ * hvor en referance til vores Client ligger, vi bruger super.getClient når den skal bruges
+ *
+ * Denne klasse lytter på Client, dette bliver brugt til at dynamisk at opdatere
+ * seatView.
+ *
+ */
 public class ClientModelBookingManager extends ClientModelShowingListManager implements ClientModelBooking
 {
 
@@ -29,10 +37,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
       ArrayList<ISeat> seats)
       throws ServerException
   {
-
     super.getClient().addBooking(showing, seats);
-
-
 
   }
 
@@ -61,7 +66,6 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   @Override public ArrayList<IShowing> getShowingList(IMovie movie)
       throws ServerException
   {
-
     return super.getClient().getShowingList(movie);
   }
 
@@ -72,14 +76,15 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
 
   }
 
+
+  //Når vores View tilføjer eller fjerner sig som listener, tilføjer eller
+  // fjerner denne model sig som listener på client
   @Override public void addPropertyChangeListener(
       PropertyChangeListener listener)
   {
     propertyChangeSupport.addPropertyChangeListener(listener);
     super.getClient().addPropertyChangeListener(this::update);
-
   }
-
 
   @Override public void removePropertyChangeListener(
       PropertyChangeListener listener)

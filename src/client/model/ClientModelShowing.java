@@ -9,6 +9,9 @@ import shared.transferobjects.IShowing;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * Implementeres af ClientModelShowingManager
+ */
 public interface ClientModelShowing extends ClientModelShowingList
 {
   IShowing addShowing(IShowing showing)

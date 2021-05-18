@@ -18,11 +18,22 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * Dette er forbindelsen til serveren, det er gjort med RMI.
+ * Denne klasses ansvar er at snakke med serveren, hvor den kalder vidre fra modellen.
+ *
+ * Vi vil ikke have at der bløder Remote, SQL osv. exceptions gennem vores system.
+ * Derfor fanger vi dem og kaster vores egen ServerException, dem kan vi så fange
+ * i controllere og give brugeren besked.
+ */
 public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 {
   private RMIServer rmiServer;
   private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   private IUser user;
+
+
+
 
   @Override
   public void startClient() {
@@ -30,7 +41,6 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     {
       UnicastRemoteObject.exportObject(this, 0);
       Registry registry = LocateRegistry.getRegistry("localhost", 1099);
-
       rmiServer = (RMIServer) registry.lookup(String.valueOf(ENUM.BIOSERVER));
       rmiServer.registerCallback(this);
     }
@@ -72,7 +82,6 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   @Override public void removeBooking(IBooking booking)
       throws ServerException
-
   {
     try
     {

@@ -25,7 +25,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next())
       {
-        return new Booking(keys.getInt("bookingId"), (Showing)showing, (User)user);
+        return new Booking(keys.getInt("bookingId"), showing, user);
       }
       else
       {
@@ -51,9 +51,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       ResultSet bookings = statement.executeQuery();
       while (bookings.next()){
 
-        /**
-         * Klause
-         */
+
         IMovie movie = new Movie(bookings.getInt("movieId"),
             bookings.getString("title"));
         IUser user = new User(bookings.getInt("userId"),
@@ -61,16 +59,17 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
             bookings.getString("email"),"password");
         IHall hall = new Hall(bookings.getString("hallNo"),16,14);
         IShowing showing = new Showing(bookings.getInt("showingId"),
-            (Movie)movie,
-            bookings.getTimestamp("time"), (Hall)hall);
+            movie,
+            bookings.getTimestamp("time"), hall);
         IBooking booking = new Booking(bookings.getInt("bookingId"),
-            (Showing)showing,(User)user);
+            showing,user);
 
         bookingArrayList.add(booking);
       }
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
 
     }
@@ -86,6 +85,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
 
     }
@@ -113,6 +113,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
 
     }

@@ -4,6 +4,11 @@ import client.network.RMIClient;
 import shared.exception.ServerException;
 
 
+/**
+ * Denne klasse extender ClientModelManager some har en referance til vores
+ * Client, vi bruger super.getClient når den skal bruges
+ */
+
 public class ClientModelCreateUserManager extends ClientModelManager implements ClientModelCreateUser
 {
   public ClientModelCreateUserManager(RMIClient client)

@@ -10,6 +10,11 @@ import javafx.scene.control.*;
 import shared.exception.ServerException;
 import shared.transferobjects.IBooking;
 
+
+/**
+ *
+ */
+
 public class EditBookingView
 {
   @FXML private TextField searchBox;
@@ -53,8 +58,10 @@ public class EditBookingView
     }
   }
 
+  //Vi søger efter det givne bookingId i viewModel, findes denne booking kaldes
+  // select på tableviewet og fokus bliver sat på tableViewet.
+  //tableViewet ruller ned til booking, som er selected
   public void searchByBookingId(){
-
     try
     {
       IBooking booking = viewModel.getBookingById();
@@ -71,6 +78,7 @@ public class EditBookingView
     }
     searchBox.clear();
   }
+
 
   public void deleteBooking()
   {

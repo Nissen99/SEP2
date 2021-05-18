@@ -86,10 +86,10 @@ public class ViewModelSeat implements PropertyChangeListener,
 
 
   public void setCurrentNumber(String id)
-       {
-       currentNumber = Integer.parseInt(id.substring(1));
-      ++currentNumber;
-    }
+  {
+    currentNumber = Integer.parseInt(id.substring(1));
+    ++currentNumber;
+  }
 
   public int getCurrentNumber()
   {
@@ -104,7 +104,7 @@ public class ViewModelSeat implements PropertyChangeListener,
 
   }
 
-  public void checkIfSeatOccupied(String id) throws ServerException
+  public void checkIfSeatOccupiedOnClick(String id) throws ServerException
   {
     for (ISeat seat : getOccupiedSeats())
     {
@@ -116,7 +116,7 @@ public class ViewModelSeat implements PropertyChangeListener,
     }
   }
 
-  public boolean seatIsOccupied(String id)
+  public boolean seatIsOccupiedOnLoad(String id)
   {
     for (ISeat seat : occupiedSeatArrayList)
     {

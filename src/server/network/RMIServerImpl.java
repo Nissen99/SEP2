@@ -71,7 +71,6 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
       ArrayList<ISeat> seats) throws ServerException
   {
     modelBooking.addBooking(showing, user, seats);
-
   }
 
   @Override public void removeBooking(IBooking booking) throws ServerException

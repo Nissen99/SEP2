@@ -6,6 +6,7 @@ import shared.transferobjects.ISeat;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
@@ -15,16 +16,20 @@ public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
   {
     try(Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO BookingSpec (bookingId, seatNo, showingId) VALUES (?, ?, ?)");
+      PreparedStatement statement = connection.prepareStatement(
+          "INSERT INTO BookingSpec (bookingId, seatNo, showingId) VALUES (?, ?, ?)");
 
       statement.setInt(1, booking.getBookingId());
       statement.setString(2, seat.getSeatNo());
       statement.setInt(3, booking.getShowing().getId());
       statement.executeUpdate();
+
     }
     catch (SQLException throwables)
     {
-      throw new ServerException(throwables.getMessage());
+      throwables.printStackTrace();
+      System.out.println(throwables.getMessage());
+      throw new ServerException("Database Connection Failed");
     }
   }
 }

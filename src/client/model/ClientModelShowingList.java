@@ -7,6 +7,10 @@ import shared.transferobjects.IShowing;
 
 import java.util.ArrayList;
 
+/**
+ * Implementeres af ClientModelShowingListManager
+ */
+
 public interface ClientModelShowingList extends ClientModel
 {
   ArrayList<IShowing> getShowingList(IMovie movie)

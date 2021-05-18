@@ -2,7 +2,9 @@ package client.model;
 
 import shared.exception.ServerException;
 
-
+/**
+ * Implementeret af ClientModelCreateUserManager
+ */
 
 public interface ClientModelCreateUser extends ClientModel
 {

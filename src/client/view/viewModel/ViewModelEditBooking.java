@@ -30,7 +30,7 @@ public class ViewModelEditBooking
 
   public ObservableList<IBooking> getAllBookings() throws ServerException
   {
-    bookings.removeAll(bookings);
+    bookings.clear();
     bookings.addAll(clientModel.getBookingList());
 
     return bookings;
@@ -44,13 +44,15 @@ public class ViewModelEditBooking
   }
 
   public IBooking getBookingById(){
+  //Vi parser search til en int, hvis det ikke kan lade sig gøre ved vi at
+  //brugeren ikke har indtastet et gyldigt id, og kaster en IllegalArgument
+  public IBooking getBookingById(){
     try{
       int x = Integer.parseInt(search.get());
-      for (IBooking b : bookings)
+      for (IBooking booking : bookings)
       {
-        if (b.getBookingId() == x)
+        if (booking.getBookingId() == x)
         {
-          IBooking booking = b;
           return booking;
         }
       }

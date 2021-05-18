@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelEditBookingTest
 {
-  private DAOTestSetup setup = new DAOTestSetup();
+  private VMTestSetup setup = new VMTestSetup();
   private ViewModelEditBooking viewModel = new ViewModelEditBooking();
 
   @BeforeEach void setup() throws ServerException
@@ -20,14 +20,14 @@ class ViewModelEditBookingTest
       throws ServerException
   {
 
-    assertEquals(1, viewModel.getAllBookings().size());
+    assertEquals(setup.getBookingList().size(), viewModel.getAllBookings().size());
   }
 
   @Test void testIfBookingIsRemoved()
       throws ServerException
   {
     viewModel.removeBooking(setup.getBooking());
-    assertEquals(0, viewModel.getAllBookings().size());
+    assertEquals(setup.getBookingList().size()-1, viewModel.getAllBookings().size());
   }
 
 }

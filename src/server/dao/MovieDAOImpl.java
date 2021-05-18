@@ -26,6 +26,7 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
       }}
       catch (SQLException throwables)
       {
+        throwables.printStackTrace();
         throw new ServerException("Database connection failed");
 
       }
@@ -47,6 +48,7 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
     }
 
@@ -54,7 +56,6 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
 
   @Override public void removeMovie(IMovie movie) throws ServerException
   {
-    System.out.println("Er vi i DAO?");
     try (Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("DELETE FROM Movie WHERE movieId = ?");
       statement.setInt(1, movie.getMovieId());
@@ -62,6 +63,7 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
     }
     catch (SQLException throwables)
     {
+      throwables.printStackTrace();
       throw new ServerException("Database connection failed");
 
     }

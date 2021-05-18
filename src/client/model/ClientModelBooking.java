@@ -6,6 +6,10 @@ import shared.exception.ServerException;
 
 import java.util.ArrayList;
 
+/**
+ * Implementeret af ClientModelBookingManager
+ */
+
 public interface ClientModelBooking extends ClientModelShowingList,
     PropertyChangeSubject
 {

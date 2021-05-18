@@ -3,7 +3,6 @@ package server.dao;
 import shared.exception.ServerException;
 import shared.transferobjects.IUser;
 import shared.transferobjects.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,18 +11,30 @@ import java.sql.SQLException;
 
 public class UserDAOImpl extends BaseDAO implements UserDAO
 {
-  @Override public void create(String userName, String email,String password)
+  @Override public IUser create(String userName, String email,String password)
       throws ServerException
   {
     {
       try (Connection connection = getConnection())
       {
         PreparedStatement statement = connection.prepareStatement(
-            "INSERT INTO User_ (userName, email, password) VALUES (?,?,?)");
+            "INSERT INTO User_ (userName, email, password) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
         statement.setString(1, userName);
         statement.setString(2, email);
         statement.setString(3, password);
         statement.executeUpdate();
+
+        ResultSet keys = statement.getGeneratedKeys();
+        if (keys.next())
+        {
+          return new User(keys.getInt("userId"),
+              keys.getString("userName"), keys.getString("email"),
+              keys.getString("password"));
+        }
+        else
+        {
+          throw new SQLException();
+        }
       }
       catch (SQLException throwables)
       {

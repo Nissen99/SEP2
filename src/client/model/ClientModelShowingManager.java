@@ -8,7 +8,10 @@ import shared.transferobjects.IShowing;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
+/**
+ * Denne klasse extender ClientModelManager some har en referance til vores
+ * Client, vi bruger super.getClient når den skal bruges
+ */
 public class ClientModelShowingManager extends ClientModelManager implements ClientModelShowing
 {
   public ClientModelShowingManager(RMIClient client)
@@ -20,7 +23,6 @@ public class ClientModelShowingManager extends ClientModelManager implements Cli
       IMovie movie)
       throws ServerException
   {
-
     return super.getClient().getShowingList(movie);
   }
 

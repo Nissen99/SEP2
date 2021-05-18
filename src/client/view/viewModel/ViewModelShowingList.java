@@ -70,4 +70,6 @@ public class ViewModelShowingList
       this.movie = selectedMovie;
       movieTitle.setValue(getMovieTitle());
     }
+
+
   }

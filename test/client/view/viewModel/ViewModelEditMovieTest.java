@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelEditMovieTest
 {
-  private DAOTestSetup setup = new DAOTestSetup();
+  private VMTestSetup setup = new VMTestSetup();
   private ViewModelEditMovie viewModel = new ViewModelEditMovie();
 
   @BeforeEach void setup() throws ServerException
@@ -32,6 +32,6 @@ class ViewModelEditMovieTest
   @Test void testRemoveMovie() throws ServerException
   {
     viewModel.removeMovie(setup.getMovie());
-    assertEquals(0, viewModel.getAllMovies().size());
+    assertEquals(setup.getMovieList().size()-1, viewModel.getAllMovies().size());
   }
 }

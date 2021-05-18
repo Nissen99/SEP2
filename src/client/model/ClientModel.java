@@ -6,6 +6,9 @@ import shared.transferobjects.*;
 
 import java.util.ArrayList;
 
+/**
+ * ClientModel implemeneters af ClientModelManager
+ */
 public interface ClientModel
 {
   ArrayList<IMovie> getMovieList() throws ServerException;
