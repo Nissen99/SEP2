@@ -1,8 +1,6 @@
 package shared.transferobjects;
 
-import java.io.Serializable;
-
-public class Movie implements Serializable
+public class Movie implements IMovie
 {
   private String movieTitle;
   private int movieId;

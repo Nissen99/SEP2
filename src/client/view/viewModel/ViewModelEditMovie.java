@@ -7,15 +7,14 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
+import shared.transferobjects.IMovie;
 import shared.transferobjects.Movie;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 public class ViewModelEditMovie
 {
 
   private ClientModelMovie clientModel = ModelFactory.getInstance().getModelMovie();
-  private ObservableList<Movie> movies = FXCollections.observableArrayList();
+  private ObservableList<IMovie> movies = FXCollections.observableArrayList();
 
   public String getMovieTitle()
   {
@@ -30,7 +29,7 @@ public class ViewModelEditMovie
   private StringProperty movieTitle = new SimpleStringProperty();
 
 
-  private Movie selectedMovie;
+  private IMovie selectedMovie;
 
   /**
    * Vores eneste kriterieer for en valid film er at der skal være en title,
@@ -41,14 +40,14 @@ public class ViewModelEditMovie
   {
     if (!getMovieTitle().equals("") && (getMovieTitle().charAt(0) != ' ') )
     {
-      Movie movie = new Movie(getMovieTitle());
+      IMovie movie = new Movie(getMovieTitle());
       clientModel.addMovie(movie);
     } else {
       throw new IllegalArgumentException("Invalid Title");
     }
   }
 
-  public ObservableList<Movie> getAllMovies() throws ServerException
+  public ObservableList<IMovie> getAllMovies() throws ServerException
   {
 
     movies.removeAll(movies);
@@ -57,12 +56,12 @@ public class ViewModelEditMovie
     return movies;
   }
 
-  public Movie getSelectedMovie()
+  public IMovie getSelectedMovie()
   {
     return selectedMovie;
   }
 
-  public void setSelectedMovie(Movie selectedMovie) throws NullPointerException
+  public void setSelectedMovie(IMovie selectedMovie) throws NullPointerException
   {
     if (selectedMovie == null){
       throw new NullPointerException("No movie selected");
@@ -71,7 +70,7 @@ public class ViewModelEditMovie
 
   }
 
-  public void removeMovie(Movie movie) throws ServerException, NullPointerException
+  public void removeMovie(IMovie movie) throws ServerException, NullPointerException
   {
     if (movie == null){
       throw new NullPointerException("No movie selected");

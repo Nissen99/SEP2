@@ -7,16 +7,15 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
-
+import shared.transferobjects.IMovie;
+import shared.transferobjects.IShowing;
 
 public class ViewModelEditShowing
 {
-  private Movie selectedMovie;
+  private IMovie selectedMovie;
   private StringProperty movieTitle = new SimpleStringProperty();
   private ClientModelShowing clientModel = ModelFactory.getInstance().getModelShowing();
-  private ObservableList<Showing> showings = FXCollections.observableArrayList();
+  private ObservableList<IShowing> showings = FXCollections.observableArrayList();
 
 
 
@@ -24,7 +23,7 @@ public class ViewModelEditShowing
     return selectedMovie.getMovieTitle();
   }
 
-  public ObservableList<Showing> getAllShowings()
+  public ObservableList<IShowing> getAllShowings()
       throws ServerException
   {
     showings.clear();
@@ -46,13 +45,13 @@ public class ViewModelEditShowing
    * denne metode der bliver kaldt i ViewModelFactory.
    * @param selectedMovie
    */
-  public void setSelectedMovie(Movie selectedMovie)
+  public void setSelectedMovie(IMovie selectedMovie)
   {
     this.selectedMovie = selectedMovie;
     movieTitle.setValue(selectedMovie.getMovieTitle());
   }
 
-  public void removeShowing(Showing showing) throws ServerException, NullPointerException
+  public void removeShowing(IShowing showing) throws ServerException, NullPointerException
   {
     if (showing == null){
       throw new NullPointerException("No showing selected");

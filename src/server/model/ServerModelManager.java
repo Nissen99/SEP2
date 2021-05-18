@@ -3,7 +3,7 @@ package server.model;
 import server.dao.*;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class ServerModelManager implements ServerModel
@@ -16,7 +16,7 @@ public class ServerModelManager implements ServerModel
     this.movieDAO = new MovieDAOImpl();
   }
 
-  @Override public ArrayList<Movie> getMovieList() throws ServerException
+  @Override public ArrayList<IMovie> getMovieList() throws ServerException
   {
     return movieDAO.getAllMovies();
 

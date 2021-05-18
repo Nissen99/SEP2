@@ -11,17 +11,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
-import shared.transferobjects.Showing;
-
+import shared.transferobjects.IShowing;
 
 public class EditShowingController
 {
 
   @FXML public Label filmShowingsErFor;
-  @FXML public TableView<Showing> tableViewForFilmFremvisninger;
-  @FXML public TableColumn<Showing, String> datoerForFremvisning;
-  @FXML public TableColumn<Showing, String> ugedagForFremvisning;
-  @FXML public TableColumn<Showing, String> tidspunktForFremvisning;
+  @FXML public TableView<IShowing> tableViewForFilmFremvisninger;
+  @FXML public TableColumn<IShowing, String> datoerForFremvisning;
+  @FXML public TableColumn<IShowing, String> ugedagForFremvisning;
+  @FXML public TableColumn<IShowing, String> tidspunktForFremvisning;
   private ViewModelEditShowing viewModel = ViewModelFactory.getInstance()
       .getEditShowing();
 
@@ -58,7 +57,7 @@ public class EditShowingController
 
     try
     {
-      Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
+      IShowing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
       viewModel.removeShowing(showing);
       setUpTableView();
     }

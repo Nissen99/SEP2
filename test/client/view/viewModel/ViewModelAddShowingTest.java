@@ -6,7 +6,8 @@ import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
-import shared.transferobjects.Showing;
+import shared.transferobjects.IShowing;
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,7 +42,7 @@ class ViewModelAddShowingTest
     setup.getTime().setHours(18);
     viewModel.setSelectedMovie(setup.getMovie());
     viewModel.addShowing();
-    ArrayList<Showing> showingList = model.getShowingList(setup.getMovie());
+    ArrayList<IShowing> showingList = model.getShowingList(setup.getMovie());
     assertEquals(setup.getMovieTitle(), showingList.get(0).getMovie().getMovieTitle());
   }
 

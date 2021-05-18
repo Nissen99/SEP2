@@ -2,9 +2,9 @@ package client.model;
 
 import client.network.RMIClient;
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+import shared.transferobjects.IMovie;
+
+
 
 public class ClientModelMovieManager extends ClientModelManager implements ClientModelMovie
 {
@@ -13,14 +13,14 @@ public class ClientModelMovieManager extends ClientModelManager implements Clien
     super(client);
   }
 
-  @Override public void removeMovie(Movie movie) throws ServerException
+  @Override public void removeMovie(IMovie movie) throws ServerException
   {
     super.getClient().removeMovie(movie);
   }
 
 
 
-  @Override public Movie addMovie(Movie movie)
+  @Override public IMovie addMovie(IMovie movie)
       throws ServerException
   {
     return super.getClient().addMovie(movie);

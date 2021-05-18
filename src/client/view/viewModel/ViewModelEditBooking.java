@@ -7,15 +7,12 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
-import shared.transferobjects.Booking;
-
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+import shared.transferobjects.IBooking;
 
 public class ViewModelEditBooking
 {
   private ClientModelBooking clientModel = ModelFactory.getInstance().getModelBooking();
-  private ObservableList<Booking> bookings = FXCollections.observableArrayList();
+  private ObservableList<IBooking> bookings = FXCollections.observableArrayList();
   private StringProperty search = new SimpleStringProperty("");
 
   public String getSearch()
@@ -31,7 +28,7 @@ public class ViewModelEditBooking
   public ViewModelEditBooking(){}
 
 
-  public ObservableList<Booking> getAllBookings() throws ServerException
+  public ObservableList<IBooking> getAllBookings() throws ServerException
   {
     bookings.removeAll(bookings);
     bookings.addAll(clientModel.getBookingList());
@@ -39,21 +36,21 @@ public class ViewModelEditBooking
     return bookings;
   }
 
-  public void removeBooking(Booking booking) throws ServerException
+  public void removeBooking(IBooking booking) throws ServerException
   {
     if (booking == null)
       throw new NullPointerException();
     clientModel.removeBooking(booking);
   }
 
-  public Booking getBookingById(){
+  public IBooking getBookingById(){
     try{
       int x = Integer.parseInt(search.get());
-      for (Booking b : bookings)
+      for (IBooking b : bookings)
       {
         if (b.getBookingId() == x)
         {
-          Booking booking = b;
+          IBooking booking = b;
           return booking;
         }
       }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
 import shared.transferobjects.Hall;
+import shared.transferobjects.IHall;
 
 import java.sql.SQLException;
 
@@ -25,7 +26,7 @@ class HallDAOImplTest
   {
     Hall hall = setUpWithHallNo("J");
     hallDAO.create(hall);
-    Hall hall2 = hallDAO.getHallByNumber("J");
+    IHall hall2 = hallDAO.getHallByNumber("J");
     assertEquals(hall.getHallNo(), hall2.getHallNo());
     assertEquals(hall.getMaxRows(), hall2.getMaxRows());
     assertEquals(hall.getMaxSeatsInRow(), hall2.getMaxSeatsInRow());

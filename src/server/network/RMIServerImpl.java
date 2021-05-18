@@ -6,7 +6,7 @@ import shared.util.ENUM;
 import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
 import shared.transferobjects.*;
-import javax.security.auth.login.LoginException;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.AlreadyBoundException;
@@ -61,32 +61,32 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   }
 
   //SERVER
-  @Override public ArrayList<Movie> getMovieList() throws ServerException
+  @Override public ArrayList<IMovie> getMovieList() throws ServerException
   {
     return modelManager.getMovieList();
   }
 
   //BOOKING
-  @Override public synchronized void addBooking(Showing showing,User user,
-      ArrayList<Seat> seats) throws ServerException
+  @Override public synchronized void addBooking(IShowing showing, IUser user,
+      ArrayList<ISeat> seats) throws ServerException
   {
     modelBooking.addBooking(showing, user, seats);
 
   }
 
-  @Override public void removeBooking(Booking booking) throws ServerException
+  @Override public void removeBooking(IBooking booking) throws ServerException
 
   {
     modelBooking.removeBooking(booking);
   }
 
-  @Override public ArrayList<Booking> getBookingList() throws ServerException
+  @Override public ArrayList<IBooking> getBookingList() throws ServerException
 
   {
     return modelBooking.getBookingList();
   }
 
-  @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
+  @Override public ArrayList<ISeat> getOccupiedSeats(IShowing showing)
       throws ServerException
   {
     return modelBooking.getOccupiedSeats(showing);
@@ -94,14 +94,14 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
 
   //MOVIE
-   @Override public Movie addMovie(Movie movie)
+   @Override public IMovie addMovie(IMovie movie)
        throws ServerException
    {
        return modelMovie.addMovie(movie);
 
   }
 
-  @Override public void removeMovie(Movie movie)
+  @Override public void removeMovie(IMovie movie)
       throws ServerException
   {
       modelMovie.removeMovie(movie);
@@ -110,7 +110,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
 
   //SHOWINGLIST
-  @Override public ArrayList<Showing> getShowingList(Movie movie)
+  @Override public ArrayList<IShowing> getShowingList(IMovie movie)
       throws ServerException
   {
       return modelShowingList.getShowingList(movie);
@@ -118,14 +118,14 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
 
   //SHOWING
-  @Override public Showing addShowing(Showing showing) throws ServerException
+  @Override public IShowing addShowing(IShowing showing) throws ServerException
   {
     return modelShowing.addShowing(showing);
 
   }
 
 
-  @Override public Hall getHallByNumber(String hallNo)
+  @Override public IHall getHallByNumber(String hallNo)
       throws ServerException
   {
    return modelShowing.getHallByNumber(hallNo);
@@ -147,7 +147,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   }
 
 
-  @Override public void removeShowing(Showing showing) throws ServerException
+  @Override public void removeShowing(IShowing showing) throws ServerException
   {
     modelShowing.removeShowing(showing);
   }
@@ -170,7 +170,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
 
   //LOGIN
-  @Override public User login(String userName, String password)
+  @Override public IUser login(String userName, String password)
       throws ServerException
   {
 

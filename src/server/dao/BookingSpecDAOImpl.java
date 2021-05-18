@@ -1,8 +1,8 @@
 package server.dao;
 
 import shared.exception.ServerException;
-import shared.transferobjects.Booking;
-import shared.transferobjects.Seat;
+import shared.transferobjects.IBooking;
+import shared.transferobjects.ISeat;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
 {
-  @Override public void create(Booking booking, Seat seat)
+  @Override public void create(IBooking booking, ISeat seat)
       throws ServerException
   {
     try(Connection connection = getConnection())

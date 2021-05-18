@@ -2,9 +2,7 @@ package server.dao;
 
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
-import shared.transferobjects.Hall;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.transferobjects.*;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -24,14 +22,14 @@ class ShowingDAOImplTest
   MovieDAO movieDAO = new MovieDAOImpl();
   HallDAO hallDAO = new HallDAOImpl();
 
-  Movie movie = new Movie( "TestShowing");
-  Hall hall = new Hall("S", 5, 5);
+  IMovie movie = new Movie( "TestShowing");
+  IHall hall = new Hall("S", 5, 5);
   hallDAO.create(hall);
   movie = movieDAO.create(movie.getMovieTitle());
-  Showing showing = new Showing(1, movie, new Timestamp(23232), hall);
+  IShowing showing = new Showing(1, (Movie)movie, new Timestamp(23232), (Hall)hall);
   showingDAO.create(showing);
 
-  ArrayList<Showing> showingArrayList = showingDAO.getAllShowings(movie);
+  ArrayList<IShowing> showingArrayList = showingDAO.getAllShowings(movie);
 
   assertEquals(showingArrayList.get(0).toString(), showing.toString());
 

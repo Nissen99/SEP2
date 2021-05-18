@@ -11,14 +11,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
-
+import shared.transferobjects.IMovie;
 
 public class MovieListController
 {
 
-  @FXML public TableView<Movie> tableViewForMovie;
-  @FXML public TableColumn<Movie, String> movieTitleColumn;
+  @FXML public TableView<IMovie> tableViewForMovie;
+  @FXML public TableColumn<IMovie, String> movieTitleColumn;
   @FXML public Button confirmMovieChoice;
   private ViewModelMovieList viewModel = ViewModelFactory.getInstance().getMovieListViewModel();
 
@@ -41,7 +40,7 @@ public class MovieListController
   public void confirmButtonPressed()
   {
     try {
-    Movie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
+      IMovie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
     viewModel.setSelectedMovie(movie);
     ViewHandler.getInstance().openView("../view/showingList/showingListView.fxml");
   }

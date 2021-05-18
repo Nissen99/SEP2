@@ -1,12 +1,12 @@
 package server.dao;
 
 import shared.exception.ServerException;
-import shared.transferobjects.Hall;
-import shared.transferobjects.Seat;
+import shared.transferobjects.IHall;
+import shared.transferobjects.ISeat;
 
 public interface SeatDAO
 {
 
-  void create(Seat seat, Hall hall) throws ServerException;
-  Seat getSeatBySeatNo(String seatNo) throws ServerException;
+  void create(ISeat seat, IHall hall) throws ServerException;
+  ISeat getSeatBySeatNo(String seatNo) throws ServerException;
 }

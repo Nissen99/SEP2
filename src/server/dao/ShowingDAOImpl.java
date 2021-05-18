@@ -1,16 +1,15 @@
 package server.dao;
 
 import shared.exception.ServerException;
-import shared.transferobjects.Hall;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.transferobjects.*;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
 {
 
-  @Override public Showing create(Showing showing) throws ServerException
+  @Override public IShowing create(IShowing showing) throws ServerException
   {
     try(Connection connection = getConnection())
     {
@@ -33,10 +32,10 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
     }
   }
 
-  @Override public ArrayList<Showing> getAllShowings(Movie movie)
+  @Override public ArrayList<IShowing> getAllShowings(IMovie movie)
       throws ServerException
   {
-    ArrayList<Showing> showingArrayList = new ArrayList<>();
+    ArrayList<IShowing> showingArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM Showing right Join Hall ON Showing.hallNo = Hall.hallNo  WHERE movieId = ?");
@@ -45,7 +44,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
       while (showings.next()){
         showingArrayList.add(
             new Showing(showings.getInt("showingId"),
-            movie,
+                (Movie)movie,
             showings.getTimestamp("time"),
             new Hall(showings.getString("hallNo"),
                 showings.getInt("maxSeatInRow"),
@@ -82,7 +81,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
     }
   }
 
-  @Override public void removeShowing(Showing showing) throws ServerException
+  @Override public void removeShowing(IShowing showing) throws ServerException
   {
     try(Connection connection = getConnection())
     {

@@ -3,7 +3,6 @@ package client.network;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -13,25 +12,25 @@ public interface Client
   void createUser(String userName, String email,String password)
       throws ServerException;
 
-  void addBooking(Showing showing,
-      ArrayList<Seat> seats) throws ServerException;
-  void removeBooking(Booking booking)
+  void addBooking(IShowing showing,
+      ArrayList<ISeat> seats) throws ServerException;
+  void removeBooking(IBooking booking)
       throws ServerException;
-  Movie addMovie(Movie movie)
+  IMovie addMovie(IMovie movie)
       throws ServerException;
-  void removeMovie(Movie movie)
+  void removeMovie(IMovie movie)
       throws ServerException;
-  Showing addShowing(Showing showing)
+  IShowing addShowing(IShowing showing)
       throws ServerException;
-  ArrayList<Movie> getMovieList()
+  ArrayList<IMovie> getMovieList()
       throws ServerException;
-  ArrayList<Showing> getShowingList(Movie movie)
+  ArrayList<IShowing> getShowingList(IMovie movie)
       throws ServerException;
-  ArrayList<Booking> getBookingList()
+  ArrayList<IBooking> getBookingList()
       throws ServerException;
-  ArrayList<Seat> getOccupiedSeats(Showing showing)
+  ArrayList<ISeat> getOccupiedSeats(IShowing showing)
       throws ServerException;
-  Hall getHallByNumber(String hallNo)
+  IHall getHallByNumber(String hallNo)
       throws ServerException;
   ArrayList<Timestamp> getShowingTimesByHallNoAndDate(String hallNo,
       Timestamp timestamp) throws ServerException;
@@ -39,5 +38,5 @@ public interface Client
       throws ServerException;
   void login(String username, String password)
       throws ServerException;
-  void removeShowing(Showing showing) throws ServerException;
+  void removeShowing(IShowing showing) throws ServerException;
 }

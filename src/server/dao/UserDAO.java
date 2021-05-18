@@ -1,14 +1,13 @@
 package server.dao;
 
 import shared.exception.ServerException;
-import shared.transferobjects.User;
-import javax.security.auth.login.LoginException;
+import shared.transferobjects.IUser;
 
 public interface UserDAO
 {
   void create(String userName, String email,String password)
       throws ServerException;
-  User getById(int userId) throws ServerException;
-  User login(String userName, String password)
+  IUser getById(int userId) throws ServerException;
+  IUser login(String userName, String password)
       throws ServerException;
 }

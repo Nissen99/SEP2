@@ -2,7 +2,7 @@ package server.dao;
 
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
+import shared.transferobjects.IMovie;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +17,7 @@ class MovieDAOImplTest
     {
       MovieDAO movieDAO = new MovieDAOImpl();
       movieDAO.create("Spiderman");
-      ArrayList<Movie> movieArrayList = movieDAO.getAllMovies();
+      ArrayList<IMovie> movieArrayList = movieDAO.getAllMovies();
 
       assertEquals("Spiderman", movieArrayList.get(movieArrayList.size()-1).getMovieTitle());
 

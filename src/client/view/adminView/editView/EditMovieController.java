@@ -11,13 +11,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
+import shared.transferobjects.IMovie;
 
 public class EditMovieController
 {
   @FXML public TextField movieTitleTextField;
-  @FXML public TableView<Movie> movieTableView;
-  @FXML public TableColumn<Movie, String> movieTitleColumn;
+  @FXML public TableView<IMovie> movieTableView;
+  @FXML public TableColumn<IMovie, String> movieTitleColumn;
   private ViewModelEditMovie viewModel;
 
   public void init()
@@ -47,7 +47,7 @@ public class EditMovieController
       {
         try
         {
-          Movie movie = movieTableView.getSelectionModel().getSelectedItem();
+          IMovie movie = movieTableView.getSelectionModel().getSelectedItem();
           viewModel.setSelectedMovie(movie);
 
       ViewHandler.getInstance().openView("../view/adminView/editView/editShowingView.fxml");
@@ -82,7 +82,7 @@ public class EditMovieController
   {
     try
     {
-      Movie movie = movieTableView.getSelectionModel().getSelectedItem();
+      IMovie movie = movieTableView.getSelectionModel().getSelectedItem();
       viewModel.removeMovie(movie);
       setUpTableView();
     }

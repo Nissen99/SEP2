@@ -1,7 +1,9 @@
 package server.dao;
 
 import shared.exception.ServerException;
+import shared.transferobjects.IUser;
 import shared.transferobjects.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +35,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
 
 
 
-  @Override public User getById(int userId) throws ServerException
+  @Override public IUser getById(int userId) throws ServerException
   {
     try (Connection connection = getConnection())
     {
@@ -41,7 +43,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
           .prepareStatement("SELECT * FROM User_ WHERE userId = ?");
       statement.setInt(1, userId);
       ResultSet resultSet = statement.executeQuery();
-      User user = null;
+      IUser user = null;
       if (resultSet.next())
       {
         user = new User(resultSet.getInt("userId"),
@@ -57,7 +59,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
 
   }
 
-  @Override public User login(String userName, String password)
+  @Override public IUser login(String userName, String password)
       throws ServerException
 
   {
@@ -68,7 +70,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       statement.setString(1, userName);
       statement.setString(2, password);
       ResultSet resultSet = statement.executeQuery();
-      User user = null;
+      IUser user = null;
       if (resultSet.next())
       {
         user = new User(resultSet.getInt("userId"),

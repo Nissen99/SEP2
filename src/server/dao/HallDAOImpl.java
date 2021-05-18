@@ -3,6 +3,8 @@ package server.dao;
 
 import shared.exception.ServerException;
 import shared.transferobjects.Hall;
+import shared.transferobjects.IHall;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 
 public class HallDAOImpl extends BaseDAO implements HallDAO
 {
-  @Override public Hall create(Hall hall) throws ServerException
+  @Override public IHall create(IHall hall) throws ServerException
   {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("INSERT INTO Hall(hallNo, maxSeatInRow, maxRows) VALUES (?, ?, ?)");
@@ -29,13 +31,13 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
 
   }
 
-  @Override public Hall getHallByNumber(String hallNo) throws ServerException
+  @Override public IHall getHallByNumber(String hallNo) throws ServerException
   {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("SELECT * from Hall where hallNo = ?");
       statement.setString(1, hallNo);
       ResultSet resultSet = statement.executeQuery();
-      Hall hall = null;
+      IHall hall = null;
       if (resultSet.next()){
         hall = new Hall(
             resultSet.getString("hallNo"),

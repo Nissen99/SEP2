@@ -5,9 +5,11 @@ import client.model.ClientModelBooking;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
-import shared.util.PropertyChangeSubject;
+import shared.transferobjects.ISeat;
+import shared.transferobjects.IShowing;
 import shared.transferobjects.Seat;
-import shared.transferobjects.Showing;
+import shared.util.PropertyChangeSubject;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -16,16 +18,16 @@ import java.util.ArrayList;
 public class ViewModelSeat implements PropertyChangeListener,
     PropertyChangeSubject
 {
-  private Showing selectedShowing;
+  private IShowing selectedShowing;
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   private ClientModelBooking clientModel = ModelFactory.getInstance().getModelBooking();
-  private ArrayList<Seat> bookingSeatArrayList;
-  private ArrayList<Seat> occupiedSeatArrayList;
+  private ArrayList<ISeat> bookingSeatArrayList;
+  private ArrayList<ISeat> occupiedSeatArrayList;
   ObservableList<Integer> integerObservableList = FXCollections.observableArrayList();
   private int currentNumber = 0;
 
 
-  public ViewModelSeat(Showing showing)
+  public ViewModelSeat(IShowing showing)
   {
     this.selectedShowing = showing;
     clientModel.addPropertyChangeListener(this::update);
@@ -38,7 +40,7 @@ public class ViewModelSeat implements PropertyChangeListener,
   }
 
 
-  public ArrayList<Seat> getOccupiedSeats() throws ServerException
+  public ArrayList<ISeat> getOccupiedSeats() throws ServerException
   {
     return clientModel.getOccupiedSeats(selectedShowing);
   }
@@ -96,7 +98,7 @@ public class ViewModelSeat implements PropertyChangeListener,
 
   public void addSeat(String seatNo)
   {
-    Seat seat = new Seat();
+    ISeat seat = new Seat();
     seat.setSeatNo(seatNo);
     bookingSeatArrayList.add(seat);
 
@@ -104,7 +106,7 @@ public class ViewModelSeat implements PropertyChangeListener,
 
   public void checkIfSeatOccupied(String id) throws ServerException
   {
-    for (Seat seat : getOccupiedSeats())
+    for (ISeat seat : getOccupiedSeats())
     {
       if (seat.getSeatNo().equals(id))
       {
@@ -116,7 +118,7 @@ public class ViewModelSeat implements PropertyChangeListener,
 
   public boolean seatIsOccupied(String id)
   {
-    for (Seat seat : occupiedSeatArrayList)
+    for (ISeat seat : occupiedSeatArrayList)
     {
       if (seat.getSeatNo().equals(id)){
         return true;

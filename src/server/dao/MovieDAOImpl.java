@@ -1,6 +1,7 @@
 package server.dao;
 
 import shared.exception.ServerException;
+import shared.transferobjects.IMovie;
 import shared.transferobjects.Movie;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 public class MovieDAOImpl extends BaseDAO implements MovieDAO
 {
-  @Override public Movie create(String movieTitle) throws ServerException
+  @Override public IMovie create(String movieTitle) throws ServerException
   {
       try(Connection connection = getConnection())
       {
@@ -31,9 +32,9 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
   }
 
 
-  @Override public ArrayList<Movie> getAllMovies() throws ServerException
+  @Override public ArrayList<IMovie> getAllMovies() throws ServerException
   {
-    ArrayList<Movie> movieArrayList = new ArrayList<>();
+    ArrayList<IMovie> movieArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM Movie");
@@ -51,7 +52,7 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
 
   }
 
-  @Override public void removeMovie(Movie movie) throws ServerException
+  @Override public void removeMovie(IMovie movie) throws ServerException
   {
     System.out.println("Er vi i DAO?");
     try (Connection connection = getConnection()){

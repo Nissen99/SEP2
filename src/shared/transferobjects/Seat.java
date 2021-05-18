@@ -1,8 +1,7 @@
 package shared.transferobjects;
 
-import java.io.Serializable;
 
-public class Seat implements Serializable
+public class Seat implements ISeat
 {
   private String seatNo;
 

@@ -11,7 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
-import shared.transferobjects.Showing;
+import shared.transferobjects.IShowing;
+
 import java.sql.Timestamp;
 
 
@@ -21,7 +22,7 @@ public class ShowingListController
   @FXML public TableColumn<Timestamp, String> ugedagForFremvisning;
   @FXML public TableColumn<Timestamp, String> tidspunktForFremvisning;
   @FXML public Label movieTitle;
-  @FXML public TableView<Showing> tableViewForFilmFremvisninger;
+  @FXML public TableView<IShowing> tableViewForFilmFremvisninger;
 
   private ViewModelShowingList viewModel = ViewModelFactory.getInstance()
       .getShowingList();
@@ -55,7 +56,7 @@ public class ShowingListController
 {
     try
     {
-      Showing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
+      IShowing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
       viewModel.setSelectedShowing(showing);
       ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
     }

@@ -1,19 +1,17 @@
 package client.model;
 
+import shared.transferobjects.*;
 import shared.util.PropertyChangeSubject;
 import shared.exception.ServerException;
-import shared.transferobjects.Booking;
-import shared.transferobjects.Seat;
-import shared.transferobjects.Showing;
 
 import java.util.ArrayList;
 
 public interface ClientModelBooking extends ClientModelShowingList,
     PropertyChangeSubject
 {
-  void addBooking(Showing showing,  ArrayList<Seat> seats)
+  void addBooking(IShowing showing,  ArrayList<ISeat> seats)
       throws ServerException;
-  void removeBooking(Booking booking) throws ServerException;
-  ArrayList<Seat> getOccupiedSeats(Showing showing) throws ServerException;
-  ArrayList<Booking> getBookingList() throws ServerException;
+  void removeBooking(IBooking booking) throws ServerException;
+  ArrayList<ISeat> getOccupiedSeats(IShowing showing) throws ServerException;
+  ArrayList<IBooking> getBookingList() throws ServerException;
 }

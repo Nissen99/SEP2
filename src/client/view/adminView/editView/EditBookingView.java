@@ -8,18 +8,17 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import shared.exception.ServerException;
-import shared.transferobjects.Booking;
-
+import shared.transferobjects.IBooking;
 
 public class EditBookingView
 {
   @FXML private TextField searchBox;
-  @FXML private TableView<Booking> bookingTable;
-  @FXML private TableColumn<Booking, String> bookingId;
-  @FXML private TableColumn<Booking, String> name;
-  @FXML private TableColumn<Booking, String> email;
-  @FXML private TableColumn<Booking, String> title;
-  @FXML private TableColumn<Booking, String> time;
+  @FXML private TableView<IBooking> bookingTable;
+  @FXML private TableColumn<IBooking, String> bookingId;
+  @FXML private TableColumn<IBooking, String> name;
+  @FXML private TableColumn<IBooking, String> email;
+  @FXML private TableColumn<IBooking, String> title;
+  @FXML private TableColumn<IBooking, String> time;
 
   private ViewModelEditBooking viewModel;
 
@@ -58,7 +57,7 @@ public class EditBookingView
 
     try
     {
-      Booking booking = viewModel.getBookingById();
+      IBooking booking = viewModel.getBookingById();
       bookingTable.getSelectionModel().select(booking);
       bookingTable.requestFocus();
       bookingTable.scrollTo(booking);
@@ -75,7 +74,7 @@ public class EditBookingView
 
   public void deleteBooking()
   {
-    Booking booking = bookingTable.getSelectionModel().getSelectedItem();
+    IBooking booking = bookingTable.getSelectionModel().getSelectedItem();
     if (booking == null){
       Alert alert = AlertBox.makeAlert("information","Delete Booking", "No booking selected");
       alert.showAndWait();

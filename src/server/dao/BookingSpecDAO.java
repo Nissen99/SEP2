@@ -1,10 +1,10 @@
 package server.dao;
 
 import shared.exception.ServerException;
-import shared.transferobjects.Booking;
-import shared.transferobjects.Seat;
+import shared.transferobjects.IBooking;
+import shared.transferobjects.ISeat;
 
 public interface BookingSpecDAO
 {
-  void create(Booking booking, Seat seat) throws ServerException;
+  void create(IBooking booking, ISeat seat) throws ServerException;
 }

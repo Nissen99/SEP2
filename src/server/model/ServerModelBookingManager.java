@@ -7,10 +7,7 @@ import server.dao.BookingSpecDAOImpl;
 import server.mail.FileHandler;
 import server.mail.JavaMailUtil;
 import shared.exception.ServerException;
-import shared.transferobjects.Booking;
-import shared.transferobjects.Seat;
-import shared.transferobjects.Showing;
-import shared.transferobjects.User;
+import shared.transferobjects.*;
 import shared.util.ENUM;
 import javax.mail.MessagingException;
 import java.beans.PropertyChangeListener;
@@ -25,17 +22,17 @@ public class ServerModelBookingManager implements ServerModelBooking
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 
-  @Override public void addBooking(Showing showing, User user,
-      ArrayList<Seat> seats) throws ServerException
+  @Override public void addBooking(IShowing showing, IUser user,
+      ArrayList<ISeat> seats) throws ServerException
   {
     if (seats.isEmpty()){
       throw new ServerException("Sæderne du havde valgt blev optaget");
     }
-    Booking booking;
+    IBooking booking;
     try
     {
       booking = bookingDAO.create(showing,user);
-      for (Seat seat : seats)
+      for (ISeat seat : seats)
       {
         bookingSpecDAO.create(booking, seat);
       }
@@ -50,21 +47,21 @@ public class ServerModelBookingManager implements ServerModelBooking
     propertyChangeSupport.firePropertyChange(String.valueOf(ENUM.ADDBOOKING), null, "booking");
   }
 
-  @Override public void removeBooking(Booking booking) throws ServerException
+  @Override public void removeBooking(IBooking booking) throws ServerException
 
   {
     bookingDAO.removeBooking(booking);
 
   }
 
-  @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
+  @Override public ArrayList<ISeat> getOccupiedSeats(IShowing showing)
       throws ServerException
 
   {
     return bookingDAO.getOccupiedSeats(showing);
   }
 
-  @Override public ArrayList<Booking> getBookingList()
+  @Override public ArrayList<IBooking> getBookingList()
       throws ServerException
   {
     return bookingDAO.getAllBookings();

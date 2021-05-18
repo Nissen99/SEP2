@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class BookingDAOImpl extends BaseDAO implements BookingDAO
 {
 
-  @Override public Booking create(Showing showing, User user)
+  @Override public IBooking create(IShowing showing, IUser user)
       throws ServerException
   {
     try (Connection connection = getConnection())
@@ -25,7 +25,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next())
       {
-        return new Booking(keys.getInt("bookingId"), showing, user);
+        return new Booking(keys.getInt("bookingId"), (Showing)showing, (User)user);
       }
       else
       {
@@ -39,9 +39,9 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
   }
 
-  @Override public ArrayList<Booking> getAllBookings() throws ServerException
+  @Override public ArrayList<IBooking> getAllBookings() throws ServerException
   {
-    ArrayList<Booking> bookingArrayList = new ArrayList<>();
+    ArrayList<IBooking> bookingArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("SELECT s.movieId, title, b.userId, username, email,password, hallNo, b.showingId, time, bookingId\n"
@@ -51,17 +51,20 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       ResultSet bookings = statement.executeQuery();
       while (bookings.next()){
 
-        Movie movie = new Movie(bookings.getInt("movieId"),
+        /**
+         * Klause
+         */
+        IMovie movie = new Movie(bookings.getInt("movieId"),
             bookings.getString("title"));
-        User user = new User(bookings.getInt("userId"),
+        IUser user = new User(bookings.getInt("userId"),
             bookings.getString("username"),
             bookings.getString("email"),"password");
-        Hall hall = new Hall(bookings.getString("hallNo"),16,14);
-        Showing showing = new Showing(bookings.getInt("showingId"),
-            movie,
-            bookings.getTimestamp("time"), hall);
-        Booking booking = new Booking(bookings.getInt("bookingId"),
-            showing,user);
+        IHall hall = new Hall(bookings.getString("hallNo"),16,14);
+        IShowing showing = new Showing(bookings.getInt("showingId"),
+            (Movie)movie,
+            bookings.getTimestamp("time"), (Hall)hall);
+        IBooking booking = new Booking(bookings.getInt("bookingId"),
+            (Showing)showing,(User)user);
 
         bookingArrayList.add(booking);
       }
@@ -74,7 +77,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     return bookingArrayList;
   }
 
-  @Override public void removeBooking(Booking booking) throws ServerException
+  @Override public void removeBooking(IBooking booking) throws ServerException
   {
     try (Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("DELETE FROM Booking WHERE bookingId = ?");
@@ -88,11 +91,11 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
   }
 
-  @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
+  @Override public ArrayList<ISeat> getOccupiedSeats(IShowing showing)
       throws ServerException
 
   {
-    ArrayList<Seat> seatArrayList = new ArrayList<>();
+    ArrayList<ISeat> seatArrayList = new ArrayList<>();
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
@@ -102,7 +105,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
 
       while (resultSet.next())
       {
-        Seat seat = new Seat();
+        ISeat seat = new Seat();
         seat.setSeatNo(resultSet.getString("seatNo"));
         seatArrayList.add(seat);
       }

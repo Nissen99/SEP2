@@ -1,17 +1,13 @@
 package shared.transferobjects;
 
-
-import java.io.Serializable;
-
-
-public class Booking implements Serializable
+public class Booking implements IBooking
 {
   private int bookingId;
-  private Showing showing;
-  private User user;
+  private IShowing showing;
+  private IUser user;
 
 
-  public Booking(int bookingId, Showing showing, User user)
+  public Booking(int bookingId, IShowing showing, IUser user)
   {
     this.showing = showing;
     this.user = user;
@@ -23,12 +19,12 @@ public class Booking implements Serializable
     return bookingId;
   }
 
-  public Showing getShowing()
+  public IShowing getShowing()
   {
     return showing;
   }
 
-  public User getUser(){return user;}
+  public IUser getUser(){return user;}
 
   public String toString(){
     return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getUserName();

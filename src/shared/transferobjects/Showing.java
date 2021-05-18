@@ -1,17 +1,16 @@
 package shared.transferobjects;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-public class Showing implements Serializable
+public class Showing implements IShowing
 {
   private Timestamp timestamp;
-  private Movie movie;
+  private IMovie movie;
   private int showingId;
-  private Hall hall;
+  private IHall hall;
 
-  public Showing(int showingId, Movie movie, Timestamp timestamp, Hall hall)
+  public Showing(int showingId, IMovie movie, Timestamp timestamp, IHall hall)
   {
     this.movie = movie;
     this.timestamp = timestamp;
@@ -24,7 +23,7 @@ public class Showing implements Serializable
    * Her overloader vi construtoren da vi generer ID gennem database, men stadigvæk
    * gerne vil kunne oprette showings så de kan sendes gennem systemet
    */
-  public Showing(Movie movie, Timestamp timestamp, Hall hall)
+  public Showing(IMovie movie, Timestamp timestamp, IHall hall)
 {
   this.movie = movie;
   this.timestamp = timestamp;
@@ -37,12 +36,12 @@ public class Showing implements Serializable
 
   }
 
-  public Hall getHall()
+  public IHall getHall()
   {
     return hall;
   }
 
-  public Movie getMovie()
+  public IMovie getMovie()
   {
     return movie;
   }

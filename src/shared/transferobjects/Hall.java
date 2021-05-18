@@ -1,12 +1,11 @@
 package shared.transferobjects;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Hall implements Serializable
+public class Hall implements IHall
 {
   private String hallNo;
-  private ArrayList<Seat> seatArrayList = new ArrayList<>();
+  private ArrayList<ISeat> seatArrayList = new ArrayList<>();
   private int maxSeatsInRow;
   private int maxRows;
 
@@ -36,15 +35,16 @@ public class Hall implements Serializable
     return hallNo;
   }
 
-  public ArrayList<Seat> getSeats()
+  public ArrayList<ISeat> getSeats()
   {
     return seatArrayList;
   }
 
-  public Seat addSeat(Seat seat)
+  public ISeat addSeat(ISeat seat)
   {
     seatArrayList.add(seat);
     return seat;
   }
+
 
 }

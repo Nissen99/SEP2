@@ -9,9 +9,8 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
-import shared.transferobjects.Hall;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.transferobjects.*;
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 
 public class ViewModelAddShowing
 {
-  private Movie selectedMovie;
+  private IMovie selectedMovie;
   private ClientModelShowing clientModel = ModelFactory.getInstance().getModelShowing();
   private ObservableList<String> observableList = FXCollections.observableArrayList();
   private Property<LocalDate> localDateProperty = new SimpleObjectProperty<>();
@@ -64,7 +63,8 @@ public class ViewModelAddShowing
 
     if (0 < inputTimestamp.compareTo(currentTime))
     {
-      Showing showing = new Showing(selectedMovie, inputTimestamp, getHallByNumber(hallNo.get()));
+      //InterfaceShowing showing = new Showing((Movie)selectedMovie, inputTimestamp, (Hall)getHallByNumber(hallNo.get()));
+      IShowing showing = new Showing(selectedMovie, inputTimestamp, getHallByNumber(hallNo.get()));
       clientModel.addShowing(showing);
     }else {
       throw new IllegalArgumentException("Invalid input - Timestamp is before current time.");
@@ -94,14 +94,14 @@ public class ViewModelAddShowing
     return Timestamp.valueOf(localDateTime);
   }
 
-  public Hall getHallByNumber(String hallNo)
+  public IHall getHallByNumber(String hallNo)
       throws ServerException
   {
 
     return clientModel.getHallByNumber(hallNo);
   }
 
-  public void setSelectedMovie(Movie selectedMovie)
+  public void setSelectedMovie(IMovie selectedMovie)
   {
     this.selectedMovie = selectedMovie;
   }

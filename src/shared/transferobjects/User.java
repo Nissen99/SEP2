@@ -1,12 +1,9 @@
 package shared.transferobjects;
 
-import java.io.Serializable;
-
-
 /**
  * Simple Klasse der holder informationer omkring en bruger
  */
-public class User implements Serializable
+public class User implements IUser
 {
   private String userName;
   private int userID;

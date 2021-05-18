@@ -1,18 +1,18 @@
 package server.dao;
 
 import shared.exception.ServerException;
-import shared.transferobjects.Booking;
-import shared.transferobjects.Seat;
-import shared.transferobjects.Showing;
-import shared.transferobjects.User;
-import java.sql.SQLException;
+import shared.transferobjects.IBooking;
+import shared.transferobjects.ISeat;
+import shared.transferobjects.IShowing;
+import shared.transferobjects.IUser;
+
 import java.util.ArrayList;
 
 public interface BookingDAO
 {
-  Booking create(Showing showing, User user) throws ServerException;
-  ArrayList<Booking> getAllBookings() throws ServerException;
-  void removeBooking(Booking booking) throws ServerException;
-  ArrayList<Seat> getOccupiedSeats(Showing showing) throws ServerException;
+  IBooking create(IShowing showing, IUser user) throws ServerException;
+  ArrayList<IBooking> getAllBookings() throws ServerException;
+  void removeBooking(IBooking booking) throws ServerException;
+  ArrayList<ISeat> getOccupiedSeats(IShowing showing) throws ServerException;
 
 }

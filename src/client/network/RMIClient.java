@@ -1,11 +1,12 @@
 package client.network;
 
 import shared.exception.ServerException;
+import shared.transferobjects.*;
+
 import shared.util.PropertyChangeSubject;
 import shared.util.ENUM;
 import shared.networking.ClientCallBack;
 import shared.networking.RMIServer;
-import shared.transferobjects.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -21,7 +22,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 {
   private RMIServer rmiServer;
   private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-  private User user;
+  private IUser user;
 
   @Override
   public void startClient() {
@@ -56,8 +57,8 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   //Når man logger ind gemmer vi hvilken User der er logget ind
   //Den sender vi med i addBooking
-  @Override public void addBooking(Showing showing,
-      ArrayList<Seat> seats) throws ServerException
+  @Override public void addBooking(IShowing showing,
+      ArrayList<ISeat> seats) throws ServerException
   {
     try
     {
@@ -69,7 +70,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public void removeBooking(Booking booking)
+  @Override public void removeBooking(IBooking booking)
       throws ServerException
 
   {
@@ -83,7 +84,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public Movie addMovie(Movie movie)
+  @Override public IMovie addMovie(IMovie movie)
       throws ServerException
   {
     try
@@ -96,7 +97,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public void removeMovie(Movie movie)
+  @Override public void removeMovie(IMovie movie)
       throws ServerException
   {
     try
@@ -110,7 +111,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public Showing addShowing(Showing showing)
+  @Override public IShowing addShowing(IShowing showing)
       throws ServerException
   {
     try
@@ -124,7 +125,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public ArrayList<Movie> getMovieList() throws ServerException
+  @Override public ArrayList<IMovie> getMovieList() throws ServerException
   {
     try
     {
@@ -136,7 +137,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public ArrayList<Showing> getShowingList(Movie movie)
+  @Override public ArrayList<IShowing> getShowingList(IMovie movie)
       throws ServerException
   {
     try
@@ -149,7 +150,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public ArrayList<Booking> getBookingList() throws ServerException
+  @Override public ArrayList<IBooking> getBookingList() throws ServerException
   {
     try
     {
@@ -163,7 +164,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   }
 
-  @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
+  @Override public ArrayList<ISeat> getOccupiedSeats(IShowing showing)
       throws ServerException
   {
     try
@@ -177,7 +178,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public Hall getHallByNumber(String hallNo)
+  @Override public IHall getHallByNumber(String hallNo)
       throws ServerException
   {
     try
@@ -234,7 +235,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 
   }
 
-  @Override public void removeShowing(Showing showing) throws ServerException
+  @Override public void removeShowing(IShowing showing) throws ServerException
   {
     try
     {

@@ -2,10 +2,8 @@ package client.model;
 
 import client.network.RMIClient;
 import shared.exception.ServerException;
-import shared.transferobjects.Booking;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Seat;
-import shared.transferobjects.Showing;
+import shared.transferobjects.*;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -27,8 +25,8 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
-  @Override public void addBooking(Showing showing,
-      ArrayList<Seat> seats)
+  @Override public void addBooking(IShowing showing,
+      ArrayList<ISeat> seats)
       throws ServerException
   {
 
@@ -39,12 +37,12 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   }
 
 
-  @Override public void removeBooking(Booking booking) throws ServerException
+  @Override public void removeBooking(IBooking booking) throws ServerException
   {
     super.getClient().removeBooking(booking);
   }
 
-  @Override public ArrayList<Seat> getOccupiedSeats(Showing showing)
+  @Override public ArrayList<ISeat> getOccupiedSeats(IShowing showing)
       throws ServerException
 
   {
@@ -52,7 +50,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   }
 
 
-  @Override public ArrayList<Booking> getBookingList() throws ServerException
+  @Override public ArrayList<IBooking> getBookingList() throws ServerException
 
   {
     return super.getClient().getBookingList();
@@ -60,14 +58,14 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
 
 
 
-  @Override public ArrayList<Showing> getShowingList(Movie movie)
+  @Override public ArrayList<IShowing> getShowingList(IMovie movie)
       throws ServerException
   {
 
     return super.getClient().getShowingList(movie);
   }
 
-  @Override public ArrayList<Movie> getMovieList() throws ServerException
+  @Override public ArrayList<IMovie> getMovieList() throws ServerException
 
   {
     return super.getClient().getMovieList();

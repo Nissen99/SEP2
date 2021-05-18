@@ -1,14 +1,12 @@
 package client.model;
 
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
+import shared.transferobjects.IMovie;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 public interface ClientModelMovie extends ClientModel
 {
-  Movie addMovie(Movie movie)
+  IMovie addMovie(IMovie movie)
       throws ServerException;
-  void removeMovie(Movie movie) throws ServerException;
+  void removeMovie(IMovie movie) throws ServerException;
 }

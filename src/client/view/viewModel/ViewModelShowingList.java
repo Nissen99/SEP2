@@ -7,8 +7,8 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
+import shared.transferobjects.IMovie;
+import shared.transferobjects.IShowing;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ import java.util.ArrayList;
 public class ViewModelShowingList
   {
 
-    private Movie movie;
+    private IMovie movie;
     private ClientModelShowing clientModel = ModelFactory.getInstance()
         .getModelShowing();
-    private ObservableList<Showing> showings = FXCollections.observableArrayList();
-    private Showing selectedShowing;
+    private ObservableList<IShowing> showings = FXCollections.observableArrayList();
+    private IShowing selectedShowing;
     private StringProperty movieTitle = new SimpleStringProperty();
 
     public StringProperty movieTitleProperty()
@@ -28,10 +28,10 @@ public class ViewModelShowingList
       return movieTitle;
     }
 
-    public ObservableList<Showing> getAllShowings()
+    public ObservableList<IShowing> getAllShowings()
         throws ServerException
     {
-      ArrayList<Showing> tempShowings = new ArrayList<>();
+      ArrayList<IShowing> tempShowings = new ArrayList<>();
 
       showings.removeAll(showings);
 
@@ -39,7 +39,7 @@ public class ViewModelShowingList
 
       Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
-      for (Showing showing: tempShowings)
+      for (IShowing showing: tempShowings)
       {
         if (0 < showing.getTimestamp().compareTo(currentTime)) {
           showings.add(showing);
@@ -53,19 +53,19 @@ public class ViewModelShowingList
     return movie.getMovieTitle();
     }
 
-    public void setSelectedShowing(Showing showing) throws NullPointerException{
+    public void setSelectedShowing(IShowing showing) throws NullPointerException{
       if (showing == null){
         throw new NullPointerException("No showing selected");
       }
     this.selectedShowing = showing;
     }
 
-    public Showing getSelectedShowing()
+    public IShowing getSelectedShowing()
     {
       return selectedShowing;
     }
 
-    public void setSelectedMovie(Movie selectedMovie)
+    public void setSelectedMovie(IMovie selectedMovie)
     {
       this.movie = selectedMovie;
       movieTitle.setValue(getMovieTitle());

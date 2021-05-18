@@ -1,7 +1,8 @@
 package server.dao;
 
 import shared.exception.ServerException;
-import shared.transferobjects.Hall;
+import shared.transferobjects.IHall;
+import shared.transferobjects.ISeat;
 import shared.transferobjects.Seat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 
 public class SeatDAOImpl extends BaseDAO implements SeatDAO
 {
-  @Override public void create(Seat seat, Hall hall) throws ServerException
+  @Override public void create(ISeat seat, IHall hall) throws ServerException
   {
     try (Connection connection = getConnection())
     {
@@ -27,9 +28,9 @@ public class SeatDAOImpl extends BaseDAO implements SeatDAO
 
   }
 
-  @Override public Seat getSeatBySeatNo(String seatNo) throws ServerException
+  @Override public ISeat getSeatBySeatNo(String seatNo) throws ServerException
   {
-    Seat seat = null;
+    ISeat seat = null;
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM Seat WHERE seatNo = ?");

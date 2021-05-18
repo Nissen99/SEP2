@@ -2,11 +2,10 @@ package client.model;
 
 import client.network.RMIClient;
 import shared.exception.ServerException;
-import shared.transferobjects.Hall;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+import shared.transferobjects.IHall;
+import shared.transferobjects.IMovie;
+import shared.transferobjects.IShowing;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -17,20 +16,21 @@ public class ClientModelShowingManager extends ClientModelManager implements Cli
     super(client);
   }
 
-  @Override public ArrayList<Showing> getShowingList(Movie movie)
+  @Override public ArrayList<IShowing> getShowingList(
+      IMovie movie)
       throws ServerException
   {
 
     return super.getClient().getShowingList(movie);
   }
 
-  @Override public Showing addShowing(Showing showing)
+  @Override public IShowing addShowing(IShowing showing)
       throws ServerException
   {
     return super.getClient().addShowing(showing);
   }
 
-  @Override public Hall getHallByNumber(String hallNo)
+  @Override public IHall getHallByNumber(String hallNo)
       throws ServerException
   {
     return super.getClient().getHallByNumber(hallNo);
@@ -49,7 +49,7 @@ public class ClientModelShowingManager extends ClientModelManager implements Cli
     return super.getClient().getHallNumbers();
   }
 
-  @Override public void removeShowing(Showing showing) throws ServerException
+  @Override public void removeShowing(IShowing showing) throws ServerException
   {
     super.getClient().removeShowing(showing);
   }

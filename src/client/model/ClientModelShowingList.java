@@ -1,14 +1,14 @@
 package client.model;
 
 import shared.exception.ServerException;
-import shared.transferobjects.Movie;
-import shared.transferobjects.Showing;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+import shared.transferobjects.IMovie;
+import shared.transferobjects.IShowing;
+
+
 import java.util.ArrayList;
 
 public interface ClientModelShowingList extends ClientModel
 {
-  ArrayList<Showing> getShowingList(Movie movie)
+  ArrayList<IShowing> getShowingList(IMovie movie)
       throws ServerException;
 }

@@ -10,10 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import shared.exception.ServerException;
 
-import javax.security.auth.login.LoginException;
-import java.io.IOException;
-import java.sql.SQLException;
-
 public class LoginViewController
 {
   @FXML private TextField usernameField;

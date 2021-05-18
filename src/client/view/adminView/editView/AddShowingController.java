@@ -25,7 +25,6 @@ public class AddShowingController
   timePicker.valueProperty().bindBidirectional(viewModel.localTimePropertyProperty());
   hallNo.valueProperty().bindBidirectional(viewModel.hallNoProperty());
     setChoiceBox();
-
   }
 
   public void back()

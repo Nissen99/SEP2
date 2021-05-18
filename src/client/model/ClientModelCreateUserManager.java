@@ -2,8 +2,7 @@ package client.model;
 
 import client.network.RMIClient;
 import shared.exception.ServerException;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 
 public class ClientModelCreateUserManager extends ClientModelManager implements ClientModelCreateUser
 {
