@@ -17,31 +17,31 @@ public class ModelTestSetup
   private UserDAO userDAO = new UserDAOImpl();
   private BookingDAO bookingDAO = new BookingDAOImpl();
   private ResetDAO resetDAO = new ResetDAO();
-  private Hall hall = new Hall("A", 5, 5);
-  private Showing showing = null;
+  private IHall hall = new Hall("A", 5, 5);
+  private IShowing showing = null;
   private String movieTitle = "Jackass";
-  private Movie movie = new Movie(1, movieTitle);
+  private IMovie movie = new Movie(1, movieTitle);
   private Timestamp time = new Timestamp(121, 6, 15,
       13, 30, 0, 0);
   private String userName = "TestPerson";
   private String email = "test@test.dk";
   private String password = "Test1234";
-  private User user = new User(1, userName, email, password);
-  private Booking booking = new Booking(1, showing, user);
+  private IUser user = new User(1, userName, email, password);
+  private IBooking booking = new Booking(1, showing, user);
   private RMIClient client = ClientFactory.getInstance().getClient();
 
   //Lists
-  private ArrayList<Movie> movieList = new ArrayList<>();
-  private ArrayList<Showing> showingList = new ArrayList<>();
-  private ArrayList<Booking> bookingList = new ArrayList<>();
-  private ArrayList<User> userList = new ArrayList<>();
+  private ArrayList<IMovie> movieList = new ArrayList<>();
+  private ArrayList<IShowing> showingList = new ArrayList<>();
+  private ArrayList<IBooking> bookingList = new ArrayList<>();
+  private ArrayList<IUser> userList = new ArrayList<>();
 
-  public Hall getHall()
+  public IHall getHall()
   {
     return hall;
   }
 
-  public Showing getShowing()
+  public IShowing getShowing()
   {
     return showing;
   }
@@ -51,7 +51,7 @@ public class ModelTestSetup
     return movieTitle;
   }
 
-  public Movie getMovie()
+  public IMovie getMovie()
   {
     return movie;
   }
@@ -61,7 +61,7 @@ public class ModelTestSetup
     return time;
   }
 
-  public Booking getBooking()
+  public IBooking getBooking()
   {
     return booking;
   }
@@ -81,27 +81,27 @@ public class ModelTestSetup
     return password;
   }
 
-  public User getUser()
+  public IUser getUser()
   {
     return user;
   }
 
-  public ArrayList<Movie> getMovieList()
+  public ArrayList<IMovie> getMovieList()
   {
     return movieList;
   }
 
-  public ArrayList<Showing> getShowingList()
+  public ArrayList<IShowing> getShowingList()
   {
     return showingList;
   }
 
-  public ArrayList<Booking> getBookingList()
+  public ArrayList<IBooking> getBookingList()
   {
     return bookingList;
   }
 
-  public ArrayList<User> getUserList()
+  public ArrayList<IUser> getUserList()
   {
     return userList;
   }

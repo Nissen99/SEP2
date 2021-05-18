@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.util.SeatNoCalculator;
 import shared.transferobjects.Hall;
+import shared.transferobjects.IHall;
+import shared.transferobjects.ISeat;
 import shared.transferobjects.Seat;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class HallTest
 {
 
-  private Hall hall;
+  private IHall hall;
   private SeatNoCalculator seatNoCalculator;
 
   @BeforeEach
@@ -47,8 +49,8 @@ class HallTest
   @Test
   public void addSeatskalAddeSeatMedSeatNoOgRowNo(){
 
-    Hall hall = new Hall("S", 1,1);
-    Seat seat = new Seat();
+    IHall hall = new Hall("S", 1,1);
+    ISeat seat = new Seat();
     seat.setSeatNo(seatNoCalculator.calculateSeatNo());
     hall.addSeat(seat);
 
@@ -60,7 +62,7 @@ class HallTest
   public void addSeatskalAddeSeatMedSeatNoOgRowNoMany(){
 
     for (int i = 0; 12 > i;i++){
-      Seat seat = new Seat();
+      ISeat seat = new Seat();
       seat.setSeatNo(seatNoCalculator.calculateSeatNo());
       hall.addSeat(seat);
     }
@@ -71,8 +73,8 @@ class HallTest
   @Test
   public void getSeatsSkalReturnArrayListAfSeats(){
 
-    Seat seat = new Seat();
-    Seat seat2 = new Seat();
+    ISeat seat = new Seat();
+    ISeat seat2 = new Seat();
 
     seat.setSeatNo(seatNoCalculator.calculateSeatNo());
     seat.setSeatNo(seatNoCalculator.calculateSeatNo());
@@ -85,16 +87,16 @@ class HallTest
 
   @Test
   public void derIkkeKanAddesForMangeSeats(){
-    Hall hall = new Hall("S", 10, 10);
+    IHall hall = new Hall("S", 10, 10);
     SeatNoCalculator seatNoCalculator1 = new SeatNoCalculator(hall.getHallNo(), hall.getMaxSeatsInRow(), hall.getMaxRows());
     for (int i = 0; i < 100; i++)
     {
-      Seat seat = new Seat();
+      ISeat seat = new Seat();
       seat.setSeatNo(seatNoCalculator1.calculateSeatNo());
       hall.addSeat(seat);
     }
 
-    Seat seat = new Seat();
+    ISeat seat = new Seat();
 
 
     assertThrows(IllegalStateException.class, () -> seat.setSeatNo(seatNoCalculator1.calculateSeatNo()));

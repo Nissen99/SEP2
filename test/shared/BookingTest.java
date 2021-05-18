@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BookingTest
 {
-  Showing showing;
-  Hall hall;
-  Movie movie;
+  IShowing showing;
+  IHall hall;
+  IMovie movie;
   Timestamp rightNow;
-  User user;
-  Booking booking;
+  IUser user;
+  IBooking booking;
 
   @BeforeEach
   public void setUp() {
@@ -29,7 +29,7 @@ class BookingTest
 
     for (int i = 0; i < hall.getMaxRows() * hall.getMaxSeatsInRow(); i++)
     {
-      Seat seat = new Seat();
+      ISeat seat = new Seat();
       seat.setSeatNo(seatNoCalculator.calculateSeatNo());
       hall.addSeat(seat);
     }

@@ -43,7 +43,6 @@ public class ViewModelEditBooking
     clientModel.removeBooking(booking);
   }
 
-  public IBooking getBookingById(){
   //Vi parser search til en int, hvis det ikke kan lade sig gøre ved vi at
   //brugeren ikke har indtastet et gyldigt id, og kaster en IllegalArgument
   public IBooking getBookingById(){
