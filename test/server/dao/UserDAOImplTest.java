@@ -5,9 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
 import shared.transferobjects.User;
-
 import static org.junit.jupiter.api.Assertions.*;
-import java.sql.SQLException;
 
 class UserDAOImplTest
 {

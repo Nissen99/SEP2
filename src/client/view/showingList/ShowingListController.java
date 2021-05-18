@@ -3,6 +3,7 @@ package client.view.showingList;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
+import client.view.Controller;
 import client.view.viewModel.ViewModelShowingList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,7 +17,7 @@ import shared.transferobjects.IShowing;
 import java.sql.Timestamp;
 
 
-public class ShowingListController
+public class ShowingListController implements Controller
 {
   @FXML public TableColumn<Timestamp, String> datoerForFremvisning;
   @FXML public TableColumn<Timestamp, String> ugedagForFremvisning;
@@ -48,7 +49,7 @@ public class ShowingListController
     catch (ServerException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.showAndWait();
+      alert.show();
     }
   }
 
@@ -58,16 +59,16 @@ public class ShowingListController
     {
       IShowing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
       viewModel.setSelectedShowing(showing);
-      ViewHandler.getInstance().openView("../view/seatView/seatView.fxml");
+      ViewHandler.getInstance().openView("Seat");
     }
     catch (NullPointerException e){
       Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.showAndWait();
+      alert.show();
     }
   }
 
 public void backButton()
 {
-  ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+  ViewHandler.getInstance().openView("Movie List");
 }
 }

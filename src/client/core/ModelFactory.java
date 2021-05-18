@@ -3,7 +3,7 @@ package client.core;
 import client.model.*;
 
 /**
- * Singleton
+ * Factory og Singleton
  */
 public class ModelFactory
 {

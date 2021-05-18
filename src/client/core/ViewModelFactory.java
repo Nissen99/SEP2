@@ -4,7 +4,7 @@ import client.view.viewModel.*;
 
 
 /**
- * Singleton
+ * Factory og Singleton
  */
 public class ViewModelFactory
 {

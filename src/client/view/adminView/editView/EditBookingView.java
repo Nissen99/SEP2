@@ -3,6 +3,7 @@ package client.view.adminView.editView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
+import client.view.Controller;
 import client.view.viewModel.ViewModelEditBooking;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -12,10 +13,11 @@ import shared.transferobjects.IBooking;
 
 
 /**
- *
+ * Controller til editBookingView, står for at læse bruger inputs, dette er gjort
+ * gennem bindings med viewModellen.
  */
 
-public class EditBookingView
+public class EditBookingView implements Controller
 {
   @FXML private TextField searchBox;
   @FXML private TableView<IBooking> bookingTable;
@@ -71,10 +73,10 @@ public class EditBookingView
     }catch (IllegalArgumentException e)
     {
       Alert alert = AlertBox.makeAlert("information", "Error!", "Invalid input");
-      alert.showAndWait();
+      alert.show();
     }catch (NullPointerException e){
       Alert alert = AlertBox.makeAlert("information", "Error!", "No booking found, Id: " + viewModel.getSearch());
-      alert.showAndWait();
+      alert.show();
     }
     searchBox.clear();
   }
@@ -85,7 +87,7 @@ public class EditBookingView
     IBooking booking = bookingTable.getSelectionModel().getSelectedItem();
     if (booking == null){
       Alert alert = AlertBox.makeAlert("information","Delete Booking", "No booking selected");
-      alert.showAndWait();
+      alert.show();
     }else
     {
       Alert alert = AlertBox.makeAlert("confirmation", "Deleting Booking",
@@ -102,7 +104,7 @@ public class EditBookingView
           catch (ServerException e)
           {
            Alert serverAlert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-            serverAlert.showAndWait();
+            serverAlert.show();
            }
         }
       });
@@ -111,7 +113,7 @@ public class EditBookingView
 
   public void back()
   {
-    ViewHandler.getInstance().openView("../view/adminView/adminView.fxml");
+    ViewHandler.getInstance().openView("Admin");
   }
 }
 

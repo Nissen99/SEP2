@@ -3,7 +3,7 @@ package client.core;
 import client.network.RMIClient;
 
 /**
- * Singleton og starter client
+ * Factory, Singleton og starter client
  */
 
 public class ClientFactory

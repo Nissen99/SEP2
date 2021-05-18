@@ -3,6 +3,7 @@ package client.view.seatView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
+import client.view.Controller;
 import client.view.viewModel.ViewModelSeat;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -17,26 +18,33 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import shared.exception.ServerException;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
-public class SeatViewController implements PropertyChangeListener
+/**
+ * Controller til seatView, står for at læse bruger inputs, dette er gjort
+ * gennem Panes (et pane = et sæde) med confrim/back kanp.
+ *
+ * Vi har 2 arrayLister af Panes
+ * paneArrayList er en arrayList med samtlige panes på viewet.
+ * sekectedPane er en arrayList af de panes man har valgt.
+ */
+
+public class SeatViewController implements PropertyChangeListener, Controller
 {
 
   @FXML public ChoiceBox<Integer> numberOfSeats;
   @FXML private AnchorPane anchorPane;
-  private ArrayList<Pane> paneArrayList = new ArrayList<>();
-  private ArrayList<Pane> selectedPane = new ArrayList<>();
+  private ArrayList<Pane> paneArrayList = new ArrayList<>(); //liste af alle panes
+  private ArrayList<Pane> selectedPane = new ArrayList<>(); //Liste af valgte
   private ViewModelSeat viewModel;
 
   public void init()
   {
-
     viewModel = ViewModelFactory.getInstance().getSeatVM();
 
-    updateOccupiedSeatCatch();
+    updateOccupiedSeat();
 
     setPaneList();
 
@@ -48,7 +56,8 @@ public class SeatViewController implements PropertyChangeListener
 
    }
 
-  private void updateOccupiedSeatCatch()
+
+  private void updateOccupiedSeat()
   {
     try
     {
@@ -57,10 +66,13 @@ public class SeatViewController implements PropertyChangeListener
     catch (ServerException e)
     {
     Alert alert = AlertBox.makeAlert("information", "Error", e.getMessage());
-    alert.showAndWait();
+    alert.show();
     }
   }
 
+  /**
+   * Her ligges samtlige panes i vores paneArrayList, for at kunne tilgå paneId's
+   */
   private void setPaneList()
   {
     for (Node node : getAllNodes(anchorPane))
@@ -70,7 +82,6 @@ public class SeatViewController implements PropertyChangeListener
        paneArrayList.add((Pane) node);
       }
     }
-
   }
 
   private boolean checkPaneAndNotVboxOrHbox(Node node)
@@ -78,6 +89,7 @@ public class SeatViewController implements PropertyChangeListener
     return node instanceof Pane && (!(node instanceof VBox
         || node instanceof HBox));
   }
+
 
   private void setChoiceBox()
   {
@@ -198,7 +210,7 @@ public class SeatViewController implements PropertyChangeListener
     if (selectedPane.size() == 0)
     {
       Alert alert2 = AlertBox.makeAlert("Information","Error","No seats has been selected");
-      alert2.showAndWait();
+      alert2.show();
     }
     else
     {
@@ -221,14 +233,14 @@ public class SeatViewController implements PropertyChangeListener
 
             Alert alert1 = AlertBox.makeAlert("Information", "Booking made",
                 "You have successfully made a booking. An email has been sent to your mailbox ");
-            alert1.showAndWait();
+            alert1.show();
 
-            ViewHandler.getInstance().openView("../view/movieList/movieListView.fxml");
+            ViewHandler.getInstance().openView("Movie List");
           }
           catch (ServerException e)
           {
             Alert alertException = AlertBox.makeAlert("information", "Error!", e.getMessage());
-            alertException.showAndWait();
+            alertException.show();
           }
         }
       });
@@ -241,13 +253,13 @@ public class SeatViewController implements PropertyChangeListener
     //Når vi skifter view er der ingen grund til vi stadigvæk lytter
     viewModel.removePropertyChangeListener(this);
     ViewHandler.getInstance()
-        .openView("../view/showingList/showingListView.fxml");
+        .openView("Showing List");
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(() -> {
-        updateOccupiedSeatCatch();
+        updateOccupiedSeat();
         selectedPaneTakken();
         setOccupiedColor();
 

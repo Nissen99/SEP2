@@ -1,5 +1,6 @@
 package client.core;
 
+import client.view.Controller;
 import client.view.adminView.AdminViewController;
 import client.view.adminView.editView.AddShowingController;
 import client.view.adminView.editView.EditBookingView;
@@ -16,6 +17,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Singleton
@@ -24,11 +27,23 @@ import java.io.IOException;
 public class ViewHandler
 {
 
+  private Map<String, String> viewMap;
   private static ViewHandler viewHandler;
   private Stage stage;
 
   private ViewHandler()
   {
+    viewMap = new HashMap<>();
+    viewMap.put("Movie List", "movieList/movieList");
+    viewMap.put("Showing List", "showingList/showingList");
+    viewMap.put("Seat", "seatView/seat");
+    viewMap.put("Login", "loginView/login");
+    viewMap.put("Create User", "createUserView/createUser");
+    viewMap.put("Edit Movie", "adminView/editView/editMovie");
+    viewMap.put("Edit Showing", "adminView/editView/editShowing");
+    viewMap.put("Add Showing", "adminView/editView/addShowing");
+    viewMap.put("Admin", "adminView/admin");
+    viewMap.put("Edit Booking", "adminView/editView/editBooking");
   }
 
   public static ViewHandler getInstance()
@@ -48,7 +63,7 @@ public class ViewHandler
   public void start(Stage stage)
   {
     setStage(stage);
-    openView("../view/loginView/loginView.fxml");
+    openView("Login");
   }
 
   public void openView(String viewToOpen)
@@ -59,80 +74,16 @@ public class ViewHandler
 
     try
     {
-      loader.setLocation(getClass().getResource(viewToOpen));
+      String pathToView = viewMap.get(viewToOpen);
+      loader.setLocation(getClass().getResource("../view/" + pathToView + "View.fxml"));
       root = loader.load();
-
-      switch (viewToOpen)
-      {
-        case "../view/movieList/movieListView.fxml": {
-          MovieListController controller = loader.getController();
-          controller.init();
-          stage.setTitle("Movie List"); }
-          break;
-        case "../view/showingList/showingListView.fxml": {
-          ShowingListController controller = loader.getController();
-          controller.init();
-          stage.setTitle("Showing List");
-        }
-        break;
-        case "../view/seatView/seatView.fxml" :{
-          SeatViewController controller = loader.getController();
-          controller.init();
-          stage.setTitle("SeatView");
-        }
-        break;
-        case "../view/loginView/loginView.fxml": {
-          LoginViewController controller = loader.getController();
-          controller.init();
-          stage.setTitle("login");
-        }
-        break;
-        case "../view/createUserView/createUserView.fxml": {
-          CreateUserViewController controller = loader.getController();
-          controller.init();
-          stage.setTitle("Create User");
-        }
-         break;
-        case "../view/adminView/editView/editMovieView.fxml" : {
-          EditMovieController controller = loader.getController();
-          controller.init();
-          stage.setTitle("EditMovie");
-        }
-        break;
-        case "../view/adminView/editView/editShowingView.fxml" : {
-          EditShowingController controller = loader.getController();
-          controller.init();
-          stage.setTitle("Edit Showing");
-        }
-        break;
-        case "../view/adminView/editView/addShowingView.fxml" :{
-          AddShowingController controller = loader.getController();
-          controller.init();
-
-          stage.setTitle("Add Showing");
-        }
-        break;
-        case "../view/adminView/adminView.fxml" : {
-          AdminViewController controller = loader.getController();
-          controller.init();
-
-          stage.setTitle("Admin");
-        }
-        break;
-        case "../view/adminView/editView/editBookingView.fxml" :{
-          EditBookingView controller = loader.getController();
-          controller.init();
-          stage.setTitle("Edit Booking");
-        }
-        break;
-      }
-
+      Controller controller = loader.getController();
+      controller.init();
+      stage.setTitle(viewToOpen);
     }
     catch (IOException e)
     {
-
       e.printStackTrace();
-
     }
 
     scene = new Scene(root);
