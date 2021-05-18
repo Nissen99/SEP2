@@ -12,7 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
-import shared.transferobjects.Showing;
+import shared.transferobjects.IShowing;
 
 /**
  * Controller til editShowingView, står for at læse bruger inputs, dette er gjort
