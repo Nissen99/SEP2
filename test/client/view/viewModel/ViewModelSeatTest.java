@@ -1,7 +1,5 @@
 package client.view.viewModel;
 
-import client.core.ClientFactory;
-import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.dao.*;
@@ -13,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelSeatTest
 {
-  private DAOTestSetup setup = new DAOTestSetup();
+  private VMTestSetup setup = new VMTestSetup();
   private ViewModelSeat viewModel;
   private SeatDAO seatDAO = new SeatDAOImpl();
   private SeatNoCalculator seatNoCalculator = new SeatNoCalculator(

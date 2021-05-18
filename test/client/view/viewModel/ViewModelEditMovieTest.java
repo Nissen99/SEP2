@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelEditMovieTest
 {
-  private DAOTestSetup setup = new DAOTestSetup();
+  private VMTestSetup setup = new VMTestSetup();
   private ViewModelEditMovie viewModel = new ViewModelEditMovie();
 
   @BeforeEach void setup() throws ServerException

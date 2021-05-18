@@ -1,6 +1,5 @@
 package client.view.viewModel;
 
-import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
@@ -11,7 +10,7 @@ class ViewModelMovieListTest
 {
 
 
-  private DAOTestSetup setup = new DAOTestSetup();
+  private VMTestSetup setup = new VMTestSetup();
   private ViewModelMovieList viewModel = new ViewModelMovieList();
 
 
@@ -20,14 +19,17 @@ class ViewModelMovieListTest
   void setup() throws ServerException
   {
     setup.setup();
+    viewModel.setSelectedMovie(setup.getMovie());
   }
 
    @Test
   void testIfWeGetAllMovies() throws ServerException
    {
-
      assertEquals(setup.getMovieList().size(),viewModel.getAllMovies().size());
+   }
 
+   @Test void testSelectedMovie() {
+    assertEquals(setup.getMovie().getMovieTitle(), viewModel.getSelectedMovie().getMovieTitle());
    }
 
 

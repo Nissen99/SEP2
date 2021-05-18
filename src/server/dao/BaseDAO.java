@@ -1,11 +1,6 @@
 package server.dao;
 
-
-
-
-
-
-import shared.MINKODE;
+import server.util.MINKODE;
 
 import java.nio.charset.MalformedInputException;
 import java.sql.Connection;
@@ -18,8 +13,6 @@ public class BaseDAO
 
   protected static Connection getConnection() throws SQLException
   {
-
-
       connection = DriverManager.getConnection(
           "jdbc:postgresql://localhost:5432/postgres?currentSchema=bioDatabase",
           "postgres", MINKODE.PASSWORD.password);

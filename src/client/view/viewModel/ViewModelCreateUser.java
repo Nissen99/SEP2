@@ -9,15 +9,10 @@ import shared.exception.ServerException;
 
 public class ViewModelCreateUser
 {
-
-
-
   private StringProperty userNameField = new SimpleStringProperty("");
   private StringProperty emailField = new SimpleStringProperty("");
   private StringProperty passwordField = new SimpleStringProperty("");
   private ClientModelCreateUser clientModel = ModelFactory.getInstance().getModelCreateUser();
-
-
 
   public StringProperty emailFieldProperty()
   {

@@ -9,7 +9,7 @@ import shared.transferobjects.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class DAOTestSetup
+public class VMTestSetup
 {
   private HallDAOImpl hallDAO;
   private MovieDAO movieDAO = new MovieDAOImpl();
@@ -21,7 +21,7 @@ public class DAOTestSetup
   private Showing showing = null;
   private String movieTitle = "Jackass";
   private Movie movie = new Movie(1, movieTitle);
-  private Timestamp time = new Timestamp(121, 4, 15,
+  private Timestamp time = new Timestamp(121, 6, 15,
       13, 30, 0, 0);
   private String userName = "TestPerson";
   private String email = "test@test.dk";

@@ -2,7 +2,6 @@ package client.view.viewModel;
 
 import client.model.ClientModelCreateUser;
 import client.model.ClientModelCreateUserManager;
-import client.network.RMIClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.dao.UserDAO;
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ViewModelCreateUserTest
 {
 
-  private DAOTestSetup setup = new DAOTestSetup();
+  private VMTestSetup setup = new VMTestSetup();
   private ClientModelCreateUser model = new ClientModelCreateUserManager(setup.getClient());
   private UserDAO userDAO = new UserDAOImpl();
 
@@ -31,13 +30,6 @@ class ViewModelCreateUserTest
     assertEquals(setup.getUserName(), setup.getUser().getUserName());
     assertEquals(setup.getEmail(), setup.getUser().getEmail());
     assertEquals(setup.getPassword(), setup.getUser().getPassword());
-  }
-
-  @Test void testIfUserIsCreatedInDatabase()
-      throws ServerException
-  {
-    model.createUser(setup.getUserName(), setup.getEmail() ,setup.getPassword());
-    assertEquals(setup.getUserName(), userDAO.getById(1).getUserName());
   }
 
 }
