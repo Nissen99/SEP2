@@ -15,7 +15,7 @@
             <Image url="@../../util/images/NextGenCine.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="652.0" layoutY="625.0" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="36.0" prefWidth="108.0" text="Log Ind" textFill="WHITE">
+      <Button defaultButton="true" layoutX="652.0" layoutY="625.0" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="36.0" prefWidth="108.0" text="Log Ind" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

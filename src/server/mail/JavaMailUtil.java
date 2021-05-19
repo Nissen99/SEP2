@@ -35,7 +35,7 @@ public class JavaMailUtil
     });
 
     Message message = prepareMessage(session, myAccountEmail, recepient);
-    Transport.send(message);
+    Transport.send(message); // Tager langt tid, kan ikke optimeres grundet ekstern library.
     System.out.println("Mail sent");
   }
 

@@ -12,8 +12,8 @@
       <TextField fx:id="usernameField" alignment="TOP_CENTER" layoutX="500.0" layoutY="221.0" prefHeight="36.0" prefWidth="280.0" promptText="Brugernavn" />
       <PasswordField fx:id="passwordField" alignment="TOP_CENTER" layoutX="500.0" layoutY="270.0" prefHeight="36.0" prefWidth="280.0" promptText="Password" />
       <TextField fx:id="emailField" alignment="TOP_CENTER" layoutX="500.0" layoutY="324.0" prefHeight="36.0" prefWidth="280.0" promptText="Email" />
-      <Button layoutX="575.0" layoutY="387.0" mnemonicParsing="false" onAction="#onCreateButton" prefHeight="36.0" prefWidth="130.0" text="Opret" />
-      <Button layoutX="32.0" layoutY="654.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="36.0" prefWidth="121.0" text="Tilbage" />
+      <Button defaultButton="true" layoutX="575.0" layoutY="387.0" mnemonicParsing="false" onAction="#onCreateButton" prefHeight="36.0" prefWidth="130.0" text="Opret" />
+      <Button cancelButton="true" layoutX="32.0" layoutY="654.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="36.0" prefWidth="121.0" text="Tilbage" />
       <Text layoutX="479.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret ny bruger" textAlignment="CENTER" wrappingWidth="321.159423828125">
          <font>
             <Font name="System Bold" size="40.0" />
