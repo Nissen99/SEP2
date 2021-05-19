@@ -58,7 +58,7 @@ public class LoginViewController implements Controller
     {
       Alert alert = AlertBox.makeAlert("information","Login error ", e.getMessage());
       alert.show();
-    }
+    }catch (NullPointerException ignored){}
   }
 
 }

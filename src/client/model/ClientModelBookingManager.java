@@ -34,7 +34,6 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   }
 
   /**
-   *
    * @param showing den showing der skal bookes billetter til
    * @param seats de sæder der skal bookes
    * @throws ServerException connection fejl eller anden reservation af de valgte sæder

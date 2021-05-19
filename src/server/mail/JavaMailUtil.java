@@ -1,4 +1,5 @@
 package server.mail;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -17,7 +18,6 @@ public class JavaMailUtil
   {
     Properties properties = new Properties();
 
-    System.out.println("Gør klar til at sende mail");
 
     properties.put("mail.smtp.auth", true);
     properties.put("mail.smtp.starttls.enable", true);
@@ -37,7 +37,7 @@ public class JavaMailUtil
 
     Message message = prepareMessage(session, myAccountEmail, recepient);
     Transport.send(message);
-    System.out.println("Beskeden er sendt succesfuldt");
+    System.out.println("Mail sent");
   }
 
   private static Message prepareMessage(Session session, String myAccountEmail,
@@ -46,11 +46,10 @@ public class JavaMailUtil
     Message message = new MimeMessage(session);
     message.setFrom(new InternetAddress(myAccountEmail));
     message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-    message.setSubject("Min første mail");
+    message.setSubject("Biograf Billet");
 
     MimeBodyPart bodyPart = new MimeBodyPart();
     File file = new File(path);
-    System.out.println("Attaching file from : " + file.getAbsolutePath());
 
     bodyPart.attachFile(file);
 
