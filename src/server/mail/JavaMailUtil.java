@@ -46,7 +46,7 @@ public class JavaMailUtil
     Message message = new MimeMessage(session);
     message.setFrom(new InternetAddress(myAccountEmail));
     message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-    message.setSubject("Min første mail");
+    message.setSubject("Yourcine Bookingbekræftelse");
 
     MimeBodyPart bodyPart = new MimeBodyPart();
     File file = new File(path);
