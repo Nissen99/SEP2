@@ -11,16 +11,14 @@ import java.util.ArrayList;
 
 /**
  * Denne klasse extender ClientModelShowingListManager, som extender ClientModelManager
- * hvor en referance til vores Client ligger, vi bruger super.getClient når den skal bruges
+ * hvor har referrnce til Client. Vi bruger super.getClient når Client skal bruges.
  *
- * Denne klasse lytter på Client, dette bliver brugt til at dynamisk at opdatere
- * seatView.
+ * Denne klasse lytter på Client, dette bliver brugt til dynamisk opdatering af seatView.
  *
- * Denne klasse sender videre fra ViewModel Til Client, har ikke i sig selv noget logik
+ * Denne klasse videresender data som den får fra ViewModel til Client.
  */
 public class ClientModelBookingManager extends ClientModelShowingListManager implements ClientModelBooking
 {
-
 
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -38,8 +36,8 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   /**
    *
    * @param showing den showing der skal bookes billetter til
-   * @param seats  de sæder der skal bookes
-   * @throws ServerException connetion fejl eller de sæder der var valgt blev taget
+   * @param seats de sæder der skal bookes
+   * @throws ServerException connection fejl eller anden reservation af de valgte sæder
    */
   @Override public void addBooking(IShowing showing,
       ArrayList<ISeat> seats)
@@ -83,7 +81,12 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
 
   }
 
-
+  /**
+   * Sørger for at tilføje listener til listen af observers til subject
+   *
+   * @param listener observer der tilføjes til subject
+   * @throws ServerException
+   */
   @Override public void addPropertyChangeListener(
       PropertyChangeListener listener) throws ServerException
   {
@@ -91,6 +94,12 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
     super.getClient().addPropertyChangeListener(this::update);
   }
 
+  /**
+   * Sørger for at fjerne listener fra listen af observers til subject
+   *
+   * @param listener observer der fjernes fra subject
+   * @throws ServerException
+   */
   @Override public void removePropertyChangeListener(
       PropertyChangeListener listener) throws ServerException
   {

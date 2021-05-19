@@ -9,10 +9,10 @@ import shared.transferobjects.IShowing;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 /**
- * Denne klasse extender ClientModelManager some har en referance til vores
- * Client, vi bruger super.getClient når den skal bruges
+ * Denne klasse extender ClientModelManager some har en reference til Client.
+ * Vi bruger super.getClient når Client skal bruges
  *
- * Denne klasse sender videre fra ViewModel Til Client, har ikke i sig selv noget logik
+ * Denne klasse videresender data som den får fra ViewModel til Client.
  */
 public class ClientModelShowingManager extends ClientModelManager implements ClientModelShowing
 {
