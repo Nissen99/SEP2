@@ -106,7 +106,7 @@ public class SeatViewController implements PropertyChangeListener, Controller
         return pane;
       }
     }
-    throw new IndexOutOfBoundsException("Invalid input - Seat out of bounds");
+    throw new IndexOutOfBoundsException("Ugyldigt input - sæde udenfor grænserne");
   }
 
   /**
@@ -260,13 +260,13 @@ public class SeatViewController implements PropertyChangeListener, Controller
     if (selectedPane.size() == 0)
     {
       Alert alert2 = AlertBox
-          .makeAlert("Information", "Error", "No seats has been selected");
+          .makeAlert("Information", "Error", "Ingen valgte sæder");
       alert2.show();
     }
     else
     {
       Alert alert = AlertBox.makeAlert("confirmation", "Make Booking",
-          "Do you want to confirm your booking?");
+          "Vil du bekræfte din booking?");
       alert.showAndWait().ifPresent(type -> {
         if (type.getButtonData() == ButtonBar.ButtonData.YES)
         {
@@ -282,7 +282,7 @@ public class SeatViewController implements PropertyChangeListener, Controller
             viewModel.removePropertyChangeListener(this);
 
             Alert alert1 = AlertBox.makeAlert("Information", "Booking made",
-                "You have successfully made a booking. An email has been sent to your mailbox ");
+                "Du har lavet en vellykket booking. Tjek din mailbox for billeter");
             alert1.show();
 
             ViewHandler.getInstance().openView("Movie List");
@@ -323,8 +323,6 @@ public class SeatViewController implements PropertyChangeListener, Controller
         updateOccupiedSeatList();
         selectedPaneTaken();
         setOccupiedColor();
-
-
     });
   }
 }
