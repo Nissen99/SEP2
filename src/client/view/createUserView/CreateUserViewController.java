@@ -43,6 +43,8 @@ public class CreateUserViewController implements Controller
     try
     {
       viewModelCreateUser.create();
+      Alert alert = AlertBox.makeAlert("information", "Bruger oprettet", "Du er nu oprettet som bruger");
+      alert.show();
       ViewHandler.getInstance().openView("Login");
     }
     catch (ServerException | IllegalArgumentException e)

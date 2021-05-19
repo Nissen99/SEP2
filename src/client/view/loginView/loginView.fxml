@@ -15,19 +15,19 @@
             <Image url="@NextGenCine.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="662.0" layoutY="625.0" mnemonicParsing="false" onAction="#loginButtonPressed" text="Log Ind" textFill="WHITE">
+      <Button layoutX="652.0" layoutY="625.0" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="36.0" prefWidth="108.0" text="Log Ind" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="537.0" layoutY="625.0" mnemonicParsing="false" onAction="#createAccountButtonPressed" text="Opret Konto" textFill="WHITE">
+      <Button layoutX="537.0" layoutY="625.0" mnemonicParsing="false" onAction="#createAccountButtonPressed" prefHeight="36.0" prefWidth="108.0" text="Opret Konto" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <TextField fx:id="usernameField" alignment="TOP_CENTER" layoutX="537.0" layoutY="526.0" prefHeight="26.0" prefWidth="206.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: D2BA74; -fx-border-width: 1px 1px 3px 1px; -fx-text-inner-color: White;">
+      <TextField fx:id="usernameField" alignment="TOP_CENTER" layoutX="537.0" layoutY="526.0" prefHeight="32.0" prefWidth="224.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: D2BA74; -fx-border-width: 1px 1px 3px 1px; -fx-text-inner-color: White;">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" alignment="TOP_CENTER" layoutX="537.0" layoutY="574.0" prefHeight="31.0" prefWidth="206.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: D2BA74; -fx-border-width: 1px 1px 3px 1px; -fx-text-inner-color: white;" />
+      <PasswordField fx:id="passwordField" alignment="TOP_CENTER" layoutX="537.0" layoutY="574.0" prefHeight="31.0" prefWidth="224.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: D2BA74; -fx-border-width: 1px 1px 3px 1px; -fx-text-inner-color: white;" />
    </children>
 </AnchorPane>
