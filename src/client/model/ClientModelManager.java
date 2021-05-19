@@ -7,10 +7,10 @@ import shared.transferobjects.*;
 import java.util.ArrayList;
 
 /**
- * Denne klasse bliver extended af alle managers, og er måden de andre managers
- * kalder på client.
+ * Denne klasse bliver extended af alle managers. De andre managers
+ * kalder på Client igennem denne klasse.
  *
- * Denne klasse sender videre fra ViewModel Til Client, har ikke i sig selv noget logik
+ * Denne klasse videresender data som den får fra ViewModel til Client.
  */
 
 public class ClientModelManager implements ClientModel

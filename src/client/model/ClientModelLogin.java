@@ -5,7 +5,7 @@ import shared.exception.ServerException;
 
 
 /**
- * Implementeres af ClientModelLogin
+ * Implementeres af ClientModelLoginManager
  */
 
 public interface ClientModelLogin

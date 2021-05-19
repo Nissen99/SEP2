@@ -19,12 +19,14 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
- * Dette er forbindelsen til serveren, det er gjort med RMI.
- * Denne klasses ansvar er at snakke med serveren, hvor den kalder vidre fra modellen.
+ * Dette er forbindelsen til serveren, RMI er anvendt til håndtering af forbindelsen.
+ * Denne klasse har til ansvar at komminikere med serveren.
+ * Den videresender data som den får fra modellen.
  *
- * Vi vil ikke have at der bløder Remote, SQL osv. exceptions gennem vores system.
- * Derfor fanger vi dem og kaster vores egen ServerException, dem kan vi så fange
- * i controllere og give brugeren besked.
+ * Vi vil ikke have at der kastes Remote- og SQLExceptions gennem vores system.
+ * Derfor har vi lavet vores egen Exception - ServerException.
+ * Denne kastes når der fanges en Remote- eller SQLException.
+ * ServerExceptions kan fanges i controllere, hvilket giver brugeren besked.
  */
 public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
 {
@@ -32,9 +34,11 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   private IUser user;
 
-
-
-
+  /**
+   * Lokaliserer serveren på port 1099 og forbinder Clienten hertil.
+   * Herefter registreres en client callback,
+   * således at der kan sendes data fra client til server.
+   */
   @Override
   public void startClient() {
     try
@@ -62,15 +66,17 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
     }
   }
 
   /**
-   * Når man logger ind gemmer vi hvilken User der er logget ind
-   * Den sender vi med i addBooking
+   * Når man logger ind gemmer vi hvilken User der er logget ind.
+   * User sendes med i addBooking metoden.
+   *
    * @param showing den showing der bliver booket til
-   * @param seats de sædder der bliver booket
+   * @param seats de sæder der bliver booket
    * @throws ServerException hvis RemoteException sker
    */
   @Override public void addBooking(IShowing showing,
@@ -82,6 +88,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
     }
   }
@@ -95,6 +102,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
     }
   }
@@ -108,6 +116,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
     }
   }
@@ -121,6 +130,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
 
     }
@@ -135,6 +145,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
 
     }
@@ -148,6 +159,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
     }
   }
@@ -161,6 +173,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
     }
   }
@@ -173,6 +186,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
 
     }
@@ -188,6 +202,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
 
     }
@@ -202,6 +217,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
     }
   }
@@ -216,6 +232,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
 
     }
@@ -230,14 +247,15 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
 
     }
   }
 
   /**
-   * Login tjekker username og password i databasen, hvis der er et match gemmes
-   * den bruger som feltvariabelet user. Og bliver brugt i {@link #addBooking}
+   * Login sender username og password til serveren og gemmer brugeren som feltvariabelet user.
+   * User bliver brugt i {@link #addBooking}
    *
    * @throws ServerException hvis der ikke findes et username + password match i databasen
    */
@@ -249,6 +267,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
 
     }
@@ -263,6 +282,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
+      e.printStackTrace();
       throw new ServerException("Connection to server failed");
     }
   }
@@ -283,7 +303,8 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
-  throw new ServerException("Connection to server failed");
+      e.printStackTrace();
+      throw new ServerException("Connection to server failed");
     }
 
   }

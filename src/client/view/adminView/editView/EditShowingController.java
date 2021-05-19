@@ -33,7 +33,6 @@ public class EditShowingController implements Controller
 
     filmShowingsErFor.textProperty().bind(viewModel.movieTitleProperty());
   }
-
   private void setUpTableView()
   {
     try

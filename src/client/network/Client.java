@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
- * Implementeret af RMIClient
+ * Implementeres af RMIClient
  *
  */
 public interface Client

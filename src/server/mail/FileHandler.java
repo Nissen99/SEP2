@@ -12,77 +12,50 @@ import java.util.ArrayList;
 public class FileHandler
 {
   private final String path = "src/server/mail/mailOrder.pdf";
-  private final String logoPath = "src/shared/image/nyt.jpg";
   private File file;
   private Document document;
+
+  String[] seatNos;
 
   public FileHandler()
   {
     file = new File(path);
     document = new Document();
-
   }
 
   public void createPDF(IBooking booking, ArrayList<ISeat> seats)
   {
-    String movieTitle = booking.getShowing().getMovie().getMovieTitle();
-    String bookingID = String.valueOf(booking.getBookingId());
-    String fName = booking.getUser().getUserName();
-    String dateTime = booking.getShowing().getDate() + "   " + booking.getShowing().getTime();
-    String hallNo = booking.getShowing().getHall().getHallNo();
-    String[] seatNos = new String[seats.size()];
+    setSeats(seats);
     for (int i = 0; i < seats.size(); i++)
     {
       seatNos[i] = seats.get(i).getSeatNo();
-
     }
     try
     {
       PdfWriter.getInstance(document, new FileOutputStream(file));
       document.open();
 
-      Image image = Image.getInstance(logoPath);
-      image.setAlignment(Element.ALIGN_TOP);
-      image.setAlignment(Element.ALIGN_CENTER);
-      document.add(image);
+      DocumentBuilder documentBuilder = new DocumentBuilder(document);
+      documentBuilder.setBooking(booking);
 
-      //Setting up BookingId
-      Paragraph pBookingID = setupParagraph(10f,"BookingID: " + bookingID, 10,false);
-      pBookingID.setSpacingBefore(13f);
-      document.add(pBookingID);
+      documentBuilder.setUpImage();
 
+      documentBuilder.setUpBookingId();
 
-      //Setting up fName
-      Paragraph pFName = setupParagraph(10f,"Name: " + fName, 10,false);
-      document.add(pFName);
+      documentBuilder.settingUpFName();
 
-      //Setting up Movie Title
-      Paragraph pMovieTitle = setupParagraph(10f,movieTitle,30,true);
-      pMovieTitle.setSpacingBefore(30f);
-      pMovieTitle.setSpacingAfter(15f);
-      document.add(pMovieTitle);
+      documentBuilder.SettingUpMovieTitle();
 
-      //Setting up Date & Time
-      Paragraph pDateTime = setupParagraph(10f,dateTime,12,true);
-      document.add(pDateTime);
+      documentBuilder.settingUpDateAndTime();
 
-      //Setting up HallNo
-      Paragraph pHall = setupParagraph(10f,"Hall: " + hallNo, 20,true);
-      pHall.getFont().setStyle(Font.BOLD);
-      pHall.setSpacingBefore(69f);
-      pHall.setSpacingAfter(20f);
-      document.add(pHall);
+      documentBuilder.SettingUpHallNo();
 
-      //Setting up seats
       for (String seat : seatNos)
       {
-        Paragraph pSeat = setupParagraph(20f,"Seat Number: " +seat,12,true);
-
-        document.add(pSeat);
+        documentBuilder.settingUpSeat(seat);
       }
 
-
-
+      document = documentBuilder.getDocument();
       document.close();
     }
     catch (DocumentException | IOException e)
@@ -91,14 +64,10 @@ public class FileHandler
     }
   }
 
-  public Paragraph setupParagraph(Float linespace, String element, int fontSize, boolean centerAlign)
+  private void setSeats(ArrayList<ISeat> seats)
   {
-    Paragraph p = new Paragraph(
-        new Phrase(linespace, element,
-            FontFactory.getFont(FontFactory.COURIER, fontSize)));
-    if (centerAlign)
-      p.setAlignment(Element.ALIGN_CENTER);
-    return p;
+    seatNos = new String[seats.size()];
   }
+
 
 }
