@@ -74,11 +74,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
 
   }
 
-  /**
-   * Når vores View tilføjer eller fjerner sig som listener, tilføjer eller
-   * fjerner denne model sig som listener på client
-   * @param listener den instance der skal lytte
-   */
+
   @Override public void addPropertyChangeListener(
       PropertyChangeListener listener) throws ServerException
   {
