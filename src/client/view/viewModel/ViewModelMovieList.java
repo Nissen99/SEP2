@@ -7,6 +7,9 @@ import javafx.collections.ObservableList;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
 
+/**
+ * ViewModel for movieList, her håndteres den læste input fra controlleren.
+ */
 public class ViewModelMovieList
 {
 
@@ -26,7 +29,7 @@ public class ViewModelMovieList
   public void setSelectedMovie(IMovie movie) throws NullPointerException
   {
     if (movie == null){
-      throw new NullPointerException("No movie selected");
+      throw new NullPointerException("Ingen film valgt");
     }
     this.selectedMovie = movie;
   }

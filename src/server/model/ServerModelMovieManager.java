@@ -5,6 +5,8 @@ import server.dao.MovieDAOImpl;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
 
+import java.util.ArrayList;
+
 public class ServerModelMovieManager implements ServerModelMovie
 {
   private MovieDAO movieDAO = new MovieDAOImpl();
@@ -17,5 +19,10 @@ public class ServerModelMovieManager implements ServerModelMovie
   @Override public void removeMovie(IMovie movie) throws ServerException
   {
     movieDAO.removeMovie(movie);
+  }
+
+  @Override public ArrayList<IMovie> getMovieList() throws ServerException
+  {
+    return movieDAO.getAllMovies();
   }
 }

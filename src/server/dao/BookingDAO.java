@@ -8,11 +8,13 @@ import shared.transferobjects.IUser;
 
 import java.util.ArrayList;
 
+/**
+ * Implementeres af BookingDAOImpl
+ */
 public interface BookingDAO
 {
   IBooking create(IShowing showing, IUser user) throws ServerException;
   ArrayList<IBooking> getAllBookings() throws ServerException;
   void removeBooking(IBooking booking) throws ServerException;
-  ArrayList<ISeat> getOccupiedSeats(IShowing showing) throws ServerException;
 
 }

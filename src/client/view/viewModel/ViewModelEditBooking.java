@@ -9,6 +9,11 @@ import javafx.collections.ObservableList;
 import shared.exception.ServerException;
 import shared.transferobjects.IBooking;
 
+/**
+ * ViewModel for editBooking, her håndteres den læste data fra controlleren,
+ * dette sker gennem en binding på Property.
+ */
+
 public class ViewModelEditBooking
 {
   private ClientModelBooking clientModel = ModelFactory.getInstance().getModelBooking();
@@ -39,13 +44,19 @@ public class ViewModelEditBooking
   public void removeBooking(IBooking booking) throws ServerException
   {
     if (booking == null)
+    {
       throw new NullPointerException();
-    clientModel.removeBooking(booking);
+    }
+      clientModel.removeBooking(booking);
   }
 
-  //Vi parser search til en int, hvis det ikke kan lade sig gøre ved vi at
-  //brugeren ikke har indtastet et gyldigt id, og kaster en IllegalArgument
-  public IBooking getBookingById(){
+  /**
+   * Vi parser search til en int, hvis det ikke kan lade sig gøre ved vi at
+   * brugeren ikke har indtastet et gyldigt id
+   * @return booking med id der matcher search felt
+   * @throws IllegalArgumentException hvis input ikke kan parses til Integer
+   */
+  public IBooking getBookingById() throws IllegalArgumentException{
     try{
       int searchNumber = Integer.parseInt(search.get());
       for (IBooking booking : bookings)
@@ -60,7 +71,5 @@ public class ViewModelEditBooking
       throw new IllegalArgumentException();
     }
   }
-
-
 
 }

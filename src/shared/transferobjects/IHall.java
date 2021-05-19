@@ -6,14 +6,14 @@ import java.util.ArrayList;
 public interface IHall extends Serializable
 {
 
-  public int getMaxSeatsInRow();
+  int getMaxSeatsInRow();
 
-  public int getMaxRows();
+  int getMaxRows();
 
-  public String getHallNo();
+  String getHallNo();
 
-  public ArrayList<ISeat> getSeats();
+  ArrayList<ISeat> getSeats();
 
-  public ISeat addSeat(ISeat seat);
+  ISeat addSeat(ISeat seat);
 
 }

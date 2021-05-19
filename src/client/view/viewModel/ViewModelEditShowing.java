@@ -10,6 +10,9 @@ import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
 import shared.transferobjects.IShowing;
 
+/**
+ * ViewModel for editShowing, her håndteres den læste inputs fra controlleren.
+ */
 public class ViewModelEditShowing
 {
   private IMovie selectedMovie;
@@ -19,15 +22,11 @@ public class ViewModelEditShowing
 
 
 
-  public String getMovieTitle(){
-    return selectedMovie.getMovieTitle();
-  }
 
   public ObservableList<IShowing> getAllShowings()
       throws ServerException
   {
     showings.clear();
-
     showings.addAll(clientModel.getShowingList(selectedMovie));
 
     return showings;
@@ -54,7 +53,7 @@ public class ViewModelEditShowing
   public void removeShowing(IShowing showing) throws ServerException, NullPointerException
   {
     if (showing == null){
-      throw new NullPointerException("No showing selected");
+      throw new NullPointerException("Ingen filmfremvisning valgt");
     }
     clientModel.removeShowing(showing);
   }

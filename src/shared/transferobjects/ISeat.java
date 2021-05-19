@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public interface ISeat extends Serializable
 {
-  public String getSeatNo();
+  String getSeatNo();
 
-  public void setSeatNo(String seatNo);
+  void setSeatNo(String seatNo);
 }

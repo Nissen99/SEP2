@@ -20,17 +20,15 @@ public class StartServer
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
 
-    ServerModel serverModel = new ServerModelManager();
     ServerModelBooking serverModelBooking = new ServerModelBookingManager();
     ServerModelCreateUser serverModelCreateUser = new ServerModelCreateUserManager();
     ServerModelLogin serverModelLogin = new ServerModelLoginManger();
     ServerModelMovie serverModelMovie = new ServerModelMovieManager();
     ServerModelShowing serverModelShowing = new ServerModelShowingManager();
-    ServerModelShowingList serverModelShowingList = new ServerModelShowingListManager();
 
-    RMIServerImpl server = new RMIServerImpl(serverModel, serverModelBooking,
+    RMIServerImpl server = new RMIServerImpl(serverModelBooking,
         serverModelCreateUser, serverModelLogin, serverModelMovie,
-        serverModelShowing, serverModelShowingList);
+        serverModelShowing);
 
     server.startServer();
     setup();

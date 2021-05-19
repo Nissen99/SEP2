@@ -5,6 +5,9 @@ import shared.transferobjects.IMovie;
 
 import java.util.ArrayList;
 
+/**
+ * Implementeres af MovieDAOImpl
+ */
 public interface MovieDAO
 {
   IMovie create(String movieTitle) throws ServerException;

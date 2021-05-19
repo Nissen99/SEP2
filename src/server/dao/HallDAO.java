@@ -6,6 +6,9 @@ import shared.transferobjects.IHall;
 
 import java.util.ArrayList;
 
+/**
+ * Implementeres af HallDAOImpl
+ */
 public interface HallDAO
 {
   IHall create(IHall hall) throws ServerException;

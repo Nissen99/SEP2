@@ -7,6 +7,10 @@ import java.rmi.RemoteException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * Implementeres af RMIServerImpl
+ */
+
 public interface RMIServer extends Remote
 {
   void addBooking(IShowing showing, IUser user, ArrayList<ISeat> seats)

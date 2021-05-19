@@ -52,21 +52,22 @@ public ViewModelAddShowing(){
   }
 
   /**
-   * Vi laver nogle checks der checker om man er ved at oprette en valid Showing
-   * Vi har besluttet at der skal være 3 timer mellem hver film, så den kan vises
-   * og der kan gøres rent.
-   * Derfor tjekker vi 3 timer før og efter det angivede tidspunkt
-   * dette sker i checkIfTimeOverlaps metoden, der kaster exception hvis der der et overlap
+   * Der laves nogle checks som checker om man er ved at oprette en valid Showing
+   *
+   * Der tjekkes om showing tidspunktet er valid i {@link #checkIfTimeOverlaps}
+   *
    * Vi mener også at showings der forgår i fortiden ikke giver mening, derfor skal
    * det være efter currentTime
+   *
+   * @throws IllegalArgumentException kaster IllegalArgument hvis der der et overlap i tiden
+   * @throws ServerException Connetion til server og/eller database fejler
    */
-  public void addShowing() throws ServerException
+  public void addShowing() throws ServerException, IllegalArgumentException
   {
     Timestamp inputTimestamp = getTimestamp();
 
-    ArrayList<Timestamp> showingTimes = clientModel.getShowingTimesByHallNoAndDate(hallNo.get(), inputTimestamp);
 
-    checkIfTimeOverlaps(inputTimestamp, showingTimes);
+    checkIfTimeOverlaps(inputTimestamp);
 
 
     Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -80,9 +81,20 @@ public ViewModelAddShowing(){
     }
   }
 
-  private void checkIfTimeOverlaps(Timestamp inputTimestamp,
-      ArrayList<Timestamp> showingTimes)
+  /**
+   * Tager listen af alle showings på den givene dag, og matcher den op mod hvad
+   * man er ved at oprette
+   *
+   * Vi har besluttet at der skal være 3 timer mellem hver film, så den kan vises
+   * og der kan gøres rent.
+   *
+   *
+   * @param inputTimestamp Det nye timestamp vi vil tjekke
+   */
+  private void checkIfTimeOverlaps(Timestamp inputTimestamp) throws ServerException
   {
+    ArrayList<Timestamp> showingTimes = clientModel.getShowingTimesByHallNoAndDate(hallNo.get(), inputTimestamp);
+
     for (Timestamp showingTime : showingTimes)
     {
       Timestamp plus3Hours = new Timestamp(showingTime.getTime() + (3 * 3599999));

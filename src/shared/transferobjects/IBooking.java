@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public interface IBooking extends Serializable
 {
-  public int getBookingId();
+  int getBookingId();
 
-  public IShowing getShowing();
+  IShowing getShowing();
 
-  public IUser getUser();
+  IUser getUser();
 
-  public String toString();
+  String toString();
 }

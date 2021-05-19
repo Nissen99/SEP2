@@ -7,6 +7,9 @@ import shared.transferobjects.IShowing;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * Implementeres af ShowingDAOImpl
+ */
 public interface ShowingDAO
 {
 

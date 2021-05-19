@@ -6,6 +6,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.exception.ServerException;
 
+/**
+ * ViewModel for login, her håndteres den læste data fra controlleren,
+ * dette sker gennem bindings på forskellige Properties.
+ */
 
 public class ViewModelLogin
 {
@@ -13,22 +17,13 @@ public class ViewModelLogin
   private StringProperty userNameProperty = new SimpleStringProperty();
   private StringProperty passwordProperty = new SimpleStringProperty();
 
-  public String getUserNameProperty()
-  {
-    return userNameProperty.get();
-  }
 
-  public StringProperty userNamePropertyProperty()
+  public StringProperty userNameProperty()
   {
     return userNameProperty;
   }
 
-  public String getPasswordProperty()
-  {
-    return passwordProperty.get();
-  }
-
-  public StringProperty passwordPropertyProperty()
+  public StringProperty passwordProperty()
   {
     return passwordProperty;
   }
@@ -45,6 +40,6 @@ public class ViewModelLogin
    */
   public boolean admin()
   {
-    return getUserNameProperty().equals("Admin") && getPasswordProperty().equals("Admin");
+    return userNameProperty.get().equals("Admin") && passwordProperty.get().equals("Admin");
   }
 }
