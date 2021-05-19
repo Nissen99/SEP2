@@ -12,10 +12,16 @@ import javafx.scene.control.ButtonType;
 public class AlertBox
 {
 
-
-  //Når der bruges confimation gøres det i et lambda expresion, her bliver der kaldt
-  //alert.showAndWait(), her venter vores system på bruger input.
-  //Inputtet håndteres af controllers alt efter valgt.
+  /**
+   * Der er to typer confirmation og information <br> <br>
+   * "confirmation": laver alert med "Yes" og "No" knapper her skal kaldes showAndWait() <br><br>
+   * "information": lave alert med "Ok" knap, kan bruges med showAndWait() eller show()
+   *
+   * @param type "confirmation" eller "information"
+   * @param title title på vinduet
+   * @param context besked i vinduet
+   * @return {@link Alert}
+   */
   public static Alert makeAlert(String type, String title, String context)
   {
     Alert alert = null;

@@ -30,8 +30,14 @@ public class ViewMap
       }
       return instance;
   }
-  public static String getPath(String title){
 
+  /**
+   * Lookup i HashMap af paths til View
+   *
+   * @param title Key i HashMap
+   * @return path til View fra "/view/"
+   */
+  public String getPath(String title){
     return viewMap.get(title);
   }
 }

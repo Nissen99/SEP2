@@ -9,6 +9,8 @@ import java.util.ArrayList;
 /**
  * Denne klasse bliver extended af alle managers, og er måden de andre managers
  * kalder på client.
+ *
+ * Denne klasse sender videre fra ViewModel Til Client, har ikke i sig selv noget logik
  */
 
 public class ClientModelManager implements ClientModel

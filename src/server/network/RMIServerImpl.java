@@ -32,7 +32,8 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
   public RMIServerImpl(ServerModel modelManager, ServerModelBooking modelBooking, ServerModelCreateUser modelCreateUser,
       ServerModelLogin modelLogin, ServerModelMovie modelMovie, ServerModelShowing modelShowing,
-      ServerModelShowingList modelShowingList) throws RemoteException
+      ServerModelShowingList modelShowingList)
+      throws RemoteException, ServerException
   {
     UnicastRemoteObject.exportObject(this, 0);
     this.modelManager = modelManager;
@@ -152,6 +153,7 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
   }
 
   @Override public void removeCallBack(ClientCallBack clientCallBack)
+      throws ServerException
   {
     clientCallBackArrayList.remove(clientCallBack);
     modelBooking.removePropertyChangeListener(this);

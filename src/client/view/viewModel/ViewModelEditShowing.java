@@ -43,7 +43,7 @@ public class ViewModelEditShowing
    * For at vide hvilken film der skal laves showings til skal vi vide hvad
    * brugeren har valgt på det forgående view, den information sender vi gennem
    * denne metode der bliver kaldt i ViewModelFactory.
-   * @param selectedMovie
+   * @param selectedMovie Hvilken film der blev valgt på forgående view
    */
   public void setSelectedMovie(IMovie selectedMovie)
   {

@@ -47,10 +47,10 @@ public class ViewModelEditBooking
   //brugeren ikke har indtastet et gyldigt id, og kaster en IllegalArgument
   public IBooking getBookingById(){
     try{
-      int x = Integer.parseInt(search.get());
+      int searchNumber = Integer.parseInt(search.get());
       for (IBooking booking : bookings)
       {
-        if (booking.getBookingId() == x)
+        if (booking.getBookingId() == searchNumber)
         {
           return booking;
         }

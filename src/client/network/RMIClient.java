@@ -50,7 +50,9 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-
+  /**
+   * @throws ServerException Hvis RemoteException sker eller ikke valid input
+   */
   @Override public void createUser(String userName, String email,String password)
       throws ServerException
   {
@@ -64,9 +66,13 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-
-  //Når man logger ind gemmer vi hvilken User der er logget ind
-  //Den sender vi med i addBooking
+  /**
+   * Når man logger ind gemmer vi hvilken User der er logget ind
+   * Den sender vi med i addBooking
+   * @param showing den showing der bliver booket til
+   * @param seats de sædder der bliver booket
+   * @throws ServerException hvis RemoteException sker
+   */
   @Override public void addBooking(IShowing showing,
       ArrayList<ISeat> seats) throws ServerException
   {
@@ -229,8 +235,13 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
-  @Override public void login(String username, String password)
-      throws ServerException
+  /**
+   * Login tjekker username og password i databasen, hvis der er et match gemmes
+   * den bruger som feltvariabelet user. Og bliver brugt i {@link #addBooking}
+   *
+   * @throws ServerException hvis der ikke findes et username + password match i databasen
+   */
+  @Override public void login(String username, String password) throws ServerException
   {
     try
     {
@@ -263,7 +274,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
   }
 
   @Override public void addPropertyChangeListener(
-      PropertyChangeListener listener)
+      PropertyChangeListener listener) throws ServerException
   {
     propertyChangeSupport.addPropertyChangeListener(listener);
     try
@@ -272,13 +283,13 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
     catch (RemoteException e)
     {
-      e.printStackTrace();
+  throw new ServerException("Connection to server failed");
     }
 
   }
 
   @Override public void removePropertyChangeListener(
-      PropertyChangeListener listener)
+      PropertyChangeListener listener) throws ServerException
   {
     propertyChangeSupport.removePropertyChangeListener(listener);
     try

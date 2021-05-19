@@ -21,51 +21,26 @@ public class ViewModelSeat implements PropertyChangeListener,
   private IShowing selectedShowing;
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   private ClientModelBooking clientModel = ModelFactory.getInstance().getModelBooking();
-  private ArrayList<ISeat> bookingSeatArrayList;
-  private ArrayList<ISeat> occupiedSeatArrayList;
+  private ArrayList<ISeat> bookingSeatArrayList = new ArrayList<>();;
   ObservableList<Integer> integerObservableList = FXCollections.observableArrayList();
   private int currentNumber = 0;
+  private ArrayList<ISeat> occupiedSeatArrayList;
 
 
-  public ViewModelSeat(IShowing showing)
-  {
-    this.selectedShowing = showing;
-    clientModel.addPropertyChangeListener(this::update);
-    bookingSeatArrayList = new ArrayList<>();
+
+  public void clearBookingList(){
+    bookingSeatArrayList.clear();
   }
-
-  private void update(PropertyChangeEvent propertyChangeEvent)
-  {
-    propertyChangeSupport.firePropertyChange(propertyChangeEvent);
-  }
-
 
   public ArrayList<ISeat> getOccupiedSeats() throws ServerException
   {
     return clientModel.getOccupiedSeats(selectedShowing);
   }
 
-
-  @Override public void propertyChange(PropertyChangeEvent evt)
-  {
-    update(evt);
-  }
-
-  @Override public void addPropertyChangeListener(
-      PropertyChangeListener listener)
-  {
-    propertyChangeSupport.addPropertyChangeListener(listener);
-  }
-
-
-  @Override public void removePropertyChangeListener(
-      PropertyChangeListener listener)
-  {
-    propertyChangeSupport.removePropertyChangeListener(listener);
-    clientModel.removePropertyChangeListener(this);
-  }
-
-
+  /**
+   * Laver liste fra 1-14, da man kan booke 1-14 sæder af gangen
+   * @return liste med integers fra 1 til og med 14
+   */
   public ObservableList<Integer> getChoiceList()
   {
     if (integerObservableList.size() < 13){
@@ -75,38 +50,41 @@ public class ViewModelSeat implements PropertyChangeListener,
         integerObservableList.add(i);
       }
     }
-
     return integerObservableList;
   }
 
   public void addBooking() throws ServerException
   {
-    clientModel.addBooking(selectedShowing, bookingSeatArrayList);
-  }
+      clientModel.addBooking(selectedShowing, bookingSeatArrayList);
+    }
 
-
-  public void setCurrentNumber(String id)
+  /**
+   * Tager et id tæller det 1 op og retunere det
+   * @param id original id
+   * @return nyt id, original id + 1
+   */
+  public String setNewId(String id)
   {
     currentNumber = Integer.parseInt(id.substring(1));
     ++currentNumber;
+    return id.substring(0, 1) + currentNumber;
   }
 
-  public int getCurrentNumber()
-  {
-    return currentNumber;
-  }
 
   public void addSeat(String seatNo)
   {
     ISeat seat = new Seat();
     seat.setSeatNo(seatNo);
     bookingSeatArrayList.add(seat);
-
   }
 
-  public void checkIfSeatOccupiedOnClick(String id) throws ServerException
+  /**
+   * Checkker om seat er optaget, hvis det er kaster det IndexOutOfBoundsExeption
+   * @param id seatNo
+   */
+  public void checkIfSeatOccupiedOnClick(String id)
   {
-    for (ISeat seat : getOccupiedSeats())
+    for (ISeat seat : occupiedSeatArrayList)
     {
       if (seat.getSeatNo().equals(id))
       {
@@ -116,7 +94,12 @@ public class ViewModelSeat implements PropertyChangeListener,
     }
   }
 
-  public boolean seatIsOccupiedOnLoad(String id)
+  /**
+   * Tjekker om seat er optaget
+   * @param id seatNo
+   * @return true hvis optaget false hvis ikke
+   */
+  public boolean seatIsOccupied(String id)
   {
     for (ISeat seat : occupiedSeatArrayList)
     {
@@ -131,4 +114,31 @@ public class ViewModelSeat implements PropertyChangeListener,
   {
     occupiedSeatArrayList = getOccupiedSeats();
   }
+
+  public void setShowing(IShowing selectedShowing)
+  {
+    this.selectedShowing = selectedShowing;
+  }
+
+
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+    propertyChangeSupport.firePropertyChange(evt);
+  }
+
+  @Override public void addPropertyChangeListener (
+      PropertyChangeListener listener) throws ServerException
+  {
+    propertyChangeSupport.addPropertyChangeListener(listener);
+    clientModel.addPropertyChangeListener(this::propertyChange);
+  }
+
+
+  @Override public void removePropertyChangeListener(
+      PropertyChangeListener listener) throws ServerException
+  {
+    propertyChangeSupport.removePropertyChangeListener(listener);
+    clientModel.removePropertyChangeListener(this);
+  }
 }
+

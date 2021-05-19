@@ -4,6 +4,7 @@ import client.network.RMIClient;
 
 /**
  * Factory, Singleton og starter client
+ * Lazy instantiation
  */
 
 public class ClientFactory

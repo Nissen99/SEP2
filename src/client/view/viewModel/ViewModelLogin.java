@@ -38,6 +38,11 @@ public class ViewModelLogin
     clientModelLogin.login(userNameProperty.get(),passwordProperty.get());
   }
 
+  /**
+   * Her tjekker vi om input fra brugeren er username="Admin" og password="Admin"
+   *
+   * @return Om login er admin
+   */
   public boolean admin()
   {
     return getUserNameProperty().equals("Admin") && getPasswordProperty().equals("Admin");

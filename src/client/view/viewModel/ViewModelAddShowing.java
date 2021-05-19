@@ -73,7 +73,6 @@ public ViewModelAddShowing(){
 
     if (0 < inputTimestamp.compareTo(currentTime))
     {
-      //InterfaceShowing showing = new Showing((Movie)selectedMovie, inputTimestamp, (Hall)getHallByNumber(hallNo.get()));
       IShowing showing = new Showing(selectedMovie, inputTimestamp, getHallByNumber(hallNo.get()));
       clientModel.addShowing(showing);
     }else {

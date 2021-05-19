@@ -16,6 +16,11 @@ import shared.transferobjects.IShowing;
 
 import java.sql.Timestamp;
 
+/**
+ * Controller til showingList, står for at læse bruger inputs, dette er gjort
+ * gennem et tableView og confirm/back knap.
+ */
+
 
 public class ShowingListController implements Controller
 {

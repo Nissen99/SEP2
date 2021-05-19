@@ -30,7 +30,8 @@ class ViewModelSeatTest
       seatDAO.create(setup.getHall().addSeat(seat), setup.getHall());
     }
     bookingSpecDAO.create(setup.getBookingList().get(0), setup.getHall().getSeats().get(1));
-    viewModel = new ViewModelSeat(setup.getShowing());
+    viewModel = new ViewModelSeat();
+    viewModel.setShowing(setup.getShowing());
   }
 
   @Test void testIfWeGetOccupiedSeats() throws ServerException
@@ -47,8 +48,8 @@ class ViewModelSeatTest
   }
 
   @Test void testCurrentNumber() {
-    viewModel.setCurrentNumber("A101");
-    assertEquals(102, viewModel.getCurrentNumber());
+
+    assertEquals("A102", viewModel.setNewId("A101"));
   }
 
   @Test void testIfSeatIsOccupiedOnClick()
@@ -61,7 +62,6 @@ class ViewModelSeatTest
 
   @Test void testIfSeatIsOccupiedOnLoad() throws ServerException
   {
-    viewModel.updateOccupiedSeatsList();
-    assertTrue(viewModel.seatIsOccupiedOnLoad(setup.getHall().getSeats().get(1).getSeatNo()));
+    assertTrue(viewModel.seatIsOccupied(setup.getHall().getSeats().get(1).getSeatNo()));
   }
 }

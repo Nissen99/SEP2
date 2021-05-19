@@ -35,28 +35,29 @@ public class LoginViewController implements Controller
     ViewHandler.getInstance().openView("Create User");
   }
 
-
-
-  //Som vi har lavet det tjekker den om der er skrevet "Admin" i begge felter
-  //Hvis dette sker kommer man i admin view hvor der kan ændres på film, bookings og
-  //showings.
+  /**
+   * Tjekker om der er skrevet "Admin" i begge felter, hvis dette er sandt
+   * sendes man til admin view hvor der kan ændres på film, bookings og
+   * showings.
+   */
   @FXML void loginButtonPressed()
   {
+    try
+    {
     if (viewModelLogin.admin())
     {
       ViewHandler.getInstance().openView("Admin");
     }
     else {
-      try
-      {
+
         viewModelLogin.login();
         ViewHandler.getInstance().openView("Movie List");
       }
-      catch (ServerException e)
-      {
-        Alert alert = AlertBox.makeAlert("information","Login error ", e.getMessage());
-        alert.show();
-      }
+
+    }catch (ServerException e)
+    {
+      Alert alert = AlertBox.makeAlert("information","Login error ", e.getMessage());
+      alert.show();
     }
   }
 

@@ -21,10 +21,7 @@ public class ViewHandler
   private Stage stage;
 
 
-  private ViewHandler()
-  {
-
-  }
+  private ViewHandler(){}
 
   public static ViewHandler getInstance()
   {
@@ -35,6 +32,10 @@ public class ViewHandler
     return viewHandler;
   }
 
+  /**
+   * setter stage og gør at client bliver terminated når vinduet lukkes
+   * @param stage
+   */
   public void setStage(Stage stage)
   {
     this.stage = stage;
@@ -50,14 +51,20 @@ public class ViewHandler
     openView("Login");
   }
 
+  /**
+   * Åbner view og kalder controllers init metode. View skal være del af ViewMap's
+   * HashMap
+   *
+   * @param viewToOpen (Skrevet som title på vinduet, se ViewMap)
+   *                   eks. "Movie List" for "movieListView.fxml"
+   */
   public void openView(String viewToOpen)
   {
     FXMLLoader loader = new FXMLLoader();
     Parent root = null;
-
     try
     {
-      String pathToView = ViewMap.getInstance().getPath(viewToOpen);
+      String pathToView = ViewMap.getInstance().getPath(viewToOpen); //lookup i Hashmap
       loader.setLocation(getClass().getResource("../view/" + pathToView + "View.fxml"));
       root = loader.load();
       Controller controller = loader.getController();
@@ -68,12 +75,9 @@ public class ViewHandler
     {
       e.printStackTrace();
     }
-
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
-
-
   }
 }
 
