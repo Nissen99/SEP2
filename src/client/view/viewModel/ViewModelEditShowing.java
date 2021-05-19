@@ -50,11 +50,9 @@ public class ViewModelEditShowing
     movieTitle.setValue(selectedMovie.getMovieTitle());
   }
 
-  public void removeShowing(IShowing showing) throws ServerException, NullPointerException
+  public void removeShowing(IShowing showing) throws ServerException
   {
-    if (showing == null){
-      throw new NullPointerException("Ingen filmfremvisning valgt");
-    }
+
     clientModel.removeShowing(showing);
   }
 }

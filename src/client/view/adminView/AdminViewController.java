@@ -1,7 +1,11 @@
 package client.view.adminView;
 
 import client.core.ViewHandler;
+import client.util.AlertBox;
 import client.view.Controller;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.layout.Pane;
 
 /**
  * Controller til adminView, står for at læse bruger inputs, dette er buttons og
@@ -16,12 +20,21 @@ public void init(){}
 
   public void back()
   {
-  ViewHandler.getInstance().openView("Login");
+    Alert alert = AlertBox.makeAlert("confirmation", "Log ud",
+        "Vil du gerne logge ud?");
+    alert.showAndWait().ifPresent(type -> {
+      if (type.getButtonData() == ButtonBar.ButtonData.YES)
+      {
+          ViewHandler.getInstance().openView("Login");
+      }
+    });
   }
 
   public void editMovie()
   {
   ViewHandler.getInstance().openView("Edit Movie");
+
+
   }
 
   public void editBooking()
@@ -29,3 +42,5 @@ public void init(){}
   ViewHandler.getInstance().openView("Edit Booking");
   }
 }
+
+

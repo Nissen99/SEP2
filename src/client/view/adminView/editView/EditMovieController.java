@@ -6,10 +6,7 @@ import client.util.AlertBox;
 import client.view.Controller;
 import client.view.viewModel.ViewModelEditMovie;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
@@ -93,19 +90,34 @@ public class EditMovieController implements Controller
 
   public void removeMovie()
   {
-    try
-    {
-      IMovie movie = movieTableView.getSelectionModel().getSelectedItem();
-      viewModel.removeMovie(movie);
-      setUpTableView();
-    }
+    IMovie movie = movieTableView.getSelectionModel().getSelectedItem();
 
-    catch (ServerException | NullPointerException e)
+    if (movie != null)
     {
-      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.show();
-    }
+      Alert alert = AlertBox.makeAlert("confirmation", "Slet Film",
+          "Vil du gerne slette den valgte film?");
+      alert.showAndWait().ifPresent(type -> {
+        if (type.getButtonData() == ButtonBar.ButtonData.YES)
+        {
 
+          try
+          {
+            viewModel.removeMovie(movie);
+            setUpTableView();
+          }
+          catch (ServerException e)
+          {
+            e.printStackTrace();
+            Alert alert2 = AlertBox
+                .makeAlert("information", "Error!", e.getMessage());
+            alert2.show();
+
+          }
+
+        }
+      });
+
+    }
   }
-
 }
+

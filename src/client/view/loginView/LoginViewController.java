@@ -26,6 +26,7 @@ public class LoginViewController implements Controller
   {
     usernameField.textProperty().bindBidirectional(viewModelLogin.userNameProperty());
     passwordField.textProperty().bindBidirectional(viewModelLogin.passwordProperty());
+    viewModelLogin.resetTextField();
   }
 
 

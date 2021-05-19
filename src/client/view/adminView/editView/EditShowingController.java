@@ -6,10 +6,7 @@ import client.util.AlertBox;
 import client.view.Controller;
 import client.view.viewModel.ViewModelEditShowing;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.exception.ServerException;
 import shared.transferobjects.IShowing;
@@ -64,17 +61,26 @@ public class EditShowingController implements Controller
 
   public void removeShowing()
   {
-    try
+    IShowing showing = tableViewForFilmFremvisninger.getSelectionModel().getSelectedItem();
+    if (showing != null)
     {
-      IShowing showing = tableViewForFilmFremvisninger.getSelectionModel()
-          .getSelectedItem();
-      viewModel.removeShowing(showing);
-      setUpTableView();
-    }
-    catch (ServerException | NullPointerException e)
-    {
-      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-      alert.show();
+      Alert alert = AlertBox.makeAlert("confirmation", "Slet Filmfremvisning",
+          "Vil du gerne slette den valgte filmfremvisning?");
+      alert.showAndWait().ifPresent(type -> {
+        if (type.getButtonData() == ButtonBar.ButtonData.YES)
+        {
+          try
+          {
+            viewModel.removeShowing(showing);
+            setUpTableView();
+          }
+          catch (ServerException e)
+          {
+            Alert alert2 = AlertBox.makeAlert("information", "Error!", e.getMessage());
+            alert2.show();
+          }
+        }
+      });
     }
   }
 

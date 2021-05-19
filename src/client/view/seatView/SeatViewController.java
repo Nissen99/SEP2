@@ -260,13 +260,13 @@ public class SeatViewController implements PropertyChangeListener, Controller
     if (selectedPane.size() == 0)
     {
       Alert alert2 = AlertBox
-          .makeAlert("Information", "Error", "No seats has been selected");
+          .makeAlert("Information", "Error", "Ingen sæde er valgt");
       alert2.show();
     }
     else
     {
-      Alert alert = AlertBox.makeAlert("confirmation", "Make Booking",
-          "Do you want to confirm your booking?");
+      Alert alert = AlertBox.makeAlert("Bekræftelse", "Bekræft Booking",
+          "Vil du gerne bekræfte din booking?");
       alert.showAndWait().ifPresent(type -> {
         if (type.getButtonData() == ButtonBar.ButtonData.YES)
         {
@@ -281,8 +281,8 @@ public class SeatViewController implements PropertyChangeListener, Controller
             //Når vi skifter view er der ingen grund til vi stadigvæk lytter
             viewModel.removePropertyChangeListener(this);
 
-            Alert alert1 = AlertBox.makeAlert("Information", "Booking made",
-                "You have successfully made a booking. An email has been sent to your mailbox ");
+            Alert alert1 = AlertBox.makeAlert("Information", "Booking gennemført",
+                                    "Booking gennemført! Tjek din mail-indbakke");
             alert1.show();
 
             ViewHandler.getInstance().openView("Movie List");
