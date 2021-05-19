@@ -36,7 +36,6 @@ public class EditShowingController implements Controller
 
     filmShowingsErFor.textProperty().bind(viewModel.movieTitleProperty());
   }
-
   private void setUpTableView()
   {
     try
@@ -64,6 +63,7 @@ public class EditShowingController implements Controller
 
   public void removeShowing()
   {
+
     try
     {
       IShowing showing = tableViewForFilmFremvisninger.getSelectionModel()

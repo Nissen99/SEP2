@@ -6,19 +6,19 @@ import javafx.scene.control.ButtonType;
 
 /**
  * Bruges i Controllere.
- * Primørt bruger vi 2 forskellige typer pop up viduer, denne klasse står for
- * at lave vinduerne, hånteringen af dem sker i controlleren.
+ * Primært bruger vi 2 forskellige typer pop up viduer, denne klasse står for
+ * at lave vinduerne. Hånteringen af dem sker i controlleren.
  */
 public class AlertBox
 {
 
   /**
-   * Der er to typer confirmation og information <br> <br>
-   * "confirmation": laver alert med "Yes" og "No" knapper her skal kaldes showAndWait() <br><br>
+   * Der er to typer alertboxe - confirmation og information.
+   * "confirmation": laver alert med "Yes" og "No" knapper her skal kaldes showAndWait()
    * "information": lave alert med "Ok" knap, kan bruges med showAndWait() eller show()
    *
    * @param type "confirmation" eller "information"
-   * @param title title på vinduet
+   * @param title titel på vinduet
    * @param context besked i vinduet
    * @return {@link Alert}
    */
