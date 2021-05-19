@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class ClientApp extends Application
 {
   @Override
-  public void start(Stage stage) throws Exception
+  public void start(Stage stage)
   {
     ViewHandler.getInstance().start(stage);
   }

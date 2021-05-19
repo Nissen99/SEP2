@@ -24,7 +24,7 @@ class ViewModelShowingListTest
 
   @Test void testGetAllShowings() throws ServerException
   {
-    assertEquals(setup.getShowingList().size(), viewModel.getAllShowings().size());
+    assertEquals(setup.getShowingList().size(), viewModel.getFutureShowings().size());
   }
 
   @Test void testGetSelectedShowing() {

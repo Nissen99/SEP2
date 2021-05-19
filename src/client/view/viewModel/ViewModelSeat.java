@@ -15,6 +15,10 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
+/**
+ * ViewModel for seat, her håndteres den læste data fra controlleren,
+ * dette sker gennem binding på Property.
+ */
 public class ViewModelSeat implements PropertyChangeListener,
     PropertyChangeSubject
 {
@@ -79,23 +83,25 @@ public class ViewModelSeat implements PropertyChangeListener,
   }
 
   /**
-   * Checkker om seat er optaget, hvis det er kaster det IndexOutOfBoundsExeption
+   * Tjekker om seat er optaget, dette bliver brugt når brugeren er ved at vælge
+   * sæder
    * @param id seatNo
+   * @throws IndexOutOfBoundsException Hvis seat er optaget
    */
-  public void checkIfSeatOccupiedOnClick(String id)
+  public void checkIfSeatOccupiedOnClick(String id) throws IndexOutOfBoundsException
   {
     for (ISeat seat : occupiedSeatArrayList)
     {
       if (seat.getSeatNo().equals(id))
       {
         throw new IndexOutOfBoundsException(
-            "Invalid input - Seat already occupied");
+            "Ugyldigt input - Sæde er optaget");
       }
     }
   }
 
   /**
-   * Tjekker om seat er optaget
+   * Tjekker om seat er optaget, bruges af systemet
    * @param id seatNo
    * @return true hvis optaget false hvis ikke
    */

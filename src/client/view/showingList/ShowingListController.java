@@ -45,7 +45,7 @@ public class ShowingListController implements Controller
   {
     try
     {
-      tableViewForFilmFremvisninger.setItems(viewModel.getAllShowings());
+      tableViewForFilmFremvisninger.setItems(viewModel.getFutureShowings());
       tidspunktForFremvisning.setCellValueFactory(new PropertyValueFactory<>("time"));
       ugedagForFremvisning.setCellValueFactory(new PropertyValueFactory<>("weekDay"));
       datoerForFremvisning.setCellValueFactory(new PropertyValueFactory<>("date"));

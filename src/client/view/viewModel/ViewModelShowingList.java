@@ -12,7 +12,9 @@ import shared.transferobjects.IShowing;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
+/**
+ * ViewModel for showingList, her håndteres den læste input fra controlleren.
+ */
 public class ViewModelShowingList
   {
 
@@ -28,16 +30,20 @@ public class ViewModelShowingList
       return movieTitle;
     }
 
-    public ObservableList<IShowing> getAllShowings()
+    /**
+     * Vi vil kun vise showings i fremtiden, så der laves en liste af metoder
+     * af alle metoder i fremtiden for en given film
+     * @return list af gyldige showings
+     * @throws ServerException connection til database eller server fejler
+     */
+    public ObservableList<IShowing> getFutureShowings()
         throws ServerException
     {
-      ArrayList<IShowing> tempShowings = new ArrayList<>();
+     Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
-      showings.removeAll(showings);
+      ArrayList<IShowing> tempShowings = clientModel.getShowingList(movie);
 
-      tempShowings.addAll(clientModel.getShowingList(movie));
-
-      Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+      showings.clear();
 
       for (IShowing showing: tempShowings)
       {
@@ -55,7 +61,7 @@ public class ViewModelShowingList
 
     public void setSelectedShowing(IShowing showing) throws NullPointerException{
       if (showing == null){
-        throw new NullPointerException("No showing selected");
+        throw new NullPointerException("Ingen filmfremvisning valgt");
       }
     this.selectedShowing = showing;
     }
