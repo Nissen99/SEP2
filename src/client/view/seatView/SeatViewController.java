@@ -44,6 +44,7 @@ public class SeatViewController implements PropertyChangeListener, Controller
   {
     viewModel = ViewModelFactory.getInstance().getSeatVM();
 
+
     try
     {
       updateOccupiedSeatList();
