@@ -5,6 +5,7 @@ import server.dao.UserDAOImpl;
 import shared.exception.ServerException;
 import shared.transferobjects.IUser;
 
+
 public class ServerModelLoginManger implements ServerModelLogin
 {
   UserDAO userDAO = new UserDAOImpl();

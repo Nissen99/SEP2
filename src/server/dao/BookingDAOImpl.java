@@ -2,13 +2,22 @@ package server.dao;
 
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class BookingDAOImpl extends BaseDAO implements BookingDAO
 {
 
+  /**
+   *
+   * @param showing den Showing der skal bookes billetter til
+   * @param user den bruger der booker billetterne
+   * @return den booking der bliver lavet
+   * @throws ServerException problemer med forbindelsen til databasen
+   */
   @Override public IBooking create(IShowing showing, IUser user)
       throws ServerException
   {
@@ -39,6 +48,11 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
   }
 
+  /**
+   *
+   * @return
+   * @throws ServerException
+   */
   @Override public ArrayList<IBooking> getAllBookings() throws ServerException
   {
     ArrayList<IBooking> bookingArrayList = new ArrayList<>();
@@ -91,32 +105,6 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     }
   }
 
-  @Override public ArrayList<ISeat> getOccupiedSeats(IShowing showing)
-      throws ServerException
 
-  {
-    ArrayList<ISeat> seatArrayList = new ArrayList<>();
-    try (Connection connection = getConnection())
-    {
-      PreparedStatement statement = connection.prepareStatement(
-          "SELECT seatNo FROM BookingSpec WHERE showingId = ?;");
-      statement.setInt(1, showing.getId());
-      ResultSet resultSet = statement.executeQuery();
-
-      while (resultSet.next())
-      {
-        ISeat seat = new Seat();
-        seat.setSeatNo(resultSet.getString("seatNo"));
-        seatArrayList.add(seat);
-      }
-      return seatArrayList;
-    }
-    catch (SQLException throwables)
-    {
-      throwables.printStackTrace();
-      throw new ServerException("Database connection failed");
-
-    }
-  }
 
 }

@@ -10,6 +10,9 @@ import shared.util.PropertyChangeSubject;
 
 import java.util.ArrayList;
 
+/**
+ * Implementeres af ServerModelBookingManager
+ */
 public interface ServerModelBooking extends PropertyChangeSubject
 {
   void addBooking(IShowing showing, IUser user, ArrayList<ISeat> seats)

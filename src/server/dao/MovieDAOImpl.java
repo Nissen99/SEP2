@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class MovieDAOImpl extends BaseDAO implements MovieDAO
 {
   @Override public IMovie create(String movieTitle) throws ServerException

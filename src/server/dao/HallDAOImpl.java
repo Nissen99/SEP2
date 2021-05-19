@@ -26,9 +26,7 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
     catch (SQLException throwables)
     {
       throw new ServerException("Database connection failed");
-
     }
-
   }
 
   @Override public IHall getHallByNumber(String hallNo) throws ServerException
@@ -44,7 +42,6 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
             resultSet.getInt("maxSeatInRow"),
             resultSet.getInt("maxRows")
         );
-
       }
       return hall;
     }

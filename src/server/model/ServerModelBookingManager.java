@@ -15,23 +15,29 @@ import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Klasse der kalder videre til BookingDAO, sender mail ved booking og er
+ * PropertyChangeSubject der fire ved ny booking
+ */
 public class ServerModelBookingManager implements ServerModelBooking
 {
   private BookingDAO bookingDAO = new BookingDAOImpl();
   private BookingSpecDAO bookingSpecDAO = new BookingSpecDAOImpl();
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-
+  /**
+   * Tilføjer booking gennem kald til databasen
+   * @param showing den showing der skal bookes billetter til
+   * @param user den brugers navn billetterne skal bookes i
+   * @param seats de sæder der skal bookes
+   * @throws ServerException connection fejl
+   */
   @Override public void addBooking(IShowing showing, IUser user,
       ArrayList<ISeat> seats) throws ServerException
   {
-    if (seats.isEmpty()){
-      throw new ServerException("Sæderne du havde valgt blev optaget");
-    }
-    IBooking booking;
     try
     {
-      booking = bookingDAO.create(showing,user);
+      IBooking booking = bookingDAO.create(showing,user);
       for (ISeat seat : seats)
       {
         bookingSpecDAO.create(booking, seat);
@@ -48,17 +54,14 @@ public class ServerModelBookingManager implements ServerModelBooking
   }
 
   @Override public void removeBooking(IBooking booking) throws ServerException
-
   {
     bookingDAO.removeBooking(booking);
-
   }
 
   @Override public ArrayList<ISeat> getOccupiedSeats(IShowing showing)
       throws ServerException
-
   {
-    return bookingDAO.getOccupiedSeats(showing);
+    return bookingSpecDAO.getOccupiedSeats(showing);
   }
 
   @Override public ArrayList<IBooking> getBookingList()

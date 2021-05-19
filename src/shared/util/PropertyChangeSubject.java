@@ -2,7 +2,6 @@ package shared.util;
 
 
 import shared.exception.ServerException;
-
 import java.beans.PropertyChangeListener;
 
 /**

@@ -8,9 +8,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class UserDAOImpl extends BaseDAO implements UserDAO
 {
+
+  /**
+   * Der bliver i databasen tjekket efter gyldige inputs eks. mail indeholder "@"
+   * @param userName Unik brugernavn
+   * @param email email der indeholder "@"
+   * @param password password der har både stor og små bogstaver, og mindst 5 char lang
+   * @return Den oprettede user
+   * @throws ServerException problem i forbindelsen til databasen
+   */
   @Override public IUser create(String userName, String email,String password)
       throws ServerException
   {
@@ -40,10 +48,8 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       {
         throw new ServerException("Database fejl - " + throwables.getMessage());
       }
-
     }
   }
-
 
 
   @Override public IUser getById(int userId) throws ServerException
@@ -72,7 +78,6 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
 
   @Override public IUser login(String userName, String password)
       throws ServerException
-
   {
     try (Connection connection = getConnection())
     {

@@ -4,6 +4,6 @@ import java.io.Serializable;
 
 public interface IMovie extends Serializable
 {
-  public String getMovieTitle();
-  public int getMovieId();
+  String getMovieTitle();
+  int getMovieId();
 }

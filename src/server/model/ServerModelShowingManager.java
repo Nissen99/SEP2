@@ -6,10 +6,12 @@ import server.dao.ShowingDAO;
 import server.dao.ShowingDAOImpl;
 import shared.exception.ServerException;
 import shared.transferobjects.IHall;
+import shared.transferobjects.IMovie;
 import shared.transferobjects.IShowing;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
 
 public class ServerModelShowingManager implements ServerModelShowing
 {
@@ -19,9 +21,7 @@ public class ServerModelShowingManager implements ServerModelShowing
 
   @Override public IShowing addShowing(IShowing showing) throws ServerException
   {
-
       return showingDAO.create(showing);
-
   }
 
   @Override public IHall getHallByNumber(String hallNo) throws ServerException
@@ -45,5 +45,13 @@ public class ServerModelShowingManager implements ServerModelShowing
   @Override public void removeShowing(IShowing showing) throws ServerException
   {
     showingDAO.removeShowing(showing);
+  }
+
+
+  @Override public ArrayList<IShowing> getShowingList(
+      IMovie movie)
+      throws ServerException
+  {
+    return showingDAO.getAllShowings(movie);
   }
 }

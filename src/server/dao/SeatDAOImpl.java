@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 public class SeatDAOImpl extends BaseDAO implements SeatDAO
 {
+
   @Override public void create(ISeat seat, IHall hall) throws ServerException
   {
     try (Connection connection = getConnection())

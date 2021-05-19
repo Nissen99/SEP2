@@ -9,7 +9,7 @@ public class Hall implements IHall
   private int maxSeatsInRow;
   private int maxRows;
 
-  public Hall(String hallNo, int maxSeatsInRow, int maxRows)
+  public Hall(String hallNo, int maxSeatsInRow, int maxRows) throws IllegalArgumentException
   {
 
     if (maxRows == 0 || maxSeatsInRow == 0){

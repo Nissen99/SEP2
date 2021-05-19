@@ -35,10 +35,19 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
     propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
+  /**
+   *
+   * @param showing den showing der skal bookes billetter til
+   * @param seats  de sæder der skal bookes
+   * @throws ServerException connetion fejl eller de sæder der var valgt blev taget
+   */
   @Override public void addBooking(IShowing showing,
       ArrayList<ISeat> seats)
       throws ServerException
   {
+    if (seats.isEmpty()){
+      throw new ServerException("Sæderne du havde valgt blev optaget");
+    }
     super.getClient().addBooking(showing, seats);
   }
 

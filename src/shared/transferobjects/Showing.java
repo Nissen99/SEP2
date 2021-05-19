@@ -52,7 +52,6 @@ public class Showing implements IShowing
         + " time: " + getTime();
   }
 
-  //Bliver brugt ikke slet
   public String getTime(){
     String time = (new SimpleDateFormat("HH:mm")).format(timestamp.getTime());
     return time;
