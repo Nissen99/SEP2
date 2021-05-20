@@ -216,7 +216,7 @@ public class SeatViewController implements PropertyChangeListener, Controller
     for (Pane pane : selectedPane)
     {
       pane.setStyle("-fx-background-color:transparent;");
-      pane.setStyle("-fx-border-color:black;");
+      pane.setStyle("-fx-border-color:white;");
     }
   }
 
