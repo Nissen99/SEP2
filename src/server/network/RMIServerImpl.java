@@ -181,6 +181,12 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
     modelBooking.removePropertyChangeListener(this);
   }
 
+  @Override public void checkIfTimeOverlaps(String hallNo,
+      Timestamp inputTimestamp) throws ServerException
+  {
+    modelShowing.checkIfTimeOverlaps(hallNo, inputTimestamp);
+  }
+
   /**
    * Når der kommer opdatering fra server modellen sendes det til clients
    * @param evt den opdatering der sker på serveren

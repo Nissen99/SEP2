@@ -58,4 +58,10 @@ public class ClientModelShowingManager extends ClientModelManager implements Cli
     super.getClient().removeShowing(showing);
   }
 
+  @Override public void checkIfTimeOverlaps(String hallNo,
+      Timestamp inputTimestamp) throws ServerException
+  {
+    super.getClient().checkIfTimeOverlaps(hallNo, inputTimestamp);
+  }
+
 }

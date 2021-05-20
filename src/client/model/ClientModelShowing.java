@@ -23,4 +23,6 @@ public interface ClientModelShowing extends ClientModelShowingList
   ArrayList<String> getHallNumbers()
       throws ServerException;
   void removeShowing(IShowing showing) throws ServerException;
+  void checkIfTimeOverlaps(String hallNo, Timestamp inputTimestamp)
+      throws ServerException;
 }

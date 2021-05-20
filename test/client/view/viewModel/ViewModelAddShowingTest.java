@@ -32,6 +32,7 @@ class ViewModelAddShowingTest
       throws ServerException
   {
     assertEquals(setup.getHall().getHallNo(), viewModel.getHallByNumber("A").getHallNo());
+    setup.getTime().setNanos(1);
   }
 
   @Test void testGetChoiceList() throws ServerException
