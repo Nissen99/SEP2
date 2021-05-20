@@ -68,7 +68,6 @@ public ViewModelAddShowing(){
 
     checkIfTimeOverlaps(inputTimestamp);
 
-
     Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
     if (0 < inputTimestamp.compareTo(currentTime))
@@ -90,7 +89,7 @@ public ViewModelAddShowing(){
    *
    * @param inputTimestamp Det nye timestamp vi vil tjekke
    */
-  private void checkIfTimeOverlaps(Timestamp inputTimestamp) throws ServerException
+  public void checkIfTimeOverlaps(Timestamp inputTimestamp)
   {
     try
     {

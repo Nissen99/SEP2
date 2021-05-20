@@ -9,7 +9,7 @@ public class ResetDAOImpl extends BaseDAO implements ResetDAO
   private String sqlstatement = "DROP SCHEMA IF EXISTS bioDatabase CASCADE;\n"
       + "CREATE SCHEMA bioDatabase;\n" + "SET SCHEMA 'biodatabase';\n" + "\n"
       + "\n" + "CREATE TABLE IF NOT EXISTS User_\n" + "(\n"
-      + "    userId   SERIAL PRIMARY KEY,\n" + "    userName VARCHAR(25),\n"
+      + "    userId   SERIAL PRIMARY KEY,\n" + "    userName VARCHAR(25) UNIQUE,\n"
       + "\n"
       + "    email    VARCHAR,\n" + "    password VARCHAR\n" + ");\n" + "\n"
       + "\n" + "CREATE TABLE IF NOT EXISTS Movie\n" + "(\n"

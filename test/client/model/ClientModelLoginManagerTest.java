@@ -26,4 +26,16 @@ class ClientModelLoginManagerTest
     assertEquals(setup.getUser().getPassword(), userDAO.getById(1).getPassword());
   }
 
+  @Test void testLoginWithNoUserCreated() {
+    assertThrows(ServerException.class, () -> {
+      model.login("HansHansen", "12345Hans");
+    });
+  }
+
+  @Test void testLoginWithNoInput() {
+    assertThrows(ServerException.class, () -> {
+      model.login(null, null);
+    });
+  }
+
 }
