@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 
 public class DAOTestSetup
 {
-  private ResetDAO resetDAO = new ResetDAO();
+  private ResetDAOImpl resetDAO = new ResetDAOImpl();
   private SeatDAO seatDAO = new SeatDAOImpl();
   private BookingDAO bookingDAO = new BookingDAOImpl();
   private UserDAO userDAO = new UserDAOImpl();
