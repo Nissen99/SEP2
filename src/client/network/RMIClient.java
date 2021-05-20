@@ -46,7 +46,7 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
       UnicastRemoteObject.exportObject(this, 0);
       Registry registry = LocateRegistry.getRegistry("localhost", 1099);
       rmiServer = (RMIServer) registry.lookup(String.valueOf(ENUM.BIOSERVER));
-      rmiServer.registerCallback(this);
+      //rmiServer.registerCallback(this);
     }
     catch (RemoteException | NotBoundException e)
     {

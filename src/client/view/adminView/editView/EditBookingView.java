@@ -97,31 +97,29 @@ public class EditBookingView implements Controller
   public void deleteBooking()
   {
     IBooking booking = bookingTable.getSelectionModel().getSelectedItem();
-    if (booking == null){
-      Alert alert = AlertBox.makeAlert("information","Delete Booking", "No booking selected");
-      alert.show();
-    }else
+    if (booking != null)
     {
-      Alert alert = AlertBox.makeAlert("confirmation", "Deleting Booking",
-          "Are you sure you want to delete this booking?");
+        Alert alert = AlertBox.makeAlert("confirmation", "Deleting Booking",
+            "Are you sure you want to delete this booking?");
 
-      alert.showAndWait().ifPresent(type -> {
-        if (type.getButtonData() == ButtonBar.ButtonData.YES)
-        {
-          try
+        alert.showAndWait().ifPresent(type -> {
+          if (type.getButtonData() == ButtonBar.ButtonData.YES)
           {
-            viewModel.removeBooking(booking);
-            setupTable();
+            try
+            {
+              viewModel.removeBooking(booking);
+              setupTable();
+            }
+            catch (ServerException e)
+            {
+              Alert serverAlert = AlertBox.makeAlert("information", "Error!", e.getMessage());
+              serverAlert.show();
+            }
           }
-          catch (ServerException e)
-          {
-           Alert serverAlert = AlertBox.makeAlert("information", "Error!", e.getMessage());
-            serverAlert.show();
-           }
-        }
-      });
+        });
+      }
     }
-  }
+
 
   public void back()
   {

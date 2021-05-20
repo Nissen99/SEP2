@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.seatView.SeatViewController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../../util/style/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.seatView.SeatViewController">
    <children>
       <Label alignment="CENTER" layoutX="574.0" layoutY="14.0" prefHeight="58.0" prefWidth="101.0" text="Sal">
          <font>
@@ -1317,19 +1317,19 @@
          </font></Label>
       <ImageView layoutX="83.0" layoutY="293.0">
          <image>
-            <Image url="@green.jpg" />
+            <Image url="@../../util/images/green.jpg" />
          </image>
       </ImageView>
       <ImageView layoutX="83.0" layoutY="222.0">
          <image>
-            <Image url="@red.jpg" />
+            <Image url="@../../util/images/red.jpg" />
          </image>
       </ImageView>
       <Label layoutX="134.0" layoutY="239.0" text="Solgt" />
       <Label layoutX="134.0" layoutY="310.0" text="Dine sæder" />
       <ImageView layoutX="83.0" layoutY="360.0">
          <image>
-            <Image url="@ledlig.jpg" />
+            <Image url="@../../util/images/ledig.jpg" />
          </image>
       </ImageView>
       <Label layoutX="132.0" layoutY="377.0" text="Ledig" />
