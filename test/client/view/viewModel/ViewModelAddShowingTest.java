@@ -18,6 +18,7 @@ class ViewModelAddShowingTest
 
   @Test void testIfShowingIsCreated() {
     assertNotNull(setup.getShowing());
+
   }
 
   @Test void testIfShowingIsCreatedWithCorrectInfo() {

@@ -31,6 +31,7 @@ public class ViewModelLogin
   public void login() throws ServerException
   {
     clientModelLogin.login(userNameProperty.get(),passwordProperty.get());
+
   }
 
   /**
@@ -41,5 +42,12 @@ public class ViewModelLogin
   public boolean admin()
   {
     return userNameProperty.get().equals("Admin") && passwordProperty.get().equals("Admin");
+  }
+
+
+  public void resetTextField()
+  {
+    userNameProperty.setValue("");
+    passwordProperty.setValue("");
   }
 }

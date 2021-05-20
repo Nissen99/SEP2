@@ -59,11 +59,8 @@ public class ViewModelEditMovie
 
   }
 
-  public void removeMovie(IMovie movie) throws ServerException, NullPointerException
+  public void removeMovie(IMovie movie) throws ServerException
   {
-    if (movie == null){
-      throw new NullPointerException("Ingen film valgt");
-    }
       clientModel.removeMovie(movie);
   }
 

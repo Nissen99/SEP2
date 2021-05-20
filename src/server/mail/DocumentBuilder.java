@@ -11,7 +11,7 @@ import java.io.IOException;
 public class DocumentBuilder
 {
   private Document document;
-  private final String logoPath = "src/shared/image/nyt.jpg";
+  private final String logoPath = "src/shared/image/emailLogo.jpg";
 
   private String movieTitle;
   private String bookingID;
@@ -28,8 +28,6 @@ public class DocumentBuilder
     dateTime = booking.getShowing().getDate() + "   " + booking.getShowing().getTime();
     hallNo = booking.getShowing().getHall().getHallNo();
   }
-
-
 
 
   public DocumentBuilder(Document document)
@@ -49,7 +47,6 @@ public class DocumentBuilder
     createParagraph(10f, dateTime, 12, true);
 
   }
-
 
   public void SettingUpHallNo() throws DocumentException
   {

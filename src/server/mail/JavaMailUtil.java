@@ -1,5 +1,4 @@
 package server.mail;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -36,7 +35,7 @@ public class JavaMailUtil
     });
 
     Message message = prepareMessage(session, myAccountEmail, recepient);
-    Transport.send(message);
+    Transport.send(message); // Tager langt tid, kan ikke optimeres grundet ekstern library.
     System.out.println("Mail sent");
   }
 
