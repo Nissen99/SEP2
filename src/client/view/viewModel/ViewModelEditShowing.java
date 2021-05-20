@@ -20,9 +20,6 @@ public class ViewModelEditShowing
   private ClientModelShowing clientModel = ModelFactory.getInstance().getModelShowing();
   private ObservableList<IShowing> showings = FXCollections.observableArrayList();
 
-
-
-
   public ObservableList<IShowing> getAllShowings()
       throws ServerException
   {
@@ -52,7 +49,6 @@ public class ViewModelEditShowing
 
   public void removeShowing(IShowing showing) throws ServerException
   {
-
     clientModel.removeShowing(showing);
   }
 }

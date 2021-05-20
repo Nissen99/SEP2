@@ -3,7 +3,6 @@ package client.view.viewModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelEditMovieTest
