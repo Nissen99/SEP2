@@ -61,16 +61,14 @@ public class ServerModelShowingManager implements ServerModelShowing
   @Override public void checkIfTimeOverlaps(String hallNo, Timestamp timestamp)
       throws ServerException
   {
-    System.out.println(hallNo);
     ArrayList<Timestamp> showingTimes = getShowingTimesByHallNoAndDate(hallNo, timestamp);
-    System.out.println(showingTimes);
+
     for (Timestamp showingTime : showingTimes)
     {
       Timestamp plus3Hours = new Timestamp(showingTime.getTime() + (3 * 3599999));
       Timestamp minus3Hours = new Timestamp(showingTime.getTime() - (3 * 3599999));
 
       if (!(timestamp.before(minus3Hours) || timestamp.after(plus3Hours))) {
-        System.out.println("Shit");
         throw new ServerException("Invalid input - A showing is scheduled at this time");
       }
     }
