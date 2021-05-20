@@ -74,4 +74,17 @@ public class Showing implements IShowing
     return date;
   }
 
+  @Override public boolean equals(Object obj)
+  {
+    if (!(obj instanceof Showing)){
+      return false;
+    }
+   Showing is = (Showing) obj;
+    return is.getMovie().getMovieId() == movie.getMovieId()
+        && is.getMovie().getMovieTitle().equals(movie.getMovieTitle()) &&
+        is.getTimestamp().equals(timestamp)
+        && is.getHall().getHallNo().equals(hall.getHallNo());
+
+  }
+
 }

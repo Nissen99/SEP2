@@ -27,7 +27,7 @@ public class VMTestSetup
   private String email = "test@test.dk";
   private String password = "Test1234";
   private IUser user = new User(1, userName, email, password);
-  private IBooking booking = new Booking(1, showing, user);
+  private IBooking booking;
   private RMIClient client = ClientFactory.getInstance().getClient();
 
   //Lists
@@ -118,6 +118,7 @@ public class VMTestSetup
     if (showing == null)
     {
       showing = new Showing(1, movie, time, hall);
+      booking = new Booking(1, showing, user);
     }
     hallDAO = new HallDAOImpl();
 
