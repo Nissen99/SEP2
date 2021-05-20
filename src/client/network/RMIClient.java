@@ -1,5 +1,6 @@
 package client.network;
 
+import javafx.beans.property.StringProperty;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 
@@ -287,6 +288,19 @@ public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
     }
   }
 
+  @Override public void checkIfTimeOverlaps(String hallNo,
+      Timestamp inputTimestamp) throws ServerException
+  {
+    try
+    {
+      rmiServer.checkIfTimeOverlaps(hallNo, inputTimestamp);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      throw new ServerException("Connection to server failed");
+    }
+  }
 
   @Override public void update(PropertyChangeEvent evt)
   {

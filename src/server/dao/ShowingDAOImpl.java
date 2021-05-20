@@ -45,7 +45,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
       while (showings.next()){
         showingArrayList.add(
             new Showing(showings.getInt("showingId"),
-                (Movie)movie,
+                movie,
             showings.getTimestamp("time"),
             new Hall(showings.getString("hallNo"),
                 showings.getInt("maxSeatInRow"),

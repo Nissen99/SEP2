@@ -20,7 +20,7 @@ public class ViewModelMovieList
 
   public ObservableList<IMovie> getAllMovies() throws ServerException
   {
-   movies.removeAll(movies);
+   movies.clear();
    movies.addAll(clientModel.getMovieList());
 
     return movies;

@@ -20,5 +20,7 @@ public interface ServerModelShowing
   ArrayList<String> getHallNumbers() throws ServerException;
   void removeShowing(IShowing showing) throws ServerException;
   ArrayList<IShowing> getShowingList(IMovie movie) throws ServerException;
+  void checkIfTimeOverlaps(String hallNo, Timestamp timestamp)
+      throws ServerException;
 
 }

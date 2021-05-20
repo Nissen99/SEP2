@@ -13,4 +13,5 @@ public interface IShowing extends Serializable
   String getWeekDay();
   Timestamp getTimestamp();
   String getDate();
+  boolean equals(Object obj);
 }

@@ -1,5 +1,6 @@
 package client.network;
 
+import javafx.beans.property.StringProperty;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 
@@ -44,4 +45,6 @@ public interface Client
   void login(String username, String password)
       throws ServerException;
   void removeShowing(IShowing showing) throws ServerException;
+  void checkIfTimeOverlaps(String hallNo, Timestamp inputTimestamp)
+      throws ServerException;
 }

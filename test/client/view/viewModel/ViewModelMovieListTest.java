@@ -3,7 +3,6 @@ package client.view.viewModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelMovieListTest
@@ -25,11 +24,20 @@ class ViewModelMovieListTest
    @Test
   void testIfWeGetAllMovies() throws ServerException
    {
-     assertEquals(setup.getMovieList().size(),viewModel.getAllMovies().size());
+     assertEquals(setup.getMovieList().size(), viewModel.getAllMovies().size());
    }
 
-   @Test void testSelectedMovie() {
+   @Test void ifWeGetTheRightMovies() throws ServerException
+   {
+     assertEquals(setup.getMovieList().get(0).getMovieId(), viewModel.getAllMovies().get(0).getMovieId());
+   }
+
+   @Test void testSelectedMovieAndGetMovie() {
     assertEquals(setup.getMovie().getMovieTitle(), viewModel.getSelectedMovie().getMovieTitle());
+   }
+
+   @Test void selectedMoveIsNull(){
+    assertThrows(NullPointerException.class, () -> viewModel.setSelectedMovie(null));
    }
 
 

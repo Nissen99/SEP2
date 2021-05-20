@@ -44,6 +44,9 @@ public class ServerModelShowingManager implements ServerModelShowing
 
   @Override public void removeShowing(IShowing showing) throws ServerException
   {
+    if (!showingDAO.getAllShowings(showing.getMovie()).contains(showing)){
+      throw new ServerException("That Showing does not exist");
+    }
     showingDAO.removeShowing(showing);
   }
 
@@ -54,4 +57,22 @@ public class ServerModelShowingManager implements ServerModelShowing
   {
     return showingDAO.getAllShowings(movie);
   }
+
+  @Override public void checkIfTimeOverlaps(String hallNo, Timestamp timestamp)
+      throws ServerException
+  {
+    ArrayList<Timestamp> showingTimes = getShowingTimesByHallNoAndDate(hallNo, timestamp);
+
+    for (Timestamp showingTime : showingTimes)
+    {
+      Timestamp plus3Hours = new Timestamp(showingTime.getTime() + (3 * 3599999));
+      Timestamp minus3Hours = new Timestamp(showingTime.getTime() - (3 * 3599999));
+
+      if (!(timestamp.before(minus3Hours) || timestamp.after(plus3Hours))) {
+        throw new ServerException("Invalid input - A showing is scheduled at this time");
+      }
+    }
+
+  }
+
 }

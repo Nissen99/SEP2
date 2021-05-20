@@ -41,4 +41,6 @@ public interface RMIServer extends Remote
   void removeShowing(IShowing showing) throws RemoteException, ServerException;
   void removeCallBack(ClientCallBack clientCallBack)
       throws RemoteException, ServerException;
+  void checkIfTimeOverlaps(String hallNo, Timestamp inputTimestamp)
+      throws RemoteException, ServerException;
 }

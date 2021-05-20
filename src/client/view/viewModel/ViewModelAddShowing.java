@@ -66,9 +66,7 @@ public ViewModelAddShowing(){
   {
     Timestamp inputTimestamp = getTimestamp();
 
-
     checkIfTimeOverlaps(inputTimestamp);
-
 
     Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
@@ -91,18 +89,15 @@ public ViewModelAddShowing(){
    *
    * @param inputTimestamp Det nye timestamp vi vil tjekke
    */
-  private void checkIfTimeOverlaps(Timestamp inputTimestamp) throws ServerException
+  private void checkIfTimeOverlaps(Timestamp inputTimestamp)
   {
-    ArrayList<Timestamp> showingTimes = clientModel.getShowingTimesByHallNoAndDate(hallNo.get(), inputTimestamp);
-
-    for (Timestamp showingTime : showingTimes)
+    try
     {
-      Timestamp plus3Hours = new Timestamp(showingTime.getTime() + (3 * 3599999));
-      Timestamp minus3Hours = new Timestamp(showingTime.getTime() - (3 * 3599999));
-
-      if (!(inputTimestamp.before(minus3Hours) || inputTimestamp.after(plus3Hours))) {
-        throw new IllegalArgumentException("Invalid input - A showing is scheduled at this time");
-      }
+      clientModel.checkIfTimeOverlaps(hallNoProperty().get(), inputTimestamp);
+    }
+    catch (ServerException e)
+    {
+      throw new IllegalArgumentException("Invalid input - A showing is scheduled at this time");
     }
   }
 

@@ -58,8 +58,7 @@ public class ResetDAO extends BaseDAO
       + "    END IF;\n" + "    RETURN new;\n" + "END;\n" + "$$;\n" + "\n"
       + "CREATE TRIGGER passwordError\n" + "    BEFORE INSERT OR UPDATE\n"
       + "    ON User_\n" + "    FOR EACH ROW\n"
-      + "EXECUTE PROCEDURE passwordError();\n";
-
+      + "EXECUTE PROCEDURE passwordError();";
   public void reset() {
     try(Connection connection = getConnection())
     {
