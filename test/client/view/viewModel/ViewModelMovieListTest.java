@@ -12,8 +12,6 @@ class ViewModelMovieListTest
   private VMTestSetup setup = new VMTestSetup();
   private ViewModelMovieList viewModel = new ViewModelMovieList();
 
-
-
   @BeforeEach
   void setup() throws ServerException
   {

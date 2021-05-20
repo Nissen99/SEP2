@@ -8,4 +8,5 @@ public interface IUser extends Serializable
   int getUserID();
   String getEmail();
   String getPassword();
+  boolean equals(Object obj);
 }

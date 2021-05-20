@@ -24,7 +24,6 @@ class HallTest
   }
   @Test
   public void constrotorSkalOpretteHall(){
-
     assertNotNull(hall);
   }
 
@@ -83,23 +82,6 @@ class HallTest
     hall.addSeat(seat2);
 
     assertEquals(2, hall.getSeats().size());
-  }
-
-  @Test
-  public void derIkkeKanAddesForMangeSeats(){
-    IHall hall = new Hall("S", 10, 10);
-    SeatNoCalculator seatNoCalculator1 = new SeatNoCalculator(hall.getHallNo(), hall.getMaxSeatsInRow(), hall.getMaxRows());
-    for (int i = 0; i < 100; i++)
-    {
-      ISeat seat = new Seat();
-      seat.setSeatNo(seatNoCalculator1.calculateSeatNo());
-      hall.addSeat(seat);
-    }
-
-    ISeat seat = new Seat();
-
-
-    assertThrows(IllegalStateException.class, () -> seat.setSeatNo(seatNoCalculator1.calculateSeatNo()));
   }
 
 
