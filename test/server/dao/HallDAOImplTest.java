@@ -34,10 +34,6 @@ class HallDAOImplTest
   }
 
 
-
-
-
-
   public Hall setUpWithHallNo(String hallNo){
     return new Hall(hallNo, 5, 5);
   }

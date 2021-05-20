@@ -60,7 +60,7 @@ class ViewModelSeatTest
     });
   }
 
-  @Test void testIfSeatIsOccupiedOnLoad() throws ServerException
+  @Test void testIfSeatIsOccupiedOnLoad()
   {
     assertTrue(viewModel.seatIsOccupied(setup.getHall().getSeats().get(1).getSeatNo()));
   }

@@ -9,13 +9,12 @@ public class ResetDAO extends BaseDAO
   private String sqlstatement = "DROP SCHEMA IF EXISTS bioDatabase CASCADE;\n"
       + "CREATE SCHEMA bioDatabase;\n" + "SET SCHEMA 'biodatabase';\n" + "\n"
       + "\n" + "CREATE TABLE IF NOT EXISTS User_\n" + "(\n"
-      + "    userId   SERIAL PRIMARY KEY,\n" + "    userName VARCHAR(25),\n"
-      + "\n"
+      + "    userId   SERIAL PRIMARY KEY,\n"
+      + "    userName VARCHAR(25) UNIQUE ,\n" + "\n"
       + "    email    VARCHAR,\n" + "    password VARCHAR\n" + ");\n" + "\n"
       + "\n" + "CREATE TABLE IF NOT EXISTS Movie\n" + "(\n"
       + "    movieId SERIAL PRIMARY KEY,\n" + "    title   VARCHAR\n" + ");\n"
       + "\n" + "CREATE TABLE IF NOT EXISTS Hall\n" + "(\n"
-      + "    --Her bruges der ikke Serial til PK, da det skal skrives ind gennem java\n"
       + "    hallNo       VARCHAR(1) PRIMARY KEY,\n"
       + "    maxSeatInRow INTEGER,\n" + "    maxRows      INTEGER\n" + ");\n"
       + "\n" + "\n" + "CREATE TABLE IF NOT EXISTS Showing\n" + "(\n"
@@ -59,7 +58,8 @@ public class ResetDAO extends BaseDAO
       + "    END IF;\n" + "    RETURN new;\n" + "END;\n" + "$$;\n" + "\n"
       + "CREATE TRIGGER passwordError\n" + "    BEFORE INSERT OR UPDATE\n"
       + "    ON User_\n" + "    FOR EACH ROW\n"
-      + "EXECUTE PROCEDURE passwordError();";
+      + "EXECUTE PROCEDURE passwordError();\n";
+
   public void reset() {
     try(Connection connection = getConnection())
     {
