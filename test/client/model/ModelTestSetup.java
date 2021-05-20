@@ -16,7 +16,7 @@ public class ModelTestSetup
   private ShowingDAO showingDAO = new ShowingDAOImpl();
   private UserDAO userDAO = new UserDAOImpl();
   private BookingDAO bookingDAO = new BookingDAOImpl();
-  private ResetDAO resetDAO = new ResetDAO();
+  private ResetDAOImpl resetDAO = new ResetDAOImpl();
   private IHall hall = new Hall("A", 5, 5);
   private IShowing showing = null;
   private String movieTitle = "Jackass";

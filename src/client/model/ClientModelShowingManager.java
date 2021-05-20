@@ -2,6 +2,7 @@ package client.model;
 
 import client.network.RMIClient;
 import shared.exception.ServerException;
+import shared.transferobjects.Hall;
 import shared.transferobjects.IHall;
 import shared.transferobjects.IMovie;
 import shared.transferobjects.IShowing;
