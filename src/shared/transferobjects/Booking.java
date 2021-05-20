@@ -29,4 +29,12 @@ public class Booking implements IBooking
   public String toString(){
     return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getUserName();
   }
+
+  public boolean equals(Object obj){
+    if (!(obj instanceof Booking)){
+      return false;
+    }
+    Booking is = (Booking) obj;
+    return is.getBookingId() == bookingId && is.getShowing().equals(showing) && is.getUser().equals(user);
+  }
 }

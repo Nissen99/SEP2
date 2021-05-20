@@ -13,11 +13,20 @@ public class ServerModelMovieManager implements ServerModelMovie
 
   @Override public IMovie addMovie(IMovie movie) throws ServerException
   {
-    return movieDAO.create(movie.getMovieTitle());
+    if (!movie.getMovieTitle().equals("") && (movie.getMovieTitle().charAt(0) != ' ') )
+    {
+      return movieDAO.create(movie.getMovieTitle());
+    }
+    else {
+      throw new ServerException("Ugyldig Title");
+    }
   }
 
   @Override public void removeMovie(IMovie movie) throws ServerException
   {
+    if (!movieDAO.getAllMovies().contains(movie)){
+    throw new ServerException("That Showing does not exist");
+  }
     movieDAO.removeMovie(movie);
   }
 

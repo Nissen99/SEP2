@@ -39,5 +39,13 @@ public class User implements IUser
     return password;
   }
 
+  public boolean equals(Object obj){
+    if (!(obj instanceof User)){
+      return false;
+    }
+    User is = (User) obj;
+    return is.getUserID() == userID && is.getUserName().equals(userName) &&
+        is.getEmail().equals(email) && is.getPassword().equals(password);
+  }
 
 }
