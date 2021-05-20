@@ -10,6 +10,9 @@ public class SeatNoCalculator implements Serializable
   private int maxRows;
 
   public SeatNoCalculator(String hallNo, int maxSeatsInRow, int maxRows) {
+    if (hallNo == null || maxSeatsInRow==0 || maxRows == 0){
+      throw new IllegalArgumentException("Max rows or maxSeats in row is 0 or hallNo = null");
+    }
     this.maxRows = maxRows;
     this.maxSeatsInRow = maxSeatsInRow;
     this.hallNo = hallNo;

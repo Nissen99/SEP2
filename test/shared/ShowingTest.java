@@ -9,6 +9,7 @@ import shared.transferobjects.Showing;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,33 +32,64 @@ class ShowingTest
       Seat seat = new Seat();
       hall.addSeat(seat);
     }
-
     showing = new Showing(1, movie, rightNow, hall);
   }
 
   @Test
-  public void constructorSkalOpretteShowing() {
+  void equalsTjekkerObjekterIInstancen(){
+    Showing is = new Showing(1, movie, rightNow, hall);
+
+    assertEquals(showing, is);
+  }
+
+  @Test
+  void equalsTjekkerOmMovieErEns(){
+    Movie notRightMove = new Movie("SpiderMan 3");
+    Showing is = new Showing(1, notRightMove, rightNow, hall);
+
+    assertNotEquals(showing, is);
+  }
+
+  @Test
+  void equalsTjekkerOmTidsPunktErEns(){
+    Timestamp notRightTime = new Timestamp(System.currentTimeMillis() + 360000);
+    Showing is = new Showing(1, movie , notRightTime, hall);
+
+    assertNotEquals(showing, is);
+  }
+
+  @Test
+  void equalsTjekkerOmHallErEns(){
+    Hall notRightHall = new Hall("T", 5,5);
+    Showing is = new Showing(1, movie, rightNow, notRightHall);
+
+    assertNotEquals(showing, is);
+  }
+
+
+  @Test
+  void constructorSkalOpretteShowing() {
     assertNotNull(showing);
   }
 
   @Test
-  public void harShowingDenRigtigeHall() {
+  void harShowingDenRigtigeHall() {
     assertEquals("A", hall.getHallNo());
   }
 
   @Test
-  public void harShowingDenRigtigeMovie() {
+  void harShowingDenRigtigeMovie() {
     assertEquals("Batman", movie.getMovieTitle());
   }
 
   @Test
-  public void harShowingDenRigtigeId() {
+  void harShowingDenRigtigeId() {
     assertEquals(1, showing.getId());
   }
 
 
   @Test
-  public void harShowingDenRigtigeTid() {
+  void harShowingDenRigtigeTid() {
     assertEquals( (new SimpleDateFormat("HH:mm")).format(rightNow.getTime()), showing.getTime());
   }
 }
