@@ -1,7 +1,6 @@
 package client.view.viewModel;
 
-import client.model.ClientModelCreateUser;
-import client.model.ClientModelCreateUserManager;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.dao.ResetDAO;
@@ -9,7 +8,6 @@ import server.dao.ResetDAOImpl;
 import server.dao.UserDAO;
 import server.dao.UserDAOImpl;
 import shared.exception.ServerException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelCreateUserTest

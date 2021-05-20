@@ -6,8 +6,6 @@ import server.dao.*;
 import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.IHall;
-
-
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;

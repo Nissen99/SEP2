@@ -22,7 +22,6 @@ class ClientModelCreateUserManagerTest
   @Test void testIfUserIsCreatedInDatabase()
       throws ServerException
   {
-    model.createUser(setup.getUserName(), setup.getEmail() ,setup.getPassword());
     assertEquals(setup.getUserName(), userDAO.getById(1).getUserName());
   }
 }

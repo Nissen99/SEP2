@@ -2,8 +2,6 @@ package client.view.viewModel;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import server.dao.MovieDAO;
-import server.dao.MovieDAOImpl;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
 import shared.transferobjects.Movie;

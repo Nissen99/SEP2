@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
 import shared.transferobjects.IShowing;
 import shared.transferobjects.Showing;
-
 import java.sql.Timestamp;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

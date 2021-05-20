@@ -7,9 +7,7 @@ import server.dao.ShowingDAOImpl;
 import shared.exception.ServerException;
 import shared.transferobjects.IShowing;
 import shared.transferobjects.Showing;
-
 import java.sql.Timestamp;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelShowingListTest

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import server.dao.UserDAO;
 import server.dao.UserDAOImpl;
 import shared.exception.ServerException;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

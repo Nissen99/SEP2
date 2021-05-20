@@ -6,7 +6,6 @@ import server.dao.*;
 import server.util.SeatNoCalculator;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelSeatTest
