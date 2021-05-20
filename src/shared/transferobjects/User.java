@@ -43,8 +43,8 @@ public class User implements IUser
     if (!(obj instanceof User)){
       return false;
     }
-    User is = (User) obj;
-    return is.getUserID() == userID && is.getUserName().equals(userName) &&
+    IUser is = (User) obj;
+     return (is.getUserID() == userID) && is.getUserName().equals(userName) &&
         is.getEmail().equals(email) && is.getPassword().equals(password);
   }
 

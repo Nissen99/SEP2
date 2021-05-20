@@ -58,20 +58,20 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     ArrayList<IBooking> bookingArrayList = new ArrayList<>();
     try(Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("SELECT s.movieId, title, b.userId, username, email,password, hallNo, b.showingId, time, bookingId\n"
-          + "FROM Booking b\n" + "JOIN User_ u on b.userId = u.userId\n"
-          + "JOIN Showing s on b.showingId = s.showingId\n"
-          + "Join Movie m on s.movieId = m.movieId;");
+      PreparedStatement statement = connection.prepareStatement("SELECT s.movieId, title, b.userId, username, email,password, s.hallNo, b.showingId, time, bookingId, maxRows, maxSeatInRow\n"
+          + "          FROM Booking b JOIN User_ u on b.userId = u.userId\n"
+          + "          JOIN Showing s on b.showingId = s.showingId\n"
+          + "          JOIN Hall H ON H.hallNo = s.hallNo\n"
+          + "          Join Movie m on s.movieId = m.movieId;");
       ResultSet bookings = statement.executeQuery();
       while (bookings.next()){
-
 
         IMovie movie = new Movie(bookings.getInt("movieId"),
             bookings.getString("title"));
         IUser user = new User(bookings.getInt("userId"),
             bookings.getString("username"),
-            bookings.getString("email"),"password");
-        IHall hall = new Hall(bookings.getString("hallNo"),16,14);
+            bookings.getString("email"),bookings.getString("password"));
+        IHall hall = new Hall(bookings.getString("hallNo"),bookings.getInt("maxSeatInRow"),bookings.getInt("maxRows"));
         IShowing showing = new Showing(bookings.getInt("showingId"),
             movie,
             bookings.getTimestamp("time"), hall);

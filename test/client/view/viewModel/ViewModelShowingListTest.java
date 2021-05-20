@@ -36,7 +36,6 @@ class ViewModelShowingListTest
 
   @Test void pastShowingsAreIgnored() throws ServerException
   {
-    //act ligge film i databasen der er gamel og tjekke om den er i listen
     IShowing showing = showingDAO.create(new Showing(setup.getMovie(), new Timestamp(System.currentTimeMillis() - 360000), setup.getHall()));
 
     assertFalse(viewModel.getFutureShowings().contains(showing));

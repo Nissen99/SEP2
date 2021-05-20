@@ -14,4 +14,12 @@ public class Seat implements ISeat
   {
     this.seatNo = seatNo;
   }
+
+  public boolean equals(Object obj){
+    if (!(obj instanceof Seat)){
+      return false;
+    }
+    ISeat is = (Seat) obj;
+    return is.getSeatNo().equals(seatNo);
+  }
 }

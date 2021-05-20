@@ -25,7 +25,7 @@ public class ServerModelMovieManager implements ServerModelMovie
   @Override public void removeMovie(IMovie movie) throws ServerException
   {
     if (!movieDAO.getAllMovies().contains(movie)){
-    throw new ServerException("That Showing does not exist");
+    throw new ServerException("Filmen eksiterer ikke");
   }
     movieDAO.removeMovie(movie);
   }

@@ -27,7 +27,7 @@ public class Booking implements IBooking
   public IUser getUser(){return user;}
 
   public String toString(){
-    return showing.getWeekDay()+ " "  + showing.getMovie() + " " + user.getUserName();
+    return bookingId + " " + showing.getWeekDay()+ " "  + showing.getMovie().getMovieTitle() + " " + user.getUserName();
   }
 
   public boolean equals(Object obj){

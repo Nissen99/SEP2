@@ -2,6 +2,8 @@ package client.view.viewModel;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import server.dao.MovieDAO;
+import server.dao.MovieDAOImpl;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
 import shared.transferobjects.Movie;
@@ -45,6 +47,25 @@ class ViewModelEditMovieTest
     viewModel.removeMovie(movie);
 
     assertFalse(viewModel.getAllMovies().contains(movie));
+  }
+
+  @Test void testAddMovie() throws ServerException
+  {
+    viewModel.movieTitleProperty().setValue("Spiderman 3 the dark knight returns");
+    viewModel.addMovie();
+
+    assertEquals("Spiderman 3 the dark knight returns", viewModel.getAllMovies().get(1).getMovieTitle());
+  }
+
+  @Test void testAddMovieMovieTitleAsNull(){
+    assertThrows(NullPointerException.class, () -> viewModel.addMovie());
+  }
+
+  @Test void testAddMovieMovieTitleAsEmpty(){
+    viewModel.movieTitleProperty().setValue("");
+    assertThrows(ServerException.class, () -> viewModel.addMovie());
+    viewModel.movieTitleProperty().setValue(" ");
+    assertThrows(ServerException.class, () -> viewModel.addMovie());
   }
 
   @Test void testRemoveMovie() throws ServerException

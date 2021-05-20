@@ -55,6 +55,10 @@ public class ServerModelBookingManager implements ServerModelBooking
 
   @Override public void removeBooking(IBooking booking) throws ServerException
   {
+
+    if (!bookingDAO.getAllBookings().contains(booking)){
+      throw new ServerException("Bookingen eksiterer ikke");
+    }
     bookingDAO.removeBooking(booking);
   }
 
