@@ -25,18 +25,17 @@ public class ViewModelEditMovie
   /**
    * Vores eneste kriterieer for en valid film er at der skal være en title,
    * og at titlen ikke starter med ' ', for at prøve sikre os mod fejl input af brugeren
-   * @throws IllegalArgumentException Hvis title er ugyldig
+   * @throws ServerException Hvis title er ugyldig
    */
-  public void addMovie() throws ServerException, IllegalArgumentException
+  public void addMovie() throws ServerException
   {
-    if (!getMovieTitle().equals("") && (getMovieTitle().charAt(0) != ' ') )
-    {
+     if (getMovieTitle() == null){
+     throw new NullPointerException();
+     }
+
       IMovie movie = new Movie(getMovieTitle());
       clientModel.addMovie(movie);
-    } else {
-      throw new IllegalArgumentException("Ugyldig Title");
     }
-  }
 
   public ObservableList<IMovie> getAllMovies() throws ServerException
   {
@@ -59,8 +58,11 @@ public class ViewModelEditMovie
 
   }
 
-  public void removeMovie(IMovie movie) throws ServerException
+  public void removeMovie(IMovie movie) throws ServerException, NullPointerException
   {
+    if (movie == null){
+      throw new NullPointerException();
+    }
       clientModel.removeMovie(movie);
   }
 
