@@ -1,6 +1,6 @@
 package client.model;
 
-import client.network.RMIClient;
+import client.network.Client;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.util.ArrayList;
@@ -14,15 +14,15 @@ import java.util.ArrayList;
 
 public class ClientModelManager implements ClientModel
 {
-  private RMIClient client;
+  private Client client;
 
 
-  public ClientModelManager(RMIClient client)
+  public ClientModelManager(Client client)
   {
     this.client = client;
       }
 
-  @Override public RMIClient getClient()
+  @Override public Client getClient()
   {
     return client;
   }

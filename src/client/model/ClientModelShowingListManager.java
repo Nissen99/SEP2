@@ -1,5 +1,6 @@
 package client.model;
 
+import client.network.Client;
 import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
@@ -16,14 +17,11 @@ public class ClientModelShowingListManager extends ClientModelManager implements
 {
 
 
-  public ClientModelShowingListManager(RMIClient client)
+  public ClientModelShowingListManager(Client client)
   {
     super(client);
   }
 
-  public RMIClient getClient(){
-    return super.getClient();
-  }
 
   @Override public ArrayList<IShowing> getShowingList(
       IMovie movie)

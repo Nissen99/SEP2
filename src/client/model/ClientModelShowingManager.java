@@ -1,5 +1,6 @@
 package client.model;
 
+import client.network.Client;
 import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.IHall;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ClientModelShowingManager extends ClientModelManager implements ClientModelShowing
 {
-  public ClientModelShowingManager(RMIClient client)
+  public ClientModelShowingManager(Client client)
   {
     super(client);
   }

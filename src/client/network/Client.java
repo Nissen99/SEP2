@@ -2,7 +2,7 @@ package client.network;
 
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
+import shared.util.PropertyChangeSubject;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Implementeres af RMIClient
  *
  */
-public interface Client
+public interface Client extends PropertyChangeSubject
 {
   void startClient();
   void createUser(String userName, String email,String password)

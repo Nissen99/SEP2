@@ -1,5 +1,6 @@
 package client.model;
 
+import client.network.Client;
 import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
@@ -15,7 +16,7 @@ import shared.transferobjects.IMovie;
 
 public class ClientModelMovieManager extends ClientModelManager implements ClientModelMovie
 {
-  public ClientModelMovieManager(RMIClient client)
+  public ClientModelMovieManager(Client client)
   {
     super(client);
   }

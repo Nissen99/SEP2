@@ -9,10 +9,10 @@ public class ResetDAOImpl extends BaseDAO implements ResetDAO
   private String sqlstatement = "DROP SCHEMA IF EXISTS bioDatabase CASCADE;\n"
       + "CREATE SCHEMA bioDatabase;\n" + "SET SCHEMA 'biodatabase';\n" + "\n"
       + "\n" + "CREATE TABLE IF NOT EXISTS User_\n" + "(\n"
-      + "    userId   SERIAL PRIMARY KEY,\n" + "    userName VARCHAR(25) UNIQUE,\n"
-      + "\n"
-      + "    email    VARCHAR,\n" + "    password VARCHAR\n" + ");\n" + "\n"
-      + "\n" + "CREATE TABLE IF NOT EXISTS Movie\n" + "(\n"
+      + "    userId   SERIAL PRIMARY KEY,\n"
+      + "    userName VARCHAR(25) UNIQUE NOT NULL ,\n" + "\n"
+      + "    email    VARCHAR NOT NULL,\n" + "    password VARCHAR NOT NULL\n"
+      + ");\n" + "\n" + "\n" + "CREATE TABLE IF NOT EXISTS Movie\n" + "(\n"
       + "    movieId SERIAL PRIMARY KEY,\n" + "    title   VARCHAR\n" + ");\n"
       + "\n" + "CREATE TABLE IF NOT EXISTS Hall\n" + "(\n"
       + "    --Her bruges der ikke Serial til PK, da det skal skrives ind gennem java\n"
@@ -49,7 +49,7 @@ public class ResetDAOImpl extends BaseDAO implements ResetDAO
       + "    END IF;\n" + "    RETURN new;\n" + "END;\n" + "$$;\n" + "\n"
       + "CREATE TRIGGER emailError\n" + "    BEFORE INSERT OR UPDATE\n"
       + "    ON User_\n" + "    FOR EACH ROW\n"
-      + "EXECUTE PROCEDURE emailError();\n" + "\n" + "\n"
+      + "EXECUTE PROCEDURE emailError();\n" + "\n" + "\n" + "\n"
       + "CREATE OR REPLACE FUNCTION passwordError()\n" + "    RETURNS TRIGGER\n"
       + "    LANGUAGE plpgsql\n" + "AS\n" + "$$\n" + "BEGIN\n"
       + "    IF (LENGTH(NEW.password) NOT BETWEEN 5 AND 50) THEN\n"
@@ -59,7 +59,7 @@ public class ResetDAOImpl extends BaseDAO implements ResetDAO
       + "    END IF;\n" + "    RETURN new;\n" + "END;\n" + "$$;\n" + "\n"
       + "CREATE TRIGGER passwordError\n" + "    BEFORE INSERT OR UPDATE\n"
       + "    ON User_\n" + "    FOR EACH ROW\n"
-      + "EXECUTE PROCEDURE passwordError();";
+      + "EXECUTE PROCEDURE passwordError();\n" + "\n";
   public void reset() {
     try(Connection connection = getConnection())
     {

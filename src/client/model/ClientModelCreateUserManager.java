@@ -1,5 +1,6 @@
 package client.model;
 
+import client.network.Client;
 import client.network.RMIClient;
 import shared.exception.ServerException;
 
@@ -13,7 +14,7 @@ import shared.exception.ServerException;
 
 public class ClientModelCreateUserManager extends ClientModelManager implements ClientModelCreateUser
 {
-  public ClientModelCreateUserManager(RMIClient client)
+  public ClientModelCreateUserManager(Client client)
   {
     super(client);
   }

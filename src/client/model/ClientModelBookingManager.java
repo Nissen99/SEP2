@@ -1,5 +1,6 @@
 package client.model;
 
+import client.network.Client;
 import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
@@ -22,7 +23,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 
-  public ClientModelBookingManager(RMIClient client)
+  public ClientModelBookingManager(Client client)
   {
     super(client);
   }
