@@ -4,16 +4,9 @@ package server.dao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
+import shared.transferobjects.IUser;
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
-  IUser create(String userName, String email,String password)
-      throws ServerException;
-      IUser getById(int userId) throws ServerException;
-      IUser login(String userName, String password)
-      throws ServerException;
-
- */
 
 class UserDAOImplTest
 {
@@ -50,7 +43,7 @@ class UserDAOImplTest
   }
 
   @Test
-  void userNameMustBeQuniqe() throws ServerException
+  void userNameMustBeUnique() throws ServerException
   {
     userDAO.create("Unik", "sendspamher@gmail.com", "Password123");
     assertThrows(ServerException.class, () -> userDAO.create("Unik", "Hans@Hotma.com", "ikkeHanseskode"));
@@ -88,19 +81,7 @@ class UserDAOImplTest
         longEmail, "Passwordsersikre"));
   }
 
-  private StringBuilder makeLongString(int length)
-  {
-    StringBuilder email = new StringBuilder();
-    for (int i = 0; i < length-1; i++)
-    {
-      email.append("a");
-      if (i == 35)
-      {
-        email.append("@");
-      }
-    }
-    return email;
-  }
+
 
   @Test
   void passwordNeedsUpperAndLowerCaseLetters(){
@@ -118,14 +99,71 @@ class UserDAOImplTest
   }
 
   @Test
-  void passwordBoundaryOn50AndOver50Characters() throws ServerException
+  void passwordBoundaryOn50AndOver50Characters()
   {
-    StringBuilder password = makeLongString(49); //et Password skal have upper og lowercase, så laver 49 og tilføljer "A"
-    password.append("A");
+    StringBuilder password = makeLongString(49);
+    password.append("A"); //et Password skal have upper og lowercase, så laver 49 og tilføljer "A"
 
     assertDoesNotThrow(() -> userDAO.create("mitnavn", "godmail@sda", password.toString()));
     password.append("a");
     assertThrows(ServerException.class, () -> userDAO.create("Jatak", "sendmigspam@gmail.com", password.toString()));
   }
 
+  @Test
+  void loginGivesUsCorrectUser() throws ServerException
+  {
+    IUser user = setup.getUserList().get(0);
+
+    assertEquals(user, userDAO.login(setup.getUserName(), setup.getPassword()));
+  }
+
+  @Test
+  void loginWithWrongUsername(){
+    assertThrows(ServerException.class, () -> userDAO.login("Yikes", setup.getPassword()));
+  }
+
+  @Test
+  void loginWithWrongPassword(){
+    assertThrows(ServerException.class, () -> userDAO.login(setup.getUserName(), "PasswordNumber3"));
+  }
+
+  @Test
+  void loginUsernameIsNull(){
+
+    assertThrows(ServerException.class, () -> userDAO.login(null, setup.getPassword()));
+  }
+
+  @Test
+  void loginPasswordIsNull(){
+
+    assertThrows(ServerException.class, () -> userDAO.login(setup.getUserName(), null));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private StringBuilder makeLongString(int length)
+  {
+    StringBuilder email = new StringBuilder();
+    for (int i = 0; i < length-1; i++)
+    {
+      email.append("a");
+      if (i == 35)
+      {
+        email.append("@");
+      }
+    }
+    return email;
+  }
 }
