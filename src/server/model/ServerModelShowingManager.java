@@ -45,7 +45,7 @@ public class ServerModelShowingManager implements ServerModelShowing
   @Override public void removeShowing(IShowing showing) throws ServerException
   {
     if (!showingDAO.getAllShowings(showing.getMovie()).contains(showing)){
-      throw new ServerException("That Showing does not exist");
+      throw new ServerException("Filmfremvisningen eksiterer ikke");
     }
     showingDAO.removeShowing(showing);
   }

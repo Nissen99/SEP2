@@ -22,8 +22,7 @@ class BookingTest
   @BeforeEach
   public void setUp() {
     movie = new Movie(1, "Batman");
-    Date date = new Date();
-    rightNow = new Timestamp(date.getTime());
+    rightNow = new Timestamp(System.currentTimeMillis());
     hall = new Hall("A", 5, 5);
     SeatNoCalculator seatNoCalculator = new SeatNoCalculator(hall.getHallNo(), hall.getMaxSeatsInRow(), hall.getMaxRows());
 
@@ -35,8 +34,27 @@ class BookingTest
     }
 
     showing = new Showing(1, movie, rightNow, hall);
-    user = new User(1, "Henning","heninsmail@mail.com","pass123");
+    user = new User(1, "Henning","heninsmail@mail.com","Pass123");
     booking = new Booking(1, showing, user);
+  }
+
+  @Test
+  void bookingEqualsKiggerPåObjekterne(){
+    Booking is = new Booking(1, showing, user);
+
+    assertEquals(booking, is);
+  }
+
+  @Test
+  void bookingEqualsObjekterIkkeEns(){
+    User henningsbror = new User(1, "HenningsBror", "IkkeHenning@Hotmail.com", "legitPassword");
+    Booking is = new Booking(1, showing, henningsbror);
+    assertNotEquals(booking, is);
+
+    Showing showing = new Showing(1, movie, new Timestamp(System.currentTimeMillis() + 360000), hall);
+    Booking is2 = new Booking(1, showing, user);
+
+    assertNotEquals(booking, is2);
   }
 
   @Test
@@ -51,7 +69,7 @@ class BookingTest
 
   @Test
   public void consSkalSætteRigtigUser() {
-    assertEquals("Henning", user.getUserName());
+    assertEquals(booking.getUser(), user);
   }
 
 

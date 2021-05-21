@@ -25,4 +25,12 @@ public class Movie implements IMovie
   {
     return movieId;
   }
+
+  public boolean equals(Object obj){
+    if (!(obj instanceof Movie)){
+      return false;
+    }
+    Movie is = (Movie) obj;
+    return is.getMovieId() == movieId && is.getMovieTitle().equals(movieTitle);
+  }
 }

@@ -89,7 +89,7 @@ public ViewModelAddShowing(){
    *
    * @param inputTimestamp Det nye timestamp vi vil tjekke
    */
-  private void checkIfTimeOverlaps(Timestamp inputTimestamp)
+  public void checkIfTimeOverlaps(Timestamp inputTimestamp)
   {
     try
     {

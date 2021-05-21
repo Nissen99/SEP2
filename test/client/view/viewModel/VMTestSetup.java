@@ -16,7 +16,7 @@ public class VMTestSetup
   private ShowingDAO showingDAO = new ShowingDAOImpl();
   private UserDAO userDAO = new UserDAOImpl();
   private BookingDAO bookingDAO = new BookingDAOImpl();
-  private ResetDAO resetDAO = new ResetDAO();
+  private ResetDAOImpl resetDAO = new ResetDAOImpl();
   private IHall hall = new Hall("A", 5, 5);
   private IShowing showing = null;
   private String movieTitle = "Jackass";
@@ -35,7 +35,7 @@ public class VMTestSetup
   private ArrayList<IShowing> showingList = new ArrayList<>();
   private ArrayList<IBooking> bookingList = new ArrayList<>();
   private ArrayList<IUser> userList = new ArrayList<>();
-
+  private ArrayList<IHall> hallList = new ArrayList<>();
   public IHall getHall()
   {
     return hall;
@@ -111,6 +111,11 @@ public class VMTestSetup
     return client;
   }
 
+  public ArrayList<IHall> getHallList()
+  {
+    return hallList;
+  }
+
   public void setup() throws ServerException
   {
     resetDAO.reset();
@@ -124,7 +129,7 @@ public class VMTestSetup
 
     if (hallDAO.getHallByNumber("A") == null)
     {
-      hallDAO.create(hall);
+      hallList.add(hallDAO.create(hall));
       userList.add(userDAO.create(userName, email, password));
       movieList.add(movieDAO.create(movieTitle));
       showingList.add(showingDAO.create(showing));

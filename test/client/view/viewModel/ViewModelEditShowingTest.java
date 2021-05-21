@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import shared.exception.ServerException;
 import shared.transferobjects.IShowing;
 import shared.transferobjects.Showing;
-
 import java.sql.Timestamp;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -36,10 +34,11 @@ class ViewModelEditShowingTest
     assertEquals(listSize - 1, viewModel.getAllShowings().size());
   }
 
-  @Test void testIfShowingIsRemoved() throws ServerException
+  @Test void testRightElementIsRemoved() throws ServerException
   {
-    viewModel.removeShowing(setup.getShowing());
-    assertEquals(setup.getShowingList().size()-1, viewModel.getAllShowings().size());
+    IShowing showing = viewModel.getAllShowings().get(0);
+    viewModel.removeShowing(showing);
+    assertFalse(viewModel.getAllShowings().contains(showing));
   }
 
   @Test void ifShowingIsNullOnRemove()

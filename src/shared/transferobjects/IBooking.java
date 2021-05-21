@@ -11,4 +11,6 @@ public interface IBooking extends Serializable
   IUser getUser();
 
   String toString();
+
+  boolean equals(Object obj);
 }

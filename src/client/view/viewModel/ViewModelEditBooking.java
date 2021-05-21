@@ -30,8 +30,6 @@ public class ViewModelEditBooking
     return search;
   }
 
-  public ViewModelEditBooking(){}
-
 
   public ObservableList<IBooking> getAllBookings() throws ServerException
   {

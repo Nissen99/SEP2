@@ -6,7 +6,6 @@ import server.dao.*;
 import server.util.SeatNoCalculator;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewModelSeatTest
@@ -49,6 +48,15 @@ class ViewModelSeatTest
 
     assertEquals(setup.getHall().getSeats().get(2).getSeatNo(), viewModel.getOccupiedSeats().get(1).getSeatNo());
   }
+
+  @Test void testIfRightElementsIsAdded() throws ServerException
+  {
+    viewModel.addSeat(setup.getHall().getSeats().get(2).getSeatNo());
+    viewModel.addBooking();
+
+    assertTrue(viewModel.getOccupiedSeats().contains(setup.getHall().getSeats().get(2)));
+  }
+
 
   @Test void whenSeatsBookedOccupiedSeatListGrows() throws ServerException
   {

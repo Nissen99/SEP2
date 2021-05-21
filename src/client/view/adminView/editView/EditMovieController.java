@@ -72,14 +72,14 @@ public class EditMovieController implements Controller
     ViewHandler.getInstance().openView("Admin");
   }
 
-  public void addMovie() throws ServerException
+  public void addMovie()
   {
     try
     {
       viewModel.addMovie();
       setUpTableView();
     }
-    catch (IllegalArgumentException | NullPointerException e)
+    catch (ServerException | NullPointerException e)
     {
       Alert alert = AlertBox
           .makeAlert("information", "Error!", "Invalid title");
@@ -111,12 +111,10 @@ public class EditMovieController implements Controller
             Alert alert2 = AlertBox
                 .makeAlert("information", "Error!", e.getMessage());
             alert2.show();
-
-          }
+          } catch (NullPointerException ignored){}
 
         }
       });
-
     }
   }
 }

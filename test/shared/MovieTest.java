@@ -18,6 +18,31 @@ class MovieTest
   }
 
   @Test
+  void equalsTjekkerIdOgTitleErEns(){
+    Movie is = new Movie(1, "Batman");
+    Movie is2 = new Movie("Superman");
+
+    assertEquals(movie1, is);
+    assertEquals(movie2, is2);
+  }
+
+  @Test
+  void equalsTjekkerIdForskelligt(){
+    Movie is = new Movie(2, "Batman");
+
+    assertNotEquals(movie1, is);
+  }
+
+  @Test
+  void equalsTjekkerTitleForskelligt(){
+    Movie is = new Movie(1, "Spiderman 3");
+    Movie is2 = new Movie("Thor");
+
+    assertNotEquals(movie1, is);
+    assertNotEquals(movie2, is2);
+  }
+
+  @Test
   public void constuctorSkalOpretteMovie() {
     assertNotNull(movie1);
     assertNotNull(movie2);

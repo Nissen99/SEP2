@@ -6,4 +6,5 @@ public interface IMovie extends Serializable
 {
   String getMovieTitle();
   int getMovieId();
+  boolean equals(Object obj);
 }
