@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.dao.ResetDAO;
 import server.dao.ResetDAOImpl;
-import server.dao.UserDAO;
-import server.dao.UserDAOImpl;
 import shared.exception.ServerException;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +13,6 @@ class ViewModelCreateUserTest
 
   private VMTestSetup setup = new VMTestSetup();
   private ViewModelCreateUser viewModel = new ViewModelCreateUser();
-  private UserDAO userDAO = new UserDAOImpl();
   private ResetDAO resetDAO = new ResetDAOImpl();
 
   @BeforeEach void setup()
@@ -30,14 +27,13 @@ class ViewModelCreateUserTest
     assertEquals(setup.getPassword(), setup.getUser().getPassword());
   }
 
-  @Test void testCreateUser() throws ServerException
+  @Test void testCreateUser()
   {
 
     viewModel.userNameFieldProperty().setValue(setup.getUserName());
     viewModel.passwordFieldProperty().setValue(setup.getPassword());
     viewModel.emailFieldProperty().setValue(setup.getEmail());
-    viewModel.create();
-    assertEquals(setup.getUser().getUserName(), userDAO.getById(1).getUserName());
+    assertDoesNotThrow(() -> viewModel.create());
   }
 
   @Test void testCreateUserWithoutUsername()

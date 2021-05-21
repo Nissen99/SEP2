@@ -10,7 +10,6 @@ public interface UserDAO
 {
   IUser create(String userName, String email,String password)
       throws ServerException;
-  IUser getById(int userId) throws ServerException;
   IUser login(String userName, String password)
       throws ServerException;
 }

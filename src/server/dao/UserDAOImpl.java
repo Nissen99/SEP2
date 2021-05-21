@@ -52,29 +52,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
   }
 
 
-  @Override public IUser getById(int userId) throws ServerException
-  {
-    try (Connection connection = getConnection())
-    {
-      PreparedStatement statement = connection
-          .prepareStatement("SELECT * FROM User_ WHERE userId = ?");
-      statement.setInt(1, userId);
-      ResultSet resultSet = statement.executeQuery();
-      IUser user = null;
-      if (resultSet.next())
-      {
-        user = new User(resultSet.getInt("userId"),
-            resultSet.getString("userName"), resultSet.getString("email"),resultSet.getString("password"));
-      }
-      return user;
-    }
-    catch (SQLException throwables)
-    {
-      throw new ServerException("Database fejl");
 
-    }
-
-  }
 
   @Override public IUser login(String userName, String password)
       throws ServerException
