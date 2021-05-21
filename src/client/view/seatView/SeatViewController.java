@@ -18,7 +18,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import shared.exception.ServerException;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import java.util.ArrayList;
  * paneArrayList er en arrayList med samtlige panes på viewet.
  * selectedPane er en arrayList af de panes man har valgt.
  */
-
 public class SeatViewController implements PropertyChangeListener, Controller
 {
 

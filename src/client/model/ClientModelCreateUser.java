@@ -1,6 +1,5 @@
 package client.model;
 
-import client.network.RMIClient;
 import shared.exception.ServerException;
 
 /**

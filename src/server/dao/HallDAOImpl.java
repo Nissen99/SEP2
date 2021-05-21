@@ -4,7 +4,6 @@ package server.dao;
 import shared.exception.ServerException;
 import shared.transferobjects.Hall;
 import shared.transferobjects.IHall;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

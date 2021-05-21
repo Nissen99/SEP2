@@ -6,7 +6,6 @@ import server.network.RMIServerImpl;
 import server.util.SeatNoCalculator;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.sql.DriverManager;
 import java.sql.SQLException;

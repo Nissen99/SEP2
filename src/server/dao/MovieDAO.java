@@ -2,7 +2,6 @@ package server.dao;
 
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
-
 import java.util.ArrayList;
 
 /**

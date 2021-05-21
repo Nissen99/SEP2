@@ -6,7 +6,6 @@ import shared.transferobjects.IMovie;
 
 
 
-
 /**
  * Denne klasse extender ClientModelManager som har en reference til Client.
  * Vi bruger super.getClient når Client skal bruges.

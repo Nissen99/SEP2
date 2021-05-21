@@ -2,7 +2,6 @@ package server.dao;
 
 import shared.exception.ServerException;
 import shared.transferobjects.IBooking;
-import shared.transferobjects.ISeat;
 import shared.transferobjects.IShowing;
 import shared.transferobjects.IUser;
 

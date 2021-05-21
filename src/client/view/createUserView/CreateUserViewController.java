@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import shared.exception.ServerException;
+
 /**
  * Controller til createUserView, står for at læse bruger inputs, dette er gjort
  * gennem bindings med viewModellen.

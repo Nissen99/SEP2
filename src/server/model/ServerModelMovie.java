@@ -2,7 +2,6 @@ package server.model;
 
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
-
 import java.util.ArrayList;
 
 public interface ServerModelMovie

@@ -2,7 +2,6 @@ package server.dao;
 
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
 import java.sql.*;
 import java.util.ArrayList;
 
