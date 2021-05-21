@@ -37,7 +37,4 @@ class ViewModelMovieListTest
    @Test void selectedMoveIsNull(){
     assertThrows(NullPointerException.class, () -> viewModel.setSelectedMovie(null));
    }
-
-
-
 }
