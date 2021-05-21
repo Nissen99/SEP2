@@ -4,7 +4,6 @@ import shared.exception.ServerException;
 import shared.transferobjects.IBooking;
 import shared.transferobjects.ISeat;
 import shared.transferobjects.IShowing;
-
 import java.util.ArrayList;
 
 /**

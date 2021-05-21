@@ -5,7 +5,6 @@ import shared.transferobjects.IBooking;
 import shared.transferobjects.ISeat;
 import shared.transferobjects.IShowing;
 import shared.transferobjects.Seat;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -3,7 +3,6 @@ package client.model;
 import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

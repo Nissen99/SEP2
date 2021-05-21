@@ -5,7 +5,6 @@ import client.util.AlertBox;
 import client.view.Controller;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
-import javafx.scene.layout.Pane;
 
 /**
  * Controller til adminView, står for at læse bruger inputs, dette er buttons og

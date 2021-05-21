@@ -2,7 +2,6 @@ package client.core;
 
 import client.util.ViewMap;
 import client.view.Controller;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

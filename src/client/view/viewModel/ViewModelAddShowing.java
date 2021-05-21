@@ -10,12 +10,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
-
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
 
 /**
  * ViewModel for AddShowingView, her håndteres den læste data fra controlleren,
