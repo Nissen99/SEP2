@@ -4,9 +4,8 @@ import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
 import shared.transferobjects.IShowing;
-
-
 import java.util.ArrayList;
+
 /**
  * Denne klasse extender ClientModelManager some har en reference til Client.
  * Vi bruger super.getClient når Client skal bruges

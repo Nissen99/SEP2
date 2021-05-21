@@ -3,7 +3,6 @@ package client.model;
 import shared.transferobjects.*;
 import shared.util.PropertyChangeSubject;
 import shared.exception.ServerException;
-
 import java.util.ArrayList;
 
 /**

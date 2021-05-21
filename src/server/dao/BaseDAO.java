@@ -1,7 +1,5 @@
 package server.dao;
 
-
-
 import server.util.MINKODE;
 import java.sql.Connection;
 import java.sql.DriverManager;

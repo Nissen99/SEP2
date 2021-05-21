@@ -1,6 +1,5 @@
 package client.network;
 
-import javafx.beans.property.StringProperty;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 

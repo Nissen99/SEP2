@@ -1,13 +1,11 @@
 package server.model;
 
 import shared.exception.ServerException;
-
 import shared.transferobjects.IBooking;
 import shared.transferobjects.ISeat;
 import shared.transferobjects.IShowing;
 import shared.transferobjects.IUser;
 import shared.util.PropertyChangeSubject;
-
 import java.util.ArrayList;
 
 /**

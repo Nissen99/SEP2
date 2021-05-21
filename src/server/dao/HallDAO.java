@@ -3,7 +3,6 @@ package server.dao;
 
 import shared.exception.ServerException;
 import shared.transferobjects.IHall;
-
 import java.util.ArrayList;
 
 /**

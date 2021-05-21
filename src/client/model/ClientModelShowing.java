@@ -1,8 +1,6 @@
 package client.model;
 
 import shared.exception.ServerException;
-
-import shared.transferobjects.Hall;
 import shared.transferobjects.IHall;
 import shared.transferobjects.IShowing;
 

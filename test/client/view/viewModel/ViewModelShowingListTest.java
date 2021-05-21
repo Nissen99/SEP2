@@ -52,7 +52,4 @@ class ViewModelShowingListTest
   @Test void selectedShowingCanBeNull(){
     assertThrows(NullPointerException.class, () -> viewModel.setSelectedShowing(null));
   }
-
-
-
 }

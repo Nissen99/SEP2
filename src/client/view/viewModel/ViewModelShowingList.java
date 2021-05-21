@@ -9,9 +9,9 @@ import javafx.collections.ObservableList;
 import shared.exception.ServerException;
 import shared.transferobjects.IMovie;
 import shared.transferobjects.IShowing;
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
 /**
  * ViewModel for showingList, her håndteres den læste input fra controlleren.
  */
