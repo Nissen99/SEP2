@@ -70,7 +70,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
 
     }
 
@@ -86,7 +86,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
       statement.setString(1, userName);
       statement.setString(2, password);
       ResultSet resultSet = statement.executeQuery();
-      IUser user = null;
+      IUser user;
       if (resultSet.next())
       {
         user = new User(resultSet.getInt("userId"),
@@ -95,11 +95,11 @@ public class UserDAOImpl extends BaseDAO implements UserDAO
         return user;
       }
     }
-    catch (SQLException e)
+    catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
     }
-    throw new ServerException("This account has not been registered");
+    throw new ServerException("Kontoen er ikke registreret");
 
   }
 }

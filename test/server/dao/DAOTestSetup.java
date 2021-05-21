@@ -5,6 +5,7 @@ import shared.exception.ServerException;
 import shared.transferobjects.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class DAOTestSetup
 {
@@ -26,6 +27,23 @@ public class DAOTestSetup
   private Showing showing = new Showing(1, movie, new Timestamp(323232), hall);
   private Booking booking = new Booking(1, showing, user);
 
+  //Lists
+  private ArrayList<IMovie> movieList = new ArrayList<>();
+
+  public ArrayList<IBooking> getBookingList()
+  {
+    return bookingList;
+  }
+
+  public ArrayList<IUser> getUserList()
+  {
+    return userList;
+  }
+
+  private ArrayList<IBooking> bookingList = new ArrayList<>();
+  private ArrayList<IUser> userList = new ArrayList<>();
+
+
   private SeatNoCalculator seatNoCalculator = new SeatNoCalculator("A", 3, 3);
 
   public void setup() throws ServerException
@@ -40,10 +58,10 @@ public class DAOTestSetup
       seatDAO.create(hall.addSeat(seat), hall);
     }
 
-    movieDAO.create(movie.getMovieTitle());
+    movieList.add(movieDAO.create(movie.getMovieTitle()));
     showingDAO.create(showing);
-    userDAO.create(userName,email,password);
-    bookingDAO.create(showing, user);
+    userList.add(userDAO.create(userName,email,password));
+    bookingList.add(bookingDAO.create(showing, user));
   }
 
   public String getUserName()

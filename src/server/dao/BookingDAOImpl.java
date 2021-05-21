@@ -1,5 +1,6 @@
 package server.dao;
 
+import org.postgresql.util.PSQLException;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.sql.*;
@@ -38,13 +39,16 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       }
       else
       {
-        throw new SQLException();
+      throw new SQLException();
       }
     }
     catch (SQLException throwables)
     {
       throwables.printStackTrace();
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
+    }
+    catch (NullPointerException e){
+      throw new ServerException("Showing eller User er null");
     }
   }
 
@@ -84,8 +88,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     catch (SQLException throwables)
     {
       throwables.printStackTrace();
-      throw new ServerException("Database connection failed");
-
+      throw new ServerException("Database fejl");
     }
     return bookingArrayList;
   }
@@ -100,9 +103,11 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
     catch (SQLException throwables)
     {
       throwables.printStackTrace();
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
+    }   catch (NullPointerException e){
+        throw new ServerException("Bookingen er null");
+      }
 
-    }
   }
 
 

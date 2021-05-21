@@ -1,6 +1,7 @@
 package client.view.viewModel;
 
 import client.core.ClientFactory;
+import client.network.Client;
 import client.network.RMIClient;
 import server.dao.*;
 import shared.exception.ServerException;
@@ -28,7 +29,7 @@ public class VMTestSetup
   private String password = "Test1234";
   private IUser user = new User(1, userName, email, password);
   private IBooking booking;
-  private RMIClient client = ClientFactory.getInstance().getClient();
+  private Client client = ClientFactory.getInstance().getClient();
 
   //Lists
   private ArrayList<IMovie> movieList = new ArrayList<>();
@@ -106,7 +107,7 @@ public class VMTestSetup
     return userList;
   }
 
-  public RMIClient getClient()
+  public Client getClient()
   {
     return client;
   }

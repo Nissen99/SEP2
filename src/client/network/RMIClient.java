@@ -27,7 +27,7 @@ import java.util.ArrayList;
  * Denne kastes når der fanges en Remote- eller SQLException.
  * ServerExceptions kan fanges i controllere, hvilket giver brugeren besked.
  */
-public class RMIClient implements Client, ClientCallBack, PropertyChangeSubject
+public class RMIClient implements Client, ClientCallBack
 {
   private RMIServer rmiServer;
   private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
