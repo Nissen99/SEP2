@@ -27,7 +27,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
 
     }
   }
@@ -54,7 +54,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
 
     }
   }
@@ -76,7 +76,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
 
     }
   }
@@ -91,7 +91,7 @@ public class ShowingDAOImpl extends BaseDAO implements ShowingDAO
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
 
     }
   }

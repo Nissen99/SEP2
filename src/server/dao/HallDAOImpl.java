@@ -24,7 +24,7 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
     }
   }
 
@@ -46,7 +46,7 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
 
     }
   }
@@ -65,7 +65,7 @@ public class HallDAOImpl extends BaseDAO implements HallDAO
     }
     catch (SQLException throwables)
     {
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
     }
   }
 }

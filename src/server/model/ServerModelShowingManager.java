@@ -68,7 +68,7 @@ public class ServerModelShowingManager implements ServerModelShowing
       Timestamp minus3Hours = new Timestamp(showingTime.getTime() - (3 * 3599999));
 
       if (!(timestamp.before(minus3Hours) || timestamp.after(plus3Hours))) {
-        throw new ServerException("Invalid input - A showing is scheduled at this time");
+        throw new ServerException("Ugyldig input - Der findes allerede en filmfremvisning på dette tidspunkt");
       }
     }
 

@@ -42,21 +42,21 @@ public class StartServer
     {
       MovieDAO movieDAO = new MovieDAOImpl();
       movieDAO.create("Jackass");
-      Movie movie = new Movie(1, "Jackass");
+      IMovie movie = new Movie(1, "Jackass");
       SeatDAO seatDAO = new SeatDAOImpl();
-      Hall hall = new Hall("A", 16, 14);
+      IHall hall = new Hall("A", 16, 14);
       hallDAO.create(hall);
       SeatNoCalculator seatNoCalculator = new SeatNoCalculator(hall.getHallNo(),
           hall.getMaxSeatsInRow(), hall.getMaxRows());
       for (int i = 0; i < hall.getMaxRows() * hall.getMaxSeatsInRow(); i++)
       {
-        Seat seat = new Seat();
+        ISeat seat = new Seat();
         seat.setSeatNo(seatNoCalculator.calculateSeatNo());
         seatDAO.create(hall.addSeat(seat), hall);
       }
 
       Timestamp time = new Timestamp(System.currentTimeMillis() + 36000000);
-      Showing showing = new Showing(1, movie, time, hall);
+      IShowing showing = new Showing(1, movie, time, hall);
       ShowingDAO showingDAO = new ShowingDAOImpl();
       showingDAO.create(showing);
     }

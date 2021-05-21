@@ -32,7 +32,7 @@ public class ServerModelBookingManager implements ServerModelBooking
    * @param seats de sæder der skal bookes
    * @throws ServerException connection fejl
    */
-  @Override public void addBooking(IShowing showing, IUser user,
+  @Override public synchronized void addBooking(IShowing showing, IUser user,
       ArrayList<ISeat> seats) throws ServerException
   {
     try

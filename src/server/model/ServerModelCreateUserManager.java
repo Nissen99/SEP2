@@ -11,7 +11,7 @@ public class ServerModelCreateUserManager implements ServerModelCreateUser
   private UserDAO userDAO = new UserDAOImpl();
 
 
-  @Override public void createUser(String userName, String email,String password)
+  @Override public synchronized void createUser(String userName, String email,String password)
       throws ServerException
   {
     userDAO.create(userName,email,password);

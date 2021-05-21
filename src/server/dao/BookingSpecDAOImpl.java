@@ -20,11 +20,10 @@ public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
     try(Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO BookingSpec (bookingId, seatNo, showingId) VALUES (?, ?, ?)");
+          "INSERT INTO BookingSpec (bookingId, seatNo) VALUES (?, ?)");
 
       statement.setInt(1, booking.getBookingId());
       statement.setString(2, seat.getSeatNo());
-      statement.setInt(3, booking.getShowing().getId());
       statement.executeUpdate();
 
     }
@@ -50,7 +49,9 @@ public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "SELECT seatNo FROM BookingSpec WHERE showingId = ?;");
+          "SELECT seatNo\n" + "FROM BookingSpec b\n"
+              + "JOIN Booking on b.bookingId = Booking.bookingId\n"
+              + "WHERE showingId = ?");
       statement.setInt(1, showing.getId());
       ResultSet resultSet = statement.executeQuery();
 
@@ -65,7 +66,7 @@ public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
     catch (SQLException throwables)
     {
       throwables.printStackTrace();
-      throw new ServerException("Database connection failed");
+      throw new ServerException("Database fejl");
     }
   }
 }

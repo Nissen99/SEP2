@@ -28,7 +28,7 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
       catch (SQLException throwables)
       {
         throwables.printStackTrace();
-        throw new ServerException("Database connection failed");
+        throw new ServerException("Database fejl");
 
       }
   }
