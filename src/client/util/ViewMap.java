@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class ViewMap
 {
-  private static Map<String, String> viewMap;
+  private Map<String, String> viewMap;
   private static ViewMap instance;
 
     private ViewMap(){

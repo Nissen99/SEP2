@@ -60,15 +60,17 @@ class BookingDAOImplTest
   }
 
   @Test
+  void createWithNullAsUser(){
+    assertThrows(ServerException.class, () -> bookingDAO.create(setup.getShowing(), null));
+  }
+
+  @Test
   void createWithNotValidUser(){
     IUser user = new User(0, "Mikkel", "IkkeMinMail@Hotmail.com", "PasswordDerErSikkert123");
     assertThrows(ServerException.class, () -> bookingDAO.create(setup.getShowing(), user));
   }
 
-  @Test
-  void createWithNullAsUser(){
-    assertThrows(ServerException.class, () -> bookingDAO.create(setup.getShowing(), null));
-  }
+
 
   /**
    * Denne test giver kun mening hvis vi ved det element vi fjerner ligger i listen
