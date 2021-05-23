@@ -30,7 +30,7 @@ public class ServerModelBookingManager implements ServerModelBooking
    * @param showing den showing der skal bookes billetter til
    * @param user den brugers navn billetterne skal bookes i
    * @param seats de sæder der skal bookes
-   * @throws ServerException connection fejl
+   * @throws ServerException connection fejl eller anden reservation af de valgte sæder
    */
   @Override public synchronized void addBooking(IShowing showing, IUser user,
       ArrayList<ISeat> seats) throws ServerException
@@ -54,6 +54,12 @@ public class ServerModelBookingManager implements ServerModelBooking
     propertyChangeSupport.firePropertyChange(String.valueOf(ENUM.ADDBOOKING), null, "booking");
   }
 
+  /**
+   * Dette er en hjælpe metode der står for at det ikke kan lade sig gøre at double booke
+   * @param showing Den showing der skal tjekkes på
+   * @param seats de sæder der skal tjekkes
+   * @throws ServerException Hvis sæderne blev optaget
+   */
   private void checkForDoubleBooking(IShowing showing, ArrayList<ISeat> seats)
       throws ServerException
   {
