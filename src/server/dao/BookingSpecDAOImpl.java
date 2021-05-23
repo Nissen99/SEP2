@@ -30,7 +30,6 @@ public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
     catch (SQLException throwables)
     {
       throwables.printStackTrace();
-      System.out.println(throwables.getMessage());
       throw new ServerException("Database Connection Failed");
     }
   }

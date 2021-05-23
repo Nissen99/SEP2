@@ -42,9 +42,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
       ArrayList<ISeat> seats)
       throws ServerException
   {
-    if (seats.isEmpty()){
-      throw new ServerException("Sæderne du havde valgt blev optaget");
-    }
+
     super.getClient().addBooking(showing, seats);
   }
 

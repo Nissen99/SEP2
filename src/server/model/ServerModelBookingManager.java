@@ -35,6 +35,7 @@ public class ServerModelBookingManager implements ServerModelBooking
   @Override public synchronized void addBooking(IShowing showing, IUser user,
       ArrayList<ISeat> seats) throws ServerException
   {
+    checkForDoubleBooking(showing, seats);
     try
     {
       IBooking booking = bookingDAO.create(showing,user);
@@ -51,6 +52,21 @@ public class ServerModelBookingManager implements ServerModelBooking
       e.printStackTrace();
     }
     propertyChangeSupport.firePropertyChange(String.valueOf(ENUM.ADDBOOKING), null, "booking");
+  }
+
+  private void checkForDoubleBooking(IShowing showing, ArrayList<ISeat> seats)
+      throws ServerException
+  {
+    if (seats.size() == 0){
+      throw new ServerException("Sæderne du havde valgt blev optaget");
+    }
+    ArrayList<ISeat> occupiedSeats = bookingSpecDAO.getOccupiedSeats(showing);
+    for (ISeat seat : seats)
+    {
+      if (occupiedSeats.contains(seat)){
+        throw new ServerException("Sæderne du havde valgt blev optaget");
+      }
+    }
   }
 
   @Override public void removeBooking(IBooking booking) throws ServerException
