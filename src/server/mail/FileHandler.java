@@ -33,7 +33,6 @@ public class FileHandler
     try
     {
       PdfWriter.getInstance(document, new FileOutputStream(file));
-      document.open();
 
       DocumentBuilder documentBuilder = new DocumentBuilder(document);
       documentBuilder.setBooking(booking);
@@ -56,7 +55,6 @@ public class FileHandler
       }
 
       document = documentBuilder.getDocument();
-      document.close();
     }
     catch (DocumentException | IOException e)
     {

@@ -33,6 +33,7 @@ public class DocumentBuilder
   public DocumentBuilder(Document document)
   {
     this.document = document;
+    document.open();
   }
 
 
@@ -105,6 +106,7 @@ public class DocumentBuilder
 
   public Document getDocument()
   {
+    document.close();
     return document;
   }
 }
