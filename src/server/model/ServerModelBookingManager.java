@@ -4,7 +4,7 @@ import server.dao.BookingDAO;
 import server.dao.BookingDAOImpl;
 import server.dao.BookingSpecDAO;
 import server.dao.BookingSpecDAOImpl;
-import server.mail.FileHandler;
+import server.mail.DocumentDirector;
 import server.mail.JavaMailUtil;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
@@ -43,8 +43,8 @@ public class ServerModelBookingManager implements ServerModelBooking
       {
         bookingSpecDAO.create(booking, seat);
       }
-      FileHandler fileHandler = new FileHandler();
-      fileHandler.createPDF(booking,seats);
+      DocumentDirector documentDirector = new DocumentDirector();
+      documentDirector.createPDF(booking,seats);
       JavaMailUtil.sendMail(user.getEmail());
     }
     catch (MessagingException | IOException e)

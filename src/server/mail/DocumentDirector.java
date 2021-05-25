@@ -5,22 +5,25 @@ import com.itextpdf.text.pdf.PdfWriter;
 import shared.transferobjects.IBooking;
 import shared.transferobjects.ISeat;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FileHandler
+/**
+ * Diretor for Document builder
+ */
+public class DocumentDirector
 {
-  private final String path = "src/server/mail/mailOrder.pdf";
-  private File file;
   private Document document;
+  private DocumentBuilder documentBuilder;
 
   String[] seatNos;
 
-  public FileHandler()
+  public DocumentDirector()
   {
-    file = new File(path);
-    document = new Document();
+      document = new Document();
+      documentBuilder = new DocumentBuilder(document);
   }
 
   public void createPDF(IBooking booking, ArrayList<ISeat> seats)
@@ -32,9 +35,7 @@ public class FileHandler
     }
     try
     {
-      PdfWriter.getInstance(document, new FileOutputStream(file));
 
-      DocumentBuilder documentBuilder = new DocumentBuilder(document);
       documentBuilder.setBooking(booking);
 
       documentBuilder.setUpImage();
