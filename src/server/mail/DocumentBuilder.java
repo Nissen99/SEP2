@@ -1,7 +1,12 @@
 package server.mail;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import shared.transferobjects.IBooking;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -12,7 +17,8 @@ public class DocumentBuilder
 {
   private Document document;
   private final String logoPath = "src/shared/image/emailLogo.jpg";
-
+  private final String path = "src/server/mail/mailOrder.pdf";
+  private File file;
   private String movieTitle;
   private String bookingID;
   private String fName;
@@ -32,7 +38,18 @@ public class DocumentBuilder
 
   public DocumentBuilder(Document document)
   {
-    this.document = document;
+    try
+    {
+      this.document = document;
+      file = new File(path);
+      PdfWriter.getInstance(document, new FileOutputStream(file));
+      document.open();
+    }
+    catch (DocumentException | FileNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+
   }
 
 
@@ -105,6 +122,7 @@ public class DocumentBuilder
 
   public Document getDocument()
   {
+    document.close();
     return document;
   }
 }
