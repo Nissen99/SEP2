@@ -15,7 +15,7 @@ public class FileHandler
   private File file;
   private Document document;
 
-  String[] seatNos;
+  private String[] seatNos;
 
   public FileHandler()
   {
