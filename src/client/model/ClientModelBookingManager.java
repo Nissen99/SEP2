@@ -1,7 +1,6 @@
 package client.model;
 
 import client.network.Client;
-import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.beans.PropertyChangeEvent;
