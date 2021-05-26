@@ -3,6 +3,8 @@ package client.model;
 import shared.transferobjects.*;
 import shared.util.PropertyChangeSubject;
 import shared.exception.ServerException;
+
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +12,7 @@ import java.util.ArrayList;
  */
 
 public interface ClientModelBooking extends ClientModelShowingList,
-    PropertyChangeSubject
+    PropertyChangeSubject, PropertyChangeListener
 {
   void addBooking(IShowing showing,  ArrayList<ISeat> seats)
       throws ServerException;

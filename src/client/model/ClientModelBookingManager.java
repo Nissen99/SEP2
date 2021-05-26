@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * Denne klasse videresender data som den får fra ViewModel til Client.
  */
-public class ClientModelBookingManager extends ClientModelShowingListManager implements ClientModelBooking, PropertyChangeListener
+public class ClientModelBookingManager extends ClientModelShowingListManager implements ClientModelBooking
 {
 
   private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
