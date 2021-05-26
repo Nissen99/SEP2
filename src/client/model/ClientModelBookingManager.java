@@ -1,7 +1,6 @@
 package client.model;
 
 import client.network.Client;
-import client.network.RMIClient;
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.beans.PropertyChangeEvent;
@@ -26,11 +25,6 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
   public ClientModelBookingManager(Client client)
   {
     super(client);
-  }
-
-  private void update(PropertyChangeEvent propertyChangeEvent)
-  {
-    propertyChangeSupport.firePropertyChange(propertyChangeEvent);
   }
 
   /**
@@ -88,7 +82,7 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
       PropertyChangeListener listener) throws ServerException
   {
     propertyChangeSupport.addPropertyChangeListener(listener);
-    super.getClient().addPropertyChangeListener(this::update);
+    super.getClient().addPropertyChangeListener(this);
   }
 
   /**
@@ -101,8 +95,12 @@ public class ClientModelBookingManager extends ClientModelShowingListManager imp
       PropertyChangeListener listener) throws ServerException
   {
     propertyChangeSupport.removePropertyChangeListener(listener);
-    super.getClient().removePropertyChangeListener(this::update);
+    super.getClient().removePropertyChangeListener(this);
   }
 
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+    propertyChangeSupport.firePropertyChange(evt);
 
+  }
 }
