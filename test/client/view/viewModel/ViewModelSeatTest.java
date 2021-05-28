@@ -49,6 +49,20 @@ class ViewModelSeatTest
     assertEquals(setup.getHall().getSeats().get(2).getSeatNo(), viewModel.getOccupiedSeats().get(1).getSeatNo());
   }
 
+  @Test void testIfDoubleBooking() throws ServerException
+  {
+    viewModel.addSeat(setup.getHall().getSeats().get(2).getSeatNo());
+    viewModel.addBooking();
+
+    viewModel.addSeat(setup.getHall().getSeats().get(2).getSeatNo());
+    assertThrows(ServerException.class, () -> viewModel.addBooking());
+  }
+
+  @Test void testIfBookingWithEmptyList(){
+
+    assertThrows(ServerException.class, () -> viewModel.addBooking());
+  }
+
   @Test void testIfRightElementsIsAdded() throws ServerException
   {
     viewModel.addSeat(setup.getHall().getSeats().get(2).getSeatNo());
