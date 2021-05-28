@@ -317,12 +317,9 @@ public class SeatViewController implements PropertyChangeListener, Controller
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(() -> {
-
         updateOccupiedSeatList();
         selectedPaneTaken();
         setOccupiedColor();
-
-
     });
   }
 }

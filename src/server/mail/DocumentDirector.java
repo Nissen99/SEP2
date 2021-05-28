@@ -15,15 +15,14 @@ import java.util.ArrayList;
  */
 public class DocumentDirector
 {
-  private Document document;
   private DocumentBuilder documentBuilder;
 
-  String[] seatNos;
+  private String[] seatNos;
 
   public DocumentDirector()
   {
-      document = new Document();
-      documentBuilder = new DocumentBuilder(document);
+
+      documentBuilder = new DocumentBuilder();
   }
 
   public void createPDF(IBooking booking, ArrayList<ISeat> seats)
@@ -55,11 +54,13 @@ public class DocumentDirector
         documentBuilder.settingUpSeat(seat);
       }
 
-      document = documentBuilder.getDocument();
     }
     catch (DocumentException | IOException e)
     {
       e.printStackTrace();
+    } finally
+    {
+      documentBuilder.finishBuild();
     }
   }
 
