@@ -36,11 +36,11 @@ public class DocumentBuilder
   }
 
 
-  public DocumentBuilder(Document document)
+  public DocumentBuilder()
   {
     try
     {
-      this.document = document;
+      this.document = new Document();
       file = new File(path);
       PdfWriter.getInstance(document, new FileOutputStream(file));
       document.open();
@@ -120,9 +120,8 @@ public class DocumentBuilder
   }
 
 
-  public Document getDocument()
+  public void finishBuild()
   {
     document.close();
-    return document;
   }
 }
