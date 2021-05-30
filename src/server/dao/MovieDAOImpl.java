@@ -29,7 +29,6 @@ public class MovieDAOImpl extends BaseDAO implements MovieDAO
       {
         throwables.printStackTrace();
         throw new ServerException("Database fejl");
-
       }
   }
 

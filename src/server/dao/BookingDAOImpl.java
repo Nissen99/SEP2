@@ -27,9 +27,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       PreparedStatement statement = connection.prepareStatement(
           "INSERT INTO Booking (showingId, userId) VALUES (?, ?)",
           PreparedStatement.RETURN_GENERATED_KEYS);
-
       statement.setInt(1, showing.getId());
-
       statement.setInt(2, user.getUserID());
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
@@ -39,7 +37,7 @@ public class BookingDAOImpl extends BaseDAO implements BookingDAO
       }
       else
       {
-      throw new SQLException();
+        throw new ServerException("Database fejl");
       }
     }
     catch (SQLException throwables)
