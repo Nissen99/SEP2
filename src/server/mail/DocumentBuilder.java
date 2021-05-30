@@ -3,14 +3,12 @@ package server.mail;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import shared.transferobjects.IBooking;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Hjælpeklasse til FileHandler
  * Builder pattern
  */
 public class DocumentBuilder
@@ -49,7 +47,6 @@ public class DocumentBuilder
     {
       e.printStackTrace();
     }
-
   }
 
 
@@ -74,7 +71,7 @@ public class DocumentBuilder
     document.add(pHall);
   }
 
-  public void createParagraph(float linespace, String element, int fontSize, boolean centerAlign)
+  private void createParagraph(float linespace, String element, int fontSize, boolean centerAlign)
       throws DocumentException
   {
     Paragraph pDateTime = setupParagraph(linespace, element, fontSize, centerAlign);
@@ -109,7 +106,7 @@ public class DocumentBuilder
     document.add(image);
   }
 
-  public Paragraph setupParagraph(Float linespace, String element, int fontSize, boolean centerAlign)
+  private Paragraph setupParagraph(Float linespace, String element, int fontSize, boolean centerAlign)
   {
     Paragraph p = new Paragraph(
         new Phrase(linespace, element,

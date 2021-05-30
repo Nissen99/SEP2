@@ -21,7 +21,6 @@ public class DocumentDirector
 
   public DocumentDirector()
   {
-
       documentBuilder = new DocumentBuilder();
   }
 
@@ -53,12 +52,12 @@ public class DocumentDirector
       {
         documentBuilder.settingUpSeat(seat);
       }
-
     }
     catch (DocumentException | IOException e)
     {
       e.printStackTrace();
-    } finally
+    }
+    finally
     {
       documentBuilder.finishBuild();
     }
