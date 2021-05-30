@@ -68,4 +68,6 @@ public class BookingSpecDAOImpl extends BaseDAO implements BookingSpecDAO
       throw new ServerException("Database fejl");
     }
   }
+
+
 }

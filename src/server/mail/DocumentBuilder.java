@@ -3,6 +3,7 @@ package server.mail;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import shared.transferobjects.IBooking;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -47,19 +48,27 @@ public class DocumentBuilder
     {
       e.printStackTrace();
     }
+
   }
 
 
   public void settingUpSeat(String seat) throws DocumentException
   {
-    createParagraph(20f, "Seat Number: " + seat, 12, true);
+    Paragraph pSeat = setupParagraph(20f, "Seat Number: " + seat, 12, true);
+    document.add(pSeat);
   }
 
   public void settingUpDateAndTime()
       throws DocumentException
   {
-    createParagraph(10f, dateTime, 12, true);
+    Paragraph pDateAndTime = setupParagraph(10f, dateTime, 12, true);
+    document.add(pDateAndTime);
+  }
 
+  public void settingUpFName() throws DocumentException
+  {
+    Paragraph pFName = setupParagraph(10f, "Name: " + fName, 10, false);
+    document.add(pFName);
   }
 
   public void SettingUpHallNo() throws DocumentException
@@ -71,12 +80,7 @@ public class DocumentBuilder
     document.add(pHall);
   }
 
-  private void createParagraph(float linespace, String element, int fontSize, boolean centerAlign)
-      throws DocumentException
-  {
-    Paragraph pDateTime = setupParagraph(linespace, element, fontSize, centerAlign);
-    document.add(pDateTime);
-  }
+
 
   public void SettingUpMovieTitle() throws DocumentException
   {
@@ -86,10 +90,7 @@ public class DocumentBuilder
     document.add(pMovieTitle);
   }
 
-  public void settingUpFName() throws DocumentException
-  {
-    createParagraph(10f, "Name: " + fName, 10, false);
-  }
+
 
   public void setUpBookingId() throws DocumentException
   {
