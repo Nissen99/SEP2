@@ -31,7 +31,7 @@ class UserDAOImplTest
   }
 
   @Test
-  void createUserWithPasswordNuln()
+  void createUserWithPasswordNull()
   {
     assertThrows(ServerException.class, () -> userDAO.create("Yikers", "denneMail@Gmail.com", null));
   }

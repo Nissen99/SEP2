@@ -1,6 +1,6 @@
 package server.dao;
 
-import org.postgresql.util.PSQLException;
+
 import shared.exception.ServerException;
 import shared.transferobjects.*;
 import java.sql.*;

@@ -61,8 +61,6 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
 
   }
 
-
-
   //BOOKING
   @Override public synchronized void addBooking(IShowing showing, IUser user,
       ArrayList<ISeat> seats) throws ServerException

@@ -52,15 +52,16 @@ public class JavaMailUtil
     message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));  // the recipient
     message.setSubject("Biograf Billet"); // the subject of the mail
 
-    MimeBodyPart bodyPart = new MimeBodyPart();
-    File file = new File(path); // creating a new file, and adding the path of our pdf-file
+    Multipart multipart = new MimeMultipart(); //Opretter MultiPart objekt
 
-    bodyPart.attachFile(file);
+    MimeBodyPart bodyPart = new MimeBodyPart(); //Opretter BodyPart
+    File file = new File(path); //Fetcher filen der skal sendes
 
-    Multipart multipart = new MimeMultipart();
-    multipart.addBodyPart(bodyPart);
+    bodyPart.attachFile(file); //Tilføjer filen til bodyPart
 
-    message.setContent(multipart);
+    multipart.addBodyPart(bodyPart); //Tilføjer bodyPart til multipart
+
+    message.setContent(multipart); //Tilføjer multipart til message objektet
 
     return message;
 
