@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Denne klasse wiper databasen, dette sker ved at droppe den, og lave den igen fra bunden
+ * Dette bliver brugt ved test
+ */
 public class ResetDAOImpl extends BaseDAO implements ResetDAO
 {
   private String sqlstatement = "DROP SCHEMA IF EXISTS bioDatabase CASCADE;\n"

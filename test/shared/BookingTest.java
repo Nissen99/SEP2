@@ -4,20 +4,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.util.SeatNoCalculator;
 import shared.transferobjects.*;
-
 import java.sql.Timestamp;
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookingTest
 {
-  IShowing showing;
-  IHall hall;
-  IMovie movie;
-  Timestamp rightNow;
-  IUser user;
-  IBooking booking;
+  private IShowing showing;
+  private IHall hall;
+  private IMovie movie;
+  private Timestamp rightNow;
+  private IUser user;
+  private IBooking booking;
 
   @BeforeEach
   public void setUp() {

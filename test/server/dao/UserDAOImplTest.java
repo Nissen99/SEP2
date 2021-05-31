@@ -21,7 +21,7 @@ class UserDAOImplTest
   @Test
   void testCreate() throws ServerException
   {
-    assertEquals(2, userDAO.create("Mikkel", "Sara@Hotmail.com", "JegStalkerIkkeSara").getUserID());
+    assertEquals(2, userDAO.create("Henning", "Sara@Hotmail.com", "JegStalkerIkkeSara").getUserID());
   }
 
   @Test
@@ -138,19 +138,6 @@ class UserDAOImplTest
 
     assertThrows(ServerException.class, () -> userDAO.login(setup.getUserName(), null));
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   private StringBuilder makeLongString(int length)

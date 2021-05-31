@@ -102,7 +102,7 @@ class ViewModelSeatTest
   }
 
 
-  @Test void testIfSeatNotInDatabaseCanBeAddetToList()
+  @Test void testIfSeatNotInDatabaseCanBeAddedToList()
   {
     viewModel.addSeat("3001");
     assertThrows(ServerException.class, () -> viewModel.addBooking());
@@ -154,7 +154,8 @@ class ViewModelSeatTest
 
     assertFalse(viewModel.seatIsOccupied(setup.getHall().getSeats().get(10).getSeatNo()));
 
-    bookingSpecDAO.create(setup.getBooking(), setup.getHall().getSeats().get(10));
+    viewModel.addSeat(setup.getHall().getSeats().get(10).getSeatNo());
+    viewModel.addBooking();
     viewModel.updateOccupiedSeatsList();
 
     assertTrue(viewModel.seatIsOccupied(setup.getHall().getSeats().get(10).getSeatNo()));
@@ -170,9 +171,7 @@ class ViewModelSeatTest
   assertEquals(1, viewModel.getChoiceList().get(0));
   assertEquals(7, viewModel.getChoiceList().get(6));
   assertEquals(14, viewModel.getChoiceList().get(13));
-  assertThrows(IndexOutOfBoundsException.class, () -> viewModel.getChoiceList().get(-1));
   assertThrows(IndexOutOfBoundsException.class, () -> viewModel.getChoiceList().get(14));
-
 }
 
 }
