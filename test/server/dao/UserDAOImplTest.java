@@ -85,8 +85,8 @@ class UserDAOImplTest
   @Test
   void passwordNeedsUpperAndLowerCaseLetters(){
 
-    assertThrows(ServerException.class, () -> userDAO.create("username", "MinEmail@gmail", "passawords"));
-    assertThrows(ServerException.class, () -> userDAO.create("DetErMinNavn", "jada@gmail", "PASSWORDUPSCAPS"));
+    assertThrows(ServerException.class, () -> userDAO.create("username", "MinEmail@gmail.com", "passawords"));
+    assertThrows(ServerException.class, () -> userDAO.create("DetErMinNavn", "jada@gmail.com", "PASSWORDUPSCAPS"));
 
   }
 
