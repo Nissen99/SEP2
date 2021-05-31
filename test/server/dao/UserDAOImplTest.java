@@ -52,7 +52,7 @@ class UserDAOImplTest
 
 
   @Test
-  void emailContainsAtSign(){
+  void emailContainsAtSignAtRightSpot(){
     assertThrows(ServerException.class, () -> userDAO.create("Username", "@Email", "passwordsD123"));
     assertThrows(ServerException.class, () -> userDAO.create("godtUserName", "dethererenmail@", "passwordS123"));
     assertDoesNotThrow(() -> userDAO.create("IkkeMitNavn", "Hejsa@gmail.com", "DuHackerikkeMig"));
