@@ -50,8 +50,8 @@ public class ResetDAOImpl extends BaseDAO implements ResetDAO
       + "-- samt dens besked for at give brugeren relevante oplysninger om fejlene de har fået.\n"
       + "CREATE OR REPLACE FUNCTION emailError()\n" + "    RETURNS TRIGGER\n"
       + "    LANGUAGE plpgsql\n" + "AS\n" + "$$\n" + "BEGIN\n"
-      + "    IF (NEW.email NOT LIKE '_%@%_') THEN\n"
-      + "        RAISE EXCEPTION 'Email skal være en gyldig mail der indeholder @';\n"
+      + "    IF (NEW.email NOT LIKE '_%@%.%_') THEN\n"
+      + "        RAISE EXCEPTION 'Email skal være en gyldig mail der indeholder @ og punktum';\n"
       + "    ELSEIF (LENGTH(new.email) NOT BETWEEN 6 AND 50) THEN\n"
       + "        RAISE EXCEPTION 'Email skal være mellem 6 og 50 tegn';\n"
       + "    END IF;\n" + "    RETURN new;\n" + "END;\n" + "$$;\n" + "\n"
@@ -67,7 +67,7 @@ public class ResetDAOImpl extends BaseDAO implements ResetDAO
       + "    END IF;\n" + "    RETURN new;\n" + "END;\n" + "$$;\n" + "\n"
       + "CREATE TRIGGER passwordError\n" + "    BEFORE INSERT OR UPDATE\n"
       + "    ON User_\n" + "    FOR EACH ROW\n"
-      + "EXECUTE PROCEDURE passwordError();";
+      + "EXECUTE PROCEDURE passwordError();\n";
   public void reset() {
     try(Connection connection = getConnection())
     {

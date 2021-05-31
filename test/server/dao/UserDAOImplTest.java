@@ -62,7 +62,7 @@ class UserDAOImplTest
   void emailBoundaryUnder6AndOn6Characters()
   {
     assertThrows(ServerException.class, () -> userDAO.create("UserName", "g@123", "Passwordsersikre"));
-    assertDoesNotThrow(() ->userDAO.create("UserName", "Gmai@l", "Password123"));
+    assertDoesNotThrow(() ->userDAO.create("UserName", "Gm@l.c", "Password123"));
   }
 
   @Test
@@ -95,7 +95,7 @@ class UserDAOImplTest
   void passwordBoundaryUnder5AndOn5Characters(){
 
     assertThrows(ServerException.class, () -> userDAO.create("Minuser", "minMail@gmail", "Hej1"));
-    assertDoesNotThrow(() -> userDAO.create("NyBruger", "min@gmail", "Hej12"));
+    assertDoesNotThrow(() -> userDAO.create("NyBruger", "min@gmail.com", "Hej12"));
   }
 
   @Test
@@ -104,7 +104,7 @@ class UserDAOImplTest
     StringBuilder password = makeLongString(49);
     password.append("A"); //et Password skal have upper og lowercase, så laver 49 og tilføljer "A"
 
-    assertDoesNotThrow(() -> userDAO.create("mitnavn", "godmail@sda", password.toString()));
+    assertDoesNotThrow(() -> userDAO.create("mitnavn", "godmail@sda.com", password.toString()));
     password.append("a");
     assertThrows(ServerException.class, () -> userDAO.create("Jatak", "sendmigspam@gmail.com", password.toString()));
   }
@@ -143,7 +143,7 @@ class UserDAOImplTest
   private StringBuilder makeLongString(int length)
   {
     StringBuilder email = new StringBuilder();
-    for (int i = 0; i < length-1; i++)
+    for (int i = 0; i < length-4; i++)
     {
       email.append("a");
       if (i == 35)
@@ -151,6 +151,7 @@ class UserDAOImplTest
         email.append("@");
       }
     }
+    email.append(".dk");
     return email;
   }
 }
