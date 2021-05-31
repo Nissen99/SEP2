@@ -55,8 +55,8 @@ class UserDAOImplTest
   @Test
   void userNameMustBeUnique() throws ServerException
   {
-    userDAO.create(validUserName1, validEmail, validPassword);
-    assertThrows(ServerException.class, () -> userDAO.create(validUserName1, validEmail, validPassword));
+    userDAO.create("Unik", validEmail, validPassword);
+    assertThrows(ServerException.class, () -> userDAO.create("Unik", validEmail, validPassword));
   }
 
 
