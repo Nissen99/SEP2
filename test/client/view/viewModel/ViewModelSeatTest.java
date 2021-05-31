@@ -18,7 +18,9 @@ class ViewModelSeatTest
       setup.getHall().getMaxRows());
   private BookingSpecDAO bookingSpecDAO = new BookingSpecDAOImpl();
 
-
+  /**
+   * Her sættes der mere op, da vi skal have en hall med tilhørende sæder at teste på
+   */
   @BeforeEach void setup() throws ServerException
   {
     setup.setup();

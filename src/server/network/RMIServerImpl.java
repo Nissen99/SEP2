@@ -205,7 +205,6 @@ public class RMIServerImpl implements RMIServer, PropertyChangeListener
           clientCallBacksThatWentWrong.add(clientCallBack);
       }
     }
-
     for (ClientCallBack clientCallBack : clientCallBacksThatWentWrong)
     {
       clientCallBackArrayList.remove(clientCallBack);

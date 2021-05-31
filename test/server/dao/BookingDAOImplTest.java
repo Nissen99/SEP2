@@ -13,10 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BookingDAOImplTest
 {
- /*
-  ArrayList<IBooking> getAllBookings() throws ServerException;
-  void removeBooking(IBooking booking) throws ServerException;
-  */
 
   private DAOTestSetup setup = new DAOTestSetup();
   private BookingDAO bookingDAO = new BookingDAOImpl();
