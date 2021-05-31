@@ -63,15 +63,15 @@ class UserDAOImplTest
 
   @Test
   void emailContainsAtSignAtRightSpot(){
-    assertThrows(ServerException.class, () -> userDAO.create("Username", "@Email.com", "passwordsD123"));
-    assertDoesNotThrow(() -> userDAO.create("IkkeMitNavn", "Hejsa@gmail.com", "DuHackerikkeMig"));
+    assertThrows(ServerException.class, () -> userDAO.create(validUserName1, "@Email.com", validPassword));
+    assertDoesNotThrow(() -> userDAO.create(validUserName2, "Hejsa@gmail.com", validPassword));
   }
 
   @Test
   void emailBoundaryUnder6AndOn6Characters()
   {
-    assertThrows(ServerException.class, () -> userDAO.create("UserName1", "g@1.d", "Passwordsersikre"));
-    assertDoesNotThrow(() ->userDAO.create("UserName2", "Gm@l.c", "Password123"));
+    assertThrows(ServerException.class, () -> userDAO.create(validUserName1, "g@1.d", validPassword));
+    assertDoesNotThrow(() ->userDAO.create(validUserName2, "Gm@l.c", validPassword));
   }
 
   @Test
@@ -95,8 +95,8 @@ class UserDAOImplTest
   @Test
   void passwordNeedsUpperAndLowerCaseLetters(){
 
-    assertThrows(ServerException.class, () -> userDAO.create("username", "MinEmail@gmail.com", "passawords"));
-    assertThrows(ServerException.class, () -> userDAO.create("DetErMinNavn", "jada@gmail.com", "PASSWORDUPSCAPS"));
+    assertThrows(ServerException.class, () -> userDAO.create(validUserName1, validEmail, "passawords"));
+    assertThrows(ServerException.class, () -> userDAO.create(validUserName2, validEmail, "PASSWORDUPSCAPS"));
 
   }
 
