@@ -97,7 +97,7 @@ class UserDAOImplTest
 
     assertThrows(ServerException.class, () -> userDAO.create(validUserName1, validEmail, "passawords"));
     assertThrows(ServerException.class, () -> userDAO.create(validUserName2, validEmail, "PASSWORDUPSCAPS"));
-
+    assertDoesNotThrow(()->userDAO.create(validUserName3, validEmail, "gYlDiGpAsSwOrD"));
   }
 
   @Test
