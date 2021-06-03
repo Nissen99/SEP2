@@ -65,7 +65,7 @@ public class EditBookingView implements Controller
     }
     catch (ServerException e)
     {
-      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage() +". Try restarting the app");
+      Alert alert = AlertBox.makeAlert("information", "Error!", e.getMessage() +". Prøv at genstarte applikationen");
       alert.show();
     }
   }
@@ -84,10 +84,10 @@ public class EditBookingView implements Controller
       bookingTable.scrollTo(booking);
     }catch (IllegalArgumentException e)
     {
-      Alert alert = AlertBox.makeAlert("information", "Error!", "Invalid input");
+      Alert alert = AlertBox.makeAlert("information", "Error!", "Ikke gyldigt input");
       alert.show();
     }catch (NullPointerException e){
-      Alert alert = AlertBox.makeAlert("information", "Error!", "No booking found, Id: " + viewModel.getSearch());
+      Alert alert = AlertBox.makeAlert("information", "Error!", "Ingen booking findes med id: " + viewModel.getSearch());
       alert.show();
     }
     searchBox.clear();
@@ -99,8 +99,8 @@ public class EditBookingView implements Controller
     IBooking booking = bookingTable.getSelectionModel().getSelectedItem();
     if (booking != null)
     {
-        Alert alert = AlertBox.makeAlert("confirmation", "Deleting Booking",
-            "Are you sure you want to delete this booking?");
+        Alert alert = AlertBox.makeAlert("confirmation", "Slet Booking",
+            "Er du sikker på du vil slette denne booking?");
 
         alert.showAndWait().ifPresent(type -> {
           if (type.getButtonData() == ButtonBar.ButtonData.YES)
