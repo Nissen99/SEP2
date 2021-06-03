@@ -28,8 +28,8 @@ public class AlertBox
     if (type.toLowerCase().equals("confirmation"))
     {
       alert = new Alert(Alert.AlertType.CONFIRMATION);
-      ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-      ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+      ButtonType yesButton = new ButtonType("Ja", ButtonBar.ButtonData.YES);
+      ButtonType noButton = new ButtonType("Nej", ButtonBar.ButtonData.NO);
       alert.getButtonTypes().setAll(yesButton, noButton);
     }
     else if (type.toLowerCase().equals("information")){
