@@ -12,21 +12,21 @@ public class JavaMailUtil
 {
   private static String path = "src/server/mail/mailOrder.pdf";
 
-  // The static method, for sending mail
+  // En static metode, for at sende mails
   public static void sendMail(String recipient)
       throws MessagingException, IOException
   {
-    // setting up the properties
+    // Opretter og opsætter Properties
     Properties properties = new Properties();
-    properties.put("mail.smtp.auth", true); //checks whether authentication is needed for the server. When using g-mail server it requires authentication
-    properties.put("mail.smtp.starttls.enable", true); // tls encryption protocol. for encrypting the web traffic. gmail is protecting your information automatically, by encrypting the email.  ( turning the information in mail into code during delivery)
-    properties.put("mail.smtp.host", "smtp.gmail.com"); // setting up the host. smtp.gmail.com is the host for gmail
-    properties.put("mail.smtp.port", "587"); // the port it is connecting to.
+    properties.put("mail.smtp.auth", true); //Kontrollerer om der er behov for godkendelse til serveren,hvilket er et krav, når der benyttes af Gmail server.
+    properties.put("mail.smtp.starttls.enable", true); // tls krypteringsprotokol. for kryptering af internettrafikken. gmail beskytter oplysningerne automatisk, ved at kryptere mailen under levering.
+    properties.put("mail.smtp.host", "smtp.gmail.com"); //  opsætning af host. smtp.gmail.com er host for gmail.
+    properties.put("mail.smtp.port", "587"); // porten der forbindes til.
 
-    String myAccountEmail = "sepTest2021@gmail.com"; // the email account we have made, which we are using to send mails from
-    String password = "S123456789s"; // the password for the email account.
+    String myAccountEmail = "sepTest2021@gmail.com"; // email-kontoen vi har lavet for at systemet kan sende mails fra.
+    String password = "S123456789s"; // password til email-kontoen
 
-    // the part where we login, using our mail information,
+    // Her logges ind, ved at benytte vores emailadresse og password.
     Session session = Session.getInstance(properties, new Authenticator()
     {
       @Override protected PasswordAuthentication getPasswordAuthentication()
@@ -35,22 +35,22 @@ public class JavaMailUtil
       }
     });
 
-    // prepareing a message in the format of a Message. This is a part of the JavaMail API
-   // The JavaMail API provides a platform-independent and protocol-independent framework to build mail and messaging applications.
+
+    // Klaregør en besked, af typen Message. Se link for yderlige info om det eksterne jar-files.
    // https://javaee.github.io/javamail/
     Message message = prepareMessage(session, myAccountEmail, recipient);
     Transport.send(message); // Tager langt tid, kan ikke optimeres grundet ekstern library.
     System.out.println("Mail sent");
   }
 
-  // The static method for preparing the message.
+  // statisk metode, for klargøreing af en besked
   private static Message prepareMessage(Session session, String myAccountEmail,
       String recipient) throws MessagingException, IOException
   {
     Message message = new MimeMessage(session);
-    message.setFrom(new InternetAddress(myAccountEmail));  // from which email-adresse
-    message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));  // the recipient
-    message.setSubject("Biograf Billet"); // the subject of the mail
+    message.setFrom(new InternetAddress(myAccountEmail));  // fra hvilke mailadresse
+    message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));  // modtageren
+    message.setSubject("Biograf Billet"); // emnefeltet
 
     Multipart multipart = new MimeMultipart(); //Opretter MultiPart objekt
 
