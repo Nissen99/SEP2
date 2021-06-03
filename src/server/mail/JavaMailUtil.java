@@ -12,7 +12,7 @@ public class JavaMailUtil
 {
   private static String path = "src/server/mail/mailOrder.pdf";
 
-  // En static metode, for at sende mails
+
   public static void sendMail(String recipient)
       throws MessagingException, IOException
   {
@@ -23,8 +23,8 @@ public class JavaMailUtil
     properties.put("mail.smtp.host", "smtp.gmail.com"); //  opsætning af host. smtp.gmail.com er host for gmail.
     properties.put("mail.smtp.port", "587"); // porten der forbindes til.
 
-    String myAccountEmail = "sepTest2021@gmail.com"; // email-kontoen vi har lavet for at systemet kan sende mails fra.
-    String password = "S123456789s"; // password til email-kontoen
+    String myAccountEmail = "sepTest2021@gmail.com";
+    String password = "S123456789s";
 
     // Her logges ind, ved at benytte vores emailadresse og password.
     Session session = Session.getInstance(properties, new Authenticator()
@@ -43,7 +43,6 @@ public class JavaMailUtil
     System.out.println("Mail sent");
   }
 
-  // statisk metode, for klargøreing af en besked
   private static Message prepareMessage(Session session, String myAccountEmail,
       String recipient) throws MessagingException, IOException
   {
@@ -52,16 +51,17 @@ public class JavaMailUtil
     message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));  // modtageren
     message.setSubject("Biograf Billet"); // emnefeltet
 
-    Multipart multipart = new MimeMultipart(); //Opretter MultiPart objekt
+    Multipart multipart = new MimeMultipart();
 
-    MimeBodyPart bodyPart = new MimeBodyPart(); //Opretter BodyPart
-    File file = new File(path); //Fetcher filen der skal sendes
+    MimeBodyPart bodyPart = new MimeBodyPart();
 
-    bodyPart.attachFile(file); //Tilføjer filen til bodyPart
+    File file = new File(path);
 
-    multipart.addBodyPart(bodyPart); //Tilføjer bodyPart til multipart
+    bodyPart.attachFile(file);
 
-    message.setContent(multipart); //Tilføjer multipart til message objektet
+    multipart.addBodyPart(bodyPart);
+
+    message.setContent(multipart);
 
     return message;
 
