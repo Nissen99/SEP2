@@ -280,7 +280,7 @@ public class SeatViewController implements PropertyChangeListener, Controller
             viewModel.removePropertyChangeListener(this);
 
             Alert alert1 = AlertBox.makeAlert("Information", "Booking made",
-                "Du har lavet en vellykket booking. Tjek din mail-indbakke for billeter");
+                "Du har lavet en vellykket booking. Tjek din mail-indbakke for billetter");
             alert1.show();
 
             ViewHandler.getInstance().openView("Movie List");
