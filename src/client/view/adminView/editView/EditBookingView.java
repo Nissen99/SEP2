@@ -32,6 +32,7 @@ public class EditBookingView implements Controller
   private ViewModelEditBooking viewModel;
 
   private String path = "adminView/editView/editBooking";
+  private String viewTitle = "Edit Booking";
 
   public void init()
   {
@@ -46,6 +47,11 @@ public class EditBookingView implements Controller
   @Override public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   /**

@@ -20,6 +20,7 @@ import shared.exception.ServerException;
 public class CreateUserViewController implements Controller
 {
   private String path = "createUserView/createUser";
+  private String viewTitle = "Create User";
   @FXML public TextField usernameField;
   @FXML public TextField emailField;
   @FXML public PasswordField passwordField;
@@ -38,6 +39,11 @@ public class CreateUserViewController implements Controller
   @Override public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   /**

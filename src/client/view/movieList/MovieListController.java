@@ -21,6 +21,7 @@ import shared.transferobjects.IMovie;
 public class MovieListController implements Controller
 {
   private String path = "movieList/movieList";
+  private String viewTitle = "Movie List";
   @FXML public TableView<IMovie> tableViewForMovie;
   @FXML public TableColumn<IMovie, String> movieTitleColumn;
   @FXML public Button confirmMovieChoice;
@@ -46,6 +47,11 @@ public class MovieListController implements Controller
   @Override public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   public void confirmButtonPressed()

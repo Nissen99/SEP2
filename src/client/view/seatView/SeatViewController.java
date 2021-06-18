@@ -34,6 +34,7 @@ import java.util.ArrayList;
 public class SeatViewController implements PropertyChangeListener, Controller
 {
   private String path = "seatView/seat";
+  private String viewTitle = "Seat View";
   @FXML public ChoiceBox<Integer> numberOfSeats;
   @FXML private AnchorPane anchorPane;
   private ArrayList<Pane> paneArrayList = new ArrayList<>(); //liste af alle panes
@@ -66,6 +67,11 @@ public class SeatViewController implements PropertyChangeListener, Controller
   @Override public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   /**

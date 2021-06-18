@@ -24,6 +24,7 @@ public class EditMovieController implements Controller
   @FXML public TableColumn<IMovie, String> movieTitleColumn;
   private ViewModelEditMovie viewModel;
   private String path = "adminView/editView/editMovie";
+  private String viewTitle = "Edit Movie";
 
   public void init()
   {
@@ -38,6 +39,11 @@ public class EditMovieController implements Controller
   @Override public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   private void setUpTableView()

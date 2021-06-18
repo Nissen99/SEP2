@@ -21,6 +21,7 @@ public class AddShowingController implements Controller
 {
 
   private String path = "adminView/editView/addShowing";
+  private String title = "Add Showing";
   @FXML public JFXTimePicker timePicker;
   @FXML public JFXDatePicker datePicker;
   @FXML public ChoiceBox<String> hallNo;
@@ -38,6 +39,11 @@ public class AddShowingController implements Controller
   @Override public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return title;
   }
 
   public void back()

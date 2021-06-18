@@ -72,7 +72,7 @@ public class ViewHandler
       root = loader.load();
       Controller controller = loader.getController();
       controller.init();
-      //stage.setTitle(viewToOpen);
+      stage.setTitle(state.getTitle());
     }
     catch (IOException e)
     {

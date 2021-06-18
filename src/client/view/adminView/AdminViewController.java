@@ -18,6 +18,7 @@ public class AdminViewController implements Controller
 {
 
   private String path = "adminView/admin";
+  private String viewTitle = "Admin View";
 
 
 public void init(){}
@@ -25,6 +26,11 @@ public void init(){}
   public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   public void back()

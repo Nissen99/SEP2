@@ -27,6 +27,7 @@ public class ShowingListController implements Controller
 {
 
   private String path = "showingList/showingList";
+  private String viewTitle = "Showing List";
   @FXML public TableColumn<Timestamp, String> datoerForFremvisning;
   @FXML public TableColumn<Timestamp, String> ugedagForFremvisning;
   @FXML public TableColumn<Timestamp, String> tidspunktForFremvisning;
@@ -47,6 +48,11 @@ public class ShowingListController implements Controller
   @Override public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   private void setUpTable()

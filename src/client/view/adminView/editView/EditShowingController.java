@@ -20,6 +20,7 @@ public class EditShowingController implements Controller
 {
 
   private String path = "adminView/editView/editShowing";
+  private String viewTitle = "Edit Showing";
   @FXML public Label filmShowingsErFor;
   @FXML public TableView<IShowing> tableViewForFilmFremvisninger;
   @FXML public TableColumn<IShowing, String> datoerForFremvisning;
@@ -38,6 +39,11 @@ public class EditShowingController implements Controller
   @Override public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   private void setUpTableView()

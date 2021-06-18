@@ -20,7 +20,8 @@ import shared.exception.ServerException;
  */
 public class LoginViewController implements Controller
 {
-  private static String path = "loginView/login";
+  private String path = "loginView/login";
+  private String viewTitle = "Login View";
   @FXML private TextField usernameField;
   @FXML private PasswordField passwordField;
   private ViewModelLogin viewModelLogin = ViewModelFactory.getInstance().getlogin();
@@ -75,5 +76,10 @@ public class LoginViewController implements Controller
   public String getPath()
   {
     return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 }
