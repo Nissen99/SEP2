@@ -4,6 +4,7 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
 import client.view.Controller;
+import client.view.loginView.LoginViewController;
 import client.view.viewModel.ViewModelCreateUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -18,7 +19,7 @@ import shared.exception.ServerException;
 
 public class CreateUserViewController implements Controller
 {
-
+  private String path = "createUserView/createUser";
   @FXML public TextField usernameField;
   @FXML public TextField emailField;
   @FXML public PasswordField passwordField;
@@ -34,6 +35,11 @@ public class CreateUserViewController implements Controller
 
   }
 
+  @Override public String getPath()
+  {
+    return path;
+  }
+
   /**
    * Når man indsætter en user i databasen har vi lavet functioner + triggers der
    * tjekker input, derfor kan vi give relevante fejlmeddelser til brugeren gennem
@@ -46,7 +52,9 @@ public class CreateUserViewController implements Controller
       viewModelCreateUser.create();
       Alert alert = AlertBox.makeAlert("information", "Bruger oprettet", "Du er nu oprettet som bruger");
       alert.showAndWait();
-      ViewHandler.getInstance().openView("Login");
+      ViewHandler.getInstance().setState(new LoginViewController());
+      ViewHandler.getInstance().openView();
+      //ViewHandler.getInstance().openView("Login");
     }
     catch (ServerException | IllegalArgumentException e)
     {
@@ -57,6 +65,8 @@ public class CreateUserViewController implements Controller
 
   public void onBackButton()
   {
-   ViewHandler.getInstance().openView("Login");
+    ViewHandler.getInstance().setState(new LoginViewController());
+    ViewHandler.getInstance().openView();
+   //ViewHandler.getInstance().openView("Login");
   }
 }

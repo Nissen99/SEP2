@@ -4,6 +4,7 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
 import client.view.Controller;
+import client.view.adminView.AdminViewController;
 import client.view.viewModel.ViewModelEditBooking;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -30,6 +31,8 @@ public class EditBookingView implements Controller
 
   private ViewModelEditBooking viewModel;
 
+  private String path = "adminView/editView/editBooking";
+
   public void init()
   {
     viewModel = ViewModelFactory.getInstance()
@@ -38,6 +41,11 @@ public class EditBookingView implements Controller
     searchBox.textProperty().bindBidirectional(viewModel.searchProperty());
 
     setupTable();
+  }
+
+  @Override public String getPath()
+  {
+    return path;
   }
 
   /**
@@ -123,7 +131,9 @@ public class EditBookingView implements Controller
 
   public void back()
   {
-    ViewHandler.getInstance().openView("Admin");
+    ViewHandler.getInstance().setState(new AdminViewController());
+    ViewHandler.getInstance().openView();
+    //ViewHandler.getInstance().openView("Admin");
   }
 }
 

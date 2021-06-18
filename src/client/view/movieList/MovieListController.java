@@ -4,6 +4,8 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
 import client.view.Controller;
+import client.view.loginView.LoginViewController;
+import client.view.showingList.ShowingListController;
 import client.view.viewModel.ViewModelMovieList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -18,7 +20,7 @@ import shared.transferobjects.IMovie;
 
 public class MovieListController implements Controller
 {
-
+  private String path = "movieList/movieList";
   @FXML public TableView<IMovie> tableViewForMovie;
   @FXML public TableColumn<IMovie, String> movieTitleColumn;
   @FXML public Button confirmMovieChoice;
@@ -41,13 +43,20 @@ public class MovieListController implements Controller
 
   }
 
+  @Override public String getPath()
+  {
+    return path;
+  }
+
   public void confirmButtonPressed()
   {
     try
     {
       IMovie movie = tableViewForMovie.getSelectionModel().getSelectedItem();
       viewModel.setSelectedMovie(movie);
-      ViewHandler.getInstance().openView("Showing List");
+      ViewHandler.getInstance().setState(new ShowingListController());
+      ViewHandler.getInstance().openView();
+      //ViewHandler.getInstance().openView("Showing List");
     }
     catch (NullPointerException e)
     {
@@ -65,7 +74,9 @@ public class MovieListController implements Controller
     alert.showAndWait().ifPresent(type -> {
       if (type.getButtonData() == ButtonBar.ButtonData.YES)
       {
-        ViewHandler.getInstance().openView("Login");
+        ViewHandler.getInstance().setState(new LoginViewController());
+        ViewHandler.getInstance().openView();
+        //ViewHandler.getInstance().openView("Login");
       }
     });
   }

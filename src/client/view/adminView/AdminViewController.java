@@ -3,6 +3,9 @@ package client.view.adminView;
 import client.core.ViewHandler;
 import client.util.AlertBox;
 import client.view.Controller;
+import client.view.adminView.editView.EditBookingView;
+import client.view.adminView.editView.EditMovieController;
+import client.view.loginView.LoginViewController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 
@@ -14,8 +17,15 @@ import javafx.scene.control.ButtonBar;
 public class AdminViewController implements Controller
 {
 
+  private String path = "adminView/admin";
+
 
 public void init(){}
+
+  public String getPath()
+  {
+    return path;
+  }
 
   public void back()
   {
@@ -24,21 +34,27 @@ public void init(){}
     alert.showAndWait().ifPresent(type -> {
       if (type.getButtonData() == ButtonBar.ButtonData.YES)
       {
-          ViewHandler.getInstance().openView("Login");
+        ViewHandler.getInstance().setState(new LoginViewController());
+        ViewHandler.getInstance().openView();
+          //ViewHandler.getInstance().openView("Login");
       }
     });
   }
 
   public void editMovie()
   {
-  ViewHandler.getInstance().openView("Edit Movie");
+    ViewHandler.getInstance().setState(new EditMovieController());
+    ViewHandler.getInstance().openView();
+  //ViewHandler.getInstance().openView("Edit Movie");
 
 
   }
 
   public void editBooking()
   {
-  ViewHandler.getInstance().openView("Edit Booking");
+    ViewHandler.getInstance().setState(new EditBookingView());
+    ViewHandler.getInstance().openView();
+  //ViewHandler.getInstance().openView("Edit Booking");
   }
 }
 

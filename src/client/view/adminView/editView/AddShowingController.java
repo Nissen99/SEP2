@@ -20,6 +20,7 @@ import shared.exception.ServerException;
 public class AddShowingController implements Controller
 {
 
+  private String path = "adminView/editView/addShowing";
   @FXML public JFXTimePicker timePicker;
   @FXML public JFXDatePicker datePicker;
   @FXML public ChoiceBox<String> hallNo;
@@ -34,9 +35,16 @@ public class AddShowingController implements Controller
     setChoiceBox();
   }
 
+  @Override public String getPath()
+  {
+    return path;
+  }
+
   public void back()
   {
-    ViewHandler.getInstance().openView("Edit Showing");
+    ViewHandler.getInstance().setState(new EditShowingController());
+    ViewHandler.getInstance().openView();
+    //ViewHandler.getInstance().openView("Edit Showing");
   }
 
   public void confirm()
