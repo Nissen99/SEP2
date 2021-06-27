@@ -14,7 +14,7 @@ public class BaseDAO
    * @return Connetion til databasen
    * @throws SQLException Hvis forbindelse ikke kan oprettes
    */
-  protected static Connection getConnection() throws SQLException
+  protected Connection getConnection() throws SQLException
   {
       connection = DriverManager.getConnection(
           "jdbc:postgresql://localhost:5432/postgres?currentSchema=bioDatabase",
