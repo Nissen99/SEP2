@@ -4,6 +4,9 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
 import client.view.Controller;
+import client.view.adminView.AdminViewController;
+import client.view.createUserView.CreateUserViewController;
+import client.view.movieList.MovieListController;
 import client.view.viewModel.ViewModelLogin;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,6 +20,8 @@ import shared.exception.ServerException;
  */
 public class LoginViewController implements Controller
 {
+  private String path = "loginView/login";
+  private String viewTitle = "Login View";
   @FXML private TextField usernameField;
   @FXML private PasswordField passwordField;
   private ViewModelLogin viewModelLogin = ViewModelFactory.getInstance().getlogin();
@@ -33,7 +38,9 @@ public class LoginViewController implements Controller
 
   @FXML void createAccountButtonPressed()
   {
-    ViewHandler.getInstance().openView("Create User");
+    ViewHandler.getInstance().setState(new CreateUserViewController());
+    ViewHandler.getInstance().openView();
+    //ViewHandler.getInstance().openView("Create User");
   }
 
   /**
@@ -47,12 +54,14 @@ public class LoginViewController implements Controller
     {
     if (viewModelLogin.admin())
     {
-      ViewHandler.getInstance().openView("Admin");
+      ViewHandler.getInstance().setState(new AdminViewController());
+      //ViewHandler.getInstance().openView("Admin");
     }
     else {
 
         viewModelLogin.login();
-        ViewHandler.getInstance().openView("Movie List");
+        ViewHandler.getInstance().setState(new MovieListController());
+        //ViewHandler.getInstance().openView("Movie List");
       }
 
     }catch (ServerException e)
@@ -60,6 +69,17 @@ public class LoginViewController implements Controller
       Alert alert = AlertBox.makeAlert("information","Login error ", e.getMessage());
       alert.show();
     }catch (NullPointerException ignored){}
+
+    ViewHandler.getInstance().openView();
   }
 
+  public String getPath()
+  {
+    return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
+  }
 }

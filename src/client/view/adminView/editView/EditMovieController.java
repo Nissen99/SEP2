@@ -4,6 +4,7 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
 import client.view.Controller;
+import client.view.adminView.AdminViewController;
 import client.view.viewModel.ViewModelEditMovie;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -22,6 +23,8 @@ public class EditMovieController implements Controller
   @FXML public TableView<IMovie> movieTableView;
   @FXML public TableColumn<IMovie, String> movieTitleColumn;
   private ViewModelEditMovie viewModel;
+  private String path = "adminView/editView/editMovie";
+  private String viewTitle = "Edit Movie";
 
   public void init()
   {
@@ -31,6 +34,16 @@ public class EditMovieController implements Controller
         .bindBidirectional(viewModel.movieTitleProperty());
 
     setUpTableView();
+  }
+
+  @Override public String getPath()
+  {
+    return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
   }
 
   private void setUpTableView()
@@ -54,8 +67,9 @@ public class EditMovieController implements Controller
     {
       IMovie movie = movieTableView.getSelectionModel().getSelectedItem();
       viewModel.setSelectedMovie(movie);
-
-      ViewHandler.getInstance().openView("Edit Showing");
+      ViewHandler.getInstance().setState(new EditShowingController());
+      ViewHandler.getInstance().openView();
+      //ViewHandler.getInstance().openView("Edit Showing");
 
     }
     catch (NullPointerException e)
@@ -69,7 +83,9 @@ public class EditMovieController implements Controller
 
   public void back()
   {
-    ViewHandler.getInstance().openView("Admin");
+    ViewHandler.getInstance().setState(new AdminViewController());
+    ViewHandler.getInstance().openView();
+    //ViewHandler.getInstance().openView("Admin");
   }
 
   public void addMovie()

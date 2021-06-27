@@ -1,7 +1,8 @@
 package client.core;
 
-import client.util.ViewMap;
+
 import client.view.Controller;
+import client.view.loginView.LoginViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +19,7 @@ public class ViewHandler
 
   private static ViewHandler viewHandler;
   private Stage stage;
+  private Controller state;
 
 
   private ViewHandler(){}
@@ -47,7 +49,9 @@ public class ViewHandler
   public void start(Stage stage)
   {
     setStage(stage);
-    openView("Login");
+    setState(new LoginViewController());
+    openView();
+    //openView("Login");
   }
 
   /**
@@ -57,18 +61,18 @@ public class ViewHandler
    * @param viewToOpen (Skrevet som title på vinduet, se ViewMap)
    *                   eks. "Movie List" for "movieListView.fxml"
    */
-  public void openView(String viewToOpen)
+  public void openView()
   {
     FXMLLoader loader = new FXMLLoader();
     Parent root = null;
     try
     {
-      String pathToView = ViewMap.getInstance().getPath(viewToOpen); //lookup i Hashmap
+      String pathToView = state.getPath(); //lookup i Hashmap
       loader.setLocation(getClass().getResource("../view/" + pathToView + "View.fxml"));
       root = loader.load();
       Controller controller = loader.getController();
       controller.init();
-      stage.setTitle(viewToOpen);
+      stage.setTitle(state.getTitle());
     }
     catch (IOException e)
     {
@@ -77,6 +81,11 @@ public class ViewHandler
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
+  }
+
+
+  public void setState(Controller state){
+    this.state = state;
   }
 }
 

@@ -4,6 +4,8 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.util.AlertBox;
 import client.view.Controller;
+import client.view.movieList.MovieListController;
+import client.view.showingList.ShowingListController;
 import client.view.viewModel.ViewModelSeat;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -31,7 +33,8 @@ import java.util.ArrayList;
  */
 public class SeatViewController implements PropertyChangeListener, Controller
 {
-
+  private String path = "seatView/seat";
+  private String viewTitle = "Seat View";
   @FXML public ChoiceBox<Integer> numberOfSeats;
   @FXML private AnchorPane anchorPane;
   private ArrayList<Pane> paneArrayList = new ArrayList<>(); //liste af alle panes
@@ -61,6 +64,15 @@ public class SeatViewController implements PropertyChangeListener, Controller
     setChoiceBox();
   }
 
+  @Override public String getPath()
+  {
+    return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
+  }
 
   /**
    * Her ligges samtlige panes i vores paneArrayList, for at kunne tilgå paneId's
@@ -282,8 +294,9 @@ public class SeatViewController implements PropertyChangeListener, Controller
             Alert alert1 = AlertBox.makeAlert("Information", "Booking made",
                 "Du har lavet en vellykket booking. Tjek din mail-indbakke for billetter");
             alert1.show();
-
-            ViewHandler.getInstance().openView("Movie List");
+            ViewHandler.getInstance().setState(new MovieListController());
+            ViewHandler.getInstance().openView();
+            //ViewHandler.getInstance().openView("Movie List");
           }
           catch (ServerException e)
           {
@@ -305,7 +318,9 @@ public class SeatViewController implements PropertyChangeListener, Controller
     try
     {
       viewModel.removePropertyChangeListener(this);
-      ViewHandler.getInstance().openView("Showing List");
+      ViewHandler.getInstance().setState(new ShowingListController());
+      ViewHandler.getInstance().openView();
+      //ViewHandler.getInstance().openView("Showing List");
     }
     catch (ServerException ignored)
     {}

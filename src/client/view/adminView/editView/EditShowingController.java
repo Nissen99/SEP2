@@ -19,6 +19,8 @@ import shared.transferobjects.IShowing;
 public class EditShowingController implements Controller
 {
 
+  private String path = "adminView/editView/editShowing";
+  private String viewTitle = "Edit Showing";
   @FXML public Label filmShowingsErFor;
   @FXML public TableView<IShowing> tableViewForFilmFremvisninger;
   @FXML public TableColumn<IShowing, String> datoerForFremvisning;
@@ -33,6 +35,17 @@ public class EditShowingController implements Controller
 
     filmShowingsErFor.textProperty().bind(viewModel.movieTitleProperty());
   }
+
+  @Override public String getPath()
+  {
+    return path;
+  }
+
+  @Override public String getTitle()
+  {
+    return viewTitle;
+  }
+
   private void setUpTableView()
   {
     try
@@ -55,7 +68,9 @@ public class EditShowingController implements Controller
 
   public void backButton()
   {
-    ViewHandler.getInstance().openView("Edit Movie");
+    ViewHandler.getInstance().setState(new EditMovieController());
+    ViewHandler.getInstance().openView();
+    //ViewHandler.getInstance().openView("Edit Movie");
   }
 
   public void removeShowing()
@@ -85,6 +100,8 @@ public class EditShowingController implements Controller
 
   public void addShowing()
   {
-    ViewHandler.getInstance().openView("Add Showing");
+    ViewHandler.getInstance().setState(new AddShowingController());
+    ViewHandler.getInstance().openView();
+    //ViewHandler.getInstance().openView("Add Showing");
   }
 }
